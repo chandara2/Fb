@@ -1,54 +1,39 @@
-<header>
-    <div class="px-3 py-2 bg-dark text-white">
-        <div class="container">
+<header class="p-3 mb-3 border-bottom">
+    <div class="container">
         <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-            <a href="/" class="d-flex align-items-center my-2 my-lg-0 me-lg-auto text-white text-decoration-none">
-                <img src="{{ asset('asset/image/brand-logo.png') }}" alt="logo" height="50">
+        <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-dark text-decoration-none">
+            <img src="{{ asset('asset/image/brand-logo.png') }}" alt="logo" height="50">
+        </a>
+
+        <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+            <li><a href="#" class="nav-link px-2 link-secondary">Home</a></li>
+            <li><a href="#" class="nav-link px-2 link-dark">Jobs</a></li>
+            <li><a href="#" class="nav-link px-2 link-dark">About Us</a></li>
+        </ul>
+
+        <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
+            <input type="search" class="form-control" placeholder="Search..." aria-label="Search">
+        </form>
+
+        @auth
+        <div class="dropdown text-end">
+            <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+            <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
             </a>
-
-            <ul class="nav col-12 col-lg-auto my-2 justify-content-center my-md-0 text-small">
-            <li>
-                <a href="#" class="nav-link text-secondary" style="">
-                    <i class="bi bi-house-door d-block mx-auto mb-1 text-center" style="font-size:24px;"></i>
-                Home
-                </a>
-            </li>
-            <li>
-                <a href="#" class="nav-link text-white">
-                    <i class="bi bi-speedometer2 d-block mx-auto mb-1 text-center" style="font-size:24px;"></i>
-                Dashboard
-                </a>
-            </li>
-            <li>
-                <a href="#" class="nav-link text-white">
-                    <i class="bi bi-table d-block mx-auto mb-1 text-center" style="font-size:24px;"></i>
-                Orders
-                </a>
-            </li>
-            <li>
-                <a href="#" class="nav-link text-white" style="">
-                    <i class="bi bi-grid d-block mx-auto mb-1 text-center" style="font-size:24px;"></i>
-                Products
-                </a>
-            </li>
-            <li class="dropdown">
-                <a href="#" class="nav-link text-white dropdown-toggle" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false" style="">
-                    <i class="bi bi-person-circle d-block mx-auto mb-1 text-center" style="font-size:24px;"></i>
-                Setting
-                </a>
-
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                    <li><a class="dropdown-item text-capitalize fw-bold" href="#">{{ Auth::user()->username }}</a></li>
-                    <li><a class="dropdown-item" href="#">Change Password</a></li>
-                    <li role="separator" class="dropdown-divider"></li>
-                    <li><a class="dropdown-item" href="{{ route('logout') }}">Logout</a></li>
-                </ul>
-
-                    
-                
-            </li>
+            <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
+            <li><a class="dropdown-item text-capitalize fw-bold" href="#">{{ Auth::user()->username }}</a></li>
+            <li><a class="dropdown-item" href="{{ route('admindb') }}">Dashboard</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="{{ route('logout') }}">Sign out</a></li>
             </ul>
         </div>
+        @endauth
+        @guest
+            <div class="text-end">
+                <a href="{{ route('showlogin') }}" class="btn brand_outline_btn3">Login</a>
+                <a href="{{ route('showregister') }}" class="btn brand_btn3">Register</a>
+            </div>
+        @endguest
         </div>
     </div>
 </header>

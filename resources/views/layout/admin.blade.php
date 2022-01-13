@@ -18,8 +18,8 @@
         
         <div id="main_wrapper">
             <!-- This header remove for Guest layout  -->
-            @include('layout.header')
-            
+            @include('layout.admin_header')
+
             <div id="page_wrapper">
                 @yield('content')
             </div>

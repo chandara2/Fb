@@ -140,7 +140,7 @@ class AuthController extends Controller
         }
 
         return back()->withErrors([
-            'errmsg' => 'The provided credentials do not match our records.',
+            'errmsg' => 'Invalid username and password.',
         ]);
     }
     public function logout()
