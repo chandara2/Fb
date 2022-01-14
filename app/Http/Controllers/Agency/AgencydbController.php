@@ -82,8 +82,8 @@ class AgencydbController extends Controller
     {
         //
     }
-    public function agencydb()
+    public function dashboard()
     {
-        return view('agency.dahsboard');
+        return view('agency.dashboard');
     }
 }

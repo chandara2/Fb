@@ -18,11 +18,16 @@
         @auth
         <div class="dropdown text-end">
             <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-            <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
+            <img src="{{ asset('asset/image/user.png') }}" alt="mdo" width="32" height="32" class="rounded-circle">
+                {{-- <i class="bi bi-person-circle d-block mx-auto mb-1 text-center" style="font-size:32px;"></i> --}}
             </a>
             <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
             <li><a class="dropdown-item text-capitalize fw-bold" href="#">{{ Auth::user()->username }}</a></li>
-            <li><a class="dropdown-item" href="{{ route('admindb') }}">Dashboard</a></li>
+            <li><a class="dropdown-item"
+                href="@if(Auth::user()->gid==1){{ route('admin.dashboard') }}
+                @elseif(Auth::user()->gid==2){{ route('agency.dashboard') }}
+                @else{{ route('user.dashboard') }}
+                @endif">Dashboard</a></li>
             <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item" href="{{ route('logout') }}">Sign out</a></li>
             </ul>

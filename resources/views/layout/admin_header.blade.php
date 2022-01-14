@@ -7,48 +7,84 @@
             </a>
 
             <ul class="nav col-12 col-lg-auto my-2 justify-content-center my-md-0 text-small">
-            <li>
-                <a href="#" class="nav-link text-secondary" style="">
-                    <i class="bi bi-house-door d-block mx-auto mb-1 text-center" style="font-size:24px;"></i>
-                Home
-                </a>
-            </li>
-            <li>
-                <a href="#" class="nav-link text-white">
-                    <i class="bi bi-speedometer2 d-block mx-auto mb-1 text-center" style="font-size:24px;"></i>
-                Dashboard
-                </a>
-            </li>
-            <li>
-                <a href="#" class="nav-link text-white">
-                    <i class="bi bi-table d-block mx-auto mb-1 text-center" style="font-size:24px;"></i>
-                Orders
-                </a>
-            </li>
-            <li>
-                <a href="#" class="nav-link text-white" style="">
-                    <i class="bi bi-grid d-block mx-auto mb-1 text-center" style="font-size:24px;"></i>
-                Products
-                </a>
-            </li>
-            <li class="dropdown">
-                <a href="#" class="nav-link text-white dropdown-toggle" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false" style="">
-                    <i class="bi bi-person-circle d-block mx-auto mb-1 text-center" style="font-size:24px;"></i>
-                Setting
-                </a>
+                <li>
+                    <a href="/" class="nav-link text-white">
+                        <i class="bi bi-house-door d-block mx-auto mb-1 text-center" style="font-size:24px;"></i>
+                        Home
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('admin.dashboard') }}" class="nav-link text-white">
+                        <i class="bi bi-speedometer2 d-block mx-auto mb-1 text-center" style="font-size:24px;"></i>
+                        Dashboard
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('admin.user') }}" class="nav-link text-white">
+                        <i class="bi bi-people d-block mx-auto mb-1 text-center" style="font-size:24px;"></i>
+                        User
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('admin.job') }}" class="nav-link text-white">
+                        <i class="bi bi-briefcase d-block mx-auto mb-1 text-center" style="font-size:24px;"></i>
+                        Job
+                    </a>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="nav-link text-white dropdown-toggle" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="bi bi-gear d-block mx-auto mb-1 text-center" style="font-size:24px;"></i>
+                        Setting
+                    </a>
 
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                    <li><a class="dropdown-item text-capitalize fw-bold" href="#">{{ Auth::user()->username }}</a></li>
-                    <li><a class="dropdown-item" href="#">Change Password</a></li>
-                    <li role="separator" class="dropdown-divider"></li>
-                    <li><a class="dropdown-item" href="{{ route('logout') }}">Logout</a></li>
-                </ul>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                        <li><a class="dropdown-item text-capitalize fw-bold" href="#"><i class="bi bi-person"></i> {{ Auth::user()->username }}</a></li>
+                        <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#modal-password"><i class="bi bi-key"></i> Change Password</a></li>
+                        <li role="separator" class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="{{ route('logout') }}"><i class="bi bi-power"></i> Logout</a></li>
+                    </ul>
 
-                    
-                
-            </li>
+                </li>
             </ul>
         </div>
         </div>
     </div>
 </header>
+
+<!-- Center modal content -->
+<div class="modal fade" id="modal-password" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+        <form action="{{ route('changepassword') }}" method="POST">
+            @csrf
+            @method('PUT')
+            <div class="modal-header brand-bg4">
+                <h4 class="modal-title text-white" id="myCenterModalLabel">Change Password</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group mb-3">
+                    <label for="opassword">Current Password</label>
+                    <input class="form-control" type="text" name="opassword">
+                    <span class="text-danger">@error('opassword'){{$message}}@enderror</span>
+                </div>
+                <div class="form-group mb-3">
+                    <label for="npassword">New Password</label>
+                    <input class="form-control" type="text" name="npassword">
+                    <span class="text-danger">@error('npassword'){{$message}}@enderror</span>
+                </div>
+                <div class="form-group mb-3">
+                    <label for="vpassword">Verify Password</label>
+                    <input class="form-control" type="text" name="vpassword">
+                    <span class="text-danger">@error('vpassword'){{$message}}@enderror</span>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-light"
+                    data-bs-dismiss="modal">Close</button>
+                <button type="submit" class="btn brand_btn4">Save</button>
+            </div>
+        </form>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

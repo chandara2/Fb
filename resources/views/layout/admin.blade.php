@@ -9,6 +9,8 @@
 
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+        <!-- Datatable -->
+        <link rel="stylesheet" href="{{ asset('asset/datatable/dataTables.bootstrap5.min.css') }}">
         <!-- Global Custom CSS -->
         <link rel="stylesheet" href="{{ asset('css/global_custom.css') }}">
         <!-- Individual Custom CSS -->
@@ -34,6 +36,9 @@
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
         <script src="{{ asset('asset/jquery/jquery-3.6.0.min.js') }}"></script>
         <script src="{{ asset('asset/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+        <!-- Datatable -->
+        <script src="{{ asset('asset/datatable/dataTables.bootstrap5.min.js') }}"></script>
+        <script src="{{ asset('asset/datatable/jquery.dataTables.min.js') }}"></script>
         <!-- Global Custom JS -->
         <script src="{{ asset('js/global_custom.js') }}"></script>
         <!-- Individual Custom CSS -->

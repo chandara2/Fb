@@ -1,5 +1,5 @@
 @extends('layout.admin')
-@section('title', 'ADMIN DB')
+@section('title', 'ADMIN JOB')
 
 @section('content')
 
@@ -7,7 +7,7 @@
         <div class="row mt-3">
             <div class="col-md-5 col-12 align-self-center">
                 <ol class="breadcrumb mb-0">
-                    <li class="breadcrumb-item active">Dashboard</li>
+                    <li class="breadcrumb-item active">ADMIN JOB</li>
                 </ol>
             </div>
         </div>

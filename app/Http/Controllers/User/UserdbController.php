@@ -83,7 +83,7 @@ class UserdbController extends Controller
         //
     }
 
-    public function userdb()
+    public function dashboard()
     {
         return view('user.dashboard');
     }

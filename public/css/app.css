@@ -12851,6 +12851,26 @@ textarea.form-control-lg {
   --brand5: #E4F0F2;
 }
 
+.brand-bg1 {
+  background: var(--brand1);
+}
+
+.brand-bg2 {
+  background: var(--brand2);
+}
+
+.brand-bg3 {
+  background: var(--brand3);
+}
+
+.brand-bg4 {
+  background: var(--brand4);
+}
+
+.brand-bg5 {
+  background: var(--brand5);
+}
+
 .brand_btn1 {
   color: #fff;
   background: var(--brand1);

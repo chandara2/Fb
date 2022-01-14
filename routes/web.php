@@ -15,15 +15,26 @@ Route::get('showregister', [AuthController::class, 'showregister'])->name('showr
 Route::post('register', [AuthController::class, 'register'])->name('register');
 Route::get('showlogin', [AuthController::class, 'showlogin'])->name('showlogin')->middleware('guest');
 Route::post('login', [AuthController::class, 'login'])->name('login');
+Route::put('changepassword', [AuthController::class, 'changepassword'])->name('changepassword')->middleware('auth');
 
 // Auth Logout
 Route::get('logout', [AuthController::class, 'logout'])->name('logout')->middleware('auth');
 
 // User
-Route::get('userdb', [UserdbController::class, 'userdb'])->name('userdb')->middleware('auth');
+Route::prefix('user')->name('user.')->group(function () {
+    Route::get('/dashboard', [UserdbController::class, 'dashboard'])->name('dashboard')->middleware('auth');
+});
 
 // Agency
-Route::get('agencydb', [AgencydbController::class, 'agencydb'])->name('agencydb')->middleware('auth');
+Route::prefix('agency')->name('agency.')->group(function () {
+    Route::get('/dashboard', [AgencydbController::class, 'dashboard'])->name('dashboard')->middleware('auth');
+});
 
 // Admin
-Route::get('admindb', [AdmindbController::class, 'admindb'])->name('admindb')->middleware('auth');
+Route::prefix('admin')->name('admin.')->group(function () {
+    Route::get('/dashboard', [AdmindbController::class, 'dashboard'])->name('dashboard')->middleware('auth');
+    Route::get('/job', [AdmindbController::class, 'job'])->name('job');
+    Route::get('/user', [AdmindbController::class, 'user'])->name('user');
+    Route::post('/createnewuser', [AdmindbController::class, 'createnewuser'])->name('createnewuser');
+    Route::get('/usergetid/{id}', [AdmindbController::class, 'usergetid'])->name('usergetid')->middleware('auth');
+});

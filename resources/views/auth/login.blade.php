@@ -14,19 +14,19 @@
 @section('content')
 
     <div class="shadow" id="login_custom">
-        <h1 class="text-center">Login</h1>
+        <h1 class="text-center mb-3">Login</h1>
         <form action="{{ route('login') }}" method="POST">
             @csrf
-            <input type="text" name="username" value="{{ old('username') }}" placeholder="Username" class="form-control mb-3">
+            <input type="text" name="username" value="{{ old('username') }}" placeholder="Username" class="form-control mt-3" autofocus>
             <span class="text-danger">@error('username'){{$message}}@enderror</span>
-            <input type="text" name="password" placeholder="Password" class="form-control mb-3">
+            <input type="text" name="password" placeholder="Password" class="form-control mt-3">
             <span class="text-danger">@error('password'){{$message}}@enderror</span>
-            <select name="gid" class="form-select mb-3">
+            <select name="gid" class="form-select mt-3">
                 <option value="3">User</option>
                 <option value="2">Agency</option>
                 <option value="1">Admin</option>
             </select>
-            <button type="submit" class="btn brand_btn3 w-100 mb-3">Login</button>
+            <button type="submit" class="btn brand_btn3 w-100 my-3">Login</button>
             <span class="text-danger bg-warning">@error('errmsg'){{$message}}@enderror</span>
         </form>
     </div>

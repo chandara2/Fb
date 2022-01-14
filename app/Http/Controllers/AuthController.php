@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -99,15 +100,21 @@ class AuthController extends Controller
             'username.required' => 'Please fill in username',
             'password.required' => 'Please fill in password'
         ]);
-        $user = new User();
-        $user->fname = $request->fname;
-        $user->gname = $request->gname;
-        $user->username = $request->username;
-        $user->phone = $request->phone;
-        $user->password = Hash::make($request->password);
-        $user->gid = $request->gid;
-        $user->save();
-        return view('app');
+
+        Auth::login($user = User::create([
+            'fname' => $request->fname,
+            'gname' => $request->gname,
+            'username' => $request->username,
+            'phone' => $request->phone,
+            'password' => Hash::make($request->password),
+            'gid' => $request->gid,
+        ]));
+
+        if ($request->gid == 2) {
+            return view('agency.dashboard');
+        } else {
+            return view('user.dashboard');
+        }
     }
     public function showlogin()
     {
@@ -128,13 +135,10 @@ class AuthController extends Controller
             $request->session()->regenerate();
 
             if ($request->gid == 1) {
-
-                return redirect()->intended('admindb');
+                return redirect()->intended('admin/dashboard');
             } elseif ($request->gid == 2) {
-
                 return redirect()->intended('agencydb');
             } else {
-
                 return redirect()->intended('userdb');
             }
         }
@@ -146,6 +150,33 @@ class AuthController extends Controller
     public function logout()
     {
         auth()->logout();
-        return redirect('showlogin')->with('success', 'logout');
+        return redirect('/')->with('success', 'logout');
+    }
+    public function changepassword(Request $request)
+    {
+        $request->validate([
+            'username' => 'required',
+            'opassword' => 'required',
+            'cpassword' => 'required',
+            'vpassword' => 'required|same:cpassword'
+        ], [
+            'username' => 'Please fill in username',
+            'opassword.required' => 'Please fill in Password',
+            'cpassword.required' => 'New password and Verify password is not match.',
+        ]);
+        $user = User::where('username', '=', $request->username)->first();
+        if ($user) {
+            if (!Hash::check($request->opassword, $user->password)) {
+                $request->validate([
+                    'opassword' => 'confirmed'
+                ], [
+                    'opassword.confirmed' => 'Current Password is not correct.'
+                ]);
+            } else { //update password
+                $user->password = $request->cpassword;
+                $user->save();
+            }
+        }
+        return back();
     }
 }
