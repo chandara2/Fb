@@ -11,6 +11,9 @@
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
         <!-- Datatable -->
         <link rel="stylesheet" href="{{ asset('asset/datatable/dataTables.bootstrap5.min.css') }}">
+        <!-- OwlCarousel -->
+        <link rel="stylesheet" href="{{ asset('asset/owlcarousel/owl.carousel.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('asset/owlcarousel/owl.theme.default.min.css') }}">
         <!-- Global Custom CSS -->
         <link rel="stylesheet" href="{{ asset('css/global_custom.css') }}">
         <!-- Individual Custom CSS -->
@@ -19,13 +22,13 @@
     <body>
         
         <div id="main_wrapper">
-            <!-- This header remove for Guest layout  -->
-            @include('layout.admin_header')
+            <!-- Header for app/ Admin_header for admin/ remove for Guest  -->
+            {{-- @include('layout.admin_header') --}}
 
             <div id="page_wrapper">
                 @yield('content')
             </div>
-            <!-- This footer remove for Guest & Admin layout  -->
+            <!-- Footer for app only  -->
             {{-- @include('layout.footer') --}}
         </div>
 
@@ -39,6 +42,8 @@
         <!-- Datatable -->
         <script src="{{ asset('asset/datatable/dataTables.bootstrap5.min.js') }}"></script>
         <script src="{{ asset('asset/datatable/jquery.dataTables.min.js') }}"></script>
+        <!-- OwlCarousel -->
+        <script src="{{ asset('asset/owlcarousel/owl.carousel.min.js') }}"></script>
         <!-- Global Custom JS -->
         <script src="{{ asset('js/global_custom.js') }}"></script>
         <!-- Individual Custom CSS -->

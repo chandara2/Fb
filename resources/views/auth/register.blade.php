@@ -1,4 +1,4 @@
-@extends('layout.guest')
+@extends('layout.layout_guest')
 @section('title', 'REGISTER')
 @section('style')
     <style>

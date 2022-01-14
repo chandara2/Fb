@@ -1,4 +1,4 @@
-@extends('layout.guest')
+@extends('layout.layout_guest')
 @section('title', 'LOGIN')
 @section('style')
     <style>

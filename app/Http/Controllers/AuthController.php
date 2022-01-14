@@ -137,9 +137,9 @@ class AuthController extends Controller
             if ($request->gid == 1) {
                 return redirect()->intended('admin/dashboard');
             } elseif ($request->gid == 2) {
-                return redirect()->intended('agencydb');
+                return redirect()->intended('agency/dashboard');
             } else {
-                return redirect()->intended('userdb');
+                return redirect()->intended('user/dashboard');
             }
         }
 
