@@ -22,14 +22,14 @@
                 {{-- <i class="bi bi-person-circle d-block mx-auto mb-1 text-center" style="font-size:32px;"></i> --}}
             </a>
             <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
-            <li><a class="dropdown-item text-capitalize fw-bold" href="#">{{ Auth::user()->username }}</a></li>
+            <li><a class="dropdown-item text-capitalize fw-bold" href="#"><i class="bi bi-person"></i> {{ Auth::user()->username }}</a></li>
             <li><a class="dropdown-item"
                 href="@if(Auth::user()->gid==1){{ route('admin.dashboard') }}
                 @elseif(Auth::user()->gid==2){{ route('agency.dashboard') }}
                 @else{{ route('user.dashboard') }}
-                @endif">Dashboard</a></li>
+                @endif"><i class="bi bi-speedometer2"></i> Dashboard</a></li>
             <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="{{ route('logout') }}">Sign out</a></li>
+            <li><a class="dropdown-item" href="{{ route('logout') }}"><i class="bi bi-power"></i> Sign out</a></li>
             </ul>
         </div>
         @endauth

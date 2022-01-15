@@ -20,13 +20,13 @@
                     </a>
                 </li>
                 <li>
-                    <a href="{{ route('admin.user') }}" class="nav-link text-white">
+                    <a href="{{ route('admin.user.index') }}" class="nav-link text-white">
                         <i class="bi bi-people d-block mx-auto mb-1 text-center" style="font-size:24px;"></i>
                         User
                     </a>
                 </li>
                 <li>
-                    <a href="{{ route('admin.job') }}" class="nav-link text-white">
+                    <a href="{{ route('admin.job.index') }}" class="nav-link text-white">
                         <i class="bi bi-briefcase d-block mx-auto mb-1 text-center" style="font-size:24px;"></i>
                         Job
                     </a>

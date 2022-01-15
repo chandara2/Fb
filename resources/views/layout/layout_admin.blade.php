@@ -38,7 +38,8 @@
         <!-- Optional JavaScript -->
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
         <script src="{{ asset('asset/jquery/jquery-3.6.0.min.js') }}"></script>
-        <script src="{{ asset('asset/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+        <script src="{{ asset('asset/popper/popper.min.js') }}"></script>
+        <script src="{{ asset('asset/bootstrap/js/bootstrap.min.js') }}"></script>
         <!-- Datatable -->
         <script src="{{ asset('asset/datatable/dataTables.bootstrap5.min.js') }}"></script>
         <script src="{{ asset('asset/datatable/jquery.dataTables.min.js') }}"></script>

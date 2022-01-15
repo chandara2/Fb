@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\Admin\AdmindbController;
+use App\Http\Controllers\Admin\AdminJobController;
+use App\Http\Controllers\Admin\AdminUserController;
 use App\Http\Controllers\Agency\AgencydbController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\User\UserdbController;
@@ -31,10 +33,8 @@ Route::prefix('agency')->name('agency.')->group(function () {
 });
 
 // Admin
-Route::prefix('admin')->name('admin.')->group(function () {
-    Route::get('/dashboard', [AdmindbController::class, 'dashboard'])->name('dashboard')->middleware('auth');
-    Route::get('/job', [AdmindbController::class, 'job'])->name('job');
-    Route::get('/user', [AdmindbController::class, 'user'])->name('user');
-    Route::post('/createnewuser', [AdmindbController::class, 'createnewuser'])->name('createnewuser');
-    Route::get('/usergetid/{id}', [AdmindbController::class, 'usergetid'])->name('usergetid')->middleware('auth');
+Route::prefix('admin')->name('admin.')->middleware('isadmin')->group(function () {
+    Route::get('/dashboard', [AdmindbController::class, 'dashboard'])->name('dashboard');
+    Route::resource('/job', AdminJobController::class);
+    Route::resource('/user', AdminUserController::class);
 });

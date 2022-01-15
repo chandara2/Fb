@@ -3,12 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
 
-class AdmindbController extends Controller
+class AdminJobController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,7 +14,7 @@ class AdmindbController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.job');
     }
 
     /**
@@ -84,14 +81,5 @@ class AdmindbController extends Controller
     public function destroy($id)
     {
         //
-    }
-    public function dashboard()
-    {
-        return view('admin.dashboard');
-    }
-    public function usergetid($id)
-    {
-        $userid = User::find($id);
-        return response()->json($userid);
     }
 }
