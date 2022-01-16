@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Models\Usergroup;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -28,7 +29,9 @@ class AdminUserController extends Controller
      */
     public function create()
     {
-        //
+        // Get group member to show in select option in admin user_create brade
+        $usergroups = Usergroup::orderBy('name', 'desc')->get();
+        return view('admin.user_create', compact('usergroups'));
     }
 
     /**
@@ -56,7 +59,7 @@ class AdminUserController extends Controller
             'password' => Hash::make($request->password),
             'gid' => $request->gid,
         ]);
-        return back();
+        return redirect(route('admin.user.index'));
     }
 
     /**
