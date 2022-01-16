@@ -10,7 +10,7 @@
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
         <!-- Datatable -->
-        <link rel="stylesheet" href="{{ asset('asset/datatable/dataTables.bootstrap5.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('asset/datatable/jquery.dataTables.min.css') }}">
         <!-- OwlCarousel -->
         <link rel="stylesheet" href="{{ asset('asset/owlcarousel/owl.carousel.min.css') }}">
         <link rel="stylesheet" href="{{ asset('asset/owlcarousel/owl.theme.default.min.css') }}">
@@ -38,9 +38,9 @@
         <!-- Optional JavaScript -->
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
         <script src="{{ asset('asset/jquery/jquery-3.6.0.min.js') }}"></script>
-        <script src="{{ asset('asset/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+        <script src="{{ asset('asset/popper/popper.min.js') }}"></script>
+        <script src="{{ asset('asset/bootstrap/js/bootstrap.min.js') }}"></script>
         <!-- Datatable -->
-        <script src="{{ asset('asset/datatable/dataTables.bootstrap5.min.js') }}"></script>
         <script src="{{ asset('asset/datatable/jquery.dataTables.min.js') }}"></script>
         <!-- OwlCarousel -->
         <script src="{{ asset('asset/owlcarousel/owl.carousel.min.js') }}"></script>

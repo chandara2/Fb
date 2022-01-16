@@ -15,11 +15,11 @@
 
     <div class="container-fluid">
         @if (session('userdelete'))
-            <div class="alert alert-info">{{session('userdelete')}}</div>
+            <div class="alert alert-success">{{session('userdelete')}}</div>
         @endif
         
-        <table class="custom_datatable table table-bordered table-hover" style="width:100%">
-            <thead class="table-info text-center">
+        <table class="customdatatable cell-border" style="width:100%">
+            <thead class="brand-bg5">
                 <tr>
                     <th>No</th>
                     <th>Family Name</th>
@@ -64,7 +64,7 @@
                 </tr>
                 @endforeach
             </tbody>
-            <tfoot class="table-info text-center">
+            <tfoot class="brand-bg5">
                 <tr>
                     <th>No</th>
                     <th>Family Name</th>

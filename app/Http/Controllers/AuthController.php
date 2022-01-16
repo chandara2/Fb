@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Usergroup;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -88,7 +89,9 @@ class AuthController extends Controller
 
     public function showregister()
     {
-        return view('auth.register');
+        // Get group member to show in select option in register brade
+        $usergroups = Usergroup::orderBy('name', 'desc')->where('name', '<>', 'Admin')->get();
+        return view('auth.register', compact('usergroups'));
     }
     public function register(Request $request)
     {
@@ -107,10 +110,10 @@ class AuthController extends Controller
             'username' => $request->username,
             'phone' => $request->phone,
             'password' => Hash::make($request->password),
-            'gid' => $request->gid,
+            'gid' => $request->group_member,
         ]));
 
-        if ($request->gid == 2) {
+        if ($request->group_member == 2) {
             return view('agency.dashboard');
         } else {
             return view('user.dashboard');
@@ -118,7 +121,9 @@ class AuthController extends Controller
     }
     public function showlogin()
     {
-        return view('auth.login');
+        // Get group member to show in select option in login brade
+        $usergroups = Usergroup::orderBy('name', 'desc')->get();
+        return view('auth.login', compact('usergroups'));
     }
     public function login(Request $request)
     {

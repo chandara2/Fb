@@ -25,9 +25,12 @@
             <span class="text-danger">@error('password'){{$message}}@enderror</span>
             <input type="text" name="password_confirmation" placeholder="Confirm Password" class="form-control mt-3">
             <span class="text-danger">@error('password_confirmation'){{$message}}@enderror</span>
-            <select name="gid" class="form-select mt-3">
-                <option value="3">User</option>
-                <option value="2">Agency</option>
+            <select name="group_member" class="form-select mt-3">
+                @foreach ($usergroups as $usergroup)
+                    <option value="{{ $usergroup->id }}">{{ $usergroup->name }}</option>
+                @endforeach
+                {{-- <option value="3">User</option>
+                <option value="2">Agency</option> --}}
             </select>
             <button type="submit" class="btn brand_btn3 w-100 my-3">Register</button>
         </form>
