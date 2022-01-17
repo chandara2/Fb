@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\AdminUserController;
 use App\Http\Controllers\Agency\AgencydbController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\User\UserdbController;
+use App\Models\Job;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {

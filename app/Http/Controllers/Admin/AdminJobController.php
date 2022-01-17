@@ -4,6 +4,10 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Job;
+use App\Models\JobFunction;
+use App\Models\JobIndustry;
+use App\Models\JobLocation;
+use App\Models\JobSalary;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -29,7 +33,16 @@ class AdminJobController extends Controller
      */
     public function create()
     {
-        return view('admin.job_create');
+        $job_functions = JobFunction::all();
+        $job_industries = JobIndustry::all();
+        $job_locations = JobLocation::all();
+        $job_salaries = JobSalary::all();
+        return view('admin.job_create', [
+            'job_functions' => $job_functions,
+            'job_industries' => $job_industries,
+            'job_locations' => $job_locations,
+            'job_salaries' => $job_salaries,
+        ]);
     }
 
     /**
@@ -46,13 +59,9 @@ class AdminJobController extends Controller
             'deadline' => 'required',
             'detail' => 'required',
             'hiring' => 'required',
-            'industry' => 'required',
-            'job_function' => 'required',
             'job_title' => 'required',
             'language' => 'required',
-            'location' => 'required',
             'qualification' => 'required',
-            'salary' => 'required',
             'sex' => 'required',
             'term' => 'required',
             'year_of_exp' => 'required',
@@ -65,13 +74,13 @@ class AdminJobController extends Controller
         $user->deadline = $request->deadline;
         $user->detail = $request->detail;
         $user->hiring = $request->hiring;
-        $user->industry = $request->industry;
-        $user->job_function = $request->job_function;
+        $user->industry = $request->job_industries;
+        $user->job_function = $request->job_functions;
         $user->job_title = $request->job_title;
         $user->language = $request->language;
-        $user->location = $request->age;
+        $user->location = $request->job_locations;
         $user->qualification = $request->qualification;
-        $user->salary = $request->salary;
+        $user->salary = $request->job_salaries;
         $user->sex = $request->sex;
         $user->term = $request->term;
         $user->year_of_exp = $request->year_of_exp;

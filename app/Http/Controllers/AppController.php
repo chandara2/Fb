@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Job;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class AppController extends Controller
 {
@@ -13,7 +15,29 @@ class AppController extends Controller
      */
     public function index()
     {
-        //
+        // $job_functions = Job::all()->countBy('job_function');
+        // $job_industries = Job::all()->countBy('industry');
+        // $job_locations = Job::all()->countBy('location');
+        // $job_salaries = Job::all()->countBy('salary');
+        // $jobagencysweb = DB::table('users')
+        //     ->join('jobs', 'users.id', '=', 'jobs.user_id')
+        //     ->join('agencies', 'users.id', '=', 'agencies.user_id')
+        //     ->select('jobs.created_at', 'jobs.job_title', 'jobs.id as jid', 'agencies.company', 'agencies.id as aid')
+        //     ->latest()
+        //     ->take(12)
+        //     ->get();
+        // $agency = Agency::select('agencies.logo')->get();
+        // $aboutus = Aboutus::all();
+
+        // return redirect('/', [
+        //     'job_functions' => $job_functions,
+        //     'job_industries' => $job_industries,
+        //     'job_locations' => $job_locations,
+        //     'job_salaries' => $job_salaries,
+        // 'jobagencysweb' => $jobagencysweb,
+        // 'agency' => $agency,
+        // 'aboutus' => $aboutus,
+        // ]);
     }
 
     /**

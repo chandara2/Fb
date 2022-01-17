@@ -105,9 +105,8 @@ class AdminUserController extends Controller
             'password' => 'required'
         ]);
         $user = Auth::user();
-        $user->username = $request['username'];
-        $user->password = $request['password'];
-        $user->save();
+        $user->username = $request->username;
+        $user->password = $request->password;
 
         return redirect(route('admin.user.index'));
     }
