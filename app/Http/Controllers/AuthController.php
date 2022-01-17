@@ -184,4 +184,9 @@ class AuthController extends Controller
         }
         return back();
     }
+
+    public function test1234()
+    {
+        $this->middleware('auth');
+    }
 }

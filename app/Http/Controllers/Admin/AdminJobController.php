@@ -109,8 +109,16 @@ class AdminJobController extends Controller
     public function edit($id)
     {
         $jobid = Job::find($id);
+        $job_functions = JobFunction::all();
+        $job_industries = JobIndustry::all();
+        $job_locations = JobLocation::all();
+        $job_salaries = JobSalary::all();
         return view('admin.job_edit', [
             'jobid' => $jobid,
+            'job_functions' => $job_functions,
+            'job_industries' => $job_industries,
+            'job_locations' => $job_locations,
+            'job_salaries' => $job_salaries,
         ]);
     }
 
