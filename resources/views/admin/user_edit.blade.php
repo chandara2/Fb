@@ -21,20 +21,20 @@
                     <input type="text" name="username" value="{{ $userid->username }}" placeholder="Username" class="form-control mt-3">
                     <span class="text-danger">@error('username'){{$message}}@enderror</span>
                     <input type="text" name="phone" value="{{ $userid->phone }}" placeholder="Phone Number" class="form-control mt-3">
-                    <input type="text" name="password" placeholder="Password" class="form-control mt-3">
+                    <input type="password" name="password" class="form-control mt-3" value="{{ $userid->password }}">
                     <span class="text-danger">@error('password'){{$message}}@enderror</span>
-                    <input type="text" name="password_confirmation" placeholder="Confirm Password" class="form-control mt-3">
+                    <input type="password" name="password_confirmation" class="form-control mt-3">
                     <span class="text-danger">@error('password_confirmation'){{$message}}@enderror</span>
                     <select name="gid" class="form-select my-3">
                         <option value="{{ $userid->gid }}">
-                            @if($userid->gid == 1)Admin
-                            @elseif($userid->gid == 2)Ageny
+                            @if ($userid->gid==1) Admin
+                            @elseif($userid->gid==2) Agency
                             @else User
                             @endif
                         </option>
-                        <option value="3">User</option>
-                        <option value="2">Agency</option>
-                        <option value="1">Admin</option>
+                        @foreach ($usergroups as $usergroup)
+                            <option value="{{ $usergroup->id }}">{{ $usergroup->name }}</option>
+                        @endforeach
                     </select>
                 </div>
                 <div class="modal-footer">

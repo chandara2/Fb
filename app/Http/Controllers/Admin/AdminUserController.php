@@ -81,9 +81,11 @@ class AdminUserController extends Controller
      */
     public function edit($id)
     {
+        $usergroups = Usergroup::all();
         $userid = User::find($id);
         return view('admin.user_edit', [
             'userid' => $userid,
+            'usergroups' => $usergroups,
         ]);
     }
 
@@ -96,25 +98,18 @@ class AdminUserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $request->validate([
-            'username' => 'required|unique:users',
-            'password' => 'required',
-            'password_confirmation' => 'required|same:password'
-        ], [
-            'username.required' => 'Please fill in username',
-            'password.required' => 'Please fill in password'
-        ]);
+        //validation rules
 
-        $user = User::where('id', $id)
-            ->update([
-                'fname' => $request->fname,
-                'gname' => $request->gname,
-                'username' => $request->username,
-                'phone' => $request->phone,
-                'password' => $request->password,
-                'gid' => $request->gid,
-            ]);
-        return redirect('admin/user');
+        $request->validate([
+            'username' => 'required',
+            'password' => 'required'
+        ]);
+        $user = Auth::user();
+        $user->username = $request['username'];
+        $user->password = $request['password'];
+        $user->save();
+
+        return redirect(route('admin.user.index'));
     }
 
     /**

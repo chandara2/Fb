@@ -2,7 +2,6 @@
 @section('title', 'ADMIN USER')
 
 @section('content')
-
     <div class="container-fluid">
         <nav aria-label="breadcrumb" style="--bs-breadcrumb-divider: '|';" class="mt-3">
             <ol class="breadcrumb">
