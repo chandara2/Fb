@@ -1,17 +1,21 @@
 <?php
 
+use App\Http\Controllers\Admin\AdminCompanyInfoController;
 use App\Http\Controllers\Admin\AdmindbController;
 use App\Http\Controllers\Admin\AdminJobController;
 use App\Http\Controllers\Admin\AdminUserController;
 use App\Http\Controllers\Agency\AgencydbController;
+use App\Http\Controllers\AppController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\User\UserdbController;
-use App\Models\Job;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('app');
-});
+// Route::get('/', function () {
+//     return view('app');
+// });
+
+Route::resource('/', AppController::class)->only('index');
+
 
 // Guest Register & Login
 Route::get('showregister', [AuthController::class, 'showregister'])->name('showregister')->middleware('guest');
@@ -38,4 +42,5 @@ Route::prefix('admin')->name('admin.')->middleware('isadmin')->group(function ()
     Route::get('/dashboard', [AdmindbController::class, 'dashboard'])->name('dashboard');
     Route::resource('/job', AdminJobController::class);
     Route::resource('/user', AdminUserController::class);
+    Route::resource('/companyinfo', AdminCompanyInfoController::class);
 });

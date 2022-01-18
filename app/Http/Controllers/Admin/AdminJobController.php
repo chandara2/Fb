@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\CompanyInfo;
 use App\Models\Job;
 use App\Models\JobFunction;
 use App\Models\JobIndustry;
@@ -21,8 +22,10 @@ class AdminJobController extends Controller
     public function index()
     {
         $jobs = Job::all();
+        $company_infos = CompanyInfo::all();
         return view('admin.job', [
             'jobs' => $jobs,
+            'company_infos' => $company_infos,
         ]);
     }
 
@@ -75,12 +78,12 @@ class AdminJobController extends Controller
         $user->detail = $request->detail;
         $user->hiring = $request->hiring;
         $user->industry = $request->job_industries;
-        $user->job_function = $request->job_functions;
+        $user->job_function = $request->job_function;
         $user->job_title = $request->job_title;
         $user->language = $request->language;
         $user->location = $request->job_locations;
         $user->qualification = $request->qualification;
-        $user->salary = $request->job_salaries;
+        $user->salary = $request->job_salary;
         $user->sex = $request->sex;
         $user->term = $request->term;
         $user->year_of_exp = $request->year_of_exp;

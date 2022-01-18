@@ -7,7 +7,9 @@ use App\Models\User;
 use App\Models\Usergroup;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\Rule;
 
 class AdminUserController extends Controller
 {
@@ -99,14 +101,25 @@ class AdminUserController extends Controller
     public function update(Request $request, $id)
     {
         //validation rules
-
         $request->validate([
-            'username' => 'required',
-            'password' => 'required'
+            'username' => ['required', Rule::unique('users')->ignore($id)],
+            'password' => 'required',
+            'password_confirmation' => 'required|same:password'
+        ], [
+            'username.required' => 'Please fill in username',
+            'password.required' => 'Please fill in password'
         ]);
-        $user = Auth::user();
+
+        $user = User::find($id);
+        $user->fname = $request->fname;
+        $user->gname = $request->gname;
         $user->username = $request->username;
-        $user->password = $request->password;
+        $user->phone = $request->phone;
+        if ($request->password != "********") {
+            $user->password = Hash::make($request->password);
+        }
+        $user->gid = $request->gid;
+        $user->update();
 
         return redirect(route('admin.user.index'));
     }

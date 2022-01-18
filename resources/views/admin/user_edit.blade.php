@@ -21,9 +21,9 @@
                     <input type="text" name="username" value="{{ $userid->username }}" placeholder="Username" class="form-control mt-3">
                     <span class="text-danger">@error('username'){{$message}}@enderror</span>
                     <input type="text" name="phone" value="{{ $userid->phone }}" placeholder="Phone Number" class="form-control mt-3">
-                    <input type="password" name="password" class="form-control mt-3" value="{{ $userid->password }}">
+                    <input type="password" name="password" class="form-control mt-3" value="********">
                     <span class="text-danger">@error('password'){{$message}}@enderror</span>
-                    <input type="password" name="password_confirmation" class="form-control mt-3">
+                    <input type="password" name="password_confirmation" class="form-control mt-3" value="********">
                     <span class="text-danger">@error('password_confirmation'){{$message}}@enderror</span>
                     <select name="gid" class="form-select my-3">
                         <option value="{{ $userid->gid }}">

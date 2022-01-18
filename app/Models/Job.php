@@ -10,7 +10,7 @@ class Job extends Model
     use HasFactory;
 
     protected $fillable = [
-        'user_id',
+        'uid',
         'age',
         'contact',
         'deadline',
@@ -28,4 +28,9 @@ class Job extends Model
         'year_of_exp',
         'visible',
     ];
+
+    public function users()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

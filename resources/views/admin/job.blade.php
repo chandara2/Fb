@@ -8,7 +8,12 @@
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}" class="text-decoration-none">Dashboard</a></li>
                 <li class="breadcrumb-item active" aria-current="page">Job</li>
-                <li class="breadcrumb-item"><a href="{{ route('admin.job.create') }}" class="text-decoration-none">New Job</a></li>
+                <li class="breadcrumb-item"><a href="
+                    @if (auth()->user()!=null && $company_infos->isEmpty())
+                    {{ route('admin.companyinfo.create') }}
+                    @else
+                    {{ route('admin.job.create') }}
+                    @endif" class="text-decoration-none">New Job</a></li>
             </ol>
         </nav>
     </div>

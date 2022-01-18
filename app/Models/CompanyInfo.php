@@ -24,4 +24,9 @@ class CompanyInfo extends Model
         'contact_email',
         'contact_phone',
     ];
+
+    public function users()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

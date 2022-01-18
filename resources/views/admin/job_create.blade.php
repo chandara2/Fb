@@ -26,15 +26,21 @@
                     <input type="number" name="hiring" value="{{ old('hiring') }}" placeholder="Hiring" class="form-control mt-3">
                     <span class="text-danger">@error('hiring'){{$message}}@enderror</span>
                     <select name="job_industries" value="{{ old('job_industries') }}" class="form-select mt-3" >
-                        <option selected>-- Select Job Industry --</option>
+                        <option selected disabled>Select Job Industry</option>
                         @foreach ($job_industries as $job_industry)
                             <option>{{ $job_industry->name }}</option>
                         @endforeach
                     </select>
                     <select name="job_function" value="{{ old('job_function') }}" class="form-select mt-3" >
-                        <option selected>-- Select Job Function --</option>
+                        <option selected disabled>Select Job Function</option>
                         @foreach ($job_functions as $job_function)
                             <option>{{ $job_function->name }}</option>
+                        @endforeach
+                    </select>
+                    <select name="job_salary" value="{{ old('job_salary') }}" class="form-select mt-3" >
+                        <option selected disabled>Select Job Salary</option>
+                        @foreach ($job_salaries as $job_salary)
+                            <option>{{ $job_salary->name }}</option>
                         @endforeach
                     </select>
                     <input type="text" name="job_title" value="{{ old('job_title') }}" placeholder="Job Title" class="form-control mt-3">
@@ -42,7 +48,7 @@
                     <input type="text" name="language" value="{{ old('language') }}" placeholder="Language" class="form-control mt-3">
                     <span class="text-danger">@error('language'){{$message}}@enderror</span>
                     <select name="job_industries" value="{{ old('job_industries') }}" class="form-select mt-3" >
-                        <option selected>-- Select Job Industry --</option>
+                        <option selected disabled>Select Job Industry</option>
                         @foreach ($job_industries as $job_industry)
                             <option>{{ $job_industry->name }}</option>
                         @endforeach
@@ -50,7 +56,7 @@
                     <input type="text" name="qualification" value="{{ old('qualification') }}" placeholder="Qualification" class="form-control mt-3">
                     <span class="text-danger">@error('qualification'){{$message}}@enderror</span>
                     <select name="job_locations" value="{{ old('job_locations') }}" class="form-select mt-3" >
-                        <option selected>-- Select Job Location --</option>
+                        <option selected disabled>Select Job Location</option>
                         @foreach ($job_locations as $job_location)
                             <option>{{ $job_location->name }}</option>
                         @endforeach

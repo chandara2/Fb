@@ -16,7 +16,8 @@ class CreateCompanyInfosTable extends Migration
         Schema::create('company_infos', function (Blueprint $table) {
             $table->id();
 
-            $table->bigInteger('uid');
+            $table->unsignedBigInteger('uid');
+            $table->foreign('uid')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
 
             $table->string('company')->nullable();
             $table->string('logo')->nullable();
