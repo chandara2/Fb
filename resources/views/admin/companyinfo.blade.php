@@ -26,6 +26,8 @@
                             <li class="breadcrumb-item">{{$companyinfo->industry}}</li>
                             <li class="breadcrumb-item">{{$companyinfo->province}}</li>
                         </ol>
+                        <p class="h1">15</p>
+                        <div>Active Jobs</div>
                     </nav>
                 </div>
             </div>
@@ -45,7 +47,7 @@
             </div>
             <div class="position-absolute top-0 end-0">
                 @if (auth()->user()!=null)
-                <a href="/admin/companyinfo/{{ $companyinfo->id }}/edit"><i class="bi bi-pencil-square btn text-muted pe-0"></i></a>
+                <a href="/admin/companyinfo/{{ $companyinfo->id }}/edit"><i class="bi bi-pencil-square btn text-muted pe-0" style="font-size:24px;"></i></a>
                 @endif
             </div>
             @endforeach

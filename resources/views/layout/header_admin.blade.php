@@ -39,7 +39,7 @@
 
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                         <li><a class="dropdown-item text-capitalize fw-bold" href="#"><i class="bi bi-person"></i> {{ Auth::user()->username }}</a></li>
-                        <li><a class="dropdown-item" href="{{ route('admin.companyinfo.index') }}"><i class="bi bi-info-circle"></i> Company Information</a></li>
+                        <li><a class="dropdown-item" href="{{ route('admin.companyinfo.index') }}"><i class="bi bi-info-circle"></i> Company Info.</a></li>
                         <li role="separator" class="dropdown-divider"></li>
                         <li><a class="dropdown-item" href="{{ route('logout') }}"><i class="bi bi-power"></i> Logout</a></li>
                     </ul>

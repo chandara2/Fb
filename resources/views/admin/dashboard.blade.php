@@ -5,11 +5,7 @@
 
     <div class="container-fluid">
         <div class="row mt-3">
-            <div class="col-md-5 col-12 align-self-center">
-                <ol class="breadcrumb mb-0">
-                    <li class="breadcrumb-item active">Dashboard</li>
-                </ol>
-            </div>
+            <h1 class="text-center text-uppercase" style="text-decoration: underline 3px solid pink">Camjobs38<br>Dashboard</h1>
         </div>
     </div>
 
