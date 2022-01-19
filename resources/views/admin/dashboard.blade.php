@@ -1,5 +1,5 @@
 @extends('layout.layout_admin')
-@section('title', 'ADMIN DB')
+@section('title', 'ADMIN DASHBOARD')
 
 @section('content')
 
