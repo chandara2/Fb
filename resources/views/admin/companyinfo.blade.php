@@ -32,7 +32,7 @@
             <div class="row my-5">
                 <div class="col-md-12">
                     <div class="h5">Company Profile</div>
-                    <textarea disabled class="ta_autosize form-control border-0 bg-white">{{$companyinfo->company_profile}}</textarea>
+                    <textarea disabled class="textarea_autosize form-control border-0 bg-light px-0">{{$companyinfo->company_profile}}</textarea>
                     <br>
                     <div class="h5">Location</div>
                     <p>{{$companyinfo->detail_location}}</p>

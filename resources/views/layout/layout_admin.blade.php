@@ -44,6 +44,8 @@
         <script src="{{ asset('asset/datatable/jquery.dataTables.min.js') }}"></script>
         <!-- OwlCarousel -->
         <script src="{{ asset('asset/owlcarousel/owl.carousel.min.js') }}"></script>
+        <!-- Auto Resize Textarea -->
+        <script src="{{ asset('asset/autosize.min.js') }}"></script>
         <!-- Global Custom JS -->
         <script src="{{ asset('js/global_custom.js') }}"></script>
         <!-- Individual Custom CSS -->

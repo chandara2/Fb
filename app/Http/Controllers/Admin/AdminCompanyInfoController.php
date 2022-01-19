@@ -134,7 +134,6 @@ class AdminCompanyInfoController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'logo' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'company' => 'required',
             'number_staff' => 'required',
             'industry' => 'required',
@@ -147,7 +146,6 @@ class AdminCompanyInfoController extends Controller
             'contact_phone' => 'required',
             'company_profile' => 'required',
         ], [
-            'logo.required' => 'Please upload your company logo',
             'company.required' => 'Please fill in company name',
             'number_staff.required' => 'Please fill in number of staff',
             'industry.required' => 'Please fill in industry',

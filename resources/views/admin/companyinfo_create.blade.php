@@ -54,7 +54,7 @@
                 <label class="col-md-4 col-form-label text-md-end">Company Profile</label>
                 <div class="col-md-6">
                     <div class="form-floating">
-                        <textarea class="ta_autosize form-control" name="company_profile">
+                        <textarea class="textarea_autosize form-control" name="company_profile">
                             {{ old('company_profile') }}
                         </textarea>
                     </div>
