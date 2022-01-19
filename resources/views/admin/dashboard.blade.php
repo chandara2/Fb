@@ -21,7 +21,7 @@
                     <div class="card-body text-center">
                         <i class="bi bi-people display-5 text-primary"></i>
                         <h4 class="text-muted">User</h4>
-                        <h4 class="text-muted">123</h4>
+                        <h4 class="text-muted">{{ $users }}</h4>
                     </div>
                 </div>
             </div>
@@ -31,7 +31,7 @@
                     <div class="card-body text-center">
                         <i class="bi bi-briefcase display-5 text-primary"></i>
                         <h4 class="text-muted">Job Announcement</h4>
-                        <h4 class="text-muted">123</h4>
+                        <h4 class="text-muted">{{ $jobs }}</h4>
                     </div>
                 </div>
             </div>

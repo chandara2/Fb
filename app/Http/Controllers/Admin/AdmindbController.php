@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Job;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -87,11 +88,11 @@ class AdmindbController extends Controller
     }
     public function dashboard()
     {
-        return view('admin.dashboard');
-    }
-    public function usergetid($id)
-    {
-        $userid = User::find($id);
-        return response()->json($userid);
+        $users = User::count();
+        $jobs = Job::count();
+        return view('admin.dashboard', [
+            'users' => $users,
+            'jobs' => $jobs,
+        ]);
     }
 }

@@ -8,7 +8,7 @@
                 <div class="col-md-8"><!-- Slider 1 -->
                     <div class="slider_custom1 owl-carousel owl-theme">
                         <div class="item">
-                            <img src="{{ asset('asset/image/mountain.jpg') }}" alt="slide" height='200' style="object-fit:cover;">
+                            <img src="{{ asset('asset/image/lake.jpg') }}" alt="slide" height='250' style="object-fit:cover;">
                         </div>
                     </div>
 
@@ -32,7 +32,7 @@
         
                         <div class="tab-content">
                             <div role="tabpanel" class="tab-pane active" id="function">
-                                <ul class="ul_brows_jobs p-lg-2 p-sm-2">
+                                <ul class="list-unstyled ul_brows_jobs p-lg-2 p-sm-2">
                                     @foreach ($job_functions as $job_function=>$counter)
                                         <li>{{Str::limit($job_function, 25)}} ({{$counter}})</li>
                                     @endforeach
@@ -84,6 +84,13 @@
             <div class="row">
                 <div class="col-md-12">
                     <h4>Featured Employers</h4>
+                    <div class="slider_custom2 owl-carousel owl-theme">
+                        @foreach ($companylogos as $companylogo)
+                            <div class="item">
+                                <img src="upload/companylogo/{{$companylogo->logo}}" alt="CompanyLogo">
+                            </div>
+                        @endforeach
+                    </div>
 
                 </div>
             </div>
@@ -106,6 +113,26 @@
             responsive:{
                 0:{
                     items:1,
+                }
+            }
+        })
+
+        $('.slider_custom2').owlCarousel({
+            loop:true,
+            margin:10,
+            autoplay:true,
+            autoplayTimeout:2000,
+            autoplayHoverPause:true,
+            dots: false,
+            responsive:{
+                0:{
+                    items:2
+                },
+                600:{
+                    items:4
+                },
+                1000:{
+                    items:8
                 }
             }
         })
