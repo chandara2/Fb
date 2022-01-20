@@ -31,9 +31,6 @@
             <!-- Footer for app only  -->
             @include('layout.footer')
         </div>
-
-
-
         
         <!-- Optional JavaScript -->
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->

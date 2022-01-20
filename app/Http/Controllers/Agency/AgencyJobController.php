@@ -10,6 +10,7 @@ use App\Models\JobLocation;
 use App\Models\JobSalary;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class AgencyJobController extends Controller
 {
@@ -20,7 +21,10 @@ class AgencyJobController extends Controller
      */
     public function index()
     {
-        //
+        $jobs = Job::all()->where('uid', '=', Auth::user()->id);
+        return view('agency.job', [
+            'jobs' => $jobs,
+        ]);
     }
 
     /**
@@ -94,7 +98,24 @@ class AgencyJobController extends Controller
      */
     public function show($id)
     {
-        //
+        $jobs = Job::find($id);
+        $company_jobs = DB::table('users')
+            ->join('jobs', 'users.id', '=', 'jobs.uid')
+            ->join('company_infos', 'users.id', '=', 'company_infos.uid')
+            ->select('jobs.*', 'company_infos.*')
+            ->where('jobs.id', $id)
+            ->get();
+        $hotjobs = DB::table('users')
+            ->join('jobs', 'users.id', '=', 'jobs.uid')
+            ->join('company_infos', 'users.id', '=', 'company_infos.uid')
+            ->select('jobs.id', 'jobs.created_at', 'jobs.job_title', 'jobs.salary', 'company_infos.company')
+            ->latest()
+            ->take(10)
+            ->get();
+        return view('agency.job_show', [
+            'company_jobs' => $company_jobs,
+            'hotjobs' => $hotjobs,
+        ]);
     }
 
     /**
@@ -128,6 +149,8 @@ class AgencyJobController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $job = Job::find($id);
+        $job->delete();
+        return back()->with('jobdelete', 'You have create a job');
     }
 }

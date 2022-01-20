@@ -33,6 +33,9 @@
                         <div class="item">
                             <img src="{{ asset('asset/image/lake.jpg') }}" alt="slide" height='250' style="object-fit:cover;">
                         </div>
+                        <div class="item">
+                            <img src="{{ asset('asset/image/city.jpg') }}" alt="slide" height='250' style="object-fit:cover;">
+                        </div>
                     </div>
 
                     <div class="mb-4">
@@ -198,10 +201,10 @@
             loop:true,
             margin:10,
             autoplay:true,
-            autoplayTimeout:5000,
+            autoplayTimeout:10000,
+            autoplaySpeed: 1000,
+            smartSpeed: 1000,
             autoplayHoverPause:true,
-            animateIn: 'fadeIn',
-            animateOut: 'fadeOut',
             dots: false,
             responsive:{
                 0:{
@@ -214,7 +217,7 @@
             loop:true,
             margin:10,
             autoplay:true,
-            autoplayTimeout:2000,
+            autoplayTimeout:5000,
             autoplayHoverPause:true,
             dots: false,
             responsive:{
@@ -234,7 +237,7 @@
             loop:true,
             margin:10,
             autoplay:true,
-            autoplayTimeout:2000,
+            autoplayTimeout:5000,
             autoplayHoverPause:true,
             dots: false,
             responsive:{
@@ -254,7 +257,7 @@
             loop:true,
             margin:10,
             autoplay:true,
-            autoplayTimeout:2000,
+            autoplayTimeout:5000,
             autoplayHoverPause:true,
             dots: false,
             responsive:{

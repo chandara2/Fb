@@ -6,7 +6,9 @@
         <nav aria-label="breadcrumb" style="--bs-breadcrumb-divider: '|';" class="mt-3">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item active">Agency</li>
-                <li class="breadcrumb-item"><a href="#">Job</a></li>
+                @if (auth()->user()!=null && $company_infos->isNotEmpty())
+                <li class="breadcrumb-item"><a href="{{ route('agency.job.index') }}" class="text-decoration-none">Job List</a></li>
+                @endif
                 <li class="breadcrumb-item"><a href="
                     @if (auth()->user()!=null && $company_infos->isEmpty())
                         {{ route('agency.companyinfo.create') }}
