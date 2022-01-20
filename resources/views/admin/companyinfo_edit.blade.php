@@ -1,5 +1,5 @@
 @extends('layout.layout_admin')
-@section('title', 'ADMIN EDIT USER')
+@section('title', 'ADMIN EDIT INFO')
 
 @section('content')
 

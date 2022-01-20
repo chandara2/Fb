@@ -87,7 +87,7 @@
             <div class="form-group row mb-md-3">
                 <label class="col-xl-3 col-md-2 col-form-label text-md-end pb-sm-0">Hiring</label>
                 <div class="col-xl-6 col-md-8 mb-md-0 mb-sm-2">
-                    <input type="number" name="hiring" value="{{ old('hiring') }}" autofocus class="form-control" placeholder="5">
+                    <input type="text" name="hiring" value="{{ old('hiring') }}" autofocus class="form-control" placeholder="5">
                     <span class="text-danger">@error('hiring'){{$message}}@enderror</span>
                 </div>
             </div>

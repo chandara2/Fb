@@ -1,14 +1,11 @@
 @extends('layout.layout_admin')
-@section('title', 'ADMIN USER')
+@section('title', 'ADMIN INFO')
 
 @section('content')
     <div class="container-fluid">
-        <nav aria-label="breadcrumb" style="--bs-breadcrumb-divider: '|';" class="mt-3">
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}" class="text-decoration-none">Dashboard</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Company Information</li>
-            </ol>
-        </nav>
+        <div class="row mt-3">
+            <h1 class="text-center text-uppercase" style="text-decoration: underline 3px solid pink">Company Information</h1>
+        </div>
     </div>
 
     <div class="container">
@@ -46,9 +43,7 @@
                 </div>
             </div>
             <div class="position-absolute top-0 end-0">
-                @if (auth()->user()!=null)
                 <a href="/admin/companyinfo/{{ $companyinfo->id }}/edit"><i class="bi bi-pencil-square btn text-muted pe-0" style="font-size:24px;"></i></a>
-                @endif
             </div>
             @endforeach
         </div>

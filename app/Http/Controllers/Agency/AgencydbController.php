@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Agency;
 
 use App\Http\Controllers\Controller;
+use App\Models\CompanyInfo;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AgencydbController extends Controller
 {
@@ -84,6 +86,9 @@ class AgencydbController extends Controller
     }
     public function dashboard()
     {
-        return view('agency.dashboard');
+        $company_infos = CompanyInfo::all()->where('uid', Auth::user()->id);
+        return view('agency.dashboard', [
+            'company_infos' => $company_infos,
+        ]);
     }
 }

@@ -4,7 +4,9 @@ use App\Http\Controllers\Admin\AdminCompanyInfoController;
 use App\Http\Controllers\Admin\AdmindbController;
 use App\Http\Controllers\Admin\AdminJobController;
 use App\Http\Controllers\Admin\AdminUserController;
+use App\Http\Controllers\Agency\AgencyCompanyInfoController;
 use App\Http\Controllers\Agency\AgencydbController;
+use App\Http\Controllers\Agency\AgencyJobController;
 use App\Http\Controllers\AppController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\User\UserdbController;
@@ -33,8 +35,10 @@ Route::prefix('user')->name('user.')->group(function () {
 });
 
 // Agency
-Route::prefix('agency')->name('agency.')->group(function () {
-    Route::get('/dashboard', [AgencydbController::class, 'dashboard'])->name('dashboard')->middleware('auth');
+Route::prefix('agency')->name('agency.')->middleware('isagency')->group(function () {
+    Route::get('/dashboard', [AgencydbController::class, 'dashboard'])->name('dashboard');
+    Route::resource('/companyinfo', AgencyCompanyInfoController::class);
+    Route::resource('/job', AgencyJobController::class);
 });
 
 // Admin

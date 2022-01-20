@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\CompanyInfo;
 use App\Models\User;
 use App\Models\Usergroup;
 use Illuminate\Auth\Events\Registered;
@@ -114,9 +115,9 @@ class AuthController extends Controller
         ]));
 
         if ($request->group_member == 2) {
-            return view('agency.dashboard');
+            return redirect(route('agency.dashboard'));
         } else {
-            return view('user.dashboard');
+            return redirect(route('user.dashboard'));
         }
     }
     public function showlogin()

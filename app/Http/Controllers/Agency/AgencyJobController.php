@@ -1,9 +1,8 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Agency;
 
 use App\Http\Controllers\Controller;
-use App\Models\CompanyInfo;
 use App\Models\Job;
 use App\Models\JobFunction;
 use App\Models\JobIndustry;
@@ -12,7 +11,7 @@ use App\Models\JobSalary;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class AdminJobController extends Controller
+class AgencyJobController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -21,12 +20,7 @@ class AdminJobController extends Controller
      */
     public function index()
     {
-        $jobs = Job::all();
-        $company_infos = CompanyInfo::all();
-        return view('admin.job', [
-            'jobs' => $jobs,
-            'company_infos' => $company_infos,
-        ]);
+        //
     }
 
     /**
@@ -40,7 +34,7 @@ class AdminJobController extends Controller
         $job_industries = JobIndustry::all();
         $job_locations = JobLocation::all();
         $job_salaries = JobSalary::all();
-        return view('admin.job_create', [
+        return view('agency.job_create', [
             'job_functions' => $job_functions,
             'job_industries' => $job_industries,
             'job_locations' => $job_locations,
@@ -59,7 +53,7 @@ class AdminJobController extends Controller
         $request->validate([
             'age' => 'required',
             'contact' => 'required',
-            'deadline' => 'required',
+            'deadline' => 'required|date|after:now',
             'detail' => 'required',
             'hiring' => 'required|numeric',
             'job_title' => 'required',
@@ -67,7 +61,7 @@ class AdminJobController extends Controller
             'qualification' => 'required',
             'sex' => 'required',
             'term' => 'required',
-            'year_of_exp' => 'required|numeric',
+            'year_of_exp' => 'required|numeric|max:100',
         ]);
 
         $user = new Job();
@@ -89,7 +83,7 @@ class AdminJobController extends Controller
         $user->year_of_exp = $request->year_of_exp;
         $user->save();
 
-        return redirect(route('admin.job.index'));
+        return redirect(route('agency.job.index'));
     }
 
     /**
@@ -111,18 +105,7 @@ class AdminJobController extends Controller
      */
     public function edit($id)
     {
-        $jobid = Job::find($id);
-        $job_functions = JobFunction::all();
-        $job_industries = JobIndustry::all();
-        $job_locations = JobLocation::all();
-        $job_salaries = JobSalary::all();
-        return view('admin.job_edit', [
-            'jobid' => $jobid,
-            'job_functions' => $job_functions,
-            'job_industries' => $job_industries,
-            'job_locations' => $job_locations,
-            'job_salaries' => $job_salaries,
-        ]);
+        //
     }
 
     /**
@@ -145,8 +128,6 @@ class AdminJobController extends Controller
      */
     public function destroy($id)
     {
-        $job = Job::find($id);
-        $job->delete();
-        return back()->with('jobdelete', 'You have create a job');
+        //
     }
 }

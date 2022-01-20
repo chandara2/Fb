@@ -1,20 +1,24 @@
-@extends('layout.layout_admin')
-@section('title', 'ADMIN CREATE INFO')
+@extends('layout.layout_app')
+@section('title', 'AGENCY CREATE INFO')
 
 @section('content')
+    <div class="alert alert-info text-center" role="alert">
+        Let us know the details of your company before job announcement.
+    </div>
+    
     <div class="container-fluid">
         <nav aria-label="breadcrumb" style="--bs-breadcrumb-divider: '|';" class="mt-3">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}" class="text-decoration-none">Dashboard</a></li>
+                <li class="breadcrumb-item"><a href="{{ route('agency.dashboard') }}" class="text-decoration-none">Agency</a></li>
                 <li class="breadcrumb-item active" aria-current="page">Company Information</li>
             </ol>
         </nav>
     </div>
 
     <div class="container-fluid">
-        <form method="POST" enctype="multipart/form-data" action="{{route('admin.companyinfo.store')}}">
+        <form method="POST" enctype="multipart/form-data" action="{{route('agency.companyinfo.store')}}">
             @csrf
-            <h1 class="text-center text-uppercase mb-5" style="text-decoration: underline 3px solid pink">Create company information</h1>
+            <h1 class="text-center text-uppercase mb-5" style="text-decoration: underline 3px solid pink">company information</h1>
             <div class="form-group row mb-md-3">
                 <label class="col-xl-3 col-md-2 col-form-label text-md-end pb-sm-0">Company name</label>
                 <div class="col-xl-6 col-md-8 mb-md-0 mb-sm-2">
@@ -95,7 +99,7 @@
             </div>
 
             <div class="modal-footer">
-                <a href="{{ route('admin.job.index') }}" class="btn btn-secondary">Close</a>
+                <a href="{{ route('agency.dashboard') }}" class="btn btn-secondary">Close</a>
                 <button type="submit" class="btn btn-primary">Submit</button>
             </div>
         </form>
