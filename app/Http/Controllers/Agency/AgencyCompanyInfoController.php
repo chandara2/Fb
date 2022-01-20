@@ -114,7 +114,10 @@ class AgencyCompanyInfoController extends Controller
      */
     public function edit($id)
     {
-        //
+        $companyinfos = CompanyInfo::find($id);
+        return view('agency.companyinfo_edit', [
+            'companyinfos' => $companyinfos,
+        ]);
     }
 
     /**
