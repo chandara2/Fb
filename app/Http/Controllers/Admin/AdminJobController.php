@@ -59,7 +59,7 @@ class AdminJobController extends Controller
         $request->validate([
             'age' => 'required',
             'contact' => 'required',
-            'deadline' => 'required',
+            'deadline' => 'required|date|after:now',
             'detail' => 'required',
             'hiring' => 'required|numeric',
             'job_title' => 'required',
@@ -67,7 +67,7 @@ class AdminJobController extends Controller
             'qualification' => 'required',
             'sex' => 'required',
             'term' => 'required',
-            'year_of_exp' => 'required|numeric',
+            'year_of_exp' => 'required|numeric|max:100',
         ]);
 
         $user = new Job();
@@ -134,7 +134,36 @@ class AdminJobController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        //validation rules
+        $request->validate([
+            'age' => 'required',
+            'contact' => 'required',
+            'deadline' => 'required|date|after:now',
+            'detail' => 'required',
+            'hiring' => 'required|numeric',
+            'job_title' => 'required',
+            'language' => 'required',
+            'qualification' => 'required',
+            'sex' => 'required',
+            'term' => 'required',
+            'year_of_exp' => 'required|numeric|max:100',
+        ]);
+
+        $job = Job::find($id);
+        $job->age = $request->age;
+        $job->contact = $request->contact;
+        $job->deadline = $request->deadline;
+        $job->detail = $request->detail;
+        $job->hiring = $request->hiring;
+        $job->job_title = $request->job_title;
+        $job->language = $request->language;
+        $job->qualification = $request->qualification;
+        $job->sex = $request->sex;
+        $job->term = $request->term;
+        $job->year_of_exp = $request->year_of_exp;
+        $job->update();
+
+        return redirect(route('admin.job.index'));
     }
 
     /**
