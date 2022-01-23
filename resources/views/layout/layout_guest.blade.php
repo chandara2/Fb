@@ -9,6 +9,11 @@
 
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+        <!-- Datatable -->
+        <link rel="stylesheet" href="{{ asset('asset/datatable/dataTables.bootstrap5.min.css') }}">
+        <!-- OwlCarousel -->
+        <link rel="stylesheet" href="{{ asset('asset/owlcarousel/owl.carousel.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('asset/owlcarousel/owl.theme.default.min.css') }}">
         <!-- Global Custom CSS -->
         <link rel="stylesheet" href="{{ asset('css/global_custom.css') }}">
         <!-- Individual Custom CSS -->
@@ -17,11 +22,11 @@
     <body>
         
         <div id="main_wrapper">
-    
+            
             <div id="page_wrapper">
                 @yield('content')
             </div>
-
+            
         </div>
         
         <!-- Optional JavaScript -->
@@ -29,6 +34,13 @@
         <script src="{{ asset('asset/jquery/jquery-3.6.0.min.js') }}"></script>
         <script src="{{ asset('asset/popper/popper.min.js') }}"></script>
         <script src="{{ asset('asset/bootstrap/js/bootstrap.min.js') }}"></script>
+        <!-- Datatable -->
+        <script src="{{asset('asset/datatable/jquery.dataTables.min.js')}}"></script>
+        <script src="{{ asset('asset/datatable/dataTables.bootstrap5.min.js') }}"></script>
+        <!-- OwlCarousel -->
+        <script src="{{ asset('asset/owlcarousel/owl.carousel.min.js') }}"></script>
+        <!-- Auto Resize Textarea -->
+        <script src="{{ asset('asset/autosize.min.js') }}"></script>
         <!-- Global Custom JS -->
         <script src="{{ asset('js/global_custom.js') }}"></script>
         <!-- Individual Custom CSS -->

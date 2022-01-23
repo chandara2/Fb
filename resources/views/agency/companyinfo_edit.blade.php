@@ -4,7 +4,7 @@
 @section('content')
 
     <div class="container-fluid mt-5">
-        <form method="POST" enctype="multipart/form-data" action="{{route('admin.companyinfo.update', $companyinfos->id)}}">
+        <form method="POST" enctype="multipart/form-data" action="{{route('agency.companyinfo.update', $companyinfos->id)}}">
             @csrf
             @method('PUT')
             <h1 class="text-center text-uppercase mb-5" style="text-decoration: underline 3px solid pink">Edit company information</h1>

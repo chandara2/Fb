@@ -126,7 +126,18 @@ class AgencyJobController extends Controller
      */
     public function edit($id)
     {
-        //
+        $jobid = Job::find($id);
+        $job_functions = JobFunction::all();
+        $job_industries = JobIndustry::all();
+        $job_locations = JobLocation::all();
+        $job_salaries = JobSalary::all();
+        return view('agency.job_edit', [
+            'jobid' => $jobid,
+            'job_functions' => $job_functions,
+            'job_industries' => $job_industries,
+            'job_locations' => $job_locations,
+            'job_salaries' => $job_salaries,
+        ]);
     }
 
     /**
@@ -138,7 +149,40 @@ class AgencyJobController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        //validation rules
+        $request->validate([
+            'age' => 'required',
+            'contact' => 'required',
+            'deadline' => 'required|date|after:now',
+            'detail' => 'required',
+            'hiring' => 'required|numeric',
+            'job_title' => 'required',
+            'language' => 'required',
+            'qualification' => 'required',
+            'sex' => 'required',
+            'term' => 'required',
+            'year_of_exp' => 'required|numeric|max:100',
+        ]);
+
+        $job = Job::find($id);
+        $job->age = $request->age;
+        $job->contact = $request->contact;
+        $job->deadline = $request->deadline;
+        $job->detail = $request->detail;
+        $job->hiring = $request->hiring;
+        $job->industry = $request->job_industries;
+        $job->job_function = $request->job_function;
+        $job->job_title = $request->job_title;
+        $job->language = $request->language;
+        $job->location = $request->job_locations;
+        $job->qualification = $request->qualification;
+        $job->salary = $request->job_salary;
+        $job->sex = $request->sex;
+        $job->term = $request->term;
+        $job->year_of_exp = $request->year_of_exp;
+        $job->update();
+
+        return redirect(route('agency.job.index'));
     }
 
     /**

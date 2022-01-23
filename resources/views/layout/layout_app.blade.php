@@ -10,7 +10,7 @@
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
         <!-- Datatable -->
-        <link rel="stylesheet" href="{{ asset('asset/datatable/jquery.dataTables.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('asset/datatable/dataTables.bootstrap5.min.css') }}">
         <!-- OwlCarousel -->
         <link rel="stylesheet" href="{{ asset('asset/owlcarousel/owl.carousel.min.css') }}">
         <link rel="stylesheet" href="{{ asset('asset/owlcarousel/owl.theme.default.min.css') }}">
@@ -22,7 +22,7 @@
     <body>
         
         <div id="main_wrapper">
-            <!-- Header for app/ Admin_header for admin/ remove for Guest  -->
+            <!-- header for app/ header_admin for admin/ and remove for Guest  -->
             @include('layout.header')
 
             <div id="page_wrapper">
@@ -38,7 +38,8 @@
         <script src="{{ asset('asset/popper/popper.min.js') }}"></script>
         <script src="{{ asset('asset/bootstrap/js/bootstrap.min.js') }}"></script>
         <!-- Datatable -->
-        <script src="{{ asset('asset/datatable/jquery.dataTables.min.js') }}"></script>
+        <script src="{{asset('asset/datatable/jquery.dataTables.min.js')}}"></script>
+        <script src="{{ asset('asset/datatable/dataTables.bootstrap5.min.js') }}"></script>
         <!-- OwlCarousel -->
         <script src="{{ asset('asset/owlcarousel/owl.carousel.min.js') }}"></script>
         <!-- Auto Resize Textarea -->

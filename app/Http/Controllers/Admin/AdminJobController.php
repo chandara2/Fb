@@ -155,9 +155,13 @@ class AdminJobController extends Controller
         $job->deadline = $request->deadline;
         $job->detail = $request->detail;
         $job->hiring = $request->hiring;
+        $job->industry = $request->industry;
+        $job->job_function = $request->job_function;
         $job->job_title = $request->job_title;
         $job->language = $request->language;
+        $job->location = $request->location;
         $job->qualification = $request->qualification;
+        $job->salary = $request->salary;
         $job->sex = $request->sex;
         $job->term = $request->term;
         $job->year_of_exp = $request->year_of_exp;

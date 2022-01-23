@@ -23,8 +23,8 @@
             <div class="alert alert-success">{{session('userdelete')}}</div>
         @endif
         
-        <table class="customdatatable cell-border" style="width:100%">
-            <thead class="brand-bg5">
+        <table class="customdatatable table table-hover table-bordered" style="width:100%">
+            <thead class="table-primary">
                 <tr>
                     <th>No</th>
                     <th>Job Title</th>
@@ -39,7 +39,13 @@
                     <td>{{$i+1}}</td>
                     <td>{{$job->job_title}}</td>
                     <td>{{$job->location}}</td>
-                    <td>{{$job->deadline}}</td>
+                    <td>
+                        @if ($job->deadline<now())
+                            <span class="text-danger" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Expires">{{$job->deadline}}</span>
+                        @else
+                            {{$job->deadline}}
+                        @endif
+                    </td>
                     <td>
                         <a href="/admin/job/{{ $job->id }}/edit" class="btn btn-sm"><i class="bi bi-pencil-square text-primary"></i>Edit</a>
                         <form action="/admin/job/{{ $job->id }}" method="POST" class="d-inline" onsubmit="return confirm('Are you sure? You won\'t be able to revert this!')">
@@ -51,7 +57,7 @@
                 </tr>
                 @endforeach
             </tbody>
-            <tfoot class="brand-bg5">
+            <tfoot class="table-primary">
                 <tr>
                     <th>No</th>
                     <th>Job Title</th>
@@ -64,4 +70,13 @@
 
     </div>
     
+@endsection
+
+@section('script')
+    <script>
+        var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+        var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+        return new bootstrap.Tooltip(tooltipTriggerEl)
+        })
+    </script>
 @endsection

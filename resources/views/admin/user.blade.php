@@ -17,8 +17,8 @@
             <div class="alert alert-success">{{session('userdelete')}}</div>
         @endif
         
-        <table class="customdatatable cell-border" style="width:100%">
-            <thead class="brand-bg5">
+        <table class="customdatatable table table-hover table-bordered" style="width:100%">
+            <thead class="table-primary">
                 <tr>
                     <th>No</th>
                     <th>Family Name</th>
@@ -55,15 +55,12 @@
                         @else
                         <button class="btn btn-sm" style="cursor: not-allowed;" title="Impossible to delete Admin!"><i class="bi bi-trash"></i>Delete</button>
                         @endif
-                        <a href="#">
-                            <i class="bi bi-toggle-off"></i>
-                            <i class="bi bi-toggle-on"></i>
-                        </a>
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">Active
                     </td>
                 </tr>
                 @endforeach
             </tbody>
-            <tfoot class="brand-bg5">
+            <tfoot class="table-primary">
                 <tr>
                     <th>No</th>
                     <th>Family Name</th>

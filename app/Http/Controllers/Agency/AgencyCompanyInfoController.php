@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\CompanyInfo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
 
 class AgencyCompanyInfoController extends Controller
 {
@@ -129,7 +130,61 @@ class AgencyCompanyInfoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'company' => 'required',
+            'number_staff' => 'required',
+            'industry' => 'required',
+            'website' => 'required',
+            'province' => 'required',
+            'detail_location' => 'required',
+            'contact_name' => 'required',
+            'contact_position' => 'required',
+            'contact_email' => 'required',
+            'contact_phone' => 'required',
+            'company_profile' => 'required',
+        ], [
+            'company.required' => 'Please fill in company name',
+            'number_staff.required' => 'Please fill in number of staff',
+            'industry.required' => 'Please fill in industry',
+            'website.required' => 'Please fill in website',
+            'province.required' => 'Please fill in province',
+            'detail_location.required' => 'Please fill in detail location',
+            'contact_name.required' => 'Please fill in contact name',
+            'contact_position.required' => 'Please fill in contact position',
+            'contact_email.required' => 'Please fill in contact email',
+            'contact_phone.required' => 'Please fill in contact phone',
+            'company_profile.required' => 'Please fill in company profile',
+        ]);
+
+        $companyinfo = CompanyInfo::find($id);
+        $companyinfo->uid = Auth::user()->id;
+        $companyinfo->company = $request->company;
+        $companyinfo->number_staff = $request->number_staff;
+        $companyinfo->industry = $request->industry;
+        $companyinfo->website = $request->website;
+        $companyinfo->province = $request->province;
+        $companyinfo->detail_location = $request->detail_location;
+        $companyinfo->contact_name = $request->contact_name;
+        $companyinfo->contact_position = $request->contact_position;
+        $companyinfo->contact_email = $request->contact_email;
+        $companyinfo->contact_phone = $request->contact_phone;
+        $companyinfo->company_profile = $request->company_profile;
+
+        if ($request->hasFile('logo')) {
+            $path = 'upload/companylogo/' . $companyinfo->logo;
+            if (File::exists($path)) {
+                File::delete($path);
+            }
+            $file = $request->file('logo');
+            $extension = $file->getClientOriginalExtension();
+            $filename = time() . '.' . $extension;
+            $file->move('upload/companylogo/', $filename);
+            $companyinfo->logo = $filename;
+        }
+
+        $companyinfo->update();
+
+        return redirect(route('agency.dashboard'));
     }
 
     /**
