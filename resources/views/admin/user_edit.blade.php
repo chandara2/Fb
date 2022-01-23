@@ -36,6 +36,7 @@
                             <option value="{{ $usergroup->id }}">{{ $usergroup->name }}</option>
                         @endforeach
                     </select>
+                    <input class="form-check-input" type="checkbox" name="visible" @if($userid->visible == 1) checked @endif> Active
                 </div>
                 <div class="modal-footer">
                     <a href="{{ route('admin.user.index') }}">

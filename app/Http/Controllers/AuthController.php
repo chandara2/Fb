@@ -124,7 +124,9 @@ class AuthController extends Controller
     {
         // Get group member to show in select option in login brade
         $usergroups = Usergroup::orderBy('name', 'desc')->get();
-        return view('auth.login', compact('usergroups'));
+        return view('auth.login', [
+            'usergroups' => $usergroups,
+        ]);
     }
     public function login(Request $request)
     {
@@ -135,7 +137,7 @@ class AuthController extends Controller
         ], [
             'username.required' => 'Please fill in username',
             'password.required' => 'Please fill in password',
-            'gid.required' => 'Please choose the right member'
+            'gid.required' => 'Please choose the right member',
         ]);
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();

@@ -55,7 +55,7 @@
                         @else
                         <button class="btn btn-sm" style="cursor: not-allowed;" title="Impossible to delete Admin!"><i class="bi bi-trash"></i>Delete</button>
                         @endif
-                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">Active
+                            <input class="form-check-input" type="checkbox" disabled @if($user->visible == 1) checked @endif>Active
                     </td>
                 </tr>
                 @endforeach

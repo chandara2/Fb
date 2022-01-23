@@ -119,6 +119,7 @@ class AdminUserController extends Controller
             $user->password = Hash::make($request->password);
         }
         $user->gid = $request->gid;
+        $user->visible = $request->boolean('visible');
         $user->update();
 
         return redirect(route('admin.user.index'));
