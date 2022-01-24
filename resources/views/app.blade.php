@@ -97,7 +97,7 @@
                             <li class="list-group-item limit_str_jobcompany ps-0 py-1">
                                 <span class="position-relative"><a href="
                                     {{-- job/{{$jobcompany->jobid}} --}}
-                                    " class="text-dark btn py-0 pe-0">{{$jobcompany->job_title}}</a></span> -
+                                    " class="text-dark btn py-0 pe-0">{{$jobcompany->title}}</a></span> -
                                 <span><a href="
                                     {{-- agency/{{$jobcompany->companyid}} --}}
                                     " class="text-danger btn py-0 ps-0">{{$jobcompany->company}}</a></span>

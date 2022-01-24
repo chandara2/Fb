@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AdminAboutController;
 use App\Http\Controllers\Admin\AdminCompanyInfoController;
 use App\Http\Controllers\Admin\AdmindbController;
 use App\Http\Controllers\Admin\AdminJobController;
@@ -9,6 +10,7 @@ use App\Http\Controllers\Agency\AgencydbController;
 use App\Http\Controllers\Agency\AgencyJobController;
 use App\Http\Controllers\AppController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\Page\AboutController;
 use App\Http\Controllers\User\UserdbController;
 use Illuminate\Support\Facades\Route;
 
@@ -25,6 +27,9 @@ Route::post('register', [AuthController::class, 'register'])->name('register');
 Route::get('showlogin', [AuthController::class, 'showlogin'])->name('showlogin')->middleware('guest');
 Route::post('login', [AuthController::class, 'login'])->name('login');
 Route::put('changepassword', [AuthController::class, 'changepassword'])->name('changepassword')->middleware('auth');
+
+// About Page
+Route::resource('about', AboutController::class);
 
 // Auth Logout
 Route::get('logout', [AuthController::class, 'logout'])->name('logout')->middleware('auth');
@@ -47,4 +52,5 @@ Route::prefix('admin')->name('admin.')->middleware('isadmin')->group(function ()
     Route::resource('/job', AdminJobController::class);
     Route::resource('/user', AdminUserController::class);
     Route::resource('/companyinfo', AdminCompanyInfoController::class);
+    Route::resource('/about', AdminAboutController::class);
 });

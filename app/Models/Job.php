@@ -10,23 +10,24 @@ class Job extends Model
     use HasFactory;
 
     protected $fillable = [
-        'uid',
         'age',
         'contact',
-        'deadline',
         'detail',
+        'expired_job',
+        'expired_post',
+        'function',
         'hiring',
         'industry',
-        'job_function',
-        'job_title',
         'language',
         'location',
         'qualification',
         'salary',
         'sex',
         'term',
-        'year_of_exp',
+        'title',
+        'uid',
         'visible',
+        'year_of_exp',
     ];
 
     public function users()

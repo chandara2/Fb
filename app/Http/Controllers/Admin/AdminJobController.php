@@ -9,6 +9,7 @@ use App\Models\JobFunction;
 use App\Models\JobIndustry;
 use App\Models\JobLocation;
 use App\Models\JobSalary;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -21,6 +22,8 @@ class AdminJobController extends Controller
      */
     public function index()
     {
+        $delete_expired_post = Job::where('expired_post', '<', Carbon::now()->toDateString())->delete();
+
         $jobs = Job::all();
         $company_infos = CompanyInfo::all();
         return view('admin.job', [
@@ -59,35 +62,43 @@ class AdminJobController extends Controller
         $request->validate([
             'age' => 'required',
             'contact' => 'required',
-            'deadline' => 'required|date|after:now',
             'detail' => 'required',
+            // 'expired_job' => 'required|date|after:now',
+            'expired_job' => 'required|date',
+            // 'expired_post' => 'required|date|after:now',
+            'expired_post' => 'required|date',
+            'function' => 'required',
             'hiring' => 'required|numeric',
-            'job_title' => 'required',
+            'industry' => 'required',
             'language' => 'required',
+            'location' => 'required',
             'qualification' => 'required',
+            'salary' => 'required',
             'sex' => 'required',
             'term' => 'required',
+            'title' => 'required',
             'year_of_exp' => 'required|numeric|max:100',
         ]);
 
-        $user = new Job();
-        $user->uid = Auth::user()->id;
-        $user->age = $request->age;
-        $user->contact = $request->contact;
-        $user->deadline = $request->deadline;
-        $user->detail = $request->detail;
-        $user->hiring = $request->hiring;
-        $user->industry = $request->job_industries;
-        $user->job_function = $request->job_function;
-        $user->job_title = $request->job_title;
-        $user->language = $request->language;
-        $user->location = $request->job_locations;
-        $user->qualification = $request->qualification;
-        $user->salary = $request->job_salary;
-        $user->sex = $request->sex;
-        $user->term = $request->term;
-        $user->year_of_exp = $request->year_of_exp;
-        $user->save();
+        $job = new Job();
+        $job->uid = Auth::user()->id;
+        $job->age = $request->age;
+        $job->contact = $request->contact;
+        $job->detail = $request->detail;
+        $job->expired_job = $request->expired_job;
+        $job->expired_post = $request->expired_post;
+        $job->function = $request->function;
+        $job->hiring = $request->hiring;
+        $job->industry = $request->industry;
+        $job->language = $request->language;
+        $job->location = $request->location;
+        $job->qualification = $request->qualification;
+        $job->salary = $request->salary;
+        $job->sex = $request->sex;
+        $job->term = $request->term;
+        $job->title = $request->title;
+        $job->year_of_exp = $request->year_of_exp;
+        $job->save();
 
         return redirect(route('admin.job.index'));
     }
@@ -138,32 +149,40 @@ class AdminJobController extends Controller
         $request->validate([
             'age' => 'required',
             'contact' => 'required',
-            'deadline' => 'required|date|after:now',
             'detail' => 'required',
+            // 'expired_job' => 'required|date|after:now',
+            'expired_job' => 'required|date',
+            // 'expired_post' => 'required|date|after:now',
+            'expired_post' => 'required|date',
+            'function' => 'required',
             'hiring' => 'required|numeric',
-            'job_title' => 'required',
+            'industry' => 'required',
             'language' => 'required',
+            'location' => 'required',
             'qualification' => 'required',
+            'salary' => 'required',
             'sex' => 'required',
             'term' => 'required',
+            'title' => 'required',
             'year_of_exp' => 'required|numeric|max:100',
         ]);
 
         $job = Job::find($id);
         $job->age = $request->age;
         $job->contact = $request->contact;
-        $job->deadline = $request->deadline;
         $job->detail = $request->detail;
+        $job->expired_job = $request->expired_job;
+        $job->expired_post = $request->expired_post;
+        $job->function = $request->function;
         $job->hiring = $request->hiring;
         $job->industry = $request->industry;
-        $job->job_function = $request->job_function;
-        $job->job_title = $request->job_title;
         $job->language = $request->language;
         $job->location = $request->location;
         $job->qualification = $request->qualification;
         $job->salary = $request->salary;
         $job->sex = $request->sex;
         $job->term = $request->term;
+        $job->title = $request->title;
         $job->year_of_exp = $request->year_of_exp;
         $job->update();
 

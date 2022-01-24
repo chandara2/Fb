@@ -31,6 +31,12 @@
                         Job
                     </a>
                 </li>
+                <li>
+                    <a href="{{ route('admin.about.index') }}" class="nav-link text-white">
+                        <i class="bi bi-box-seam d-block mx-auto mb-1 text-center" style="font-size:24px;"></i>
+                        About us
+                    </a>
+                </li>
                 <li class="dropdown">
                     <a href="#" class="nav-link text-white dropdown-toggle" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
                         <i class="bi bi-gear d-block mx-auto mb-1 text-center" style="font-size:24px;"></i>

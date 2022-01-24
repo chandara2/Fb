@@ -19,14 +19,15 @@ class CreateJobsTable extends Migration
             $table->unsignedBigInteger('uid');
             $table->foreign('uid')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
 
+            $table->string('title')->nullable();
+            $table->boolean('visible')->default(1);
             $table->string('age')->nullable();
             $table->string('contact')->nullable();
-            $table->date('deadline')->nullable();
-            $table->text('detail')->nullable();
+            $table->date('expired_job')->nullable();
+            $table->date('expired_post')->nullable();
+            $table->string('function')->nullable();
             $table->tinyInteger('hiring')->nullable();
             $table->string('industry')->nullable();
-            $table->string('job_function')->nullable();
-            $table->string('job_title')->nullable();
             $table->string('language')->nullable();
             $table->string('location')->nullable();
             $table->string('qualification')->nullable();
@@ -34,7 +35,7 @@ class CreateJobsTable extends Migration
             $table->string('sex')->nullable();
             $table->string('term')->nullable();
             $table->tinyInteger('year_of_exp')->nullable();
-            $table->boolean('visible')->default(1);
+            $table->text('detail')->nullable();
 
             $table->timestamps();
         });
