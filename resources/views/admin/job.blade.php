@@ -48,12 +48,13 @@
                             {{$job->expired_post}}
                         @endif
                     <td>
-                        <a href="/admin/job/{{ $job->id }}/edit" class="btn btn-sm"><i class="bi bi-pencil-square text-primary"></i>Edit</a>
+                        <a href="/admin/job/{{ $job->id }}/edit" class="btn btn-sm btn-outline-primary" title="Edit"><i class="bi bi-pencil-square"></i></a>
                         <form action="/admin/job/{{ $job->id }}" method="POST" class="d-inline" onsubmit="return confirm('Are you sure? You won\'t be able to revert this!')">
                             @csrf
                             @method('delete')
-                            <button type="submit" class="btn btn-sm"><i class="bi bi-trash text-danger"></i>Delete</button>
+                            <button type="submit" class="btn btn-sm btn-outline-danger" title="Delete"><i class="bi bi-trash"></i></button>
                         </form>
+                        <a href="#" class="btn btn-sm btn-outline-success" title="Detail"><i class="bi bi-eye"></i></a>
                     </td>
                 </tr>
                 @endforeach

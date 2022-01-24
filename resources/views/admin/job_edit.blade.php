@@ -147,7 +147,7 @@
             </div>
             <div class="modal-footer">
                 <a href="{{ route('admin.job.index') }}" class="btn btn-secondary">Close</a>
-                <button type="submit" class="btn btn-primary">Create</button>
+                <button type="submit" class="btn btn-primary">Update Job</button>
             </div>
         </form>
     </div>
