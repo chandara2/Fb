@@ -45,17 +45,17 @@
                     <td>User</td>
                     @endif
                     <td>
-                        <a href="/admin/user/{{ $user->id }}/edit" class="btn btn-sm"><i class="bi bi-pencil-square text-primary"></i>Edit</a>
+                        <a href="/admin/user/{{ $user->id }}/edit" class="btn btn-sm btn-outline-primary" title="Edit"><i class="bi bi-pencil-square"></i></a>
                         @if($user->gid!=1)
                         <form action="/admin/user/{{ $user->id }}" method="POST" class="d-inline" onsubmit="return confirm('Are you sure? You won\'t be able to revert this!')">
                             @csrf
                             @method('delete')
-                            <button type="submit" class="btn btn-sm"><i class="bi bi-trash text-danger"></i>Delete</button>
+                            <button type="submit" class="btn btn-sm btn-outline-danger" title="Delete"><i class="bi bi-trash"></i></button>
                         </form>
                         @else
-                        <button class="btn btn-sm" style="cursor: not-allowed;" title="Impossible to delete Admin!"><i class="bi bi-trash"></i>Delete</button>
+                        <button class="btn btn-sm btn-outline-danger" style="cursor: not-allowed;" title="Impossible to delete Admin!"><i class="bi bi-trash"></i></button>
                         @endif
-                            <input class="form-check-input" type="checkbox" disabled @if($user->visible == 1) checked @endif>Active
+                        <a href="#" class="btn btn-sm btn-outline-success"><i class="bi bi-eye"></i></a>
                     </td>
                 </tr>
                 @endforeach
