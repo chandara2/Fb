@@ -30,7 +30,7 @@
                     <th>No</th>
                     <th>Job Title</th>
                     <th>Location</th>
-                    <th>Deadline</th>
+                    <th>Expired Post</th>
                     <th>Action</th>
                 </tr>
             </thead>
@@ -38,13 +38,13 @@
                 @foreach ($jobs as $i => $job)
                 <tr>
                     <td>{{$i+1}}</td>
-                    <td>{{$job->job_title}}</td>
+                    <td>{{$job->title}}</td>
                     <td>{{$job->location}}</td>
                     <td>
-                        @if ($job->deadline<now())
-                            <span class="text-danger" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Expires">{{$job->deadline}}</span>
+                        @if ($job->expired_post<now())
+                            <span class="text-danger" title="Will be deleted the next day">{{$job->expired_post}}</span>
                         @else
-                            {{$job->deadline}}
+                            {{$job->expired_post}}
                         @endif
                     </td>
                     <td>
@@ -64,7 +64,7 @@
                     <th>No</th>
                     <th>Job Title</th>
                     <th>Location</th>
-                    <th>Deadline</th>
+                    <th>Expired Post</th>
                     <th>Action</th>
                 </tr>
             </tfoot>

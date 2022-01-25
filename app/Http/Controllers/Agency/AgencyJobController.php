@@ -57,35 +57,42 @@ class AgencyJobController extends Controller
         $request->validate([
             'age' => 'required',
             'contact' => 'required',
-            'deadline' => 'required|date|after:now',
             'detail' => 'required',
+            'expired_job' => 'required|date',
+            'expired_post' => 'required|date',
+            'function' => 'required',
             'hiring' => 'required|numeric',
-            'job_title' => 'required',
+            'industry' => 'required',
             'language' => 'required',
+            'location' => 'required',
             'qualification' => 'required',
+            'salary' => 'required',
             'sex' => 'required',
             'term' => 'required',
+            'title' => 'required',
             'year_of_exp' => 'required|numeric|max:100',
         ]);
 
-        $user = new Job();
-        $user->uid = Auth::user()->id;
-        $user->age = $request->age;
-        $user->contact = $request->contact;
-        $user->deadline = $request->deadline;
-        $user->detail = $request->detail;
-        $user->hiring = $request->hiring;
-        $user->industry = $request->job_industries;
-        $user->job_function = $request->job_function;
-        $user->job_title = $request->job_title;
-        $user->language = $request->language;
-        $user->location = $request->job_locations;
-        $user->qualification = $request->qualification;
-        $user->salary = $request->job_salary;
-        $user->sex = $request->sex;
-        $user->term = $request->term;
-        $user->year_of_exp = $request->year_of_exp;
-        $user->save();
+        $job = new Job();
+        $job->uid = Auth::user()->id;
+        $job->approved = false;
+        $job->age = $request->age;
+        $job->contact = $request->contact;
+        $job->detail = $request->detail;
+        $job->expired_job = $request->expired_job;
+        $job->expired_post = $request->expired_post;
+        $job->function = $request->function;
+        $job->hiring = $request->hiring;
+        $job->industry = $request->industry;
+        $job->language = $request->language;
+        $job->location = $request->location;
+        $job->qualification = $request->qualification;
+        $job->salary = $request->salary;
+        $job->sex = $request->sex;
+        $job->term = $request->term;
+        $job->title = $request->title;
+        $job->year_of_exp = $request->year_of_exp;
+        $job->save();
 
         return redirect(route('agency.job.index'));
     }
