@@ -23,7 +23,7 @@
             <div class="alert alert-success">{{session('userdelete')}}</div>
         @endif
         
-        <table class="customdatatable table table-hover table-bordered" style="width:100%">
+        <table id="admin_jobs_table" class="customdatatable table table-hover table-bordered" style="width:100%">
             <thead class="table-primary">
                 <tr>
                     <th>No</th>
@@ -48,13 +48,7 @@
                         @endif
                     </td>
                     <td>
-                        {{-- @if ($job->approved == true)
-                            Approved
-                        @else
-                            <span class="bg-primary bg-opacity-75 px-1 rounded text-white">Pending</span>
-                        @endif --}}
-
-                        <input type="checkbox" class="toggle-class" data-id="{{ $job->id }}" data-onstyle="success" data-offstyle="danger" data-toggle="toggle" data-on="Active" data-off="Inactive" {{ $job->approved ? 'check':'' }}>
+                        <input data-id="{{ $job->id }}" class="toggle-class" type="checkbox"  data-onstyle="success" data-offstyle="danger" data-toggle="toggle" data-on="Approved" data-off="Pending" {{ $job->approved ? 'checked':'' }}>
                         
                     </td>
                     <td>
@@ -83,53 +77,28 @@
 
     </div> <!-- end container-fluid -->
 
-
-    <!-- Modal -->
-{{-- <div class="modal fade" id="approved_pending_modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-        <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Enable status permissions</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-            <form action="" method="POST">
-                @csrf
-                @method('PUT')
-                <div class="col-xl-6 col-md-8 mb-md-0 mb-sm-2">
-                    <input type="radio" name="approved" value="1">
-                    Approved
-                    <input type="radio" name="approved" value="0" class="ms-3">
-                    Pending
-                </div>
-            </form>
-        </div>
-        <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="submit" class="btn btn-primary">Update Status</button>
-        </div>
-        </div>
-    </div>
-</div> --}}
-
 @endsection
 
 @section('script')
     <script>
+        $(document).ready(function (){
+            $('#admin_jobs_table').DataTable()
+        });
+
         $(function(){
             $('.toggle-class').change(function(){
-                var approved = $(this).prop('checked') == true ? 1:0
-                var job_id = $(this).data('id')
+                var approved = $(this).prop('checked') == true ? 1:0;
+                var job_id = $(this).data('id');
                 $.ajax({
                     type: "GET",
                     url: "/admin/changejobstatus",
-                    data: {'approved':approved,'job_id',id},
+                    data: {'approved':approved,'id':job_id},
                     dataType: "json",
                     success: function (data) {
                         console.log(data.success)
                     }
                 });
-            })
-        })
+            });
+        });
     </script>
 @endsection

@@ -9,6 +9,7 @@
 
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-toggle/2.2.2/css/bootstrap-toggle.css" integrity="sha512-9tISBnhZjiw7MV4a1gbemtB9tmPcoJ7ahj8QWIc0daBCdvlKjEA48oLlo6zALYm3037tPYYulT0YQyJIJJoyMQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
         <!-- Datatable -->
         <link rel="stylesheet" href="{{ asset('asset/datatable/dataTables.bootstrap5.min.css') }}">
         <!-- OwlCarousel -->
@@ -37,6 +38,7 @@
         <script src="{{ asset('asset/jquery/jquery-3.6.0.min.js') }}"></script>
         <script src="{{ asset('asset/popper/popper.min.js') }}"></script>
         <script src="{{ asset('asset/bootstrap/js/bootstrap.min.js') }}"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js" integrity="sha512-F636MAkMAhtTplahL9F6KmTfxTmYcAcjcCkyu0f0voT3N/6vzAuJ4Num55a0gEJ+hRLHhdz3vDvZpf6kqgEa5w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
         <!-- Datatable -->
         <script src="{{asset('asset/datatable/jquery.dataTables.min.js')}}"></script>
         <script src="{{ asset('asset/datatable/dataTables.bootstrap5.min.js') }}"></script>
