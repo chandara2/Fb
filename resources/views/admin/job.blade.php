@@ -42,7 +42,7 @@
                     <td>{{$job->location}}</td>
                     <td>
                         @if ($job->expired_post<now())
-                            <span class="text-danger" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Will be deleted the next day">{{$job->expired_post}}</span>
+                            <span class="text-danger" title="Will be deleted the next day">{{$job->expired_post}}</span>
                         @else
                             {{$job->expired_post}}
                         @endif
@@ -79,14 +79,31 @@
         </table>
 
     </div>
-    
-@endsection
 
-@section('script')
-    <script>
-        var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
-        var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
-        return new bootstrap.Tooltip(tooltipTriggerEl)
-        })
-    </script>
+    <!-- Modal -->
+    <div class="modal fade" id="approved_post_update" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Enable Status Permissions</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                
+                <form action="">
+                    <select id="esp_esp_esp" class="form-select">
+                        <option value="0">Pending</option>
+                        <option value="1">Approved</option>
+                    </select>
+                </form>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary update-approved-job-btn">Update</button>
+            </div>
+            </div>
+        </div>
+    </div>
+    
 @endsection
