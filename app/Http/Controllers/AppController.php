@@ -24,6 +24,7 @@ class AppController extends Controller
             ->join('jobs', 'users.id', '=', 'jobs.uid')
             ->join('company_infos', 'users.id', '=', 'company_infos.uid')
             ->select('jobs.created_at', 'jobs.title', 'jobs.id as jobid', 'company_infos.company', 'company_infos.id as companyid')
+            ->where('approved', true)
             ->latest()
             ->take(12)
             ->get();

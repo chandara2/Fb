@@ -19,8 +19,8 @@ class CreateJobsTable extends Migration
             $table->unsignedBigInteger('uid');
             $table->foreign('uid')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
 
+            $table->boolean('approved')->default(0);
             $table->string('title')->nullable();
-            $table->boolean('visible')->default(1);
             $table->string('age')->nullable();
             $table->string('contact')->nullable();
             $table->date('expired_job')->nullable();

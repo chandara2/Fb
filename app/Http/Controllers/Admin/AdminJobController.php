@@ -82,6 +82,7 @@ class AdminJobController extends Controller
 
         $job = new Job();
         $job->uid = Auth::user()->id;
+        $job->approved = true;
         $job->age = $request->age;
         $job->contact = $request->contact;
         $job->detail = $request->detail;
@@ -169,6 +170,7 @@ class AdminJobController extends Controller
 
         $job = Job::find($id);
         $job->age = $request->age;
+        $job->approved = $request->approved;
         $job->contact = $request->contact;
         $job->detail = $request->detail;
         $job->expired_job = $request->expired_job;

@@ -11,6 +11,7 @@ class Job extends Model
 
     protected $fillable = [
         'age',
+        'approved',
         'contact',
         'detail',
         'expired_job',
@@ -26,7 +27,6 @@ class Job extends Model
         'term',
         'title',
         'uid',
-        'visible',
         'year_of_exp',
     ];
 
