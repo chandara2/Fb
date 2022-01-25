@@ -53,6 +53,7 @@
                         @else
                             <span class="bg-primary bg-opacity-75 px-1 rounded text-white">Pending</span>
                         @endif
+                        <span data-bs-toggle="modal" data-bs-target="#approved_pending_modal" style="cursor: pointer;">Edit</span>
                     </td>
                     <td>
                         <a href="/admin/job/{{ $job->id }}/edit" class="btn btn-sm btn-outline-primary" title="Edit"><i class="bi bi-pencil-square"></i></a>
@@ -78,32 +79,33 @@
             </tfoot>
         </table>
 
-    </div>
+    </div> <!-- end container-fluid -->
+
 
     <!-- Modal -->
-    <div class="modal fade" id="approved_post_update" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-sm">
-            <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Enable Status Permissions</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                
-                <form action="">
-                    <select id="esp_esp_esp" class="form-select">
-                        <option value="0">Pending</option>
-                        <option value="1">Approved</option>
-                    </select>
-                </form>
-
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary update-approved-job-btn">Update</button>
-            </div>
-            </div>
+<div class="modal fade" id="approved_pending_modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Enable status permissions</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <form action="#">
+                <div class="col-xl-6 col-md-8 mb-md-0 mb-sm-2">
+                    <input type="radio" name="approved" value="1" @if(true)checked @endif>
+                    Approved
+                    <input type="radio" name="approved" value="0" @if(false)checked @endif class="ms-3">
+                    Pending
+                </div>
+            </form>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Update Status</button>
+        </div>
         </div>
     </div>
-    
+</div>
+
 @endsection
