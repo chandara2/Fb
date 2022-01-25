@@ -53,5 +53,5 @@ Route::prefix('admin')->name('admin.')->middleware('isadmin')->group(function ()
     Route::resource('/user', AdminUserController::class);
     Route::resource('/companyinfo', AdminCompanyInfoController::class);
     Route::resource('/about', AdminAboutController::class);
-    Route::get('/edit-approved-pending-job/{eapj}', [AdminJobController::class, 'edit-approved-pending-job'])->name('edit-approved-pending-job');
+    Route::get('/changejobstatus', [AdminJobController::class, 'changejobstatus'])->name('changejobstatus');
 });

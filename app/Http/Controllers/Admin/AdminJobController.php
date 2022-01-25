@@ -203,4 +203,10 @@ class AdminJobController extends Controller
         $job->delete();
         return back()->with('jobdelete', 'You have create a job');
     }
+    public function changejobstatus(Request $request)
+    {
+        $jobs = Job::find($request->id);
+        $jobs->approved = $request->approved;
+        $jobs->save();
+    }
 }
