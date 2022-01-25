@@ -23,7 +23,7 @@
             <div class="alert alert-success">{{session('userdelete')}}</div>
         @endif
         
-        <table id="admin_jobs_table" class="customdatatable table table-hover table-bordered" style="width:100%">
+        <table id="update_status_switch" class="customdatatable table table-hover table-bordered" style="width:100%">
             <thead class="table-primary">
                 <tr>
                     <th>No</th>
@@ -82,7 +82,7 @@
 @section('script')
     <script>
         $(document).ready(function (){
-            $('#admin_jobs_table').DataTable()
+            $('#update_status_switch').DataTable()
         });
 
         $(function(){
