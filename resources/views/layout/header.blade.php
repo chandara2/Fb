@@ -57,9 +57,9 @@
                     @endswitch
                     <span class="caret"></span>
                 </a>
-                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="lang/en"><img src="{{asset('images/flag/en.png')}}" width="25px"> English</a>
-                    <a class="dropdown-item" href="lang/fr"><img src="{{asset('images/flag/fr.png')}}" width="25px"> Français</a>
+                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="lang/en"><img src="{{asset('asset/image/united-kingdom.png')}}" width="25px"> English</a>
+                    <a class="dropdown-item" href="lang/th"><img src="{{asset('asset/image/thailand.png')}}" width="25px"> Thai</a>
                 </div>
             </li>
 
