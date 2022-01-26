@@ -10,6 +10,7 @@ use App\Http\Controllers\Agency\AgencydbController;
 use App\Http\Controllers\Agency\AgencyJobController;
 use App\Http\Controllers\AppController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\LocalizationController;
 use App\Http\Controllers\Page\AboutController;
 use App\Http\Controllers\User\UserdbController;
 use Illuminate\Support\Facades\Route;
@@ -20,6 +21,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::resource('/', AppController::class)->only('index');
 
+// Switch multi language
+Route::get('lang/{locale}', [LocalizationController::class, 'index']);
 
 // Guest Register & Login
 Route::get('showregister', [AuthController::class, 'showregister'])->name('showregister')->middleware('guest');
