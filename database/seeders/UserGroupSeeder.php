@@ -15,7 +15,7 @@ class UserGroupSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('usergroup')->delete();
+        DB::table('usergroups')->delete();
 
         $usergroup = [
             ['name' => 'Admin'],
