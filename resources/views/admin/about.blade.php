@@ -25,7 +25,7 @@
             @forelse ($abouts as $about)
     
             <li class="list-group-item text-center">
-                <img src="{{asset('upload/aboutsbanner/')}}/{{$about->banner}}" alt="banner" width="200px">
+                <img src="{{asset('upload/aboutsbanner/')}}/{{$about->banner}}" alt="banner" class="img-thumbnail">
             </li>
             <li class="list-group-item">
                 <div class="text-danger h4">Mission</div>
