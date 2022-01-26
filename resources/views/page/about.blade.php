@@ -3,10 +3,10 @@
 
 @section('content')
 
-@forelse ( $aboutus as $item )
+@forelse ( $abouts as $about )
 <section>
     <div class="position-relative">
-        <img src="{{asset('upload/slide/')}}/{{$item->slide}}" alt="" width="100%" height="400" style="object-fit: cover; filter: brightness(0.30);">
+        <img src="{{asset('upload/aboutsbanner/')}}/{{$about->banner}}" alt="" width="100%" height="400" style="object-fit: cover; filter: brightness(0.30);">
         <span class="position-absolute top-50 start-50 translate-middle-x h1 text-light">No.1 Jobsite in Cambodia</span>
     </div>
 </section>
@@ -14,16 +14,16 @@
 <section>
     <div class="container mt-5">
         <p class="h4 text-decoration-underline">Our Mission</p>
-        <textarea disabled class="ta_autosize form-control border-0 bg-white">{{$item->mission}}</textarea>
+        <textarea disabled class="textarea_autosize form-control border-0 bg-white">{{$about->mission}}</textarea>
     </div>
 </section>
 
 <section>
     <div class="container">
         <p class="h4 text-decoration-underline mt-3">Goals</p>
-        <textarea disabled class="ta_autosize form-control border-0 bg-white">{{$item->goal}}</textarea>
+        <textarea disabled class="textarea_autosize form-control border-0 bg-white">{{$about->goal}}</textarea>
         <p class="h4 text-decoration-underline mt-3">Values</p>
-        <textarea disabled class="ta_autosize form-control border-0 bg-white">{{$item->value}}</textarea>
+        <textarea disabled class="textarea_autosize form-control border-0 bg-white">{{$about->value}}</textarea>
     </div>
 </section>
 
@@ -34,17 +34,17 @@
 
             <div class="col-md-4">
                 <p class="fw-bold">Jobs Posting Email</p>
-                <p>{{$item->email}}</p>
+                <p>{{$about->email}}</p>
             </div>
 
             <div class="col-md-4">
                 <p class="fw-bold">Service Hotline</p>
-                <p>{{$item->phone}}</p>
+                <p>{{$about->phone}}</p>
             </div>
 
             <div class="col-md-4">
                 <p class="fw-bold">Our Address</p>
-                <p>{{$item->address}}</p>
+                <p>{{$about->address}}</p>
             </div>
 
         </div>
@@ -57,6 +57,7 @@
     </div>
 </section>
 @empty
-<p>No About us Data</p>
+<p class="text-center">No About us Data</p>
+@endforelse
 
 @endsection

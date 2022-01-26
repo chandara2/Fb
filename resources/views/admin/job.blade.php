@@ -4,6 +4,12 @@
 @section('content')
 
     <div class="container-fluid">
+        <div class="row mt-3">
+            <h1 class="text-center text-uppercase" style="text-decoration: underline 3px solid pink">Jobs</h1>
+        </div>
+    </div>
+
+    <div class="container-fluid">
         <nav aria-label="breadcrumb" style="--bs-breadcrumb-divider: '|';" class="mt-3">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}" class="text-decoration-none">Dashboard</a></li>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\About;
 use Illuminate\Http\Request;
 
 class AdminAboutController extends Controller
@@ -14,7 +15,10 @@ class AdminAboutController extends Controller
      */
     public function index()
     {
-        return view('admin.about');
+        $abouts = About::all();
+        return view('admin.about', [
+            'abouts' => $abouts,
+        ]);
     }
 
     /**
@@ -24,7 +28,7 @@ class AdminAboutController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.about_create');
     }
 
     /**
@@ -35,7 +39,40 @@ class AdminAboutController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'banner' => 'required',
+            'mission' => 'required',
+            'goal' => 'required',
+            'value' => 'required',
+            'email' => 'required',
+            'phone' => 'required',
+            'address' => 'required',
+            'social' => 'required',
+            'operating' => 'required',
+        ]);
+
+        $aboutsbanner = new About();
+        if ($request->hasFile('banner')) {
+            $file = $request->file('banner');
+            $extension = $file->getClientOriginalExtension();
+            $filename = time() . '.' . $extension;
+            $file->move('upload/aboutsbanner/', $filename);
+            $aboutsbanner->banner = $filename;
+        }
+
+        $abouts = About::create([
+            'banner' => $filename,
+            'mission' => $request->mission,
+            'goal' => $request->goal,
+            'value' => $request->value,
+            'email' => $request->email,
+            'phone' => $request->phone,
+            'address' => $request->address,
+            'social' => $request->social,
+            'operating' => $request->operating,
+        ]);
+
+        return redirect(route('admin.about.index'));
     }
 
     /**
