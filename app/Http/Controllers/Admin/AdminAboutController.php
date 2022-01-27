@@ -116,7 +116,7 @@ class AdminAboutController extends Controller
             'operating.required' => 'Please input operating',
         ]);
 
-        if (!$validator->passes()) {
+        if ($validator->fails()) {
             return response()->json(['status' => 0, 'error' => $validator->errors()->toArray()]);
         } else {
             $abouts = new About();

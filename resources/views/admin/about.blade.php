@@ -14,15 +14,15 @@
                 <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}" class="text-decoration-none">Dashboard</a></li>
                 <li class="breadcrumb-item active" aria-current="page">About</li>
                 @if ($abouts->isEmpty())
-                    <li class="breadcrumb-item" id="add_about_info" style="cursor: pointer;" data-bs-toggle="modal" data-bs-target="#showAboutForm">Add Information</li>
+                    <li class="breadcrumb-item" id="add_about_info" style="cursor: pointer;" data-bs-toggle="modal" data-bs-target="#showAboutModal">Add Information</li>
                 @endif
             </ol>
         </nav>
     </div>
 
     
-    <!-- Modal -->
-    <div class="modal fade" id="showAboutForm" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <!-- Modal Add about info -->
+    <div class="modal fade" id="showAboutModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header bg-info bg-opacity-50">
@@ -98,6 +98,83 @@
         </div>
     </div> <!-- end modal -->
 
+    <!-- Modal Edit about info -->
+    <div class="modal fade" id="showEditAboutModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header bg-info bg-opacity-50">
+                <h5 class="modal-title" id="exampleModalLabel">Edit About us Information</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form method="POST" enctype="multipart/form-data" action="" id="editAboutFormId">
+                        @csrf
+                        <ul class="alert alert-warning d-none" id="save_errList"></ul>
+                        <div class="form-group mb-md-3">
+                            <label>About Us Banner</label>
+                            <input name="banner" type="file" class="form-control" onchange="document.getElementById('output_banner').src = window.URL.createObjectURL(this.files[0])">
+                            <span class="text-danger error-text banner_error"></span>
+                            <img id="output_banner" width="110px">
+                        </div>
+                
+                        <div class="form-group mb-md-3">
+                            <label>Mission</label>
+                            <textarea name="mission" class="textarea_autosize form-control"></textarea>
+                            <span class="text-danger error-text mission_error"></span>
+                        </div>
+                
+                        <div class="form-group mb-md-3">
+                            <label>Goal</label>
+                            <textarea name="goal" class="textarea_autosize form-control"></textarea>
+                            <span class="text-danger error-text goal_error"></span>
+                        </div>
+                
+                        <div class="form-group mb-md-3">
+                            <label>Value</label>
+                            <textarea name="value" class="textarea_autosize form-control"></textarea>
+                            <span class="text-danger error-text value_error"></span>
+                        </div>
+                
+                        <div class="form-group mb-md-3">
+                            <label>Email</label>
+                            <input name="email" type="email" class="form-control">
+                            <span class="text-danger error-text email_error"></span>
+                        </div>
+                
+                        <div class="form-group mb-md-3">
+                            <label>Phone</label>
+                            <input name="phone" type="text" class="form-control">
+                            <span class="text-danger error-text phone_error"></span>
+                        </div>
+                
+                        <div class="form-group mb-md-3">
+                            <label>Address</label>
+                            <input name="address" type="text" class="form-control">
+                            <span class="text-danger error-text address_error"></span>
+                        </div>
+                
+                        <div class="form-group mb-md-3">
+                            <label>Social Media</label>
+                            <input name="social" type="text" class="form-control">
+                            <span class="text-danger error-text social_error"></span>
+                        </div>
+                
+                        <div class="form-group mb-md-3">
+                            <label>Operating</label>
+                            <input name="operating" type="text" class="form-control" placeholder="Day&time">
+                            <span class="text-danger error-text operating_error"></span>
+                        </div>
+                
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-info">Update</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div> <!-- end modal -->
+
     <div class="container-fluid">
         <ul class="list-group list-group-flush mt-3 position-relative">
             @forelse ($abouts as $about)
@@ -133,7 +210,10 @@
                 <span class="text-danger h4">Operating Hours</span>
                 <textarea disabled class="textarea_autosize form-control border-0 bg-white">{{$about->operating}}</textarea>
             </li>
-            <a href="/admin/aboutus/{{$about->id}}/edit" class="position-absolute end-0 top-0"><i class="fas fa-users-cog"></i></a>
+
+            <div class="position-absolute top-0 end-0">
+                <a href="#" data-id={{$about->id}} id="showEditAboutForm"><i class="bi bi-pencil-square btn text-muted pe-0" style="font-size:24px;"></i></a>
+            </div>
     
             @empty
                 <p class="text-center alert alert-info">About us don't have information</p>
@@ -154,38 +234,7 @@
                 }
             });
 
-            // $(document).on('submit','#addAboutFormId', function (e) {
-            //     e.preventDefault();
-
-            //     let fd = new FormData($('#addAboutFormId')[0])
-
-            //     $.ajax({
-            //         type: "POST",
-            //         url: "{{ route('admin.about.store') }}",
-            //         data: fd,
-            //         contentType: false,
-            //         processData: false,
-            //         success: function (response) {
-            //             if(response.status==400){
-            //                 $('#save_errList').html("")
-            //                 $('#save_errList').removeClass("d-none")
-            //                 $.each(response.errMsg, function (key, err_value){
-            //                     $('#save_errList').append('<li>'+err_value+'</li>')
-            //                 })
-            //             }else if(response.status==200){
-            //                 $('#save_errList').html("")
-            //                 $('#save_errList').addClass("d-none")
-            //                 $('#addAboutFormId').find('input').val()
-            //                 $('#showAboutForm').modal('hide')
-
-            //                 document.location.href = "{{ route('admin.about.index') }}"
-            //             }
-            //         }
-            //     });
-                
-            // });
-
-
+            // Save About Form
             $('#addAboutFormId').on('submit', function (e) {
                 e.preventDefault();
                 $.ajax({
@@ -210,6 +259,12 @@
                         }
                     }
                 });
+            });
+
+            // Edit About Form
+            $('#showEditAboutForm').on('click', function () {
+                var about_id=$(this).data('id')
+                $('#showEditAboutModal').modal('show')   
             });
         });
     </script>
