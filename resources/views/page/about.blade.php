@@ -7,7 +7,7 @@
 <section>
     <div class="position-relative">
         <img src="{{asset('upload/aboutsbanner/')}}/{{$about->banner}}" alt="" width="100%" height="400" style="object-fit: cover; filter: brightness(0.30);">
-        <span class="position-absolute top-50 start-50 translate-middle-x h1 text-light">No.1 Jobsite in Cambodia</span>
+        <span class="position-absolute top-50 start-50 translate-middle-x h1 text-light">{{__('about.n1jic')}}</span>
     </div>
 </section>
 

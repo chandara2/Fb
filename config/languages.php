@@ -1,8 +1,20 @@
 <?php
 
 return [
-    'ch' => 'Chinese',
-    'en' => 'English',
-    'kh' => 'Khmer',
-    'th' => 'Thai'
+    'ch' => [
+        'display' => 'Chinese',
+        'flag-icon' => 'cn'
+    ],
+    'en' => [
+        'display' => 'English',
+        'flag-icon' => 'us'
+    ],
+    'kh' => [
+        'display' => 'Khmer',
+        'flag-icon' => 'kh'
+    ],
+    'th' => [
+        'display' => 'Thai',
+        'flag-icon' => 'th'
+    ],
 ];
