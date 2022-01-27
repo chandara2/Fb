@@ -22,7 +22,7 @@ use Illuminate\Support\Facades\Route;
 Route::resource('/', AppController::class)->only('index');
 
 // Switch multi language
-Route::get('lang/{locale}', [LocalizationController::class, 'index']);
+Route::get('lang/{lang}', ['as' => 'lang.switch', 'uses' => 'App\Http\Controllers\LanguageController@switchLang']);
 
 // Guest Register & Login
 Route::get('showregister', [AuthController::class, 'showregister'])->name('showregister')->middleware('guest');

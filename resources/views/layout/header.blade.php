@@ -15,13 +15,27 @@
                 <input type="search" class="form-control" placeholder="Search..." aria-label="Search">
             </form>
 
+            <ul class="navbar-nav me-3">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        {{ Config::get('languages')[App::getLocale()] }}
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
+                    @foreach (Config::get('languages') as $lang => $language)
+                        @if ($lang != App::getLocale())
+                                <a class="dropdown-item" href="{{ route('lang.switch', $lang) }}"> {{$language}}</a>
+                        @endif
+                    @endforeach
+                    </div>
+                </li>
+            </ul>
+
         @auth
             <div class="dropdown text-end">
                 <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
                 <img src="{{ asset('asset/image/user.png') }}" alt="mdo" width="32" height="32" class="rounded-circle">
-                    {{-- <i class="bi bi-person-circle d-block mx-auto mb-1 text-center" style="font-size:32px;"></i> --}}
                 </a>
-                <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
+                <ul class="dropdown-menu dropdown-menu-end text-small" aria-labelledby="dropdownUser1">
                 <li><a class="dropdown-item text-capitalize fw-bold" href="#"><i class="bi bi-person"></i> {{ Auth::user()->username }}</a></li>
                 <li><a class="dropdown-item"
                     href="@if(Auth::user()->gid==1){{ route('admin.dashboard') }}
@@ -39,30 +53,6 @@
                 <a href="{{ route('showregister') }}" class="btn brand_btn3">Register</a>
             </div>
         @endguest
-
-
-            @php $locale = session()->get('locale'); @endphp
-            <li class="nav-item dropdown">
-                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
-                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                    @switch($locale)
-                        @case('en')
-                        <img src="{{asset('asset/image/united-kingdom.png')}}" width="25px"> English
-                        @break
-                        @case('th')
-                        <img src="{{asset('asset/image/thailand.png')}}" width="25px"> Thai
-                        @break
-                        @default
-                        <img src="{{asset('asset/image/united-kingdom.png')}}" width="25px"> Khmer
-                    @endswitch
-                    <span class="caret"></span>
-                </a>
-                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="lang/en"><img src="{{asset('asset/image/united-kingdom.png')}}" width="25px"> English</a>
-                    <a class="dropdown-item" href="lang/th"><img src="{{asset('asset/image/thailand.png')}}" width="25px"> Thai</a>
-                </div>
-            </li>
-
 
         </div>
     </div><!-- end container -->
