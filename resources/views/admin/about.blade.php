@@ -23,9 +23,9 @@
     
     <!-- Modal -->
     <div class="modal fade" id="showAboutForm" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-xl">
+        <div class="modal-dialog modal-lg">
             <div class="modal-content">
-                <div class="modal-header">
+                <div class="modal-header bg-info bg-opacity-50">
                 <h5 class="modal-title" id="exampleModalLabel">About us Information</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
@@ -36,59 +36,61 @@
                         <div class="form-group mb-md-3">
                             <label>About Us Banner</label>
                             <input name="banner" type="file" class="form-control" onchange="document.getElementById('output_banner').src = window.URL.createObjectURL(this.files[0])">
+                            <span class="text-danger error-text banner_error"></span>
                             <img id="output_banner" width="110px">
                         </div>
                 
                         <div class="form-group mb-md-3">
                             <label>Mission</label>
-                            <div class="form-floating">
-                                <textarea name="mission" class="textarea_autosize form-control" placeholder="Leave a comment here"></textarea>
-                                <label for="mission">Description</label>
-                            </div>
+                            <textarea name="mission" class="textarea_autosize form-control"></textarea>
+                            <span class="text-danger error-text mission_error"></span>
                         </div>
                 
                         <div class="form-group mb-md-3">
                             <label>Goal</label>
-                            <textarea name="goal" class="textarea_autosize form-control" placeholder="Leave a comment here"></textarea>
-                            <label for="goal">Description</label>
+                            <textarea name="goal" class="textarea_autosize form-control"></textarea>
+                            <span class="text-danger error-text goal_error"></span>
                         </div>
                 
                         <div class="form-group mb-md-3">
                             <label>Value</label>
-                            <div class="form-floating">
-                                <textarea name="value" class="textarea_autosize form-control" placeholder="Leave a comment here"></textarea>
-                                <label for="value">Description</label>
-                            </div>
+                            <textarea name="value" class="textarea_autosize form-control"></textarea>
+                            <span class="text-danger error-text value_error"></span>
                         </div>
                 
                         <div class="form-group mb-md-3">
                             <label>Email</label>
                             <input name="email" type="email" class="form-control">
+                            <span class="text-danger error-text email_error"></span>
                         </div>
                 
                         <div class="form-group mb-md-3">
                             <label>Phone</label>
                             <input name="phone" type="text" class="form-control">
+                            <span class="text-danger error-text phone_error"></span>
                         </div>
                 
                         <div class="form-group mb-md-3">
                             <label>Address</label>
                             <input name="address" type="text" class="form-control">
+                            <span class="text-danger error-text address_error"></span>
                         </div>
                 
                         <div class="form-group mb-md-3">
                             <label>Social Media</label>
                             <input name="social" type="text" class="form-control">
+                            <span class="text-danger error-text social_error"></span>
                         </div>
                 
                         <div class="form-group mb-md-3">
                             <label>Operating</label>
-                            <input name="operating" type="text" class="form-control">
+                            <input name="operating" type="text" class="form-control" placeholder="Day&time">
+                            <span class="text-danger error-text operating_error"></span>
                         </div>
                 
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-primary">Save</button>
+                            <button type="submit" class="btn btn-info">Save</button>
                         </div>
                     </form>
                 </div>
@@ -152,36 +154,62 @@
                 }
             });
 
-            $(document).on('submit','#addAboutFormId', function (e) {
+            // $(document).on('submit','#addAboutFormId', function (e) {
+            //     e.preventDefault();
+
+            //     let fd = new FormData($('#addAboutFormId')[0])
+
+            //     $.ajax({
+            //         type: "POST",
+            //         url: "{{ route('admin.about.store') }}",
+            //         data: fd,
+            //         contentType: false,
+            //         processData: false,
+            //         success: function (response) {
+            //             if(response.status==400){
+            //                 $('#save_errList').html("")
+            //                 $('#save_errList').removeClass("d-none")
+            //                 $.each(response.errMsg, function (key, err_value){
+            //                     $('#save_errList').append('<li>'+err_value+'</li>')
+            //                 })
+            //             }else if(response.status==200){
+            //                 $('#save_errList').html("")
+            //                 $('#save_errList').addClass("d-none")
+            //                 $('#addAboutFormId').find('input').val()
+            //                 $('#showAboutForm').modal('hide')
+
+            //                 document.location.href = "{{ route('admin.about.index') }}"
+            //             }
+            //         }
+            //     });
+                
+            // });
+
+
+            $('#addAboutFormId').on('submit', function (e) {
                 e.preventDefault();
-
-                let fd = new FormData($('#addAboutFormId')[0])
-
                 $.ajax({
-                    type: "POST",
-                    url: "{{ route('admin.about.store') }}",
-                    data: fd,
-                    contentType: false,
-                    processData: false,
-                    success: function (response) {
-                        if(response.status==400){
-                            $('#save_errList').html("")
-                            $('#save_errList').removeClass("d-none")
-                            $.each(response.errMsg, function (key, err_value){
-                                $('#save_errList').append('<li>'+err_value+'</li>')
+                    method:$(this).attr('method'),
+                    url:$(this).attr('action'),
+                    data:new FormData(this),
+                    dataType: "json",
+                    processData:false,
+                    contentType:false,
+                    beforeSend: function(){
+                        $(document).find('span.error-text').text('')
+                    },
+                    success: function (data) {
+                        if(data.status==0){
+                            $.each(data.error, function(prefix, val){
+                                $('span.'+prefix+'_error').text(val[0])
                             })
-                        }else if(response.status==200){
-                            $('#save_errList').html("")
-                            $('#save_errList').addClass("d-none")
-                            $('#addAboutFormId').find('input').val()
-                            $('#showAboutForm').modal('hide')
-                            
-                            // use refresh for this form only because it has only a record
+                        }else{
+                            $('#addAboutFormId')[0].reset();
+                            // this refresh use for About form only because it have only one record
                             document.location.href = "{{ route('admin.about.index') }}"
                         }
                     }
                 });
-                
             });
         });
     </script>
