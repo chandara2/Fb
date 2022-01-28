@@ -96,7 +96,7 @@ class AdminCompanyInfoController extends Controller
             'company_profile' => $request->company_profile
         ]);
 
-        return redirect(route('admin.job.create'));
+        return redirect()->route('admin.job.index');
     }
 
     /**

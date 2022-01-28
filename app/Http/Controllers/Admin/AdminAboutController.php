@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\About;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Validator;
 
 class AdminAboutController extends Controller
@@ -160,18 +161,10 @@ class AdminAboutController extends Controller
      */
     public function edit($id)
     {
-        $abouts = About::find($id);
-        if ($abouts) {
-            return response()->json([
-                'status' => 1,
-                'aboubsPass' => $abouts,
-            ]);
-        } else {
-            return response()->json([
-                'status' => 0,
-                'aboutsFail' => 'Abouts Info Not Found',
-            ]);
-        }
+        $abouts_id = About::find($id);
+        return view('admin.about_edit', [
+            'abouts_id' => $abouts_id,
+        ]);
     }
 
     /**
@@ -183,6 +176,51 @@ class AdminAboutController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $request->validate([
+            'mission' => 'required',
+            'goal' => 'required',
+            'value' => 'required',
+            'email' => 'required|email',
+            'phone' => 'required',
+            'address' => 'required',
+            'social' => 'required',
+            'operating' => 'required',
+        ], [
+            'mission.required' => 'Please input mission',
+            'goal.required' => 'Please input goal',
+            'value.required' => 'Please input value',
+            'email.required' => 'Please input email',
+            'phone.required' => 'Please input phone',
+            'address.required' => 'Please input address',
+            'social.required' => 'Please input social',
+            'operating.required' => 'Please input operating',
+        ]);
+
+        $abouts = About::find($id);
+        $abouts->mission = $request->mission;
+        $abouts->goal = $request->goal;
+        $abouts->value = $request->value;
+        $abouts->email = $request->email;
+        $abouts->phone = $request->phone;
+        $abouts->address = $request->address;
+        $abouts->social = $request->social;
+        $abouts->operating = $request->operating;
+
+        if ($request->hasFile('banner')) {
+            $path = 'upload/aboutsbanner/' . $abouts->banner;
+            if (File::exists($path)) {
+                File::delete($path);
+            }
+            $file = $request->file('banner');
+            $extension = $file->getClientOriginalExtension();
+            $filename = time() . '.' . $extension;
+            $file->move('upload/aboutsbanner/', $filename);
+            $abouts->banner = $filename;
+        }
+
+        $abouts->update();
+
+        return redirect(route('admin.about.index'));
     }
 
     /**

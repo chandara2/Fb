@@ -11,15 +11,6 @@
             <h1 class="text-center text-uppercase mb-5" style="text-decoration: underline 3px solid pink">Create new job announcement</h1>
 
             <div class="form-group row mb-md-3">
-                <label class="col-xl-3 col-md-2 col-form-label text-md-end pb-0">Status</label>
-                <div class="col-xl-6 col-md-8 mb-md-0 mb-sm-2">
-                    <input type="radio" name="approved" value="1" @if($jobid->approved == true)checked @endif>
-                    Approved
-                    <input type="radio" name="approved" value="0" @if($jobid->approved == false)checked @endif class="ms-3">
-                    Pending
-                </div>
-            </div>  
-            <div class="form-group row mb-md-3">
                 <label class="col-xl-3 col-md-2 col-form-label text-md-end pb-0">Job Title</label>
                 <div class="col-xl-6 col-md-8 mb-md-0 mb-sm-2">
                     <input type="text" name="title" value="{{ $jobid->title }}" autofocus class="form-control" placeholder="IT Programmer">

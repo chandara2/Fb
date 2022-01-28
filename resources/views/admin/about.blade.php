@@ -97,90 +97,12 @@
         </div>
     </div> <!-- end add modal -->
 
-    <!-- Modal Edit about info -->
-    <div class="modal fade" id="showEditAboutModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header bg-info bg-opacity-50">
-                <h5 class="modal-title" id="exampleModalLabel">Edit About us Information</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <form method="POST" enctype="multipart/form-data" action="" id="updateAboutFormId">
-                        @csrf
-                        <input type="text" name="abouts_id" id="abouts_id">
-                        <ul class="alert alert-warning d-none" id="update_errList"></ul>
-                        <div class="form-group mb-md-3">
-                            <label>About Us Banner</label>
-                            <input name="banner" type="file" class="form-control" onchange="document.getElementById('output_banner').src = window.URL.createObjectURL(this.files[0])">
-                            <span class="text-danger error-text banner_error"></span>
-                            <img id="output_banner" width="110px">
-                        </div>
-                
-                        <div class="form-group mb-md-3">
-                            <label>Mission</label>
-                            <textarea name="mission" name="edit_mission" class="textarea_autosize form-control"></textarea>
-                            <span class="text-danger error-text mission_error"></span>
-                        </div>
-                
-                        <div class="form-group mb-md-3">
-                            <label>Goal</label>
-                            <textarea name="goal" name="edit_goal" class="textarea_autosize form-control"></textarea>
-                            <span class="text-danger error-text goal_error"></span>
-                        </div>
-                
-                        <div class="form-group mb-md-3">
-                            <label>Value</label>
-                            <textarea name="value" name="edit_value" class="textarea_autosize form-control"></textarea>
-                            <span class="text-danger error-text value_error"></span>
-                        </div>
-                
-                        <div class="form-group mb-md-3">
-                            <label>Email</label>
-                            <input name="email" name="edit_email" type="email" class="form-control">
-                            <span class="text-danger error-text email_error"></span>
-                        </div>
-                
-                        <div class="form-group mb-md-3">
-                            <label>Phone</label>
-                            <input name="phone" name="edit_phone" type="text" class="form-control">
-                            <span class="text-danger error-text phone_error"></span>
-                        </div>
-                
-                        <div class="form-group mb-md-3">
-                            <label>Address</label>
-                            <input name="address" name="edit_address" type="text" class="form-control">
-                            <span class="text-danger error-text address_error"></span>
-                        </div>
-                
-                        <div class="form-group mb-md-3">
-                            <label>Social Media</label>
-                            <input name="social" name="edit_social" type="text" class="form-control">
-                            <span class="text-danger error-text social_error"></span>
-                        </div>
-                
-                        <div class="form-group mb-md-3">
-                            <label>Operating</label>
-                            <input name="operating" name="edit_operating" type="text" class="form-control" placeholder="Day&time">
-                            <span class="text-danger error-text operating_error"></span>
-                        </div>
-                
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-info">Update</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div> <!-- end edit modal -->
-
     <div class="container-fluid">
         <ul class="list-group list-group-flush mt-3 position-relative">
             @forelse ($abouts as $about)
     
             <li class="list-group-item text-center">
-                <img src="{{asset('upload/aboutsbanner/')}}/{{$about->banner}}" alt="banner" class="img-thumbnail">
+                <img src="{{asset('upload/aboutsbanner/')}}/{{$about->banner}}" alt="Banner" width="256" class="img-thumbnail" style="max-height: 128px; object-fit: cover;">
             </li>
             <li class="list-group-item">
                 <div class="text-danger h4">Mission</div>
@@ -212,7 +134,7 @@
             </li>
 
             <div class="position-absolute top-0 end-0">
-                <button value="{{ $about->id }}" id="showEditAboutForm" class="btn"><i class="bi bi-pencil-square text-muted pe-0" style="font-size:24px;"></i></button>
+                <a href="{{ route('admin.about.edit', $about->id) }}" class="btn"><i class="bi bi-pencil-square text-muted pe-0" style="font-size:24px;"></i></a>
             </div>
     
             @empty
@@ -261,33 +183,6 @@
                 });
             });
 
-            // Edit About Form
-            $('#showEditAboutForm').on('click', function (e) {
-                e.preventDefault()
-                var about_id=$(this).val()
-                alert(about_id) 
-                // $('#showEditAboutModal').modal('show')
-                // $.ajax({
-                //     type: "GET",
-                //     url: "admin/about/"+about_id+"/edit", 
-                //     success: function (response) {
-                //         if(response.status==0){
-                //             alert(response.aboutsFail)
-                //             $('#showEditAboutModal').modal('hide')
-                //         }else{
-                //             $('#edit_mission').val(response.aboubsPass.mission)
-                //             $('#edit_goal').val(response.aboubsPass.goal)
-                //             $('#edit_value').val(response.aboubsPass.value)
-                //             $('#edit_email').val(response.aboubsPass.email)
-                //             $('#edit_phone').val(response.aboubsPass.phone)
-                //             $('#edit_address').val(response.aboubsPass.address)
-                //             $('#edit_social').val(response.aboubsPass.social)
-                //             $('#edit_operating').val(response.aboubsPass.operating)
-                //             $('#abouts_id').val(abouts_id)
-                //         }
-                //     }
-                // });   
-            });
         });
     </script>
 @endsection
