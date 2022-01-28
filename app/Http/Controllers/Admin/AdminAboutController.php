@@ -160,7 +160,18 @@ class AdminAboutController extends Controller
      */
     public function edit($id)
     {
-        //
+        $abouts = About::find($id);
+        if ($abouts) {
+            return response()->json([
+                'status' => 1,
+                'aboubsPass' => $abouts,
+            ]);
+        } else {
+            return response()->json([
+                'status' => 0,
+                'aboutsFail' => 'Abouts Info Not Found',
+            ]);
+        }
     }
 
     /**
@@ -172,7 +183,6 @@ class AdminAboutController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
     }
 
     /**

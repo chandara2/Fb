@@ -32,7 +32,6 @@
                 <div class="modal-body">
                     <form method="POST" enctype="multipart/form-data" action="" id="addAboutFormId">
                         @csrf
-                        <ul class="alert alert-warning d-none" id="save_errList"></ul>
                         <div class="form-group mb-md-3">
                             <label>About Us Banner</label>
                             <input name="banner" type="file" class="form-control" onchange="document.getElementById('output_banner').src = window.URL.createObjectURL(this.files[0])">
@@ -96,7 +95,7 @@
                 </div>
             </div>
         </div>
-    </div> <!-- end modal -->
+    </div> <!-- end add modal -->
 
     <!-- Modal Edit about info -->
     <div class="modal fade" id="showEditAboutModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -107,9 +106,10 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form method="POST" enctype="multipart/form-data" action="" id="editAboutFormId">
+                    <form method="POST" enctype="multipart/form-data" action="" id="updateAboutFormId">
                         @csrf
-                        <ul class="alert alert-warning d-none" id="save_errList"></ul>
+                        <input type="text" name="abouts_id" id="abouts_id">
+                        <ul class="alert alert-warning d-none" id="update_errList"></ul>
                         <div class="form-group mb-md-3">
                             <label>About Us Banner</label>
                             <input name="banner" type="file" class="form-control" onchange="document.getElementById('output_banner').src = window.URL.createObjectURL(this.files[0])">
@@ -119,49 +119,49 @@
                 
                         <div class="form-group mb-md-3">
                             <label>Mission</label>
-                            <textarea name="mission" class="textarea_autosize form-control"></textarea>
+                            <textarea name="mission" name="edit_mission" class="textarea_autosize form-control"></textarea>
                             <span class="text-danger error-text mission_error"></span>
                         </div>
                 
                         <div class="form-group mb-md-3">
                             <label>Goal</label>
-                            <textarea name="goal" class="textarea_autosize form-control"></textarea>
+                            <textarea name="goal" name="edit_goal" class="textarea_autosize form-control"></textarea>
                             <span class="text-danger error-text goal_error"></span>
                         </div>
                 
                         <div class="form-group mb-md-3">
                             <label>Value</label>
-                            <textarea name="value" class="textarea_autosize form-control"></textarea>
+                            <textarea name="value" name="edit_value" class="textarea_autosize form-control"></textarea>
                             <span class="text-danger error-text value_error"></span>
                         </div>
                 
                         <div class="form-group mb-md-3">
                             <label>Email</label>
-                            <input name="email" type="email" class="form-control">
+                            <input name="email" name="edit_email" type="email" class="form-control">
                             <span class="text-danger error-text email_error"></span>
                         </div>
                 
                         <div class="form-group mb-md-3">
                             <label>Phone</label>
-                            <input name="phone" type="text" class="form-control">
+                            <input name="phone" name="edit_phone" type="text" class="form-control">
                             <span class="text-danger error-text phone_error"></span>
                         </div>
                 
                         <div class="form-group mb-md-3">
                             <label>Address</label>
-                            <input name="address" type="text" class="form-control">
+                            <input name="address" name="edit_address" type="text" class="form-control">
                             <span class="text-danger error-text address_error"></span>
                         </div>
                 
                         <div class="form-group mb-md-3">
                             <label>Social Media</label>
-                            <input name="social" type="text" class="form-control">
+                            <input name="social" name="edit_social" type="text" class="form-control">
                             <span class="text-danger error-text social_error"></span>
                         </div>
                 
                         <div class="form-group mb-md-3">
                             <label>Operating</label>
-                            <input name="operating" type="text" class="form-control" placeholder="Day&time">
+                            <input name="operating" name="edit_operating" type="text" class="form-control" placeholder="Day&time">
                             <span class="text-danger error-text operating_error"></span>
                         </div>
                 
@@ -173,7 +173,7 @@
                 </div>
             </div>
         </div>
-    </div> <!-- end modal -->
+    </div> <!-- end edit modal -->
 
     <div class="container-fluid">
         <ul class="list-group list-group-flush mt-3 position-relative">
@@ -212,7 +212,7 @@
             </li>
 
             <div class="position-absolute top-0 end-0">
-                <a href="#" data-id={{$about->id}} id="showEditAboutForm"><i class="bi bi-pencil-square btn text-muted pe-0" style="font-size:24px;"></i></a>
+                <button value="{{ $about->id }}" id="showEditAboutForm" class="btn"><i class="bi bi-pencil-square text-muted pe-0" style="font-size:24px;"></i></button>
             </div>
     
             @empty
@@ -262,9 +262,31 @@
             });
 
             // Edit About Form
-            $('#showEditAboutForm').on('click', function () {
-                var about_id=$(this).data('id')
-                $('#showEditAboutModal').modal('show')   
+            $('#showEditAboutForm').on('click', function (e) {
+                e.preventDefault()
+                var about_id=$(this).val()
+                alert(about_id) 
+                // $('#showEditAboutModal').modal('show')
+                // $.ajax({
+                //     type: "GET",
+                //     url: "admin/about/"+about_id+"/edit", 
+                //     success: function (response) {
+                //         if(response.status==0){
+                //             alert(response.aboutsFail)
+                //             $('#showEditAboutModal').modal('hide')
+                //         }else{
+                //             $('#edit_mission').val(response.aboubsPass.mission)
+                //             $('#edit_goal').val(response.aboubsPass.goal)
+                //             $('#edit_value').val(response.aboubsPass.value)
+                //             $('#edit_email').val(response.aboubsPass.email)
+                //             $('#edit_phone').val(response.aboubsPass.phone)
+                //             $('#edit_address').val(response.aboubsPass.address)
+                //             $('#edit_social').val(response.aboubsPass.social)
+                //             $('#edit_operating').val(response.aboubsPass.operating)
+                //             $('#abouts_id').val(abouts_id)
+                //         }
+                //     }
+                // });   
             });
         });
     </script>
