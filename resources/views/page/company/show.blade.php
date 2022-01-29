@@ -119,15 +119,15 @@
                     </table>
                 @else
                     <ul class="list-group list-group-flush">
-                        @foreach ($jobs as $item)
+                        @foreach ($jobs as $job)
                             <li class="list-group-item">
                                 <div class="row">
                                     <div class="col-md-5">
-                                        <p><a href="/job/{{$item->aid}}" class="text-dark text-decoration-none">{{$item->job_title}} </a><span class="badge bg-danger rounded-pill">Urgent</span></p>
-                                        <cite style="font-size: 13px;">{{$item->term}} | {{$item->location}} <span class="text-danger">{{$item->salary}}</span></cite>
+                                        <p><a href="/job/{{$job->job_id}}" class="text-dark text-decoration-none">{{$job->title}} </a><span class="badge bg-danger rounded-pill">Urgent</span></p>
+                                        <cite style="font-size: 13px;">{{$job->term}} | {{$job->location}} <span class="text-danger">{{$job->salary}}</span></cite>
                                     </div>
                                     <div class="col-md-2">
-                                        <p>{{$item->deadline}}</p>
+                                        <p>{{$job->expired_job}}</p>
                                         <p class="btn btn-outline-primary btn-sm py-0" style="font-size: 12px;">Apply Now</p>
                                     </div>
                                 </div>

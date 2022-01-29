@@ -58,7 +58,7 @@ class CompanyController extends Controller
         $jobs = DB::table('users')
             ->join('jobs', 'users.id', '=', 'jobs.uid')
             ->join('company_infos', 'users.id', '=', 'company_infos.uid')
-            ->select('jobs.*', 'company_infos.*', 'jobs.id as jobid')
+            ->select('jobs.*', 'company_infos.*', 'jobs.id as job_id')
             ->where('company_infos.id', $id)
             ->get();
 

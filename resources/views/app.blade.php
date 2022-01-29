@@ -40,19 +40,19 @@
 
                     <div class="mb-4">
                         <ul class="nav nav-tabs d-flex justify-content-between mt-4">
-                            <li class="nav-item">{{__('lang_app.browseJobs')}}</li>
+                            <li class="nav-item">{{__('text.Browse_Jobs')}}</li>
                             <li></li>
                             <li class="nav-item">
-                                <a href="#function" class="nav-link active px-2 py-1" role="tab" data-bs-toggle="tab">{{__('lang_app.function')}}</a>
+                                <a href="#function" class="nav-link active px-2 py-1" role="tab" data-bs-toggle="tab">{{__('text.Function')}}</a>
                             </li>
                             <li class="nav-item">
-                                <a href="#industry" class="nav-link px-2 py-1" role="tab" data-bs-toggle="tab">{{__('lang_app.industry')}}</a>
+                                <a href="#industry" class="nav-link px-2 py-1" role="tab" data-bs-toggle="tab">{{__('text.Industry')}}</a>
                             </li>
                             <li class="nav-item">
-                                <a href="#location" class="nav-link px-2 py-1" role="tab" data-bs-toggle="tab">{{__('lang_app.location')}}</a>
+                                <a href="#location" class="nav-link px-2 py-1" role="tab" data-bs-toggle="tab">{{__('text.Location')}}</a>
                             </li>
                             <li class="nav-item">
-                                <a href="#salary" class="nav-link px-2 py-1" role="tab" data-bs-toggle="tab">{{__('lang_app.salary')}}</a>
+                                <a href="#salary" class="nav-link px-2 py-1" role="tab" data-bs-toggle="tab">{{__('text.Salary')}}</a>
                             </li>
                         </ul>
         
