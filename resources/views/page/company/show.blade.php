@@ -32,16 +32,17 @@
                     </div>
                     <div class="row my-5">
                         <div class="col-md-12">
-                            <div class="h5">Company Profile</div>
-                            <textarea disabled class="ta_autosize form-control border-0 bg-white">{{$company->company_profile}}</textarea>
+                            <h5 style="text-decoration: underline 3px solid pink">Company Profile</h5>
+                            <textarea disabled class="textarea_autosize form-control border-0 bg-light">{{$company->company_profile}}</textarea>
                             <br>
-                            <div class="h5">Location</div>
+                            <h5 style="text-decoration: underline 3px solid pink">Location</h5>
                             <p>{{$company->detail_location}}</p>
                             <br>
-                            <div class="h5">Contact Information</div>
-                            <img src="{{asset('pics/user2.png')}}" alt="" width="65" class="mb-2">
-                            <div><i class="fas fa-mobile-alt"></i>&nbsp;{{$company->contact_phone}}</div>
-                            <div><i class="fas fa-envelope"></i>&nbsp;{{$company->contact_email}}</div>
+                            <h5 style="text-decoration: underline 3px solid pink">Contact Information</h5>
+                            {{-- <img src="{{asset('asset/image/login.png')}}" alt="" width="65"> --}}
+                            <i class="bi bi-person-circle text-info" style="font-size: 65px;"></i>
+                            <div><i class="bi bi-phone-vibrate"></i>&nbsp;{{$company->contact_phone}}</div>
+                            <div><i class="bi bi-envelope"></i>&nbsp;{{$company->contact_email}}</div>
                         </div>
                     </div>
                     <div class="position-absolute top-0 end-0">
@@ -65,7 +66,7 @@
             @else
                 {{-- <div class="bg-primary" style="height: 3px">.</div> --}}
                 <h3 class="my-5">Job Posting List</h3>
-                @if (auth()->user()!=null)
+                @if (auth()->user()!=null && auth()->user()->gid==2)
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="#">Agency Profile</a></li>
@@ -85,13 +86,13 @@
                         <tbody>
                             @foreach ($jobs as $item)
                             <tr>
-                                <td>{{$item->job_title}}</td>
+                                <td>{{$item->title}}</td>
                                 <td>{{$item->salary}}</td>
                                 <td>
-                                    @if ($item->deadline<now())
-                                    <span class="text-danger">{{$item->deadline}}</span>
+                                    @if ($item->expired_job<now())
+                                    <span class="text-danger">{{$item->expired_job}}</span>
                                     @else
-                                    {{$item->deadline}}
+                                    {{$item->expired_job}}
                                     @endif
                                 </td>
                                 <td>

@@ -56,14 +56,14 @@
                             <td>{{$jobcompany->location}}</td>
                         </tr>
                     </table>
-                    <h5>Job Description & Requirements</h5>
-                    <textarea disabled class="textarea_autosize form-control border-0 bg-white">{{$jobcompany->detail}}</textarea>
-                    <h5>Company Profile</h5>
-                    <textarea disabled class="textarea_autosize form-control border-0 bg-white">{{$jobcompany->company_profile}}</textarea>
+                    <h5 class="mt-4" style="text-decoration: underline 3px solid pink">Job Description & Requirements</h5>
+                    <textarea disabled class="textarea_autosize form-control border-0 bg-light">{{$jobcompany->detail}}</textarea>
+                    <h5 class="mt-4" style="text-decoration: underline 3px solid pink">Company Profile</h5>
+                    <textarea disabled class="textarea_autosize form-control border-0 bg-light">{{$jobcompany->company_profile}}</textarea>
                     <h5>Contact Information</h5>
                     <img src="{{asset('pics/user2.png')}}" alt="" width="65" class="mb-2">
-                    <div><i class="fas fa-mobile-alt"></i>&nbsp;{{$jobcompany->contact_phone}}</div>
-                    <div><i class="fas fa-envelope"></i>&nbsp;{{$jobcompany->contact_email}}</div>
+                    <div><i class="bi bi-phone-vibrate"></i>&nbsp;{{$jobcompany->contact_phone}}</div>
+                    <div><i class="bi bi-envelope"></i>&nbsp;{{$jobcompany->contact_email}}</div>
                     <h5>Similar Jobs</h5>
                 </div>
                 <div class="col-md-4">
@@ -82,19 +82,9 @@
                             <li class="list-group-item active" aria-current="true">Hot Jobs</li>
                             @foreach ($hotjobs as $hotjob)
                                 <li class="list-group-item ps-0 py-0">
-                                    <span class="position-relative"><a href="
-                                        @if(auth()->user()!=null)
-                                        /agency/jobs/{{$hotjob->id}}
-                                        @else
-                                        /job/{{$hotjob->id}}
-                                        @endif
-                                        " class="text-dark ps-3 text-decoration-none">{{Str::limit($hotjob->title , 30)}}</a></span>
+                                    <span class="position-relative"><a href="/job/{{$hotjob->id}}" class="text-dark ps-3 text-decoration-none">{{Str::limit($hotjob->title , 30)}}</a></span>
                                     <span class="position-absolute end-0 pe-2 text-danger">{{$hotjob->salary}}</span>
-
-                                    @if (auth()->user()!=null)
-                                    @else
                                     <span class="d-block"><a href="/company/{{$hotjob->com_id}}" class="text-muted ps-3 text-decoration-none" style="font-size: 12px;">{{$hotjob->company}}</a></span>
-                                    @endif
                                 </li>
                             @endforeach
                         </ul>
