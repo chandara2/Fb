@@ -1,6 +1,12 @@
 @extends('layout.layout_app')
 @section('title', 'ABOUT US')
-
+@section('style')
+    <style>
+        .class_aboutus{
+            color: blue;
+        }
+    </style>
+@endsection
 @section('content')
 
 @forelse ( $abouts as $about )

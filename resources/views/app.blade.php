@@ -21,6 +21,9 @@
             white-space: nowrap;
             text-overflow: ellipsis;
         }
+        .class_homepage{
+            color: blue;
+        }
     </style>
 @endsection
 

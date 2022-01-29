@@ -35,8 +35,8 @@
                             <p>{{$company->detail_location}}</p>
                             <br>
                             <h5 style="text-decoration: underline 3px solid pink">Contact Information</h5>
-                            {{-- <img src="{{asset('asset/image/login.png')}}" alt="" width="65"> --}}
-                            <i class="bi bi-person-circle text-info" style="font-size: 65px;"></i>
+                            <img src="{{asset('asset/image/user2.png')}}" alt="Contact Info" width="65">
+                            {{-- <i class="bi bi-person-circle text-info" style="font-size: 65px;"></i> --}}
                             <div><i class="bi bi-phone-vibrate"></i>&nbsp;{{$company->contact_phone}}</div>
                             <div><i class="bi bi-envelope"></i>&nbsp;{{$company->contact_email}}</div>
                         </div>
