@@ -12,6 +12,7 @@ use App\Http\Controllers\AppController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\LocalizationController;
 use App\Http\Controllers\Page\AboutController;
+use App\Http\Controllers\Page\CompanyController;
 use App\Http\Controllers\Page\JobController;
 use App\Http\Controllers\User\UserdbController;
 use Illuminate\Support\Facades\Route;
@@ -24,6 +25,9 @@ Route::resource('job', JobController::class);
 
 // About page
 Route::resource('about', AboutController::class);
+
+// Company page
+Route::resource('company', CompanyController::class);
 
 // Guest Register & Login
 Route::get('showregister', [AuthController::class, 'showregister'])->name('showregister')->middleware('guest');

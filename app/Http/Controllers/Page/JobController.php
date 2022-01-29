@@ -16,7 +16,7 @@ class JobController extends Controller
      */
     public function index()
     {
-        return view('page.job');
+        return view('page.job.index');
     }
 
     /**
@@ -55,14 +55,14 @@ class JobController extends Controller
             ->where('jobs.id', $id)
             ->get();
         $hotjobs = DB::table('users')
-            ->join('jobs', 'users.id', '=', 'jobs.user_id')
+            ->join('jobs', 'users.id', '=', 'jobs.uid')
             ->join('company_infos', 'users.id', '=', 'company_infos.uid')
             ->select('jobs.id', 'jobs.created_at', 'jobs.title', 'jobs.salary', 'company_infos.company', 'company_infos.id as com_id')
             ->latest()
             ->take(10)
             ->get();
 
-        return view('page.job_single_show', [
+        return view('page.job.show', [
             'jobcompanys' => $jobcompanys,
             'hotjobs' => $hotjobs,
         ]);

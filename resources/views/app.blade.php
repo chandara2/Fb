@@ -95,12 +95,8 @@
                         <li class="list-group-item active bg-info border-info" aria-current="true">JOB AUGENT</li>
                         @foreach ($jobcompanys as $jobcompany)
                             <li class="list-group-item limit_str_jobcompany ps-0 py-1">
-                                <span class="position-relative"><a href="
-                                    job/{{$jobcompany->jobid}}
-                                    " class="text-dark btn py-0 pe-0">{{$jobcompany->title}}</a></span> -
-                                <span><a href="
-                                    {{-- agency/{{$jobcompany->companyid}} --}}
-                                    " class="text-danger btn py-0 ps-0">{{$jobcompany->company}}</a></span>
+                                <span class="position-relative"><a href="job/{{ $jobcompany->jobid }}" class="text-dark ps-3 text-decoration-none">{{$jobcompany->title}}</a></span> -
+                                <span><a href="company/{{$jobcompany->com_id}}" class="text-danger ps-0 text-decoration-none">{{$jobcompany->company}}</a></span>
                             </li>
                         @endforeach
                     </ul>
