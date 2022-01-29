@@ -77,8 +77,6 @@
                         @if (auth()->user()!=null)
                             <a href="" class="btn btn-outline-primary">Employer Homepage</a>
                         @endif
-                        @endforeach
-                        {{-- end foreach jobcompanys --}}
 
                         <ul class="list-group mt-3">
                             <li class="list-group-item active" aria-current="true">Hot Jobs</li>
@@ -90,21 +88,23 @@
                                         @else
                                         /job/{{$hotjob->id}}
                                         @endif
-                                        " class="text-dark btn py-0">{{Str::limit($hotjob->title , 30)}}</a></span>
+                                        " class="text-dark ps-3 text-decoration-none">{{Str::limit($hotjob->title , 30)}}</a></span>
                                     <span class="position-absolute end-0 pe-2 text-danger">{{$hotjob->salary}}</span>
 
                                     @if (auth()->user()!=null)
                                     @else
-                                    <span class="d-block"><a href="/company/{{$hotjob->com_id}}" class="text-muted btn py-0" style="font-size: 12px;">{{$hotjob->company}}</a></span>
+                                    <span class="d-block"><a href="/company/{{$hotjob->com_id}}" class="text-muted ps-3 text-decoration-none" style="font-size: 12px;">{{$hotjob->company}}</a></span>
                                     @endif
                                 </li>
                             @endforeach
                         </ul>
+
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    @endforeach
 </div>
 
 @endsection
