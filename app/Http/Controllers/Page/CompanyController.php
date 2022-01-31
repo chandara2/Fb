@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Page;
 
+use App\Http\Controllers\Controller;
 use App\Models\CompanyInfo;
-use App\Models\Job;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-class AppController extends Controller
+class CompanyController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,27 +16,7 @@ class AppController extends Controller
      */
     public function index()
     {
-        $job_functions = Job::all()->countBy('function');
-        $job_industries = Job::all()->countBy('industry');
-        $job_locations = Job::all()->countBy('location');
-        $job_salaries = Job::all()->countBy('salary');
-        $jobcompanys = DB::table('users')
-            ->join('jobs', 'users.id', '=', 'jobs.uid')
-            ->join('company_infos', 'users.id', '=', 'company_infos.uid')
-            ->select('jobs.created_at', 'jobs.title', 'jobs.id as jobid', 'company_infos.company', 'company_infos.id as com_id')
-            ->where('approved', true)
-            ->latest()
-            ->take(12)
-            ->get();
-        $companylogos = CompanyInfo::select('company_infos.logo')->get();
-        return view('app', [
-            'job_functions' => $job_functions,
-            'job_industries' => $job_industries,
-            'job_locations' => $job_locations,
-            'job_salaries' => $job_salaries,
-            'jobcompanys' => $jobcompanys,
-            'companylogos' => $companylogos,
-        ]);
+        //
     }
 
     /**
@@ -68,7 +48,24 @@ class AppController extends Controller
      */
     public function show($id)
     {
-        //
+        $companys = DB::table('users')
+            ->join('jobs', 'users.id', '=', 'jobs.uid')
+            ->join('company_infos', 'users.id', '=', 'company_infos.uid')
+            ->select('jobs.*', 'company_infos.*')
+            ->where('company_infos.id', $id)
+            ->take(1)
+            ->get();
+        $jobs = DB::table('users')
+            ->join('jobs', 'users.id', '=', 'jobs.uid')
+            ->join('company_infos', 'users.id', '=', 'company_infos.uid')
+            ->select('jobs.*', 'company_infos.*', 'jobs.id as job_id')
+            ->where('company_infos.id', $id)
+            ->get();
+
+        return view('page.company.show', [
+            'companys' => $companys,
+            'jobs' => $jobs,
+        ]);
     }
 
     /**

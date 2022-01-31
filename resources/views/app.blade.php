@@ -21,6 +21,9 @@
             white-space: nowrap;
             text-overflow: ellipsis;
         }
+        .class_homepage{
+            color: blue;
+        }
     </style>
 @endsection
 
@@ -40,19 +43,19 @@
 
                     <div class="mb-4">
                         <ul class="nav nav-tabs d-flex justify-content-between mt-4">
-                            <li class="nav-item">{{__('lang_app.browseJobs')}}</li>
+                            <li class="nav-item">{{__('text.Browse_Jobs')}}</li>
                             <li></li>
                             <li class="nav-item">
-                                <a href="#function" class="nav-link active px-2 py-1" role="tab" data-bs-toggle="tab">{{__('lang_app.function')}}</a>
+                                <a href="#function" class="nav-link active px-2 py-1" role="tab" data-bs-toggle="tab">{{__('text.Function')}}</a>
                             </li>
                             <li class="nav-item">
-                                <a href="#industry" class="nav-link px-2 py-1" role="tab" data-bs-toggle="tab">{{__('lang_app.industry')}}</a>
+                                <a href="#industry" class="nav-link px-2 py-1" role="tab" data-bs-toggle="tab">{{__('text.Industry')}}</a>
                             </li>
                             <li class="nav-item">
-                                <a href="#location" class="nav-link px-2 py-1" role="tab" data-bs-toggle="tab">{{__('lang_app.location')}}</a>
+                                <a href="#location" class="nav-link px-2 py-1" role="tab" data-bs-toggle="tab">{{__('text.Location')}}</a>
                             </li>
                             <li class="nav-item">
-                                <a href="#salary" class="nav-link px-2 py-1" role="tab" data-bs-toggle="tab">{{__('lang_app.salary')}}</a>
+                                <a href="#salary" class="nav-link px-2 py-1" role="tab" data-bs-toggle="tab">{{__('text.Salary')}}</a>
                             </li>
                         </ul>
         
@@ -60,28 +63,28 @@
                             <div role="tabpanel" class="tab-pane active" id="function">
                                 <ul class="list-unstyled ul_browsejobs p-lg-2 p-sm-2">
                                     @foreach ($job_functions as $job_function=>$counter)
-                                        <li>{{Str::limit($job_function, 25)}} ({{$counter}})</li>
+                                        <li><a href="#" class="text-decoration-none text-black">{{Str::limit($job_function, 25)}} ({{$counter}})</a></li>
                                     @endforeach
                                 </ul>
                             </div>
                             <div role="tabpanel" class="tab-pane" id="industry">
                                 <ul class="list-unstyled ul_browsejobs p-lg-2 p-sm-2">
                                     @foreach ($job_industries as $job_industry => $counter)
-                                        <li>{{Str::limit($job_industry, 25)}} ({{$counter}})</li>
+                                        <li><a href="#" class="text-decoration-none text-black">{{Str::limit($job_industry, 25)}} ({{$counter}})</a></li>
                                     @endforeach
                                 </ul>
                             </div>
                             <div role="tabpanel" class="tab-pane" id="location">
                                 <ul class="list-unstyled ul_browsejobs p-lg-2 p-sm-2">
                                     @foreach ($job_locations as $job_location => $counter)
-                                        <li>{{Str::limit($job_location, 25)}} ({{$counter}})</li>
+                                        <li><a href="#" class="text-decoration-none text-black">{{Str::limit($job_location, 25)}} ({{$counter}})</a></li>
                                     @endforeach
                                 </ul>
                             </div>
                             <div role="tabpanel" class="tab-pane" id="salary">
                                 <ul class="list-unstyled ul_browsejobs p-lg-2 p-sm-2">
                                     @foreach ($job_salaries as $job_salary => $counter)
-                                        <li>{{Str::limit($job_salary, 25)}} ({{$counter}})</li>
+                                        <li><a href="#" class="text-decoration-none text-black">{{Str::limit($job_salary, 25)}} ({{$counter}})</a></li>
                                     @endforeach
                                 </ul>
                             </div>
@@ -95,12 +98,8 @@
                         <li class="list-group-item active bg-info border-info" aria-current="true">JOB AUGENT</li>
                         @foreach ($jobcompanys as $jobcompany)
                             <li class="list-group-item limit_str_jobcompany ps-0 py-1">
-                                <span class="position-relative"><a href="
-                                    {{-- job/{{$jobcompany->jobid}} --}}
-                                    " class="text-dark btn py-0 pe-0">{{$jobcompany->title}}</a></span> -
-                                <span><a href="
-                                    {{-- agency/{{$jobcompany->companyid}} --}}
-                                    " class="text-danger btn py-0 ps-0">{{$jobcompany->company}}</a></span>
+                                <span class="position-relative"><a href="job/{{ $jobcompany->jobid }}" class="text-dark ps-3 text-decoration-none">{{$jobcompany->title}}</a></span> -
+                                <span><a href="company/{{$jobcompany->com_id}}" class="text-danger ps-0 text-decoration-none">{{$jobcompany->company}}</a></span>
                             </li>
                         @endforeach
                     </ul>

@@ -2,7 +2,7 @@
 @section('title', 'AGENCY DB')
 
 @section('content')
-    <div class="container-fluid">
+    <div class="container">
         <nav aria-label="breadcrumb" style="--bs-breadcrumb-divider: '|';" class="mt-3">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item active">Agency</li>

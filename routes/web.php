@@ -12,17 +12,22 @@ use App\Http\Controllers\AppController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\LocalizationController;
 use App\Http\Controllers\Page\AboutController;
+use App\Http\Controllers\Page\CompanyController;
+use App\Http\Controllers\Page\JobController;
 use App\Http\Controllers\User\UserdbController;
 use Illuminate\Support\Facades\Route;
 
-// Route::get('/', function () {
-//     return view('app');
-// });
-
+// Website home page
 Route::resource('/', AppController::class)->only('index');
 
-// Switch multi language
-Route::get('lang/{lang}', ['as' => 'lang.switch', 'uses' => 'App\Http\Controllers\LanguageController@switchLang']);
+// Job page
+Route::resource('job', JobController::class);
+
+// About page
+Route::resource('about', AboutController::class);
+
+// Company page
+Route::resource('company', CompanyController::class);
 
 // Guest Register & Login
 Route::get('showregister', [AuthController::class, 'showregister'])->name('showregister')->middleware('guest');
@@ -31,25 +36,10 @@ Route::get('showlogin', [AuthController::class, 'showlogin'])->name('showlogin')
 Route::post('login', [AuthController::class, 'login'])->name('login');
 Route::put('changepassword', [AuthController::class, 'changepassword'])->name('changepassword')->middleware('auth');
 
-// About Page
-Route::resource('about', AboutController::class);
-
 // Auth Logout
 Route::get('logout', [AuthController::class, 'logout'])->name('logout')->middleware('auth');
 
-// User
-Route::prefix('user')->name('user.')->group(function () {
-    Route::get('/dashboard', [UserdbController::class, 'dashboard'])->name('dashboard')->middleware('auth');
-});
-
-// Agency
-Route::prefix('agency')->name('agency.')->middleware('isagency')->group(function () {
-    Route::get('/dashboard', [AgencydbController::class, 'dashboard'])->name('dashboard');
-    Route::resource('/companyinfo', AgencyCompanyInfoController::class);
-    Route::resource('/job', AgencyJobController::class);
-});
-
-// Admin
+// Admin Dashboard
 Route::prefix('admin')->name('admin.')->middleware('isadmin')->group(function () {
     Route::get('/dashboard', [AdmindbController::class, 'dashboard'])->name('dashboard');
     Route::resource('/job', AdminJobController::class);
@@ -58,3 +48,18 @@ Route::prefix('admin')->name('admin.')->middleware('isadmin')->group(function ()
     Route::resource('/about', AdminAboutController::class);
     Route::get('/changejobstatus', [AdminJobController::class, 'changejobstatus'])->name('changejobstatus');
 });
+
+// Agency Dashboard
+Route::prefix('agency')->name('agency.')->middleware('isagency')->group(function () {
+    Route::get('/dashboard', [AgencydbController::class, 'dashboard'])->name('dashboard');
+    Route::resource('/companyinfo', AgencyCompanyInfoController::class);
+    Route::resource('/job', AgencyJobController::class);
+});
+
+// User Dashboard
+Route::prefix('user')->name('user.')->group(function () {
+    Route::get('/dashboard', [UserdbController::class, 'dashboard'])->name('dashboard')->middleware('auth');
+});
+
+// Switch multi language
+Route::get('lang/{lang}', ['as' => 'lang.switch', 'uses' => 'App\Http\Controllers\LanguageController@switchLang']);
