@@ -1,6 +1,17 @@
 @extends('layout.layout_app')
 @section('title', 'SINGLE JOB')
-
+@section('style')
+    <style>
+        .company_hover{
+            text-decoration: none;
+            color: black;
+        }
+        .company_hover:hover{
+            text-decoration: underline;
+            color: darkblue;
+        }
+    </style>
+@endsection
 @section('content')
 
 
@@ -69,17 +80,18 @@
                 <div class="col-md-4">
                     <div>
                         <img src="{{asset('upload/companylogo/')}}/{{$jobcompany->logo}}" alt="AgencyLogo" height="100">
-                        <h5 class="my-3">{{$jobcompany->company}}</h5>
-                        <p><i class="fas fa-map-marker-alt"></i> {{$jobcompany->province}}</p>
-                        <p><i class="fas fa-map-marker-alt"></i> {{$jobcompany->detail_location}}</p>
-                        <p><i class="far fa-user"></i> {{$jobcompany->number_staff}}</p>
-                        <p><i class="fas fa-globe-asia"></i> <a target="_blank" href="{{$jobcompany->website}}">{{$jobcompany->website}}</a></p>
+                        <p class="mb-4 mt-3"><a href="/company/{{$jobcompany->ciid}}" class="company_hover">{{$jobcompany->company}}</a></p>
+                        <p><i class="bi bi-diagram-2-fill"></i> {{$jobcompany->industry}}</p>
+                        <p><i class="bi bi-geo-alt-fill"></i> {{$jobcompany->province}}</p>
+                        <p><i class="bi bi-geo-alt-fill"></i> {{$jobcompany->detail_location}}</p>
+                        <p><i class="bi bi-people"></i> {{$jobcompany->number_staff}}</p>
+                        <p><i class="bi bi-globe"></i> <a target="_blank" href="{{$jobcompany->website}}">{{$jobcompany->website}}</a></p>
                         @if (auth()->user()!=null)
-                            <a href="" class="btn btn-outline-primary">Employer Homepage</a>
+                            <a href="/company/{{$jobcompany->ciid}}" class="btn btn-outline-primary">Employer Homepage</a>
                         @endif
 
                         <ul class="list-group mt-3">
-                            <li class="list-group-item active" aria-current="true">Hot Jobs</li>
+                            <li class="list-group-item active bg-danger border-danger" aria-current="true">Hot Jobs</li>
                             @foreach ($hotjobs as $hotjob)
                                 <li class="list-group-item ps-0 py-0">
                                     <span class="position-relative"><a href="/job/{{$hotjob->id}}" class="text-dark ps-3 text-decoration-none">{{Str::limit($hotjob->title , 30)}}</a></span>

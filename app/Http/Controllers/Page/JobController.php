@@ -51,7 +51,7 @@ class JobController extends Controller
         $jobcompanys = DB::table('users')
             ->join('jobs', 'users.id', '=', 'jobs.uid')
             ->join('company_infos', 'users.id', '=', 'company_infos.uid')
-            ->select('jobs.*', 'company_infos.*')
+            ->select('jobs.*', 'company_infos.*', 'company_infos.id as ciid')
             ->where('jobs.id', $id)
             ->get();
         $hotjobs = DB::table('users')
