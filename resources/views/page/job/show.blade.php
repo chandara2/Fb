@@ -20,40 +20,40 @@
                 <div class="col-md-8">
                     <table class="table border">
                         <tr>
-                            <th class="table-light">Level</th>
-                            <td>LV NO {{$jobcompany->year_of_exp}}</td>
-                            <th class="table-light">Term</th>
+                            <th class="table-primary">Title</th>
+                            <td>Title {{$jobcompany->title}}</td>
+                            <th class="table-primary">Term</th>
                             <td>{{$jobcompany->term}}</td>
                         </tr>
                         <tr>
-                            <th class="table-light">Year of Exp.</th>
-                            <td>{{$jobcompany->year_of_exp}}</td>
-                            <th class="table-light">Function</th>
-                            <td>{{$jobcompany->function}}</td>
+                            <th class="table-primary">Salary</th>
+                            <td>{{$jobcompany->salary}}</td>
+                            <th class="table-primary">Sex</th>
+                            <td>{{$jobcompany->sex}}</td>
                         </tr>
                         <tr>
-                            <th class="table-light">Hiring</th>
+                            <th class="table-primary">Location</th>
+                            <td>{{$jobcompany->location}}</td>
+                            <th class="table-primary">Age</th>
+                            <td>{{$jobcompany->age}}</td>
+                        </tr>
+                        <tr>
+                            <th class="table-primary">Language</th>
+                            <td>{{$jobcompany->language}}</td>
+                            <th class="table-primary">Hiring</th>
                             <td>{{$jobcompany->hiring}}</td>
-                            <th class="table-light">Industry</th>
+                        </tr>
+                        <tr>
+                            <th class="table-primary">Function </th>
+                            <td>{{$jobcompany->function }}</td>
+                            <th class="table-primary">Industry</th>
                             <td>{{$jobcompany->industry}}</td>
                         </tr>
                         <tr>
-                            <th class="table-light">Salary</th>
-                            <td>{{$jobcompany->salary}}</td>
-                            <th class="table-light">Qualification</th>
+                            <th class="table-primary">Qualification</th>
                             <td>{{$jobcompany->qualification}}</td>
-                        </tr>
-                        <tr>
-                            <th class="table-light">Sex</th>
-                            <td>{{$jobcompany->sex}}</td>
-                            <th class="table-light">Language</th>
-                            <td>{{$jobcompany->language}}</td>
-                        </tr>
-                        <tr>
-                            <th class="table-light">Age</th>
-                            <td>{{$jobcompany->age}}</td>
-                            <th class="table-light">Location</th>
-                            <td>{{$jobcompany->location}}</td>
+                            <th class="table-primary">Year of experience</th>
+                            <td>{{$jobcompany->year_of_exp}}</td>
                         </tr>
                     </table>
                     <h5 class="mt-4" style="text-decoration: underline 3px solid pink">Job Description & Requirements</h5>
@@ -73,7 +73,7 @@
                         <p><i class="fas fa-map-marker-alt"></i> {{$jobcompany->province}}</p>
                         <p><i class="fas fa-map-marker-alt"></i> {{$jobcompany->detail_location}}</p>
                         <p><i class="far fa-user"></i> {{$jobcompany->number_staff}}</p>
-                        <p><i class="fas fa-globe-asia"></i> <a href="{{$jobcompany->website}}">{{$jobcompany->website}}</a></p>
+                        <p><i class="fas fa-globe-asia"></i> <a target="_blank" href="{{$jobcompany->website}}">{{$jobcompany->website}}</a></p>
                         @if (auth()->user()!=null)
                             <a href="" class="btn btn-outline-primary">Employer Homepage</a>
                         @endif

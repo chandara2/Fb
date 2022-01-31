@@ -20,3 +20,6 @@
         </div>
     </div>
 </footer>
+
+<!-- BackToTop Button -->
+<a href="javascript:void(0);" id="scroll" style="display: none;">Top<span></span></a>
