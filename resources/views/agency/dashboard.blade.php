@@ -11,7 +11,7 @@
                 @endif
                 <li class="breadcrumb-item"><a href="
                     @if (auth()->user()!=null && $company_infos->isEmpty())
-                        {{ route('agency.company_info.create') }}
+                        {{ route('agency.companyinfo.create') }}
                     @else
                         {{ route('agency.job.create') }}
                     @endif"
