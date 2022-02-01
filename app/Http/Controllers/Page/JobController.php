@@ -16,6 +16,8 @@ class JobController extends Controller
      */
     public function index()
     {
+        $jiii = Job::filter('IT')->get();
+        dd($jiii);
         $jobs = Job::paginate(10);
         return view('page.job.index', [
             'jobs' => $jobs,
