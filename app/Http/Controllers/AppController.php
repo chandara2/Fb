@@ -68,7 +68,15 @@ class AppController extends Controller
      */
     public function show($id)
     {
-        //
+        $jobsfn_id = DB::table('jobs')
+            ->join('job_functions', 'jobs.function', '=', 'job_functions.name')
+            ->select('jobs.*')
+            ->where('jobs.function', $id)
+            ->get();
+
+        return view('page.job.index', [
+            'jobsfn_id' => $jobsfn_id,
+        ]);
     }
 
     /**
