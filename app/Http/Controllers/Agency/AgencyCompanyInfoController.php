@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Agency;
 
 use App\Http\Controllers\Controller;
 use App\Models\CompanyInfo;
+use App\Models\JobIndustry;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
@@ -27,7 +28,10 @@ class AgencyCompanyInfoController extends Controller
      */
     public function create()
     {
-        return view('agency.companyinfo_create');
+        $job_industrys = JobIndustry::get();
+        return view('agency.companyinfo_create', [
+            'job_industrys' => $job_industrys,
+        ]);
     }
 
     /**
