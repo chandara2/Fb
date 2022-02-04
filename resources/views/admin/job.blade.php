@@ -272,7 +272,7 @@
                     'id': id
                 },
                 success:function(data) {
-                    console.log(data.success)
+                    console.log(data.successStatusMsg)
                 }
             });
         });
