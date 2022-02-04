@@ -112,7 +112,7 @@
                     <div class="slider_custom2 owl-carousel owl-theme">
                         @foreach ($companylogos as $companylogo)
                             <div class="item">
-                                <img src="upload/companylogo/{{$companylogo->logo}}" alt="CompanyLogo">
+                                <a href="company/{{$companylogo->id}}"><img src="upload/companylogo/{{$companylogo->logo}}" alt="CompanyLogo"></a>
                             </div>
                         @endforeach
                     </div>

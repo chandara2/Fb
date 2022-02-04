@@ -20,16 +20,16 @@
 <section>
     <div class="container mt-5">
         <p class="h4 text-decoration-underline">Our Mission</p>
-        <textarea disabled class="textarea_autosize form-control border-0 bg-white">{{$about->mission}}</textarea>
+        <textarea disabled class="textarea_autosize form-control border-0 bg-light">{{$about->mission}}</textarea>
     </div>
 </section>
 
 <section>
     <div class="container">
         <p class="h4 text-decoration-underline mt-3">Goals</p>
-        <textarea disabled class="textarea_autosize form-control border-0 bg-white">{{$about->goal}}</textarea>
+        <textarea disabled class="textarea_autosize form-control border-0 bg-light">{{$about->goal}}</textarea>
         <p class="h4 text-decoration-underline mt-3">Values</p>
-        <textarea disabled class="textarea_autosize form-control border-0 bg-white">{{$about->value}}</textarea>
+        <textarea disabled class="textarea_autosize form-control border-0 bg-light">{{$about->value}}</textarea>
     </div>
 </section>
 

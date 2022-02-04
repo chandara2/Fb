@@ -28,7 +28,7 @@ class AppController extends Controller
             ->latest()
             ->take(12)
             ->get();
-        $companylogos = CompanyInfo::select('company_infos.logo')->get();
+        $companylogos = CompanyInfo::select('company_infos.logo', 'company_infos.id')->get();
         return view('app', [
             'job_functions' => $job_functions,
             'job_industries' => $job_industries,
