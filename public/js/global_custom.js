@@ -15,7 +15,9 @@ $(document).ready(function () {
 
 // Datatable
 $(document).ready(function () {
-    $('.customdatatable').DataTable();
+    $('.customdatatable').DataTable({
+        // "pageLength": 5,
+    });
 });
 
 // textarea box auto resize

@@ -19,7 +19,7 @@ class JobController extends Controller
         $jobscoms = DB::table('users')
             ->join('jobs', 'users.id', '=', 'jobs.uid')
             ->join('company_infos', 'users.id', '=', 'company_infos.uid')
-            ->select('jobs.*', 'company_infos.*')
+            ->select('jobs.*', 'jobs.id as job_id', 'company_infos.*', 'company_infos.id as com_id')
             ->paginate(10);
 
 

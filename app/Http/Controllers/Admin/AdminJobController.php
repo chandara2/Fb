@@ -223,5 +223,6 @@ class AdminJobController extends Controller
         $jobs = Job::find($request->id);
         $jobs->approved = $request->approved;
         $jobs->save();
+        return response()->json(['success' => 'Status Changed Successfully']);
     }
 }
