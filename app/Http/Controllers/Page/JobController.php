@@ -16,11 +16,15 @@ class JobController extends Controller
      */
     public function index()
     {
-        $jiii = Job::filter('IT')->get();
-        dd($jiii);
-        $jobs = Job::paginate(10);
+        $jobscoms = DB::table('users')
+            ->join('jobs', 'users.id', '=', 'jobs.uid')
+            ->join('company_infos', 'users.id', '=', 'company_infos.uid')
+            ->select('jobs.*', 'company_infos.*')
+            ->paginate(10);
+
+
         return view('page.job.index', [
-            'jobs' => $jobs,
+            'jobscoms' => $jobscoms,
         ]);
     }
 

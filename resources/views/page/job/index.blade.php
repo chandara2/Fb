@@ -5,30 +5,41 @@
         .class_jobs{
             color: blue;
         }
+        .job_title{
+            color: #333;
+            text-decoration: none;
+        }
+        .job_title:hover{
+            text-decoration: underline;
+        }
+        .com_name{
+            text-decoration: none;
+        }
+        .com_name:hover{
+            text-decoration: underline;
+        }
     </style>
 @endsection
 @section('content')
-
-<div class="container">
-    <form class="d-flex">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
-    </form>
-</div>
 
 <div class="container my-3">
     <button class="btn btn-danger">Related Job</button>
 
     <ul class="list-group list-group-flush">
-        @foreach ($jobs as $job)
-        <li class="list-group-item">
+        @foreach ($jobscoms as $jobscom)
+        <li class="list-group-item py-3">
             <div class="row">
                 <div class="col-md-8">
-                    <p>{{ $job->title }} @if($job->expired_job>now()->addDays(7))<span class="bg-warning badge">New</span>@else <span class="bg-danger badge">Urgent</span> @endif</p>
-                    <p>{{ $job->location }}</p>
-                    <p>{{ $job->term }}|{{ $job->location }} <span class="text-danger px-3">{{ $job->salary }}</span></p>
+                    <a href="#" class="fw-bold job_title">{{ $jobscom->title }}</a>
+                    @if($jobscom->expired_job>now()->addDays(7))
+                        <span class="bg-warning badge">New</span>
+                    @else
+                        <span class="bg-danger badge">Urgent</span> 
+                    @endif
+                    <div class="py-1"><a href="#" class="com_name">{{ $jobscom->company }}</a></div>
+                    <div style="font-size: 12px;" class="text-muted">{{ $jobscom->term }} | {{ $jobscom->location }} <span class="text-danger px-3">{{ $jobscom->salary }}</span></div>
                 </div>
-                <div class="col-md-4">{{ $job->expired_job }}</div>
+                <div class="col-md-4">{{ $jobscom->expired_job }}</div>
             </div>
         </li>
         @endforeach
@@ -37,7 +48,7 @@
 
     {{-- Pagination --}}
     <div class="d-flex justify-content-center">
-        {{ $jobs->links() }}
+        {{ $jobscoms->links() }}
     </div>
 
 
