@@ -24,24 +24,6 @@
         .class_homepage{
             color: blue;
         }
-        .slick-wrapper {
-            width: 80%;
-            background-color: aqua;
-        }
-        .slide-item {
-            background-color: rebeccapurple;
-            color: aqua;
-            display: flex !important;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            height: 200px;
-            border: 1px solid white;
-        }
-        .slide-item h3 {
-            font-family: Lato, sans-serif;
-            font-size: 40px;
-        }
     </style>
 @endsection
 
@@ -50,13 +32,12 @@
         <div class="container">
             <div class="row">
                 <div class="col-xl-8 col-lg-12"><!-- Slider 1 -->
-                    <div class="slider_custom1 owl-carousel owl-theme">
-                        <div class="item">
-                            <img src="{{ asset('asset/image/lake.jpg') }}" alt="slide" height='250' style="object-fit:cover;">
-                        </div>
-                        <div class="item">
-                            <img src="{{ asset('asset/image/city.jpg') }}" alt="slide" height='250' style="object-fit:cover;">
-                        </div>
+
+                    <div id="slick1">
+                        @foreach ($companylogos as $companylogo)
+                        <div class="slide-item1 d-flex justify-content-around border border-white"><img src="{{ asset('asset/image/lake.jpg') }}" alt="slide" width="100%" height='250' style="object-fit:cover;"></div>
+                        <div class="slide-item1 d-flex justify-content-around border border-white"><img src="{{ asset('asset/image/city.jpg') }}" alt="slide" width="100%" height='250' style="object-fit:cover;"></div>
+                        @endforeach
                     </div>
 
                     <div class="mb-4">
@@ -127,51 +108,16 @@
             <div class="row mb-5 mt-xl-1 mt-lg-5">
                 <div class="col-md-12">
                     <h4 style="text-decoration: underline 3px solid pink">Featured Employers</h4>
-                    {{-- <div class="slider_custom2 owl-carousel owl-theme">
-                        @foreach ($companylogos as $companylogo)
-                            <div class="item">
-                                <a href="company/{{$companylogo->id}}"><img src="upload/companylogo/{{$companylogo->logo}}" alt="CompanyLogo"></a>
+
+                    <div class="slick-wrapper w-100 bg-info bg-opacity-25">
+                        <div id="slick2">
+                            @foreach ($companylogos as $companylogo)
+                            <div class="slide-item2 py-3 d-flex justify-content-around border border-white">
+                                <a href="company/{{$companylogo->id}}"><img src="upload/companylogo/{{$companylogo->logo}}" alt="CompanyLogo" width="65" height="65" style="object-fit: cover;"></a>
                             </div>
-                        @endforeach
-                    </div> --}}
-
-                    
-
-                    <div class="slick-wrapper">
-                        <div id="slick1">
-                            <div class="slide-item"><h3>1</h3></div>
-                            <div class="slide-item"><h3>2</h3></div>
-                            <div class="slide-item"><h3>3</h3></div>
-                            <div class="slide-item"><h3>4</h3></div>
-                            <div class="slide-item"><h3>5</h3></div>
-                            <div class="slide-item"><h3>6</h3></div>
-                            <div class="slide-item"><h3>7</h3></div>
-                            <div class="slide-item"><h3>8</h3></div>
-                            <div class="slide-item"><h3>9</h3></div>
-                            <div class="slide-item"><h3>10</h3></div>
-                            <div class="slide-item"><h3>11</h3></div>
-                            <div class="slide-item"><h3>12</h3></div>
-                            <div class="slide-item"><h3>13</h3></div>
-                            <div class="slide-item"><h3>14</h3></div>
-                            <div class="slide-item"><h3>15</h3></div>
-                            <div class="slide-item"><h3>16</h3></div>
-                            <div class="slide-item"><h3>17</h3></div>
-                            <div class="slide-item"><h3>18</h3></div>
-                            <div class="slide-item"><h3>19</h3></div>
-                            <div class="slide-item"><h3>20</h3></div>
-                            <div class="slide-item"><h3>21</h3></div>
-                            <div class="slide-item"><h3>22</h3></div>
-                            <div class="slide-item"><h3>23</h3></div>
-                            <div class="slide-item"><h3>24</h3></div>
-                            <div class="slide-item"><h3>25</h3></div>
-                            <div class="slide-item"><h3>26</h3></div>
-                            <div class="slide-item"><h3>27</h3></div>
-                            <div class="slide-item"><h3>28</h3></div>
+                            @endforeach
                         </div>
                     </div>
-
-
-
 
                 </div>
             </div>
@@ -179,11 +125,11 @@
             <div class="row mb-5">
                 <div class="col-md-12">
                     <h4 style="text-decoration: underline 3px solid pink">Recruitment Agencies</h4>
-                    <div class="slider_custom3 owl-carousel owl-theme">
+                    <div id="slick3">
                         @foreach ($companylogos as $companylogo)
-                            <div class="item">
-                                <img src="upload/companylogo/{{$companylogo->logo}}" alt="CompanyLogo">
-                            </div>
+                        <div class="slide-item3 py-3 d-flex justify-content-around border border-white">
+                            <a href="company/{{$companylogo->id}}"><img src="upload/companylogo/{{$companylogo->logo}}" alt="CompanyLogo" width="65" height="65" style="object-fit: cover;"></a>
+                        </div>
                         @endforeach
                     </div>
 
@@ -235,11 +181,11 @@
             <div class="row mb-5">
                 <div class="col-md-12">
                     <h4 style="text-decoration: underline 3px solid pink">Cooperation Partners</h4>
-                    <div class="slider_custom4 owl-carousel owl-theme">
+                    <div id="slick4">
                         @foreach ($companylogos as $companylogo)
-                            <div class="item">
-                                <img src="upload/companylogo/{{$companylogo->logo}}" alt="CompanyLogo">
-                            </div>
+                        <div class="slide-item4 py-3 d-flex justify-content-around border border-white">
+                            <a href="company/{{$companylogo->id}}"><img src="upload/companylogo/{{$companylogo->logo}}" alt="CompanyLogo" width="65" height="65" style="object-fit: cover;"></a>
+                        </div>
                         @endforeach
                     </div>
 
@@ -253,13 +199,64 @@
 @section('script')
     <script>
         $('#slick1').slick({
+            dots: false,
+            arrows: false,
+            infinite: true,
+            speed: 1300,
+            autoplay: true,
+            autoplaySpeed: 5000,
+            slidesToShow: 1,
+        });
+
+        $('#slick2').slick({
             rows: 3,
             dots: false,
-            arrows: true,
+            arrows: false,
             infinite: true,
             speed: 300,
+            autoplay: true,
+            autoplaySpeed: 2000,
             slidesToShow: 6,
-            slidesToScroll: 6
+            responsive: [
+                {
+                breakpoint: 1200,
+                    settings: {
+                        slidesToShow: 4,
+                    },
+                },
+                {
+                breakpoint: 1008,
+                    settings: {
+                        slidesToShow: 2,
+                    },
+                },
+                {
+                breakpoint: 800,
+                    settings: {
+                        slidesToShow: 1,
+                    },
+                },
+            ],
+        });
+
+        $('#slick3').slick({
+            dots: false,
+            arrows: false,
+            infinite: true,
+            speed: 300,
+            autoplay: true,
+            autoplaySpeed: 4000,
+            slidesToShow: 6,
+        });
+
+        $('#slick4').slick({
+            dots: false,
+            arrows: false,
+            infinite: true,
+            speed: 300,
+            autoplay: true,
+            autoplaySpeed: 4000,
+            slidesToShow: 6,
         });
 
         $('.slider_custom1').owlCarousel({
