@@ -14,11 +14,11 @@
         <!-- Datatable -->
         <link rel="stylesheet" href="{{ asset('asset/datatable/dataTables.bootstrap5.min.css') }}">
         <!-- OwlCarousel -->
-        <link rel="stylesheet" href="{{ asset('asset/owlcarousel/owl.carousel.min.css') }}">
-        <link rel="stylesheet" href="{{ asset('asset/owlcarousel/owl.theme.default.min.css') }}">
+        {{-- <link rel="stylesheet" href="{{ asset('asset/owlcarousel/owl.carousel.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('asset/owlcarousel/owl.theme.default.min.css') }}"> --}}
         <!-- Slick Slider -->
-        {{-- <link rel="stylesheet" href="{{ asset('asset/slick/slick.css') }}">
-        <link rel="stylesheet" href="{{ asset('asset/slick/slick-theme.css') }}"> --}}
+        <link rel="stylesheet" href="{{ asset('asset/slick/slick.css') }}">
+        <link rel="stylesheet" href="{{ asset('asset/slick/slick-theme.css') }}">
         <!-- Global Custom CSS -->
         <link rel="stylesheet" href="{{ asset('css/global_custom.css') }}">
         <!-- Individual Custom CSS -->
@@ -48,9 +48,9 @@
         <script src="{{asset('asset/datatable/jquery.dataTables.min.js')}}"></script>
         <script src="{{ asset('asset/datatable/dataTables.bootstrap5.min.js') }}"></script>
         <!-- OwlCarousel -->
-        <script src="{{ asset('asset/owlcarousel/owl.carousel.min.js') }}"></script>
+        {{-- <script src="{{ asset('asset/owlcarousel/owl.carousel.min.js') }}"></script> --}}
         <!-- Slick Slider -->
-        {{-- <script src="{{ asset('asset/slick/slick.js') }}"></script> --}}
+        <script src="{{ asset('asset/slick/slick.js') }}"></script>
         <!-- Auto Resize Textarea -->
         <script src="{{ asset('asset/autosize.min.js') }}"></script>
         <!-- Global Custom JS -->

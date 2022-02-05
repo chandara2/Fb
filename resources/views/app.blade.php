@@ -24,6 +24,24 @@
         .class_homepage{
             color: blue;
         }
+        .slick-wrapper {
+            width: 80%;
+            background-color: aqua;
+        }
+        .slide-item {
+            background-color: rebeccapurple;
+            color: aqua;
+            display: flex !important;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            height: 200px;
+            border: 1px solid white;
+        }
+        .slide-item h3 {
+            font-family: Lato, sans-serif;
+            font-size: 40px;
+        }
     </style>
 @endsection
 
@@ -109,13 +127,51 @@
             <div class="row mb-5 mt-xl-1 mt-lg-5">
                 <div class="col-md-12">
                     <h4 style="text-decoration: underline 3px solid pink">Featured Employers</h4>
-                    <div class="slider_custom2 owl-carousel owl-theme">
+                    {{-- <div class="slider_custom2 owl-carousel owl-theme">
                         @foreach ($companylogos as $companylogo)
                             <div class="item">
                                 <a href="company/{{$companylogo->id}}"><img src="upload/companylogo/{{$companylogo->logo}}" alt="CompanyLogo"></a>
                             </div>
                         @endforeach
+                    </div> --}}
+
+                    
+
+                    <div class="slick-wrapper">
+                        <div id="slick1">
+                            <div class="slide-item"><h3>1</h3></div>
+                            <div class="slide-item"><h3>2</h3></div>
+                            <div class="slide-item"><h3>3</h3></div>
+                            <div class="slide-item"><h3>4</h3></div>
+                            <div class="slide-item"><h3>5</h3></div>
+                            <div class="slide-item"><h3>6</h3></div>
+                            <div class="slide-item"><h3>7</h3></div>
+                            <div class="slide-item"><h3>8</h3></div>
+                            <div class="slide-item"><h3>9</h3></div>
+                            <div class="slide-item"><h3>10</h3></div>
+                            <div class="slide-item"><h3>11</h3></div>
+                            <div class="slide-item"><h3>12</h3></div>
+                            <div class="slide-item"><h3>13</h3></div>
+                            <div class="slide-item"><h3>14</h3></div>
+                            <div class="slide-item"><h3>15</h3></div>
+                            <div class="slide-item"><h3>16</h3></div>
+                            <div class="slide-item"><h3>17</h3></div>
+                            <div class="slide-item"><h3>18</h3></div>
+                            <div class="slide-item"><h3>19</h3></div>
+                            <div class="slide-item"><h3>20</h3></div>
+                            <div class="slide-item"><h3>21</h3></div>
+                            <div class="slide-item"><h3>22</h3></div>
+                            <div class="slide-item"><h3>23</h3></div>
+                            <div class="slide-item"><h3>24</h3></div>
+                            <div class="slide-item"><h3>25</h3></div>
+                            <div class="slide-item"><h3>26</h3></div>
+                            <div class="slide-item"><h3>27</h3></div>
+                            <div class="slide-item"><h3>28</h3></div>
+                        </div>
                     </div>
+
+
+
 
                 </div>
             </div>
@@ -196,6 +252,16 @@
 
 @section('script')
     <script>
+        $('#slick1').slick({
+            rows: 3,
+            dots: false,
+            arrows: true,
+            infinite: true,
+            speed: 300,
+            slidesToShow: 6,
+            slidesToScroll: 6
+        });
+
         $('.slider_custom1').owlCarousel({
             loop:true,
             margin:10,
