@@ -21,9 +21,6 @@
             white-space: nowrap;
             text-overflow: ellipsis;
         }
-        .class_homepage{
-            color: blue;
-        }
     </style>
 @endsection
 
@@ -257,82 +254,6 @@
             autoplay: true,
             autoplaySpeed: 4000,
             slidesToShow: 6,
-        });
-
-        $('.slider_custom1').owlCarousel({
-            loop:true,
-            margin:10,
-            autoplay:true,
-            autoplayTimeout:10000,
-            autoplaySpeed: 1000,
-            smartSpeed: 1000,
-            autoplayHoverPause:true,
-            dots: false,
-            responsive:{
-                0:{
-                    items:1,
-                }
-            }
-        })
-
-        $('.slider_custom2').owlCarousel({
-            loop:true,
-            margin:10,
-            autoplay:true,
-            autoplayTimeout:5000,
-            autoplayHoverPause:true,
-            dots: false,
-            responsive:{
-                0:{
-                    items:2
-                },
-                600:{
-                    items:4
-                },
-                1000:{
-                    items:8
-                }
-            }
-        })
-
-        $('.slider_custom3').owlCarousel({
-            loop:true,
-            margin:10,
-            autoplay:true,
-            autoplayTimeout:5000,
-            autoplayHoverPause:true,
-            dots: false,
-            responsive:{
-                0:{
-                    items:2
-                },
-                600:{
-                    items:4
-                },
-                1000:{
-                    items:8
-                }
-            }
-        })
-
-        $('.slider_custom4').owlCarousel({
-            loop:true,
-            margin:10,
-            autoplay:true,
-            autoplayTimeout:5000,
-            autoplayHoverPause:true,
-            dots: false,
-            responsive:{
-                0:{
-                    items:2
-                },
-                600:{
-                    items:4
-                },
-                1000:{
-                    items:8
-                }
-            }
-        })
+        }); 
     </script>
 @endsection
