@@ -19,10 +19,11 @@ use Illuminate\Support\Facades\Route;
 
 // Website home page
 Route::resource('/', AppController::class)->only('index');
-Route::get('jobs/{$job}', [AppController::class, 'jobs'])->name('jobs.show');
+// Route::get('jobs/{$job}', [AppController::class, 'jobs'])->name('jobs.show');
 
 // Job page
 Route::resource('job', JobController::class);
+Route::get('jobs/{job}', [JobController::class, 'jobs'])->name('jobs.show');
 
 // About page
 Route::resource('about', AboutController::class);
