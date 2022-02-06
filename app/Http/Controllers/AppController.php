@@ -39,6 +39,11 @@ class AppController extends Controller
         ]);
     }
 
+    public function jobsall()
+    {
+        return view('app');
+    }
+
     /**
      * Show the form for creating a new resource.
      *

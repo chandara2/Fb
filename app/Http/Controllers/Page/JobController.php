@@ -111,21 +111,15 @@ class JobController extends Controller
         //
     }
 
-    public function jobs($id)
+    public function jobsall($id)
     {
-        $jobs = DB::table('jobs')
-            ->join('job_functions', 'jobs.function', '=', 'job_functions.name')
-            ->join('job_industries', 'jobs.industry', '=', 'job_industries.name')
-            ->join('job_locations', 'jobs.location', '=', 'job_locations.name')
-            ->join('job_salaries', 'jobs.salary', '=', 'job_salaries.name')
+        $jobscoms = DB::table('jobs')
             ->select('jobs.*')
-            ->where('job_functions.id', $id)
-            ->orWhere('job_industries.id', $id)
-            ->orWhere('job_locations.id', $id)
-            ->orWhere('job_salaries.id', $id)
+            ->where('jobs.function', $id)
             ->get();
+
         return view('page.job.index', [
-            'jobs' => $jobs,
+            'jobscoms' => $jobscoms,
         ]);
     }
 }

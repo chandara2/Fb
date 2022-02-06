@@ -106,7 +106,7 @@
                 <div class="col-md-12">
                     <h4 style="text-decoration: underline 3px solid pink">Featured Employers</h4>
 
-                    <div class="slick-wrapper w-100 bg-info bg-opacity-25">
+                    <div class="slick-wrapper w-100 bg-info bg-opacity-10">
                         <div id="slick2">
                             @foreach ($companylogos as $companylogo)
                             <div class="slide-item2 py-3 d-flex justify-content-around border border-white">
@@ -199,37 +199,37 @@
             dots: false,
             arrows: false,
             infinite: true,
-            speed: 1300,
+            speed: 1500,
             autoplay: true,
-            autoplaySpeed: 5000,
+            autoplaySpeed: 7000,
             slidesToShow: 1,
         });
 
         $('#slick2').slick({
-            rows: 2,
+            rows: 3,
             arrows: false,
             infinite: true,
-            speed: 300,
+            speed: 1500,
             autoplay: true,
-            autoplaySpeed: 2000,
-            slidesToShow: 5,
+            autoplaySpeed: 7000,
+            slidesToShow: 7,
             responsive: [
                 {
                 breakpoint: 1200,
                     settings: {
-                        slidesToShow: 4,
+                        slidesToShow: 5,
                     },
                 },
                 {
                 breakpoint: 1008,
                     settings: {
-                        slidesToShow: 2,
+                        slidesToShow: 3,
                     },
                 },
                 {
                 breakpoint: 800,
                     settings: {
-                        slidesToShow: 1,
+                        slidesToShow: 2,
                     },
                 },
             ],

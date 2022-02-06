@@ -42,11 +42,10 @@
         @endforeach
     </ul>
 
-
     {{-- Pagination --}}
     <div class="d-flex justify-content-center">
         {{ $jobscoms->links() }}
     </div>
-
+</div>
 
 @endsection
