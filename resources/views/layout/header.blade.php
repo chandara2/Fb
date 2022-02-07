@@ -1,11 +1,17 @@
+<style>
+    #menu_hovers li a:hover{
+        font-weight: bold;
+        color: blue;
+    }
+</style>
+
 <header class="p-3 mb-3 border-bottom">
     <div class="container">
         <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
             <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-dark text-decoration-none">
                 <img src="{{ asset('asset/image/brand-logo.png') }}" alt="logo" height="50">
             </a>
-
-            <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+            <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0" id="menu_hovers">
                 <li><a href="/" class="nav-link px-2 link-secondary class_homepage">{{__('text.Home_page')}}</a></li>
                 <li><a href="{{ route('job.index') }}" class="nav-link px-2 link-dark class_jobs">{{__('text.Job_page')}}</a></li>
                 <li><a href="{{ route('about.index') }}" class="nav-link px-2 link-dark class_aboutus">{{__('text.About_us')}}</a></li>

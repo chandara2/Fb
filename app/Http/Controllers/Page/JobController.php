@@ -77,6 +77,19 @@ class JobController extends Controller
         ]);
     }
 
+    public function jobshow($id)
+    {
+        $jobscoms = DB::table('jobs')
+            ->join('job_functions', 'job_functions.name', '=', 'jobs.function')
+            ->join('company_infos', 'company_infos.uid', '=', 'jobs.uid')
+            ->select('jobs.*', 'jobs.id as job_id', 'company_infos.*', 'company_infos.id as com_id')
+            ->where('job_functions.id', $id)
+            ->paginate(5);
+        return view('page.job.job_sort', [
+            'jobscoms' => $jobscoms,
+        ]);
+    }
+
     /**
      * Show the form for editing the specified resource.
      *

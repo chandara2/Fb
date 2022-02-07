@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\CompanyInfo;
 use App\Models\Job;
+use App\Models\JobFunction;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -16,10 +17,8 @@ class AppController extends Controller
      */
     public function index()
     {
-        $job_functions = Job::all()->countBy('function');
-        $job_industries = Job::all()->countBy('industry');
-        $job_locations = Job::all()->countBy('location');
-        $job_salaries = Job::all()->countBy('salary');
+        $companylogos = CompanyInfo::select('company_infos.logo', 'company_infos.id')->get();
+
         $jobcompanys = DB::table('users')
             ->join('jobs', 'users.id', '=', 'jobs.uid')
             ->join('company_infos', 'users.id', '=', 'company_infos.uid')
@@ -28,14 +27,32 @@ class AppController extends Controller
             ->latest()
             ->take(12)
             ->get();
-        $companylogos = CompanyInfo::select('company_infos.logo', 'company_infos.id')->get();
+
+        // $job_functions = Job::all()->countBy('function');
+        // $job_industries = Job::all()->countBy('industry');
+        // $job_locations = Job::all()->countBy('location');
+        // $job_salaries = Job::all()->countBy('salary');
+
+        $browsejobs = Job::all();
+        // dd($browsejobs);
+
+        // $job_functions = DB::table('job_functions')
+        //     ->join('jobs', 'jobs.function', 'job_functions.name')
+        //     ->select('function')
+        //     ->selectRaw('count(*) as number')
+        //     ->whereNotIn('function', [''])
+        //     ->groupBy('function')
+        //     ->orderBy('function', 'asc') //Unless you use this array somewhere, it's not needed.
+        //     ->get();
+
         return view('app', [
-            'job_functions' => $job_functions,
-            'job_industries' => $job_industries,
-            'job_locations' => $job_locations,
-            'job_salaries' => $job_salaries,
-            'jobcompanys' => $jobcompanys,
             'companylogos' => $companylogos,
+            'jobcompanys' => $jobcompanys,
+            // 'job_functions' => $job_functions,
+            // 'job_industries' => $job_industries,
+            // 'job_locations' => $job_locations,
+            // 'job_salaries' => $job_salaries,
+            'browsejobs' => $browsejobs,
         ]);
     }
 
