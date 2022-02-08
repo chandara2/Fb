@@ -1,5 +1,5 @@
 @extends('layout.layout_app')
-@section('title', 'JOB')
+@section('title', 'JOB FILTER')
 @section('style')
     <style>
         .class_jobs{
@@ -23,19 +23,7 @@
 @section('content')
 
 <div class="container my-3">
-
-    <form class="d-flex" action="{{ route('searchjobindex') }}" method="GET">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="searchjobindex">
-        <button class="btn btn-outline-success" type="submit">Search</button>
-    </form>
-    
     <button class="btn btn-danger">Related Job</button>
-
-    {{-- @if($searched)
-        @foreach ($searched as $rs)
-        <p class="bg-danger">{{ $rs->title }}</p>
-        @endforeach
-    @endif --}}
 
     <ul class="list-group list-group-flush">
         @foreach ($jobscoms as $jobscom)

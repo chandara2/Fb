@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 17, 2022 at 12:02 PM
+-- Generation Time: Feb 04, 2022 at 11:58 AM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.10
 
@@ -24,12 +24,40 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `abouts`
+--
+
+CREATE TABLE `abouts` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `banner` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `mission` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `goal` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `value` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `phone` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `address` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `social` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `operating` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `abouts`
+--
+
+INSERT INTO `abouts` (`id`, `banner`, `mission`, `goal`, `value`, `email`, `phone`, `address`, `social`, `operating`, `created_at`, `updated_at`) VALUES
+(1, '1643966758.jpg', 'Autem enim cum ut fuAutem enim cum ut fuAutem enim cum ut fuAutem enim cum ut fuAutem enim cum ut fuAutem enim cum ut fuAutem enim cum ut fuAutem enim cum ut fuAutem enim cum ut fuAutem enim cum ut fuAutem enim cum ut fuAutem enim cum ut fuAutem enim cum ut fu', 'Voluptates labore eoVoluptates labore eoVoluptates labore eoVoluptates labore eoVoluptates labore eoVoluptates labore eoVoluptates labore eoVoluptates labore eoVoluptates labore eoVoluptates labore eoVoluptates labore eoVoluptates labore eoVoluptates labore eoVoluptates labore eoVoluptates labore eoVoluptates labore eoVoluptates labore eoVoluptates labore eoVoluptates labore eoVoluptates labore eoVoluptates labore eoVoluptates labore eoVoluptates labore eoVoluptates labore eoVoluptates labore eoVoluptates labore eoVoluptates labore eoVoluptates labore eoVoluptates labore eoVoluptates labore eoVoluptates labore eoVoluptates labore eoVoluptates labore eoVoluptates labore eoVoluptates labore eoVoluptates labore eoVoluptates labore eo', 'Iure excepteur distiIure excepteur distiIure excepteur distiIure excepteur distiIure excepteur distiIure excepteur distiIure excepteur distiIure excepteur distiIure excepteur distiIure excepteur distiIure excepteur distiIure excepteur distiIure excepteur distiIure excepteur distiIure excepteur distiIure excepteur distiIure excepteur distiIure excepteur distiIure excepteur distiIure excepteur distiIure excepteur distiIure excepteur distiIure excepteur distiIure excepteur distiIure excepteur distiIure excepteur disti', 'bipogeli@mailinator.com', '+1 (999) 588-3434', 'Cillum soluta harum', 'Rerum labore Nam vol', 'Eligendi suscipit do', '2022-02-04 02:25:58', '2022-02-04 02:25:58');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `company_infos`
 --
 
 CREATE TABLE `company_infos` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `uid` bigint(20) NOT NULL,
+  `uid` bigint(20) UNSIGNED NOT NULL,
   `company` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `logo` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `industry` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
@@ -45,6 +73,16 @@ CREATE TABLE `company_infos` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `company_infos`
+--
+
+INSERT INTO `company_infos` (`id`, `uid`, `company`, `logo`, `industry`, `number_staff`, `website`, `company_profile`, `province`, `detail_location`, `contact_name`, `contact_position`, `contact_email`, `contact_phone`, `created_at`, `updated_at`) VALUES
+(1, 2, 'Church and Nielsen Associates', '1643966173.png', 'Advertising/Media/Publishing/Printing', '88', 'https://www.widufiho.mobi', 'In sed vel in et nis\r\nIn sed vel in et nisIn sed vel in et nisIn sed vel in et nisIn sed vel in et nisIn sed vel in et nisIn sed vel in et nisIn sed vel in et nisIn sed vel in et nisIn sed vel in et nisIn sed vel in et nisIn sed vel in et nisIn sed vel in et nisIn sed vel in et nisIn sed vel in et nisIn sed vel in et nisIn sed vel in et nisIn sed vel in et nisIn sed vel in et nisIn sed vel in et nisIn sed vel in et nisIn sed vel in et nisIn sed vel in et nisIn sed vel in et nisIn sed vel in et nisIn sed vel in et nisIn sed vel in et nisIn sed vel in et nisIn sed vel in et nisIn sed vel in et nisIn sed vel in et nisIn sed vel in et nisIn sed vel in et nisIn sed vel in et nisIn sed vel in et nisIn sed vel in et nisIn sed vel in et nisIn sed vel in et nisIn sed vel in et nisIn sed vel in et nisIn sed vel in et nisIn sed vel in et nisIn sed vel in et nisIn sed vel in et nisIn sed vel in et nisIn sed vel in et nis', 'Ut impedit numquam', 'Saepe quos consectet', 'Eagan Lewis', 'Quas voluptas incidu', 'zywem@mailinator.com', '+1 (343) 574-3037', '2022-02-04 02:16:13', '2022-02-04 02:16:13'),
+(2, 1, 'Camjobs38 Knox Yates Plc', '1643966307.png', 'Medical/Pharmaceutical', '10', 'https://www.horebuhu.org.uk', 'Qui est et officiis \r\nQui est et officiis Qui est et officiis Qui est et officiis Qui est et officiis Qui est et officiis Qui est et officiis Qui est et officiis Qui est et officiis Qui est et officiis Qui est et officiis Qui est et officiis Qui est et officiis Qui est et officiis Qui est et officiis Qui est et officiis Qui est et officiis Qui est et officiis Qui est et officiis Qui est et officiis Qui est et officiis Qui est et officiis Qui est et officiis Qui est et officiis Qui est et officiis Qui est et officiis Qui est et officiis Qui est et officiis Qui est et officiis Qui est et officiis Qui est et officiis Qui est et officiis Qui est et officiis Qui est et officiis Qui est et officiis Qui est et officiis Qui est et officiis Qui est et officiis Qui est et officiis Qui est et officiis Qui est et officiis Qui est et officiis Qui est et officiis Qui est et officiis Qui est et officiis Qui est et officiis Qui est et officiis Qui est et officiis Qui est et officiis Qui est et officiis Qui est et officiis Qui est et officiis Qui est et officiis Qui est et officiis Qui est et officiis Qui est et officiis Qui est et officiis Qui est et officiis Qui est et officiis Qui est et officiis Qui est et officiis Qui est et officiis Qui est et officiis Qui est et officiis Qui est et officiis Qui est et officiis Qui est et officiis Qui est et officiis Qui est et officiis Qui est et officiis Qui est et officiis Qui est et officiis Qui est et officiis Qui est et officiis Qui est et officiis Qui est et officiis Qui est et officiis', 'Ut excepteur quia ra', 'Sint dolor veniam', 'Erich Wilkins', 'Tempor animi sit qu', 'qytefenu@mailinator.com', '+1 (796) 436-8901', '2022-02-04 02:18:27', '2022-02-04 02:18:27'),
+(3, 4, 'Spears Mcfarland Inc', '1643966420.png', 'Food & Beverages', '244', 'https://www.quxafuzo.me.uk', 'Company Profile\r\nModi qui in perferenModi qui in perferenModi qui in perferenModi qui in perferenModi qui in perferenModi qui in perferenModi qui in perferenModi qui in perferenModi qui in perferenModi qui in perferenModi qui in perferenModi qui in perferenModi qui in perferenModi qui in perferenModi qui in perferenModi qui in perferenModi qui in perferenModi qui in perferenModi qui in perferenModi qui in perferenModi qui in perferenModi qui in perferen', 'Libero quasi tempore', 'Dolorum eum magna in', 'Jesse Ayala', 'Hic porro maiores mo', 'cezewegybi@mailinator.com', '+1 (879) 458-1735', '2022-02-04 02:20:20', '2022-02-04 02:20:20'),
+(4, 5, 'Edwards Kerr Inc', '1643966499.png', 'Stationery/Books/Toys', '203', 'https://www.terogidojoluguj.ws', 'Et ex sed modi ipsa', 'Facilis quibusdam cu', 'A quia ratione aliqu', 'Jillian Ingram', 'Reprehenderit iste', 'silugit@mailinator.com', '+1 (717) 716-3221', '2022-02-04 02:21:39', '2022-02-04 02:21:39');
 
 -- --------------------------------------------------------
 
@@ -70,15 +108,16 @@ CREATE TABLE `failed_jobs` (
 
 CREATE TABLE `jobs` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `uid` bigint(20) NOT NULL,
+  `uid` bigint(20) UNSIGNED NOT NULL,
+  `approved` tinyint(1) NOT NULL DEFAULT 0,
+  `title` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `age` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `contact` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `deadline` date DEFAULT NULL,
-  `detail` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `expired_job` date DEFAULT NULL,
+  `expired_post` date DEFAULT NULL,
+  `function` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `hiring` tinyint(4) DEFAULT NULL,
   `industry` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `job_function` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `job_title` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `language` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `location` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `qualification` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
@@ -86,7 +125,7 @@ CREATE TABLE `jobs` (
   `sex` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `term` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `year_of_exp` tinyint(4) DEFAULT NULL,
-  `visible` tinyint(1) NOT NULL DEFAULT 1,
+  `detail` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -95,40 +134,20 @@ CREATE TABLE `jobs` (
 -- Dumping data for table `jobs`
 --
 
-INSERT INTO `jobs` (`id`, `uid`, `age`, `contact`, `deadline`, `detail`, `hiring`, `industry`, `job_function`, `job_title`, `language`, `location`, `qualification`, `salary`, `sex`, `term`, `year_of_exp`, `visible`, `created_at`, `updated_at`) VALUES
-(2, 1, 'Dolor quis deserunt', 'Anim exercitationem', '1982-12-01', 'In in sunt pariatur', 1, 'Autem dolore velit p', 'Ipsum iure harum lo', 'Mollitia architecto', 'Repellendus Corrupt', 'Dolor quis deserunt', 'Fugiat in et rem ven', 'Ut ducimus ut autem', 'Suscipit in sunt vol', 'Ut pariatur Quaerat', 2, 1, '2022-01-16 23:07:24', '2022-01-16 23:07:24'),
-(3, 1, 'Et aut voluptas reru', 'Quibusdam error fugi', '1995-09-19', 'Harum eos laborum o', 76, 'Totam ratione sit v', 'A ducimus eum fugit', 'Consequat In cupidi', 'Ratione quam est qui', 'Et aut voluptas reru', 'Voluptas aut debitis', 'Vel tempora quae ear', 'Quis magnam quis a d', 'Sit aliquid magni r', 5, 1, '2022-01-16 23:10:07', '2022-01-16 23:10:07'),
-(4, 1, 'Ad qui exercitation', 'Ut qui maxime tenetu', '1995-10-20', 'Vero maxime fugiat a', 38, 'In et duis officia e', 'Ea fuga Sit blandit', 'Voluptatibus beatae', 'In mollit aperiam as', 'Ad qui exercitation', 'Incididunt sit et i', 'Qui rerum laboris ea', 'In aut consequatur e', 'Eum harum assumenda', 1, 1, '2022-01-16 23:29:52', '2022-01-16 23:29:52'),
-(5, 1, 'Rerum ex facilis rep', 'Est autem tempore', '1973-01-22', 'Esse velit et itaqu', 73, 'Necessitatibus labor', 'Nostrud dolor autem', 'Laborum Adipisci vo', 'Molestias anim maxim', 'Rerum ex facilis rep', 'Repellendus Enim po', 'Numquam quis eaque s', 'Voluptatibus aut cum', 'Possimus sunt veli', 2, 1, '2022-01-16 23:31:33', '2022-01-16 23:31:33'),
-(6, 1, 'Est ipsum et volupt', 'Temporibus necessita', '1996-03-09', 'Reprehenderit elige', 74, 'Amet blanditiis sin', 'Aut corporis non nem', 'In deserunt veniam', 'Voluptas labore accu', 'Est ipsum et volupt', 'Voluptatem facere qu', 'Suscipit provident', 'Non necessitatibus p', 'Id dolore exercitat', 8, 1, '2022-01-16 23:31:58', '2022-01-16 23:31:58'),
-(7, 1, 'Sed labore et atque', 'Quia vero porro exce', '1999-04-14', 'Vel eligendi expedit', 40, 'Alias quam sequi eve', 'Voluptatem error rec', 'Voluptatibus ut sint', 'Aperiam maiores esse', 'Sed labore et atque', 'Cum nostrud molestia', 'Do ad enim nulla ea', 'Sunt sunt vero numq', 'Harum nihil aute cum', 2, 1, '2022-01-16 23:35:30', '2022-01-16 23:35:30'),
-(8, 1, 'Repellendus Sed aut', 'Ea dolore iste obcae', '1979-01-15', 'Nihil voluptate in a', 83, 'Non libero duis ulla', 'Voluptas vitae ut qu', 'Eligendi earum solut', 'Numquam sit autem d', 'Repellendus Sed aut', 'Qui quasi non tempor', 'Temporibus ducimus', 'Elit dolore optio', 'Labore proident ita', 2, 1, '2022-01-16 23:36:38', '2022-01-16 23:36:38'),
-(9, 1, 'Eiusmod quia nisi no', 'Sint natus pariatur', '2022-11-19', 'Molestias et aut ut', 4, 'Veniam dolor ad mol', 'Sunt aut enim eligen', 'Enim enim beatae lab', 'Ut soluta quia nihil', 'Eiusmod quia nisi no', 'Proident molestias', 'In cillum reprehende', 'Tempore laudantium', 'Omnis blanditiis ull', 100, 1, '2022-01-16 23:39:06', '2022-01-16 23:39:06'),
-(10, 1, 'Molestias commodo qu', 'Explicabo Aliquam v', '2008-07-12', 'Enim ipsam ullam eni', 40, 'Minim necessitatibus', 'Illum nisi nostrum', 'Sed quia consequatur', 'Provident quo volup', 'Molestias commodo qu', 'Omnis dolorem sequi', 'Voluptas non dolor e', 'Ratione aspernatur i', 'Consectetur atque de', 100, 1, '2022-01-16 23:39:14', '2022-01-16 23:39:14'),
-(11, 1, 'Impedit exercitatio', 'Quas et ducimus inc', '1970-07-24', 'Assumenda repudianda', 86, 'Dolor enim vero sed', 'Eum et quia odio dol', 'Non quia occaecat as', 'Non deserunt adipisc', 'Impedit exercitatio', 'Sed magna sequi temp', 'Esse sunt pariatur', 'Molestias ad cillum', 'Repudiandae pariatur', 100, 1, '2022-01-16 23:39:22', '2022-01-16 23:39:22'),
-(12, 1, 'Consectetur et Nam m', 'At ut qui aliquam qu', '1998-10-14', 'Odit consectetur di', 10, 'Aperiam eveniet odi', 'Ut commodo duis temp', 'Mollitia ut deserunt', 'Et rerum aliquam est', 'Consectetur et Nam m', 'Blanditiis voluptati', 'Itaque asperiores su', 'Corrupti commodo ad', 'Voluptate sint porro', 100, 1, '2022-01-16 23:39:27', '2022-01-16 23:39:27'),
-(13, 1, 'Voluptatem Debitis', 'Non consectetur labo', '1979-02-16', 'Nulla sequi quo numq', 70, 'Est officiis quisqu', 'Nemo non aut at fuga', 'Enim cum magna in fu', 'In dicta quam blandi', 'Voluptatem Debitis', 'Iure modi corrupti', 'Architecto architect', 'Quo minus aliquip in', 'Iste provident sed', 100, 1, '2022-01-16 23:39:34', '2022-01-16 23:39:34'),
-(14, 1, 'Sunt tenetur sit ad', 'Itaque quidem vero v', '1980-07-19', 'Dolore nihil dolor f', 21, 'Aliquip magni tempor', 'Suscipit quo illum', 'Sed molestiae atque', 'Ipsum nemo reprehend', 'Sunt tenetur sit ad', 'Possimus velit ipsu', 'Fugit dolorem digni', 'Nemo eos cillum ut c', 'Recusandae Irure ne', 100, 1, '2022-01-16 23:39:39', '2022-01-16 23:39:39'),
-(15, 1, 'Quia cumque enim err', 'Atque ut corrupti q', '1990-12-04', 'Qui iusto quis vel i', 24, 'Est et mollit est q', 'Labore architecto te', 'Eius molestiae nihil', 'Ex non non id aliqu', 'Quia cumque enim err', 'Sunt aliqua Consequ', 'Quasi aliqua Ad id', 'Provident placeat', 'In illum sapiente i', 100, 1, '2022-01-16 23:39:52', '2022-01-16 23:39:52'),
-(16, 1, 'Dolor incidunt nisi', 'Laboris eiusmod exer', '1996-08-18', 'Vero id consequatur', 34, 'Voluptatibus veritat', 'Porro culpa et nost', 'At pariatur Archite', 'Illum ut quos nostr', 'Dolor incidunt nisi', 'Explicabo Provident', 'Ut labore sit lorem', 'Ea consectetur nisi', 'Qui assumenda neque', 100, 1, '2022-01-16 23:39:58', '2022-01-16 23:39:58'),
-(17, 1, 'Non aut est quaerat', 'Culpa sed harum off', '2010-03-09', 'Veniam repudiandae', 40, 'Enim sint aut disti', 'Ipsum aperiam simil', 'Ipsum pariatur Acc', 'Excepturi consectetu', 'Non aut est quaerat', 'Quasi ut saepe dolor', 'Laborum corrupti mi', 'Omnis voluptas volup', 'Vitae sit qui sed ne', 100, 1, '2022-01-16 23:40:03', '2022-01-16 23:40:03'),
-(18, 1, 'Provident adipisici', 'Debitis ea sed hic d', '1976-04-18', 'Accusamus dolorum vo', 43, 'Labore non aut quia', 'Quas et occaecat vol', 'Velit dolor blandit', 'Reiciendis atque sus', 'Provident adipisici', 'Consequatur porro du', 'Assumenda mollitia a', 'At quidem ea accusan', 'Pariatur Itaque sin', 100, 1, '2022-01-16 23:40:09', '2022-01-16 23:40:09'),
-(19, 1, 'Consequatur Sequi e', 'Fugiat tenetur nesc', '1992-10-28', 'Aspernatur accusamus', 24, 'Sunt illum hic Nam', 'Obcaecati veritatis', 'Quidem tenetur non n', 'Veniam nihil est a', 'Consequatur Sequi e', 'Perspiciatis conseq', 'Unde cum in quia at', 'Modi pariatur Ad ci', 'Quo dolore soluta in', 100, 1, '2022-01-16 23:40:17', '2022-01-16 23:40:17'),
-(20, 1, 'Id quaerat sit numqu', 'Reprehenderit aut do', '2014-07-24', 'Nisi sed amet et do', 63, 'Aspernatur a possimu', 'Duis nesciunt volup', 'Voluptatem nobis eiu', 'Laboris maxime volup', 'Id quaerat sit numqu', 'Deleniti quo ut qui', 'Corrupti dolores qu', 'Exercitationem magna', 'Ullamco et aliqua C', 100, 1, '2022-01-16 23:40:24', '2022-01-16 23:40:24'),
-(21, 1, 'Eveniet illum odio', 'Voluptas est volupt', '2012-11-06', 'Irure suscipit eveni', 32, 'Quia perspiciatis s', 'Suscipit vel dolor q', 'Ipsum eligendi omnis', 'Fuga Tempora a omni', 'Eveniet illum odio', 'Recusandae Dolor pr', 'Est nesciunt dolore', 'Corrupti qui amet', 'Velit at eu quis la', 100, 1, '2022-01-16 23:40:30', '2022-01-16 23:40:30'),
-(22, 1, 'Ullamco optio enim', 'Cumque voluptas odio', '1995-09-24', 'Ut sit quas dolor s', 71, 'Necessitatibus iste', 'Cupidatat quo quam p', 'Irure numquam sunt u', 'Labore dicta ullamco', 'Ullamco optio enim', 'Sed et sit exceptur', 'Praesentium enim dol', 'Labore reprehenderit', 'Voluptatum est conse', 100, 1, '2022-01-16 23:40:35', '2022-01-16 23:40:35'),
-(23, 1, 'Eveniet reprehender', 'Itaque quo aspernatu', '2011-08-03', 'Provident eligendi', 34, 'In vitae dolores mag', 'Dolorem et dolorem o', 'Excepteur est quia v', 'Soluta minima aute l', 'Eveniet reprehender', 'Consequat Qui dolor', 'Dolor ut aliqua Non', 'Eveniet ipsam in ve', 'Nihil dolore pariatu', 100, 1, '2022-01-16 23:40:40', '2022-01-16 23:40:40'),
-(24, 1, 'Doloribus deserunt s', 'Excepteur earum veli', '1972-02-28', 'Earum in omnis harum', 78, 'Dolore amet quis no', 'Nesciunt et qui eni', 'Asperiores molestias', 'Quidem qui reprehend', 'Doloribus deserunt s', 'Adipisci non consequ', 'Odio placeat qui re', 'Qui inventore non re', 'Rerum nobis doloribu', 100, 1, '2022-01-16 23:40:46', '2022-01-16 23:40:46'),
-(25, 1, 'Ut fugiat cupidatat', 'Aliquam delectus si', '2014-06-21', 'Minima minima magni', 99, 'Consectetur expedit', 'Modi alias in sit d', 'Enim aut exercitatio', 'Fuga Adipisci tempo', 'Ut fugiat cupidatat', 'Sequi qui nesciunt', 'Velit illo enim erro', 'Voluptatem Ab numqu', 'Dolore ut illo delec', 100, 1, '2022-01-16 23:40:51', '2022-01-16 23:40:51'),
-(26, 1, 'Tempor maiores aut v', 'Inventore fugiat qu', '2016-03-21', 'Id culpa suscipit t', 17, 'Sit suscipit volupta', 'Ad rerum sunt molest', 'Velit ullam numquam', 'Corrupti necessitat', 'Tempor maiores aut v', 'Est laborum Dolore', 'Et debitis voluptas', 'Commodo delectus Na', 'Excepturi voluptas s', 100, 1, '2022-01-16 23:40:57', '2022-01-16 23:40:57'),
-(27, 1, 'Ut lorem eu accusant', 'Sequi voluptate dolo', '1993-08-09', 'Aut et est ipsa qua', 90, 'Quia temporibus eu e', 'Eos commodo aperiam', 'Do fugiat veniam in', 'Est at vel neque qui', 'Ut lorem eu accusant', 'Sint impedit tempor', 'Doloribus nostrum de', 'Amet qui mollitia i', 'Consequatur qui quis', 100, 1, '2022-01-16 23:46:57', '2022-01-16 23:46:57'),
-(28, 1, 'Odit necessitatibus', 'Sed non nostrum id t', '1986-05-15', 'Harum aut nostrud re', 31, 'Agriculture/Foresty/Fishing', NULL, 'Quae eum laborum Ut', 'Dolor consequatur I', 'Kratié', 'Voluptas in odio eum', NULL, 'Minus optio dolore', 'Magnam culpa Nam id', 100, 1, '2022-01-17 01:40:12', '2022-01-17 01:40:12'),
-(29, 1, 'Qui id aliqua Veli', 'Eos voluptas nesciu', '1977-04-12', 'Dolore sint nostrum', 95, 'Performance/Musical/Artistic', NULL, 'IT Support', 'Eum necessitatibus t', 'Preah Sihanouk', 'Qui vitae unde eius', NULL, 'Quod elit aut sunt', 'Quia fugit quo libe', 100, 1, '2022-01-17 01:40:58', '2022-01-17 01:40:58'),
-(30, 1, 'Eum laboris nisi hic', 'Ea in temporibus dic', '1987-02-26', 'Qui aperiam praesent', 76, 'Engineering', NULL, 'Iusto deserunt nisi', 'Explicabo Quos cons', 'Takéo', 'Cumque deserunt aliq', NULL, 'Iste consequatur cum', 'A est maxime illum', 100, 1, '2022-01-17 01:44:53', '2022-01-17 01:44:53'),
-(31, 1, 'Dolore hic corporis', 'Similique ea consect', '1988-11-12', 'Quidem quasi qui lab', 21, 'Sports & Recreation', NULL, 'Aliquip velit dolor', 'Et ad perferendis om', 'Tboung Khmum', 'Saepe omnis odit cup', NULL, 'Rem eos exercitatio', 'Est ea et modi quis', 100, 1, '2022-01-17 01:47:12', '2022-01-17 01:47:12'),
-(32, 1, 'Repellendus Rerum a', 'Rerum quisquam do vo', '1982-11-26', 'Mollit illo fuga Do', 40, 'Information Technology', NULL, 'Sit eos eiusmod volu', 'Inventore nobis cons', 'Banteay Meanchey', 'Lorem aut ex maxime', NULL, 'Ut sunt sunt in aper', 'Laboris tempore und', 100, 1, '2022-01-17 01:48:01', '2022-01-17 01:48:01'),
-(33, 1, 'Ipsam adipisicing ea', 'Sunt laudantium lab', '2022-01-17', 'Et et veniam quaera', 5, 'Education', NULL, 'Esse aliquip amet', 'Duis eaque eum fugit', 'Pursat', 'Veniam ut sit repu', NULL, 'Eveniet dolor ea ci', 'Est amet quisquam u', 100, 1, '2022-01-17 02:01:31', '2022-01-17 02:01:31'),
-(34, 1, 'Aute est ut cillum', 'Sunt minima sint con', '2022-01-17', 'Itaque molestias ut', 76, 'Telecommunication', NULL, 'Cupiditate assumenda', 'Illo culpa nisi ea e', 'Ratanak Kiri', 'Harum sunt quia sin', NULL, 'Rerum laborum quasi', 'Sit debitis aut lor', 100, 1, '2022-01-17 03:16:46', '2022-01-17 03:16:46');
+INSERT INTO `jobs` (`id`, `uid`, `approved`, `title`, `age`, `contact`, `expired_job`, `expired_post`, `function`, `hiring`, `industry`, `language`, `location`, `qualification`, `salary`, `sex`, `term`, `year_of_exp`, `detail`, `created_at`, `updated_at`) VALUES
+(1, 2, 1, 'IT', 'Placeat est est v', 'Amet id ex rerum do', '2022-03-12', '2022-03-12', 'Medical/Health/Nursing', 5, 'NGO/Charity/Social Services', 'Placeat amet iste', 'Banteay Meanchey', 'Voluptate do dolorem', '$200-$500', 'Et esse iste reprehe', 'Dolor accusamus et v', 1, 'Sed voluptatem autem', '2022-02-04 02:16:29', '2022-02-04 02:19:43'),
+(2, 2, 1, 'Programmer', 'Et aut mollit qui vo', 'Sunt dolore facilis', '2022-02-08', '2022-02-08', 'Others', 1, 'Hotel/Hospitality', 'Rerum accusantium an', 'Preah Sihanouk', 'Pariatur Accusantiu', '<$200', 'Et facere eaque alia', 'Fugiat est enim com', 1, 'Ullamco sunt quia ex', '2022-02-04 02:16:54', '2022-02-04 02:19:42'),
+(3, 2, 1, 'Networking', 'Sunt soluta velit il', 'Quidem rerum sed asp', '2022-02-10', '2022-02-10', 'Customer Service', 5, 'Electronics/Electrical/Mechanical Equipment', 'Illum distinctio E', 'Prey Veng', 'Adipisicing ea modi', 'Negotiable', 'Dolorem totam esse t', 'Voluptate nihil aut', 1, 'Exercitationem ea eu', '2022-02-04 02:17:14', '2022-02-04 02:19:42'),
+(4, 1, 1, 'Account Manager', 'Perspiciatis offici', 'Officia tempora temp', '2022-02-07', '2022-02-07', 'Logistics/Shipping/Deliver/Warehouse', 1, 'Advisory/Consultancy', 'Cupidatat cum quo pr', 'Kratié', 'Dolor quod doloremqu', '>$6000', 'Veniam non fugiat', 'Pariatur Nisi ea ad', 5, 'Voluptatem Neque te', '2022-02-04 02:18:54', '2022-02-04 02:18:54'),
+(5, 1, 1, 'Purchasing Officer', 'Laudantium dolor ei', 'Delectus distinctio', '2022-03-12', '2022-03-12', 'Design', 1, 'Civil Services', 'Eum duis sint minim', 'Preah Sihanouk', 'Magnam ut ipsum cup', '<$200', 'Explicabo Obcaecati', 'Natus numquam pariat', 1, 'Qui in voluptatem e', '2022-02-04 02:19:18', '2022-02-04 02:19:18'),
+(6, 1, 1, 'Tax Controller', 'In omnis omnis est o', 'Sit velit ad adipisi', '2022-02-19', '2022-02-19', 'Sales', 5, 'Health/Personal Care', 'At distinctio Minus', 'Kratié', 'Aperiam accusantium', '>$6000', 'Et culpa eligendi do', 'Est ut fugit dolor', 2, 'Id officia placeat', '2022-02-04 02:19:39', '2022-02-04 02:19:39'),
+(7, 4, 1, 'Administrator', 'Distinctio Qui dict', 'Expedita rerum dolor', '2022-03-05', '2022-03-05', 'Cook/Cleaner/Maid', 1, 'Civil Services', 'Ipsam inventore quo', 'Preah Sihanouk', 'Ea optio voluptas a', '>$2000', 'Maxime rerum quis qu', 'Cillum proident ali', 5, 'Iure fuga Provident', '2022-02-04 02:20:43', '2022-02-04 02:22:52'),
+(8, 4, 1, 'Minim non accusamus', 'Magnam molestiae qui', 'Voluptate natus recu', '2022-03-12', '2022-02-26', 'Driver/Security', 2, 'Information Technology', 'Earum et saepe culpa', 'Oddar Meanchey', 'Error voluptas volup', 'Negotiable', 'Iusto et quas dolori', 'Totam voluptatem Es', 2, 'Tempora quas possimu', '2022-02-04 02:21:01', '2022-02-04 02:22:52'),
+(9, 4, 1, 'Dolorem aut quaerat', 'Atque error velit oc', 'Eveniet vitae deser', '2022-03-12', '2022-03-12', 'Education/Training', 1, 'Telecommunication', 'Aliquip aspernatur m', 'Kampong Cham', 'Nihil hic error et s', '$200-$500', 'Ut illum dolor odit', 'A reprehenderit aut', 1, 'Hic voluptatem iste', '2022-02-04 02:21:15', '2022-02-04 02:22:52'),
+(10, 5, 1, 'Qui vitae non iste s', 'Voluptatem fugiat a', 'Eu voluptate aut ut', '2022-02-06', '2022-02-06', 'Education/Training', 1, 'Chemical/Plastic/Paper/Petrochemical', 'Minus deserunt iste', 'Mondulkiri', 'Quia quia repellendu', '<$200', 'Explicabo Sed maxim', 'Quidem ipsum ea sunt', 1, 'Porro dolorum evenie', '2022-02-04 02:21:53', '2022-02-04 02:22:53'),
+(11, 5, 1, 'Exercitationem ut om', 'Exercitationem quia', 'Quo dolorum proident', '2022-02-11', '2022-02-11', 'Human Resource', 2, 'Government', 'Quidem nulla facere', 'Battambang', 'Neque non commodo al', '$200-$500', 'Eu et possimus ipsu', 'Dignissimos magna ip', 2, 'Ex quasi earum dolor', '2022-02-04 02:22:06', '2022-02-04 02:22:58'),
+(12, 5, 1, 'Error laudantium ob', 'Voluptatum atque cum', 'Aperiam eum modi et', '2022-02-08', '2022-02-09', 'Driver/Security', 1, 'Agriculture/Foresty/Fishing', 'Duis commodo omnis a', 'Siem Reap', 'Qui velit repudianda', '>$2000', 'Ducimus necessitati', 'Dolorum eum accusamu', 1, 'Quidem magnam enim l', '2022-02-04 02:22:21', '2022-02-04 02:22:58'),
+(13, 5, 1, 'Sunt voluptates qui', 'Velit in neque libe', 'Suscipit nesciunt d', '2022-03-12', '2022-03-12', 'Merchandising/Purchasing', 1, 'Performance/Musical/Artistic', 'Dolorum quia quidem', 'Stung Treng', 'Hic commodi perferen', 'Negotiable', 'Et ut et fuga In qu', 'Et autem dolor possi', 1, 'Nulla aperiam sed co', '2022-02-04 02:22:33', '2022-02-04 02:22:58');
 
 -- --------------------------------------------------------
 
@@ -345,11 +364,12 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (4, '2019_12_14_000001_create_personal_access_tokens_table', 1),
 (5, '2022_01_13_064306_create_usergroups_table', 1),
 (6, '2022_01_15_063918_create_jobs_table', 1),
-(7, '2022_01_17_065749_create_company_infos_table', 2),
-(8, '2022_01_17_072909_create_job_functions_table', 3),
-(9, '2022_01_17_072934_create_job_industries_table', 3),
-(10, '2022_01_17_072952_create_job_locations_table', 3),
-(11, '2022_01_17_073014_create_job_salaries_table', 3);
+(7, '2022_01_17_065749_create_company_infos_table', 1),
+(8, '2022_01_17_072909_create_job_functions_table', 1),
+(9, '2022_01_17_072934_create_job_industries_table', 1),
+(10, '2022_01_17_072952_create_job_locations_table', 1),
+(11, '2022_01_17_073014_create_job_salaries_table', 1),
+(12, '2022_01_24_022030_create_abouts_table', 1);
 
 -- --------------------------------------------------------
 
@@ -428,33 +448,28 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `gid`, `fname`, `gname`, `username`, `phone`, `password`, `visible`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 1, 'Chan', 'Dara', 'admin', '+1 (287) 506-3784', '$2y$10$Yx8t0W.0efV8473EEl8vS.kCUhG2RdBIJMXs0psMD/iY3wN86uETu', 1, NULL, '2022-01-14 23:58:07', '2022-01-14 23:58:07'),
-(4, 1, 'Camden Chaney', 'Cairo Hardin', 'weqoj', '+1 (989) 163-4584', '$2y$10$d7Y3CMV9IhhJmmJvMxdWE.3C6RDpAhG0x4e1h9InYBp8Ba2oYVypG', 1, NULL, '2022-01-15 19:49:25', '2022-01-15 19:49:25'),
-(5, 2, 'Sieng', 'SiengSieng', 'SiengSieng1', '+1 (573) 856-1071', '$2y$10$YJYZOvIbC7R9uAKwq.FUSuHRs1VIaV71NJRXIJUEMsIcaPLTe.UIK', 1, NULL, '2022-01-15 19:53:13', '2022-01-16 19:45:25'),
-(6, 3, 'Tashya Lara', 'Paula Coffey', 'bojohyhon', '+1 (235) 711-5618', '$2y$10$miuG5e9r5NBNqV26hlJidOcuPlRvUHcPEBlB6DGzADRvvLgCA6f9q', 1, NULL, '2022-01-15 19:54:44', '2022-01-15 19:54:44'),
-(7, 2, 'TaShya House', 'Shelly Ray', 'tiletisu', '+1 (612) 597-5543', '$2y$10$KuIRIoVLZ2T0JoFq8aaDgOABeh3rsaZ7V61a60B/XR/zafZKac94q', 1, NULL, '2022-01-15 19:54:56', '2022-01-15 19:54:56'),
-(10, 3, 'Ciara Conway', 'Xenos Foley', 'lapixyl', '+1 (977) 945-6266', '$2y$10$5sSHkimEv/1CXR/FVnIVNeeopeAmkOz8u7Qwv9gEGLOUO3GV3t4ti', 1, NULL, '2022-01-15 23:48:12', '2022-01-15 23:48:12'),
-(11, 3, 'Cain Beck', 'Dara Ayala', 'sibes', '+1 (711) 804-3453', '$2y$10$L/KjwdubR2cSxNq7wJTxgejYNmvh7aUaYhMyCbnieJsswJ94LGnTe', 1, NULL, '2022-01-15 23:48:18', '2022-01-15 23:48:18'),
-(12, 2, 'Jonas Norton', 'Ima Dodson', 'gyjavaqu', '+1 (922) 423-4891', '$2y$10$Q1wgzmbcqXaESS5NplUF5uOXOJIYYLMjAPXEYCzK8Nhd/IWgt7XEq', 1, NULL, '2022-01-15 23:48:22', '2022-01-15 23:48:22'),
-(13, 2, 'Reece Peterson', 'Buffy Cline', 'xefamulucy', '+1 (835) 591-9822', '$2y$10$LxJARIWH6VTzsWMnImCxwuO/xoyWp3UazKXFIBPGiXM6fXtR6510y', 1, NULL, '2022-01-15 23:48:27', '2022-01-15 23:48:27'),
-(14, 2, 'Blossom Holden', 'Jade Gould', 'vezulebi', '+1 (724) 466-2154', '$2y$10$ghjQWlBM31u.F6imW6Nyueedskf8I87Uh1Mo6thx053/Xbaz8KkhW', 1, NULL, '2022-01-15 23:48:34', '2022-01-15 23:48:34'),
-(15, 2, 'Madison Padilla', 'Camden Robbins', 'ryfizataqi', '+1 (311) 689-9736', '$2y$10$zna0Rr4jPFOBFzMlek3uzO1o.f6hNk1uLK3DsRiBeDJ7DIzNus7de', 1, NULL, '2022-01-15 23:48:39', '2022-01-15 23:48:39'),
-(16, 2, 'Hollee Roth', 'Zelda Anthony', 'tucidok', '+1 (136) 216-2791', '$2y$10$9Ujd6h83/HmWiiyuxzJTFOJ012naH6aLCi0jHYC7rbBIeWvK9Y83q', 1, NULL, '2022-01-15 23:48:44', '2022-01-15 23:48:44'),
-(17, 2, 'Hall Fields', 'Michelle Velazquez', 'sainang007', '+1 (594) 542-2389', '$2y$10$FPbabpkx.cqrB4XYtD28XecJ7pSuDIj/fCxQUFfnD6d6PnTdQVm0y', 1, NULL, '2022-01-16 03:16:09', '2022-01-16 03:16:09'),
-(18, 1, 'India Howard', 'Travis Leonard', 'xywafyvi', '+1 (759) 753-6574', '$2y$10$VixATIHDWElEHRfhnH11C..NAt4V3FssQ/FcjxbwZo/DJgY8MOULG', 1, NULL, '2022-01-16 03:17:18', '2022-01-16 03:17:18'),
-(19, 3, 'Pamela Vega', 'Josephine Noble', 'user', '+1 (623) 223-3447', '$2y$10$B1OQgu5fpbHy0gi8UrFA2e9hZr/ssEsD5CoKF8XREqnjUOvUMdRV2', 1, NULL, '2022-01-16 03:28:04', '2022-01-16 03:28:04'),
-(20, 2, 'Blaine Reid', 'Prescott Duke', 'agency', '+1 (966) 468-9854', '$2y$10$BlulKZFy6Ih9educThpQ3uProOH8sx3sBnenMq04bgCIf3JZCqysq', 1, NULL, '2022-01-16 03:42:17', '2022-01-16 03:42:17'),
-(21, 2, 'chandara', 'reamdavid', 'chandavid', '+1 (148) 374-8471', '$2y$10$QxlBecXy/4J9GuxnofrWsek6b/5vP4MAceCOTQMcL6CbDvy72217i', 1, NULL, '2022-01-16 19:05:27', '2022-01-16 19:05:27');
+(1, 1, 'Quentin Hull', 'Madaline Shaffer', 'admin', '+1 (472) 278-3122', '$2y$10$KwIyad6wHAfGV8OMhoNhPe/wH5bfA24S9Yl1maDzDYGlfLIGnRqAi', 1, NULL, '2022-02-04 02:14:54', '2022-02-04 02:14:54'),
+(2, 2, 'Molly Stanton', 'Colt Kelly', 'agency', '+1 (398) 692-1025', '$2y$10$UGGsCTpvu8mmTD4ATcoWbOg.RRQmSWn1wEpqEpol16LI0UWOwRtpK', 1, NULL, '2022-02-04 02:15:24', '2022-02-04 02:15:24'),
+(3, 3, 'Elijah Bush', 'Ezekiel Kidd', 'user', '+1 (848) 951-3907', '$2y$10$TGeIWp84ihxIh5aVFta1KOI0tL3/lXQI8sZ5YP9ZzkfgEM00Se7oK', 1, NULL, '2022-02-04 02:17:27', '2022-02-04 02:17:27'),
+(4, 2, 'Quinlan Santana', 'Montana Conrad', 'wotohagino', '+1 (382) 386-1279', '$2y$10$84kI7iQE1UzCRtXO/RYXU.3wLtWVScvO4.ilcgpN/8dpl4ICNv3be', 1, NULL, '2022-02-04 02:19:54', '2022-02-04 02:19:54'),
+(5, 2, 'Halee Mcleod', 'Faith Foster', 'muhixe', '+1 (113) 426-6426', '$2y$10$QbP0XY3YDQCMkcErbQmivOw63W3rT1H7Vtb4ZsOmiSOaotS9F2/ZK', 1, NULL, '2022-02-04 02:21:23', '2022-02-04 02:21:23');
 
 --
 -- Indexes for dumped tables
 --
 
 --
+-- Indexes for table `abouts`
+--
+ALTER TABLE `abouts`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `company_infos`
 --
 ALTER TABLE `company_infos`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `company_infos_uid_foreign` (`uid`);
 
 --
 -- Indexes for table `failed_jobs`
@@ -467,7 +482,8 @@ ALTER TABLE `failed_jobs`
 -- Indexes for table `jobs`
 --
 ALTER TABLE `jobs`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `jobs_uid_foreign` (`uid`);
 
 --
 -- Indexes for table `job_functions`
@@ -531,10 +547,16 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT for table `abouts`
+--
+ALTER TABLE `abouts`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `company_infos`
 --
 ALTER TABLE `company_infos`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
@@ -546,7 +568,7 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `jobs`
 --
 ALTER TABLE `jobs`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `job_functions`
@@ -576,7 +598,7 @@ ALTER TABLE `job_salaries`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`
@@ -594,7 +616,23 @@ ALTER TABLE `usergroups`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `company_infos`
+--
+ALTER TABLE `company_infos`
+  ADD CONSTRAINT `company_infos_uid_foreign` FOREIGN KEY (`uid`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `jobs`
+--
+ALTER TABLE `jobs`
+  ADD CONSTRAINT `jobs_uid_foreign` FOREIGN KEY (`uid`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

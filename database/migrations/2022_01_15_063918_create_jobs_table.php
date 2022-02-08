@@ -19,7 +19,7 @@ class CreateJobsTable extends Migration
             $table->unsignedBigInteger('uid');
             $table->foreign('uid')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
 
-            $table->boolean('approved')->default(0);
+            $table->boolean('approved')->default(false);
             $table->string('title')->nullable();
             $table->string('age')->nullable();
             $table->string('contact')->nullable();

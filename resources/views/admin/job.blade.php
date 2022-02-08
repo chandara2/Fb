@@ -186,13 +186,13 @@
                     <td>{{$job->location}}</td>
                     <td>
                         @if ($job->expired_post<now())
-                            <span class="text-danger" title="Will be deleted the next day">{{$job->expired_post}}</span>
+                            <span class="text-danger" title="Will be deleted the next day">{{  date('d \\ M Y', strtotime($job->expired_post)) }}</span>
                         @else
-                            {{$job->expired_post}}
+                            {{  date('d \\ M Y', strtotime($job->expired_post)) }}
                         @endif
                     </td>
                     <td>
-                        <input data-id="{{ $job->id }}" class="toggle-class" type="checkbox"  data-onstyle="success" data-offstyle="danger" data-toggle="toggle" data-on="Approved" data-off="Pending" {{ $job->approved ? 'checked':'' }}>
+                        <input type="checkbox" class="toggle-class" data-id="{{ $job->id }}" data-toggle="toggle" data-onstyle="success" data-offstyle="danger" data-on="Approved" data-off="Pending" {{ $job->approved == true ? 'checked' : ''}}>
                     </td>
                     <td>
                         <a href="/admin/job/{{ $job->id }}/edit" title="Edit"><i class="bi bi-pencil-square text-primary"></i></a>
@@ -224,26 +224,6 @@
 
 @section('script')
     <script>
-        $(document).ready(function (){
-            $('#update_status_switch').DataTable()
-        });
-
-        $(function(){
-            $('.toggle-class').change(function(){
-                var approved = $(this).prop('checked') == true ? 1:0;
-                var job_id = $(this).data('id');
-                $.ajax({
-                    type: "GET",
-                    url: "/admin/changejobstatus",
-                    data: {'approved':approved,'id':job_id},
-                    dataType: "json",
-                    success: function (data) {
-                        console.log(data.success)
-                    }
-                });
-            });
-        });
-
         $(document).ready(function () {
             $.ajaxSetup({
                 headers: {
@@ -276,6 +256,24 @@
                         }
                     }
                 });
+            });
+        });
+
+        // Pending & Approved
+        $('.toggle-class').on('change', function() {
+            var approved = $(this).prop('checked') == true ? 1 : 0;
+            var id = $(this).data('id');
+            $.ajax({
+                type: 'GET',
+                dataType: 'JSON',
+                url: '/admin/changejobstatus',
+                data: {
+                    'approved': approved,
+                    'id': id
+                },
+                success:function(data) {
+                    console.log(data.successStatusMsg)
+                }
             });
         });
         

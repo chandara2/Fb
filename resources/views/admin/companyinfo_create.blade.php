@@ -24,7 +24,12 @@
             <div class="form-group row mb-md-3">
                 <label class="col-xl-3 col-md-2 col-form-label text-md-end pb-0">Industry</label>
                 <div class="col-xl-6 col-md-8 mb-md-0 mb-sm-2">
-                    <input type="text" name="industry" value="{{ old('industry') }}" class="form-control">
+                    <select name="industry" value="{{ old('industry') }}" class="form-select">
+                        <option selected disabled>Select Job Industry</option>
+                        @foreach ($job_industrys as $job_industry)
+                            <option>{{ $job_industry->name }}</option>
+                        @endforeach
+                    </select>
                 </div>
             </div>
             <div class="form-group row mb-md-3">

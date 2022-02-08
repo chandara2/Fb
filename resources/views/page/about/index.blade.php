@@ -12,24 +12,24 @@
 @forelse ( $abouts as $about )
 <section>
     <div class="position-relative">
-        <img src="{{asset('upload/aboutsbanner/')}}/{{$about->banner}}" alt="" width="100%" height="400" style="object-fit: cover; filter: brightness(0.30);">
-        <span class="position-absolute top-50 start-50 translate-middle-x h1 text-light">{{__('text.n1jic')}}</span>
+        <img src="{{asset('upload/aboutsbanner/')}}/{{$about->banner}}" alt="Banner" width="100%" height="400" style="object-fit: cover; filter: brightness(0.30);">
+        <span class="position-absolute top-50 start-50 translate-middle-x h1 text-light" style="text-shadow: 2px 2px #000;">{{__('text.n1jic')}}</span>
     </div>
 </section>
 
 <section>
     <div class="container mt-5">
         <p class="h4 text-decoration-underline">Our Mission</p>
-        <textarea disabled class="textarea_autosize form-control border-0 bg-white">{{$about->mission}}</textarea>
+        <textarea disabled class="textarea_autosize form-control border-0 bg-light">{{$about->mission}}</textarea>
     </div>
 </section>
 
 <section>
     <div class="container">
         <p class="h4 text-decoration-underline mt-3">Goals</p>
-        <textarea disabled class="textarea_autosize form-control border-0 bg-white">{{$about->goal}}</textarea>
+        <textarea disabled class="textarea_autosize form-control border-0 bg-light">{{$about->goal}}</textarea>
         <p class="h4 text-decoration-underline mt-3">Values</p>
-        <textarea disabled class="textarea_autosize form-control border-0 bg-white">{{$about->value}}</textarea>
+        <textarea disabled class="textarea_autosize form-control border-0 bg-light">{{$about->value}}</textarea>
     </div>
 </section>
 

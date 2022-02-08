@@ -98,11 +98,12 @@ class AuthController extends Controller
     {
         $request->validate([
             'username' => 'required|unique:users',
-            'password' => 'required',
-            'password_confirmation' => 'required|same:password'
+            'password' => ['required', 'string', 'min:6'],
+            'password_confirmation' => 'required|same:password|min:6',
         ], [
             'username.required' => 'Please fill in username',
-            'password.required' => 'Please fill in password'
+            'password.required' => 'Please fill in password',
+            'password_confirmation.required' => 'Please fill in confirm password',
         ]);
 
         Auth::login($user = User::create([
