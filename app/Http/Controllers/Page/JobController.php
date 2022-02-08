@@ -129,4 +129,28 @@ class JobController extends Controller
             'jobscoms' => $jobscoms,
         ]);
     }
+
+    public function searchjobindex(Request $request)
+    {
+        // Get the search value from the request
+        $searchjobindex = $request->searchjobindex;
+
+        // Search in the title and body columns from the posts table
+        $searched = Job::query()
+            ->where('title', 'LIKE', "%{$searchjobindex}%")
+            ->orWhere('salary', 'LIKE', "%{$searchjobindex}%")
+            ->get();
+
+        $jobscoms = DB::table('users')
+            ->join('jobs', 'jobs.uid', '=', 'users.id')
+            ->join('company_infos', 'company_infos.uid', '=', 'users.id')
+            ->select('jobs.*', 'jobs.id as job_id', 'company_infos.*', 'company_infos.id as com_id')
+            ->paginate(10);
+
+        // Return the search view with the resluts compacted
+        return view('page.job.index', [
+            'searched' => $searched,
+            'jobscoms' => $jobscoms,
+        ]);
+    }
 }
