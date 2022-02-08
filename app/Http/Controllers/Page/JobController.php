@@ -80,11 +80,11 @@ class JobController extends Controller
     public function jobsort($jobsort)
     {
         $jobscoms = DB::table('jobs')
+            ->join('company_infos', 'company_infos.uid', '=', 'jobs.uid')
             ->join('job_functions', 'job_functions.name', '=', 'jobs.function')
             ->join('job_industries', 'job_industries.name', '=', 'jobs.industry')
             ->join('job_locations', 'job_locations.name', '=', 'jobs.location')
             ->join('job_salaries', 'job_salaries.name', '=', 'jobs.salary')
-            ->join('company_infos', 'company_infos.uid', '=', 'jobs.uid')
             ->select('jobs.*', 'company_infos.*', 'jobs.id as job_id', 'company_infos.id as com_id')
             ->where('job_functions.name', $jobsort)
             ->orWhere('job_industries.name', $jobsort)
