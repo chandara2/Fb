@@ -34,7 +34,7 @@
                     @if($jobscom->expired_job>now()->addDays(7)) <span class="bg-warning badge">New</span>
                     @else <span class="bg-danger badge">Urgent</span> @endif
                     <p class="text-danger"><i class="bi bi-bezier"></i>Function : {{ $jobscom->function }}</p>
-                    <p class="bg-info"><i class="bi bi-shop"></i>Industry : <span class="text-white fw-bold">{{ $jobscom->industry }}</span></p>
+                    <p class="bg-info"><i class="bi bi-shop"></i>Industry : <span class="text-white fw-bold">{{ $jobscom->job_industry }}</span></p>
                     <p class="text-primary"><i class="bi bi-geo-alt"></i>Location : {{ $jobscom->location }}</p>
                     <p class="bg-success"><i class="bi bi-currency-dollar"></i>Salary : <span class="text-white fw-bold">{{ $jobscom->salary }}</span></p>
                     <div class="py-1"><a href="/company/{{$jobscom->com_id}}" class="com_name">{{ $jobscom->company }}</a></div>

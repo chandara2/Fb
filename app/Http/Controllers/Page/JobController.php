@@ -17,8 +17,8 @@ class JobController extends Controller
     public function index()
     {
         $jobscoms = DB::table('users')
-            ->join('jobs', 'users.id', '=', 'jobs.uid')
-            ->join('company_infos', 'users.id', '=', 'company_infos.uid')
+            ->join('jobs', 'jobs.uid', '=', 'users.id')
+            ->join('company_infos', 'company_infos.uid', '=', 'users.id')
             ->select('jobs.*', 'jobs.id as job_id', 'company_infos.*', 'company_infos.id as com_id')
             ->paginate(10);
 
@@ -58,14 +58,14 @@ class JobController extends Controller
     public function show($id)
     {
         $jobcompanys = DB::table('users')
-            ->join('jobs', 'users.id', '=', 'jobs.uid')
-            ->join('company_infos', 'users.id', '=', 'company_infos.uid')
+            ->join('jobs', 'jobs.uid', '=', 'users.id')
+            ->join('company_infos', 'company_infos.uid', '=', 'users.id')
             ->select('jobs.*', 'company_infos.*', 'company_infos.id as ciid')
             ->where('jobs.id', $id)
             ->get();
         $hotjobs = DB::table('users')
-            ->join('jobs', 'users.id', '=', 'jobs.uid')
-            ->join('company_infos', 'users.id', '=', 'company_infos.uid')
+            ->join('jobs', 'jobs.uid', '=', 'users.id')
+            ->join('company_infos', 'company_infos.uid', '=', 'users.id')
             ->select('jobs.id', 'jobs.created_at', 'jobs.title', 'jobs.salary', 'company_infos.company', 'company_infos.id as com_id')
             ->latest()
             ->take(10)
@@ -85,7 +85,7 @@ class JobController extends Controller
             ->join('job_industries', 'job_industries.name', '=', 'jobs.industry')
             ->join('job_locations', 'job_locations.name', '=', 'jobs.location')
             ->join('job_salaries', 'job_salaries.name', '=', 'jobs.salary')
-            ->select('jobs.*', 'company_infos.*', 'jobs.id as job_id', 'company_infos.id as com_id')
+            ->select('jobs.*', 'jobs.id as job_id', 'jobs.industry as job_industry', 'company_infos.*', 'company_infos.id as com_id')
             ->where('job_functions.name', $jobsort)
             ->orWhere('job_industries.name', $jobsort)
             ->orWhere('job_locations.name', $jobsort)
@@ -128,17 +128,5 @@ class JobController extends Controller
     public function destroy($id)
     {
         //
-    }
-
-    public function jobsall($id)
-    {
-        $jobscoms = DB::table('jobs')
-            ->select('jobs.*')
-            ->where('jobs.function', $id)
-            ->get();
-
-        return view('page.job.index', [
-            'jobscoms' => $jobscoms,
-        ]);
     }
 }

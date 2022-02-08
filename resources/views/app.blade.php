@@ -67,9 +67,11 @@
                             </div>
                             <div role="tabpanel" class="tab-pane" id="industry">
                                 <ul class="list-unstyled ul_browsejobs p-lg-2 p-sm-2">
+
                                     @foreach ($job_industries as $industry=>$count)
                                         <li><a href="jobsort/{{ $industry }}" class="text-decoration-none text-black">{{Str::limit($industry, 25)}} ({{ $count }})</a></li>
                                     @endforeach
+
                                 </ul>
                             </div>
                             <div role="tabpanel" class="tab-pane" id="location">
