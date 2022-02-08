@@ -43,7 +43,7 @@
     </ul>
 
     {{-- Pagination --}}
-    <div class="d-flex justify-content-center">
+    <div class="d-flex justify-content-md-end justify-content-sm-center mt-2">
         {{ $jobscoms->links() }}
     </div>
 </div>
