@@ -77,14 +77,20 @@ class JobController extends Controller
         ]);
     }
 
-    public function jobshow($id)
+    public function jobsort($jobsort)
     {
         $jobscoms = DB::table('jobs')
             ->join('job_functions', 'job_functions.name', '=', 'jobs.function')
+            ->join('job_industries', 'job_industries.name', '=', 'jobs.industry')
+            ->join('job_locations', 'job_locations.name', '=', 'jobs.location')
+            ->join('job_salaries', 'job_salaries.name', '=', 'jobs.salary')
             ->join('company_infos', 'company_infos.uid', '=', 'jobs.uid')
-            ->select('jobs.*', 'jobs.id as job_id', 'company_infos.*', 'company_infos.id as com_id')
-            ->where('job_functions.id', $id)
-            ->paginate(5);
+            ->select('jobs.*', 'company_infos.*', 'jobs.id as job_id', 'company_infos.id as com_id')
+            ->where('job_functions.name', $jobsort)
+            ->orWhere('job_industries.name', $jobsort)
+            ->orWhere('job_locations.name', $jobsort)
+            ->orWhere('job_salaries.name', $jobsort)
+            ->paginate(10);
         return view('page.job.job_sort', [
             'jobscoms' => $jobscoms,
         ]);

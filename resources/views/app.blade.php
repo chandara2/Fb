@@ -59,31 +59,31 @@
                             <div role="tabpanel" class="tab-pane active" id="function">
                                 <ul class="list-unstyled ul_browsejobs p-lg-2 p-sm-2">
 
-                                    @foreach ($browsejobs as $job_function)
-                                        <li><a href="" class="text-decoration-none text-black">{{Str::limit($job_function->function, 25)}} (0)</a></li>
+                                    @foreach ($job_functions as $function=>$count)
+                                        <li><a href="jobsort/{{ $function }}" class="text-decoration-none text-black">{{Str::limit($function, 25)}} ({{ $count }})</a></li>
                                     @endforeach
 
                                 </ul>
                             </div>
                             <div role="tabpanel" class="tab-pane" id="industry">
                                 <ul class="list-unstyled ul_browsejobs p-lg-2 p-sm-2">
-                                    {{-- @foreach ($browsejobs as $job_industry)
-                                        <li><a href="" class="text-decoration-none text-black">{{Str::limit($job_industry->industry, 25)}} (0)</a></li>
-                                    @endforeach --}}
+                                    @foreach ($job_industries as $industry=>$count)
+                                        <li><a href="jobsort/{{ $industry }}" class="text-decoration-none text-black">{{Str::limit($industry, 25)}} ({{ $count }})</a></li>
+                                    @endforeach
                                 </ul>
                             </div>
                             <div role="tabpanel" class="tab-pane" id="location">
                                 <ul class="list-unstyled ul_browsejobs p-lg-2 p-sm-2">
-                                    {{-- @foreach ($browsejobs as $job_location)
-                                        <li><a href="job" class="text-decoration-none text-black">{{Str::limit($job_location->location, 25)}} (0)</a></li>
-                                    @endforeach --}}
+                                    @foreach ($job_locations as $location=>$count)
+                                        <li><a href="jobsort/{{ $location }}" class="text-decoration-none text-black">{{Str::limit($location, 25)}} ({{ $count }})</a></li>
+                                    @endforeach
                                 </ul>
                             </div>
                             <div role="tabpanel" class="tab-pane" id="salary">
                                 <ul class="list-unstyled ul_browsejobs p-lg-2 p-sm-2">
-                                    {{-- @foreach ($browsejobs as $job_salary)
-                                        <li><a href="job" class="text-decoration-none text-black">{{Str::limit($job_salary->salary, 25)}} (0)</a></li>
-                                    @endforeach --}}
+                                    @foreach ($job_salaries as $salary=>$count)
+                                        <li><a href="jobsort/{{ $salary }}" class="text-decoration-none text-black">{{Str::limit($salary, 25)}} ({{ $count }})</a></li>
+                                    @endforeach
                                 </ul>
                             </div>
                         </div>

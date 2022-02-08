@@ -22,7 +22,7 @@ Route::resource('/', AppController::class)->only('index');
 
 // Job page
 Route::resource('job', JobController::class);
-Route::get('jobshow/{jobshow}', [JobController::class, 'jobshow'])->name('jobshow.show');
+Route::get('jobsort/{jobshow}', [JobController::class, 'jobsort'])->name('jobsort.show');
 
 // About page
 Route::resource('about', AboutController::class);
