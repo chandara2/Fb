@@ -153,13 +153,13 @@ class JobController extends Controller
                 ->orWhere('term', 'LIKE', "%$searchjob%")
                 ->orWhere('year_of_exp', 'LIKE', "%$searchjob%")
                 ->orWhere('detail', 'LIKE', "%$searchjob%")
-                ->paginate(10);
+                ->paginate(1);
         } else {
             $jobscoms = DB::table('users')
                 ->join('jobs', 'jobs.uid', '=', 'users.id')
                 ->join('company_infos', 'company_infos.uid', '=', 'users.id')
                 ->select('jobs.*', 'jobs.id as job_id', 'company_infos.*', 'company_infos.id as com_id')
-                ->paginate(10);
+                ->paginate(2);
         }
         return view('page.job.index', [
             'jobscoms' => $jobscoms,
