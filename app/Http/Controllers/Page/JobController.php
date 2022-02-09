@@ -130,27 +130,40 @@ class JobController extends Controller
         ]);
     }
 
-    public function searchjobindex(Request $request)
+    public function searchjob(Request $request)
     {
-        // Get the search value from the request
-        $searchjobindex = $request->searchjobindex;
-
-        // Search in the title and body columns from the posts table
-        $searched = Job::query()
-            ->where('title', 'LIKE', "%{$searchjobindex}%")
-            ->orWhere('salary', 'LIKE', "%{$searchjobindex}%")
-            ->get();
-
-        $jobscoms = DB::table('users')
-            ->join('jobs', 'jobs.uid', '=', 'users.id')
-            ->join('company_infos', 'company_infos.uid', '=', 'users.id')
-            ->select('jobs.*', 'jobs.id as job_id', 'company_infos.*', 'company_infos.id as com_id')
-            ->paginate(10);
-
-        // Return the search view with the resluts compacted
+        $searchjob = $request['searchjob'] ?? "";
+        if ($searchjob != "") {
+            $jobscoms = DB::table('users')
+                ->join('jobs', 'jobs.uid', '=', 'users.id')
+                ->join('company_infos', 'company_infos.uid', '=', 'users.id')
+                ->where('title', 'LIKE', "%$searchjob%")
+                ->orWhere('age', 'LIKE', "%$searchjob%")
+                ->orWhere('contact', 'LIKE', "%$searchjob%")
+                ->orWhere('expired_job', 'LIKE', "%$searchjob%")
+                ->orWhere('function', 'LIKE', "%$searchjob%")
+                ->orWhere('hiring', 'LIKE', "%$searchjob%")
+                ->orWhere('industry', 'LIKE', "%$searchjob%")
+                ->orWhere('language', 'LIKE', "%$searchjob%")
+                ->orWhere('location', 'LIKE', "%$searchjob%")
+                ->orWhere('qualification', 'LIKE', "%$searchjob%")
+                ->orWhere('salary', 'LIKE', "%$searchjob%")
+                ->orWhere('sex', 'LIKE', "%$searchjob%")
+                ->orWhere('term', 'LIKE', "%$searchjob%")
+                ->orWhere('year_of_exp', 'LIKE', "%$searchjob%")
+                ->orWhere('detail', 'LIKE', "%$searchjob%")
+                ->select('jobs.*', 'jobs.id as job_id', 'company_infos.*', 'company_infos.id as com_id')
+                ->paginate(10);
+        } else {
+            $jobscoms = DB::table('users')
+                ->join('jobs', 'jobs.uid', '=', 'users.id')
+                ->join('company_infos', 'company_infos.uid', '=', 'users.id')
+                ->select('jobs.*', 'jobs.id as job_id', 'company_infos.*', 'company_infos.id as com_id')
+                ->paginate(10);
+        }
         return view('page.job.index', [
-            'searched' => $searched,
             'jobscoms' => $jobscoms,
+            'searchjob' => $searchjob,
         ]);
     }
 }

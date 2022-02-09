@@ -23,22 +23,11 @@
 @section('content')
 
 <div class="container my-3">
-
-    <form class="d-flex" action="{{ route('searchjobindex') }}" method="GET">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="searchjobindex">
-        <button class="btn btn-outline-success" type="submit">Search</button>
-    </form>
     
     <button class="btn btn-danger">Related Job</button>
 
-    {{-- @if($searched)
-        @foreach ($searched as $rs)
-        <p class="bg-danger">{{ $rs->title }}</p>
-        @endforeach
-    @endif --}}
-
     <ul class="list-group list-group-flush">
-        @foreach ($jobscoms as $jobscom)
+        @forelse ($jobscoms as $jobscom)
         <li class="list-group-item py-3">
             <div class="row">
                 <div class="col-md-8">
@@ -51,7 +40,9 @@
                 <div class="col-md-4 text-md-end text-sm-start">{{  date('d \\ M Y', strtotime($jobscom->expired_job)) }}</div>
             </div>
         </li>
-        @endforeach
+        @empty
+        <p class="text-center">No results found for <strong class="border-bottom border-warning">" {{ $searchjob }} "</strong></p>
+        @endforelse
     </ul>
 
     {{-- Pagination --}}
@@ -61,3 +52,4 @@
 </div>
 
 @endsection
+
