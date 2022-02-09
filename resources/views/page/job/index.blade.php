@@ -25,7 +25,6 @@
 <div class="container my-3">
     
     <button class="btn btn-danger">Related Job</button>
-
     <ul class="list-group list-group-flush">
         @forelse ($jobscoms as $jobscom)
         <li class="list-group-item py-3">
