@@ -1,6 +1,5 @@
 @extends('layout.layout_guest')
 @section('title', 'REGISTER')
-
 @section('content')
     <div class="d-flex justify-content-center align-items-center w-100 vh-100">
         <div class="shadow p-3 rounded" style="width: 380px;">
@@ -20,8 +19,6 @@
                     @foreach ($usergroups as $usergroup)
                         <option value="{{ $usergroup->id }}">{{ $usergroup->name }}</option>
                     @endforeach
-                    {{-- <option value="3">User</option>
-                    <option value="2">Agency</option> --}}
                 </select>
                 <button type="submit" class="btn brand_btn3 w-100 my-3">Register</button>
             </form>
