@@ -1,7 +1,7 @@
 @extends('layout.layout_guest')
 @section('title', 'LOGIN')
 @section('content')
-    <div class="d-flex justify-content-center align-items-center w-100 vh-100">
+    <div class="d-flex justify-content-center align-items-center w-100 vh-100 fadeLogin">
         <div class="shadow p-3 rounded" style="width: 380px;">
             <h1 class="text-center mb-3">Login</h1>
             <form action="{{ route('login') }}" method="POST">
@@ -21,3 +21,4 @@
         </div>
     </div>
 @endsection
+    
