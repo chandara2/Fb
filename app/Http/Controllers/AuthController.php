@@ -104,6 +104,7 @@ class AuthController extends Controller
             'username.required' => 'Please fill in username',
             'password.required' => 'Please fill in password',
             'password_confirmation.required' => 'Please fill in confirm password',
+            'password_confirmation.same' => 'Password and confirm password does not match',
         ]);
 
         Auth::login($user = User::create([

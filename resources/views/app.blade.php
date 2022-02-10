@@ -32,8 +32,8 @@
 
                     <div id="slick1">
                         @foreach ($companylogos as $companylogo)
-                        <div class="slide-item1 d-flex justify-content-around border border-white"><img src="{{ asset('asset/image/lake.jpg') }}" alt="slide" width="100%" height='250' style="object-fit:cover;"></div>
-                        <div class="slide-item1 d-flex justify-content-around border border-white"><img src="{{ asset('asset/image/city.jpg') }}" alt="slide" width="100%" height='250' style="object-fit:cover;"></div>
+                        <div class="slide-item1 d-flex justify-content-around border border-white"><img src="{{ asset('asset/image/slide1.jpg') }}" alt="slide" width="100%" height='250' style="object-fit:cover;"></div>
+                        <div class="slide-item1 d-flex justify-content-around border border-white"><img src="{{ asset('asset/image/slide2.jpg') }}" alt="slide" width="100%" height='250' style="object-fit:cover;"></div>
                         @endforeach
                     </div>
 
@@ -110,7 +110,7 @@
                 <div class="col-md-12">
                     <h4 style="text-decoration: underline 3px solid pink">Featured Employers</h4>
 
-                    <div class="slick-wrapper w-100 bg-info bg-opacity-10">
+                    <div class="slick-wrapper w-100 bg-white">
                         <div id="slick2">
                             @foreach ($companylogos as $companylogo)
                             <div class="slide-item2 py-3 d-flex justify-content-around border border-white">
@@ -210,13 +210,13 @@
         });
 
         $('#slick2').slick({
-            rows: 3,
+            rows: 1,
             arrows: false,
             infinite: true,
             speed: 1500,
             autoplay: true,
             autoplaySpeed: 7000,
-            slidesToShow: 6,
+            slidesToShow: 5,
             responsive: [
                 {
                 breakpoint: 1200,
@@ -246,7 +246,7 @@
             speed: 300,
             autoplay: true,
             autoplaySpeed: 4000,
-            slidesToShow: 6,
+            slidesToShow: 5,
         });
 
         $('#slick4').slick({
@@ -256,7 +256,7 @@
             speed: 300,
             autoplay: true,
             autoplaySpeed: 4000,
-            slidesToShow: 6,
+            slidesToShow: 5,
         }); 
     </script>
 @endsection

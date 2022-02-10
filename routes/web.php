@@ -23,7 +23,7 @@ Route::resource('/', AppController::class)->only('index');
 // Job page
 Route::resource('job', JobController::class);
 Route::get('jobsort/{jobshow}', [JobController::class, 'jobsort']);
-Route::get('search', [JobController::class, 'searchjobindex'])->name('searchjobindex');
+Route::get('searchjob', [JobController::class, 'searchjob'])->name('searchjob');
 
 // About page
 Route::resource('about', AboutController::class);

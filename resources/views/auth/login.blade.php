@@ -1,10 +1,8 @@
 @extends('layout.layout_guest')
 @section('title', 'LOGIN')
-
 @section('content')
-
-    <div class="d-flex justify-content-center align-items-center w-100 vh-100">
-        <div class="shadow rounded p-3" style="width: 330px;">
+    <div class="d-flex justify-content-center align-items-center w-100 vh-100 fadeLogin">
+        <div class="shadow p-3 rounded" style="width: 380px;">
             <h1 class="text-center mb-3">Login</h1>
             <form action="{{ route('login') }}" method="POST">
                 @csrf
@@ -18,9 +16,9 @@
                     @endforeach
                 </select>
                 <button type="submit" class="btn brand_btn3 w-100 my-3">Login</button>
-                <span class="text-danger bg-warning">@error('errmsg'){{$message}}@enderror</span>
+                <div class="text-center text-danger bg-warning px-3 rounded">@error('errmsg'){{$message}}@enderror</div>
             </form>
         </div>
     </div>
-
 @endsection
+    

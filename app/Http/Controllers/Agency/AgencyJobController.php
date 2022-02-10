@@ -61,7 +61,7 @@ class AgencyJobController extends Controller
             'expired_job' => 'required|date',
             'expired_post' => 'required|date',
             'function' => 'required',
-            'hiring' => 'required|numeric',
+            'hiring' => 'required|numeric|min:0',
             'industry' => 'required',
             'language' => 'required',
             'location' => 'required',
@@ -70,7 +70,30 @@ class AgencyJobController extends Controller
             'sex' => 'required',
             'term' => 'required',
             'title' => 'required',
-            'year_of_exp' => 'required|numeric|max:100',
+            'year_of_exp' => 'required|numeric|min:0',
+        ],[
+            'age.required' => 'Age is required',
+            'contact.required' => 'Contact is required',
+            'detail.required' => 'Detail is required',
+            'expired_job.required' => 'Expired job is required',
+            'expired_job.date' => 'Expired job should be a date',
+            'expired_post.required' => 'Expired post is required',
+            'expired_post.date' => 'Expired post should be a date',
+            'function.required' => 'Function is required',
+            'hiring.required' => 'Hiring is required',
+            'hiring.numeric' => 'Hiring should be a number',
+            'hiring.min' => 'Hiring should not be a negative number',
+            'industry.required' => 'Industry is required',
+            'language.required' => 'Language is required',
+            'location.required' => 'Location is required',
+            'qualification.required' => 'Qualification is required',
+            'salary.required' => 'Salary is required',
+            'sex.required' => 'Sex is required',
+            'term.required' => 'Term is required',
+            'title.required' => 'Job Title is required',
+            'year_of_exp.required' => 'Year of experience is required',
+            'year_of_exp.numeric' => 'Year of experience should be a number',
+            'year_of_exp.min' => 'Year of experience should not be a negative number',
         ]);
 
         $job = new Job();
@@ -160,15 +183,20 @@ class AgencyJobController extends Controller
         $request->validate([
             'age' => 'required',
             'contact' => 'required',
-            'deadline' => 'required|date|after:now',
             'detail' => 'required',
-            'hiring' => 'required|numeric',
-            'job_title' => 'required',
+            'expired_job' => 'required|date',
+            'expired_post' => 'required|date',
+            'function' => 'required',
+            'hiring' => 'required|numeric|min:0',
+            'industry' => 'required',
             'language' => 'required',
+            'location' => 'required',
             'qualification' => 'required',
+            'salary' => 'required',
             'sex' => 'required',
             'term' => 'required',
-            'year_of_exp' => 'required|numeric|max:100',
+            'title' => 'required',
+            'year_of_exp' => 'required|numeric|min:0',
         ]);
 
         $job = Job::find($id);
@@ -186,6 +214,7 @@ class AgencyJobController extends Controller
         $job->salary = $request->job_salary;
         $job->sex = $request->sex;
         $job->term = $request->term;
+        $job->title = $request->title;
         $job->year_of_exp = $request->year_of_exp;
         $job->update();
 

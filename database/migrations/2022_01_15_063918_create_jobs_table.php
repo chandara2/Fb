@@ -26,7 +26,7 @@ class CreateJobsTable extends Migration
             $table->date('expired_job')->nullable();
             $table->date('expired_post')->nullable();
             $table->string('function')->nullable();
-            $table->tinyInteger('hiring')->nullable();
+            $table->smallInteger('hiring')->nullable();
             $table->string('industry')->nullable();
             $table->string('language')->nullable();
             $table->string('location')->nullable();
@@ -34,7 +34,7 @@ class CreateJobsTable extends Migration
             $table->string('salary')->nullable();
             $table->string('sex')->nullable();
             $table->string('term')->nullable();
-            $table->tinyInteger('year_of_exp')->nullable();
+            $table->smallInteger('year_of_exp')->nullable();
             $table->text('detail')->nullable();
 
             $table->timestamps();
