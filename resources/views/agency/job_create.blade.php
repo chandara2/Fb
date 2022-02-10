@@ -18,10 +18,9 @@
             <div class="form-group row mb-md-3">
                 <label class="col-xl-3 col-md-2 col-form-label text-md-end pb-0">Select Job Industry</label>
                 <div class="col-xl-6 col-md-8 mb-md-0 mb-sm-2">
-                    <select name="industry" value="{{ old('industry') }}" class="form-select">
-                        <option selected disabled>Select Job Industry</option>
+                    <select name="industry" class="form-select">
                         @foreach ($job_industries as $job_industry)
-                            <option>{{ $job_industry->name }}</option>
+                            <option @if (old('industry') == $job_industry->name) selected @endif>{{ $job_industry->name }}</option>
                         @endforeach
                     </select>
                     <span class="text-danger">@error('industry'){{$message}}@enderror</span>
@@ -30,10 +29,9 @@
             <div class="form-group row mb-md-3">
                 <label class="col-xl-3 col-md-2 col-form-label text-md-end pb-0">Select Job Function</label>
                 <div class="col-xl-6 col-md-8 mb-md-0 mb-sm-2">
-                    <select name="function" value="{{ old('function') }}" class="form-select">
-                        <option selected disabled>Select Job Function</option>
+                    <select name="function" class="form-select">
                         @foreach ($job_functions as $job_function)
-                            <option>{{ $job_function->name }}</option>
+                            <option @if (old('function') == $job_function->name) selected @endif>{{ $job_function->name }}</option>
                         @endforeach
                     </select>
                     <span class="text-danger">@error('function'){{$message}}@enderror</span>
@@ -42,10 +40,9 @@
             <div class="form-group row mb-md-3">
                 <label class="col-xl-3 col-md-2 col-form-label text-md-end pb-0">Select Job Salary</label>
                 <div class="col-xl-6 col-md-8 mb-md-0 mb-sm-2">
-                    <select name="salary" value="{{ old('salary') }}" class="form-select">
-                        <option selected disabled>Select Job Salary</option>
+                    <select name="salary" class="form-select">
                         @foreach ($job_salaries as $job_salary)
-                            <option>{{ $job_salary->name }}</option>
+                            <option @if (old('salary') == $job_salary->name) selected @endif>{{ $job_salary->name }}</option>
                         @endforeach
                     </select>
                     <span class="text-danger">@error('salary'){{$message}}@enderror</span>
@@ -54,10 +51,9 @@
             <div class="form-group row mb-md-3">
                 <label class="col-xl-3 col-md-2 col-form-label text-md-end pb-0">Select Job Location</label>
                 <div class="col-xl-6 col-md-8 mb-md-0 mb-sm-2">
-                    <select name="location" value="{{ old('location') }}" class="form-select">
-                        <option selected disabled>Select Job Location</option>
+                    <select name="location" class="form-select">
                         @foreach ($job_locations as $job_location)
-                            <option>{{ $job_location->name }}</option>
+                            <option @if (old('location') == $job_location->name) selected @endif>{{ $job_location->name }}</option>
                         @endforeach
                     </select>
                     <span class="text-danger">@error('location'){{$message}}@enderror</span>

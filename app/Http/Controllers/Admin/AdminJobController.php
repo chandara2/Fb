@@ -66,7 +66,7 @@ class AdminJobController extends Controller
             'expired_job' => 'required|date',
             'expired_post' => 'required|date',
             'function' => 'required',
-            'hiring' => 'required|numeric',
+            'hiring' => 'required|numeric|min:0',
             'industry' => 'required',
             'language' => 'required',
             'location' => 'required',
@@ -75,15 +75,19 @@ class AdminJobController extends Controller
             'sex' => 'required',
             'term' => 'required',
             'title' => 'required',
-            'year_of_exp' => 'required|numeric',
+            'year_of_exp' => 'required|numeric|min:0',
         ], [
             'age.required' => 'Age is required',
             'contact.required' => 'Contact is required',
             'detail.required' => 'Detail is required',
             'expired_job.required' => 'Expired job is required',
+            'expired_job.date' => 'Expired job should be a date',
             'expired_post.required' => 'Expired post is required',
+            'expired_post.date' => 'Expired post should be a date',
             'function.required' => 'Function is required',
             'hiring.required' => 'Hiring is required',
+            'hiring.numeric' => 'Hiring should be a number',
+            'hiring.min' => 'Hiring should not be a negative number',
             'industry.required' => 'Industry is required',
             'language.required' => 'Language is required',
             'location.required' => 'Location is required',
@@ -93,6 +97,8 @@ class AdminJobController extends Controller
             'term.required' => 'Term is required',
             'title.required' => 'Job Title is required',
             'year_of_exp.required' => 'Year of experience is required',
+            'year_of_exp.numeric' => 'Year of experience should be a number',
+            'year_of_exp.min' => 'Year of experience should not be a negative number',
         ]);
 
         if ($validator->fails()) {
@@ -172,7 +178,7 @@ class AdminJobController extends Controller
             'expired_job' => 'required|date',
             'expired_post' => 'required|date',
             'function' => 'required',
-            'hiring' => 'required|numeric',
+            'hiring' => 'required|numeric|min:0',
             'industry' => 'required',
             'language' => 'required',
             'location' => 'required',
@@ -181,7 +187,7 @@ class AdminJobController extends Controller
             'sex' => 'required',
             'term' => 'required',
             'title' => 'required',
-            'year_of_exp' => 'required|numeric|max:100',
+            'year_of_exp' => 'required|numeric|min:0',
         ]);
 
         $job = Job::find($id);

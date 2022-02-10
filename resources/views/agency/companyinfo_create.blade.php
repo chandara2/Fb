@@ -23,41 +23,47 @@
                 <label class="col-xl-3 col-md-2 col-form-label text-md-end pb-0">Company name</label>
                 <div class="col-xl-6 col-md-8 mb-md-0 mb-sm-2">
                     <input type="text" name="company" value="{{ old('company') }}" autofocus class="form-control">
+                    <span class="text-danger">@error('company'){{$message}}@enderror</span>
                 </div>
             </div>
             <div class="form-group row mb-md-3">
                 <label class="col-xl-3 col-md-2 col-form-label text-md-end pb-0">Industry</label>
                 <div class="col-xl-6 col-md-8 mb-md-0 mb-sm-2">
-                    <select name="industry" value="{{ old('industry') }}" class="form-select">
+                    <select name="industry" class="form-select">
                         <option selected disabled>Select Job Industry</option>
-                        @foreach ($job_industrys as $job_industry)
-                            <option>{{ $job_industry->name }}</option>
+                        @forelse ($job_industrys as $job_industry)
+                        <option>{{ $job_industry->name }}</option>
                         @endforeach
                     </select>
+                    <span class="text-danger">@error('industry'){{$message}}@enderror</span>
                 </div>
             </div>
             <div class="form-group row mb-md-3">
                 <label class="col-xl-3 col-md-2 col-form-label text-md-end pb-0">Number of staff</label>
                 <div class="col-xl-6 col-md-8 mb-md-0 mb-sm-2">
                     <input type="text" name="number_staff" value="{{ old('number_staff') }}" class="form-control">
+                    <span class="text-danger">@error('number_staff'){{$message}}@enderror</span>
                 </div>
             </div>
             <div class="form-group row mb-md-3">
                 <label class="col-xl-3 col-md-2 col-form-label text-md-end pb-0">Website</label>
                 <div class="col-xl-6 col-md-8 mb-md-0 mb-sm-2">
                     <input type="url" name="website" value="{{ old('website') }}" placeholder="https://example.com" class="form-control">
+                    <span class="text-danger">@error('website'){{$message}}@enderror</span>
                 </div>
             </div>
             <div class="form-group row mb-md-3">
                 <label class="col-xl-3 col-md-2 col-form-label text-md-end pb-0">Province/City</label>
                 <div class="col-xl-6 col-md-8 mb-md-0 mb-sm-2">
                     <input type="text" name="province" value="{{ old('province') }}" class="form-control">
+                    <span class="text-danger">@error('province'){{$message}}@enderror</span>
                 </div>
             </div>
             <div class="form-group row mb-md-3">
                 <label class="col-xl-3 col-md-2 col-form-label text-md-end pb-0">Detail Location</label>
                 <div class="col-xl-6 col-md-8 mb-md-0 mb-sm-2">
                     <input type="text" name="detail_location" value="{{ old('detail_location') }}" class="form-control">
+                    <span class="text-danger">@error('detail_location'){{$message}}@enderror</span>
                 </div>
             </div>
             <div class="form-group row mb-md-3">
@@ -67,6 +73,7 @@
                         <textarea class="textarea_autosize form-control" name="company_profile">
                             {{ old('company_profile') }}
                         </textarea>
+                    <span class="text-danger">@error('company_profile'){{$message}}@enderror</span>
                     </div>
                 </div>
             </div>
@@ -75,6 +82,7 @@
                 <div class="col-xl-6 col-md-8 mb-md-0 mb-sm-2">
                     <input type="file" name="logo" value="{{ old('logo') }}" class="form-control" onchange="document.getElementById('companyinfologo').src = window.URL.createObjectURL(this.files[0])">
                     <img id="companyinfologo" width="110px">
+                    <span class="text-danger">@error('logo'){{$message}}@enderror</span>
                 </div>
             </div>
             <div class="h5 text-info text-center text-uppercase">Contact Information</div>
@@ -82,24 +90,28 @@
                 <label class="col-xl-3 col-md-2 col-form-label text-md-end pb-0">Contact Name</label>
                 <div class="col-xl-6 col-md-8 mb-md-0 mb-sm-2">
                     <input type="text" name="contact_name" value="{{ old('contact_name') }}" class="form-control">
+                    <span class="text-danger">@error('contact_name'){{$message}}@enderror</span>
                 </div>
             </div>
             <div class="form-group row mb-md-3">
                 <label class="col-xl-3 col-md-2 col-form-label text-md-end pb-0">Contact Position</label>
                 <div class="col-xl-6 col-md-8 mb-md-0 mb-sm-2">
                     <input type="text" name="contact_position" value="{{ old('contact_position') }}" class="form-control">
+                    <span class="text-danger">@error('contact_position'){{$message}}@enderror</span>
                 </div>
             </div>
             <div class="form-group row mb-md-3">
                 <label class="col-xl-3 col-md-2 col-form-label text-md-end pb-0">Contact Email</label>
                 <div class="col-xl-6 col-md-8 mb-md-0 mb-sm-2">
                     <input type="email" name="contact_email" value="{{ old('contact_email') }}" class="form-control">
+                    <span class="text-danger">@error('contact_email'){{$message}}@enderror</span>
                 </div>
             </div>
             <div class="form-group row mb-md-3">
                 <label class="col-xl-3 col-md-2 col-form-label text-md-end pb-0">Contact Phone</label>
                 <div class="col-xl-6 col-md-8 mb-md-0 mb-sm-2">
                     <input type="text" name="contact_phone" value="{{ old('contact_phone') }}" class="form-control">
+                    <span class="text-danger">@error('contact_phone'){{$message}}@enderror</span>
                 </div>
             </div>
 
