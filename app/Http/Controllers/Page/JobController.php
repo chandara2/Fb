@@ -124,7 +124,7 @@ class JobController extends Controller
             ->orWhere('job_industries.name', $jobsort)
             ->orWhere('job_locations.name', $jobsort)
             ->orWhere('job_salaries.name', $jobsort)
-            ->paginate(1);
+            ->paginate(10);
         return view('page.job.job_sort', [
             'jobscoms' => $jobscoms,
         ]);
