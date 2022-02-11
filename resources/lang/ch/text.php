@@ -10,4 +10,5 @@ return [
     'Location' => '地点',
     'n1jic' => '柬埔寨第一工地',
     'Salary' => '薪水',
+    'Urgent_jobs' => '紧急工作',
 ];

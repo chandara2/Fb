@@ -63,7 +63,7 @@
     </div>
 </section>
 @empty
-<p class="text-center">No About us Data</p>
+<p class="text-center">No About us info. to show</p>
 @endforelse
 
 @endsection

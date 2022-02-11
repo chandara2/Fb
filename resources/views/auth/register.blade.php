@@ -11,9 +11,9 @@
                 <input type="text" name="username" value="{{ old('username') }}" placeholder="Username" class="form-control mt-3">
                 <span class="text-danger">@error('username'){{$message}}@enderror</span>
                 <input type="text" name="phone" value="{{ old('phone') }}" placeholder="Phone Number" class="form-control mt-3">
-                <input type="text" name="password" placeholder="Password" class="form-control mt-3">
+                <input type="password" name="password" placeholder="Password" class="form-control mt-3">
                 <span class="text-danger">@error('password'){{$message}}@enderror</span>
-                <input type="text" name="password_confirmation" placeholder="Confirm Password" class="form-control mt-3">
+                <input type="password" name="password_confirmation" placeholder="Confirm Password" class="form-control mt-3">
                 <span class="text-danger">@error('password_confirmation'){{$message}}@enderror</span>
                 <select name="group_member" class="form-select mt-3">
                     @foreach ($usergroups as $usergroup)

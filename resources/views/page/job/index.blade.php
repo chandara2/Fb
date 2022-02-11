@@ -79,7 +79,7 @@
             </div>
         </li>
         @empty
-        <p class="text-center">No results found for <strong class="border-bottom border-warning">" {{ $searchjob }} "</strong></p>
+        <p class="text-center">No results found for <strong class="border-bottom border-warning"> {{ $searchjob }} </strong></p>
         @endforelse
     </ul>
 

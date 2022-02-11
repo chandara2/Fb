@@ -21,6 +21,18 @@
             white-space: nowrap;
             text-overflow: ellipsis;
         }
+        .slick-prev{
+            left: 10px;
+            z-index: 999;
+        }
+        .slick-next{
+            right: 10px;
+            z-index: 999;
+        }
+        .slick-dots{
+            bottom: 10px;
+            z-index: 999;
+        }
     </style>
 @endsection
 
@@ -32,7 +44,7 @@
 
                     <div id="slick1">
                         @foreach ($homepage_slide as $slide)
-                        <div class="slide-item1 d-flex justify-content-around border border-white"><img src="{{asset('upload/homepageslide/')}}/{{$slide->slide}}" alt="slide" width="100%" height='250' style="object-fit:cover;"></div>
+                        <div class="slide-item1 d-flex justify-content-around border border-white"><img src="{{asset('upload/homepageslide/')}}/{{$slide->slide}}" alt="slide" width="100%" height='352' style="object-fit:cover;"></div>
                         @endforeach
                     </div>
 
@@ -94,7 +106,7 @@
                 </div>
                 <div class="col-xl-4 col-lg-12 mb-xl-0"><!-- Job Augent -->
                     <ul class="list-group">
-                        <li class="list-group-item active" aria-current="true" style="background: #1EA4D9; border: 1px solid #1EA4D9;">JOB AUGENT</li>
+                        <li class="list-group-item active text-uppercase" aria-current="true" style="background: #1EA4D9; border: 1px solid #1EA4D9;">{{ __('text.Urgent_jobs') }}</li>
                         @foreach ($jobcompanys as $jobcompany)
                             <li class="list-group-item limit_str_jobcompany ps-0 py-1">
                                 <span class="position-relative"><a href="job/{{ $jobcompany->jobid }}" class="text-dark ps-3 text-decoration-none">{{$jobcompany->title}}</a></span> -
@@ -199,8 +211,8 @@
 @section('script')
     <script>
         $('#slick1').slick({
-            dots: false,
-            arrows: false,
+            dots: true,
+            arrows: true,
             infinite: true,
             speed: 1500,
             autoplay: true,
