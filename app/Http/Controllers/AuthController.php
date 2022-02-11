@@ -142,7 +142,7 @@ class AuthController extends Controller
             'gid.required' => 'Please choose the right member',
         ]);
 
-        if (Auth::attempt(['username' => $request->username, 'password' => $request->password, 'visible' => 1])) {
+        if (Auth::attempt(['username' => $request->username, 'password' => $request->password, 'gid' => $request->gid, 'visible' => 1])) {
             $request->session()->regenerate();
 
             if ($request->gid == 1) {
