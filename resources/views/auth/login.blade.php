@@ -17,6 +17,7 @@
                 </select>
                 <button type="submit" class="btn brand_btn3 w-100 my-3">Login</button>
                 <div class="text-center text-danger bg-warning px-3 rounded">@error('errmsg'){{$message}}@enderror</div>
+                <div class="text-center text-danger bg-warning px-3 rounded">@error('inactivemsg'){{$message}}@enderror</div>
             </form>
         </div>
     </div>

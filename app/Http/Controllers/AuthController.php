@@ -141,7 +141,8 @@ class AuthController extends Controller
             'password.required' => 'Please fill in password',
             'gid.required' => 'Please choose the right member',
         ]);
-        if (Auth::attempt($credentials)) {
+
+        if (Auth::attempt(['username' => $request->username, 'password' => $request->password, 'visible' => 1])) {
             $request->session()->regenerate();
 
             if ($request->gid == 1) {
