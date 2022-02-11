@@ -26,6 +26,7 @@ class AppController extends Controller
             ->join('company_infos', 'users.id', '=', 'company_infos.uid')
             ->select('jobs.created_at', 'jobs.title', 'jobs.id as jobid', 'company_infos.company', 'company_infos.id as com_id')
             ->where('approved', true)
+            ->orderBy('expired_post')
             ->latest()
             ->take(12)
             ->get();

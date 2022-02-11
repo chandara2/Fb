@@ -153,10 +153,16 @@ class AuthController extends Controller
                 return redirect()->intended('user/dashboard');
             }
         }
-
-        return back()->withErrors([
-            'errmsg' => 'Invalid username and password.',
-        ]);
+        // elseif(Auth::attempt(['username' => $request->username, 'password' => $request->password, 'gid' => $request->gid, 'visible' => 0])){
+        //     return back()->withErrors([
+        //         'inactivemsg' => 'This user has been inactive',
+        //     ]);
+        // }
+        else{
+            return back()->withErrors([
+                'errmsg' => 'Invalid username and password.',
+            ]);
+        }
     }
     public function logout()
     {
