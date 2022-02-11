@@ -1,6 +1,5 @@
 <style>
     #menu_hovers li a:hover{
-        font-weight: bold;
         color: blue;
     }
 </style>
@@ -56,8 +55,8 @@
         @endauth
         @guest
             <div class="text-end">
-                <a href="{{ route('showlogin') }}" class="btn brand_outline_btn3">Login</a>
-                <a href="{{ route('showregister') }}" class="btn brand_btn3">Register</a>
+                <a href="{{ route('showlogin') }}" class="btn brand_outline_btn3 rounded-0 rounded-start">Login</a>
+                <a href="{{ route('showregister') }}" class="btn brand_btn3 rounded-0 rounded-end">Register</a>
             </div>
         @endguest
 

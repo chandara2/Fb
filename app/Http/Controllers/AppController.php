@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\CompanyInfo;
+use App\Models\Homepage;
 use App\Models\Job;
 use App\Models\JobFunction;
 use Illuminate\Http\Request;
@@ -18,6 +19,7 @@ class AppController extends Controller
     public function index()
     {
         $companylogos = CompanyInfo::select('company_infos.logo', 'company_infos.id')->get();
+        $homepage_slide = Homepage::select('slide')->get();
 
         $jobcompanys = DB::table('users')
             ->join('jobs', 'users.id', '=', 'jobs.uid')
@@ -42,8 +44,10 @@ class AppController extends Controller
         //     ->orderBy('function', 'asc') //Unless you use this array somewhere, it's not needed.
         //     ->get();
 
+
         return view('app', [
             'companylogos' => $companylogos,
+            'homepage_slide' => $homepage_slide,
             'jobcompanys' => $jobcompanys,
             'job_functions' => $job_functions,
             'job_industries' => $job_industries,

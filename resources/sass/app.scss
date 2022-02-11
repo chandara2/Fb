@@ -1,118 +1,145 @@
 // Flag Icon CSS
 @import '~flag-icon-css/sass/flag-icons';
-
 // Fonts
-@import url('https://fonts.googleapis.com/css?family=Nunito');
-
+// @import url('https://fonts.googleapis.com/css?family=Nunito');
+// @import url('https://fonts.googleapis.com/css2?family=Hanuman&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nokora&display=swap');
 // Variables
 @import 'variables';
-
 // Bootstrap icon
 @import "bootstrap-icons/font/bootstrap-icons.css";
-
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
-:root{
+body {
+    // font-family: 'Hanuman', serif;
+    font-family: 'Nokora', sans-serif;
+}
+
+:root {
     --brand1: #201E59;
     --brand2: #69688C;
     --brand3: #1EA4D9;
     --brand4: #59C1D9;
     --brand5: #E4F0F2;
 }
-.bg-purple
-.brand-bg1{
+
+.brand-bg1 {
     background: var(--brand1);
 }
-.brand-bg2{
+
+.brand-bg2 {
     background: var(--brand2);
 }
-.brand-bg3{
+
+.brand-bg3 {
     background: var(--brand3);
 }
-.brand-bg4{
+
+.brand-bg4 {
     background: var(--brand4);
 }
-.brand-bg5{
+
+.brand-bg5 {
     background: var(--brand5);
 }
-.brand_btn1{
+
+.brand_btn1 {
     color: #fff;
     background: var(--brand1);
     border: 1px solid var(--brand1);
 }
-.brand_btn1:hover{
+
+.brand_btn1:hover {
     color: #fff;
 }
-.brand_outline_btn1{
+
+.brand_outline_btn1 {
     color: var(--brand1);
     border: 1px solid var(--brand1);
 }
-.brand_outline_btn1:hover{
+
+.brand_outline_btn1:hover {
     color: #fff;
     background: var(--brand1);
 }
-.brand_btn2{
+
+.brand_btn2 {
     color: #fff;
     background: var(--brand2);
     border: 1px solid var(--brand2);
 }
-.brand_btn2:hover{
+
+.brand_btn2:hover {
     color: #fff;
 }
-.brand_outline_btn2{
+
+.brand_outline_btn2 {
     color: var(--brand2);
     border: 1px solid var(--brand2);
 }
-.brand_outline_btn2:hover{
+
+.brand_outline_btn2:hover {
     color: #fff;
     background: var(--brand2);
 }
-.brand_btn3{
+
+.brand_btn3 {
     color: #fff;
     background: var(--brand3);
     border: 1px solid var(--brand3);
 }
-.brand_btn3:hover{
+
+.brand_btn3:hover {
     color: #fff;
     background: #1f8ab5;
 }
-.brand_outline_btn3{
+
+.brand_outline_btn3 {
     color: var(--brand3);
     border: 1px solid var(--brand3);
 }
-.brand_outline_btn3:hover{
+
+.brand_outline_btn3:hover {
     color: #fff;
     background: var(--brand3);
 }
-.brand_btn4{
+
+.brand_btn4 {
     color: #fff;
     background: var(--brand4);
     border: 1px solid var(--brand4);
 }
-.brand_btn4:hover{
+
+.brand_btn4:hover {
     color: #fff;
 }
-.brand_outline_btn4{
+
+.brand_outline_btn4 {
     color: var(--brand4);
     border: 1px solid var(--brand4);
 }
-.brand_outline_btn4:hover{
+
+.brand_outline_btn4:hover {
     color: #fff;
     background: var(--brand4);
 }
-.brand_btn5{
+
+.brand_btn5 {
     color: #fff;
     background: var(--brand5);
     border: 1px solid var(--brand5);
 }
-.brand_btn5:hover{
+
+.brand_btn5:hover {
     color: #fff;
 }
-.brand_outline_btn5{
+
+.brand_outline_btn5 {
     color: var(--brand5);
     border: 1px solid var(--brand5);
 }
-.brand_outline_btn5:hover{
+
+.brand_outline_btn5:hover {
     color: #fff;
     background: var(--brand5);
 }

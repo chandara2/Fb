@@ -3,7 +3,7 @@
 @section('style')
     <style>
         .class_jobs{
-            color: blue;
+            color: #1EA4D9;
         }
         .job_title{
             color: #333;

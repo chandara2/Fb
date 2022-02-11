@@ -3,7 +3,7 @@
 @section('style')
     <style>
         .class_aboutus{
-            color: blue;
+            color: #1EA4D9;
         }
     </style>
 @endsection

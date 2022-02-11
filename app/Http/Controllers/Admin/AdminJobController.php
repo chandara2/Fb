@@ -12,6 +12,7 @@ use App\Models\JobSalary;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 
 class AdminJobController extends Controller
@@ -25,7 +26,7 @@ class AdminJobController extends Controller
     {
         $delete_expired_post = Job::where('expired_post', '<', Carbon::now()->toDateString())->delete();
 
-        $jobs = Job::all();
+        $jobs = Job::orderBy('approved', 'asc')->get();
         $company_infos = CompanyInfo::all()->where('uid', Auth::user()->id);
         $job_functions = JobFunction::all();
         $job_industries = JobIndustry::all();
@@ -222,7 +223,7 @@ class AdminJobController extends Controller
     {
         $job = Job::find($id);
         $job->delete();
-        return back()->with('jobdelete', 'You have create a job');
+        return back()->with('jobdelete', 'You have delete a job');
     }
     public function changejobstatus(Request $request)
     {

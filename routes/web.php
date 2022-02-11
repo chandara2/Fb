@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\AdminAboutController;
 use App\Http\Controllers\Admin\AdminCompanyInfoController;
 use App\Http\Controllers\Admin\AdmindbController;
+use App\Http\Controllers\Admin\AdminHomepageController;
 use App\Http\Controllers\Admin\AdminJobController;
 use App\Http\Controllers\Admin\AdminUserController;
 use App\Http\Controllers\Agency\AgencyCompanyInfoController;
@@ -49,6 +50,7 @@ Route::prefix('admin')->name('admin.')->middleware('isadmin')->group(function ()
     Route::resource('/companyinfo', AdminCompanyInfoController::class);
     Route::resource('/about', AdminAboutController::class);
     Route::get('/changejobstatus', [AdminJobController::class, 'changejobstatus'])->name('changejobstatus');
+    Route::resource('/homepage', AdminHomepageController::class);
 });
 
 // Agency Dashboard

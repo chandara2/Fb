@@ -27,13 +27,12 @@
 @section('content')
     <main>
         <div class="container">
-            <div class="row">
+            <div class="row mb-5 mb-md-0">
                 <div class="col-xl-8 col-lg-12"><!-- Slider 1 -->
 
                     <div id="slick1">
-                        @foreach ($companylogos as $companylogo)
-                        <div class="slide-item1 d-flex justify-content-around border border-white"><img src="{{ asset('asset/image/slide1.jpg') }}" alt="slide" width="100%" height='250' style="object-fit:cover;"></div>
-                        <div class="slide-item1 d-flex justify-content-around border border-white"><img src="{{ asset('asset/image/slide2.jpg') }}" alt="slide" width="100%" height='250' style="object-fit:cover;"></div>
+                        @foreach ($homepage_slide as $slide)
+                        <div class="slide-item1 d-flex justify-content-around border border-white"><img src="{{asset('upload/homepageslide/')}}/{{$slide->slide}}" alt="slide" width="100%" height='250' style="object-fit:cover;"></div>
                         @endforeach
                     </div>
 
@@ -93,9 +92,9 @@
                     </div>
 
                 </div>
-                <div class="col-xl-4 col-lg-12"><!-- Job Augent -->
+                <div class="col-xl-4 col-lg-12 mb-xl-0"><!-- Job Augent -->
                     <ul class="list-group">
-                        <li class="list-group-item active bg-info border-info" aria-current="true">JOB AUGENT</li>
+                        <li class="list-group-item active" aria-current="true" style="background: #1EA4D9; border: 1px solid #1EA4D9;">JOB AUGENT</li>
                         @foreach ($jobcompanys as $jobcompany)
                             <li class="list-group-item limit_str_jobcompany ps-0 py-1">
                                 <span class="position-relative"><a href="job/{{ $jobcompany->jobid }}" class="text-dark ps-3 text-decoration-none">{{$jobcompany->title}}</a></span> -
@@ -106,15 +105,15 @@
                 </div>
             </div>
 
-            <div class="row mb-5 mt-xl-1 mt-lg-5">
+            <div class="row mb-5 mt-xl-1 mt-md-5">
                 <div class="col-md-12">
-                    <h4 style="text-decoration: underline 3px solid pink">Featured Employers</h4>
+                    <h4 style="text-decoration: underline 3px solid pink;">Featured Employers</h4>
 
                     <div class="slick-wrapper w-100 bg-white">
                         <div id="slick2">
                             @foreach ($companylogos as $companylogo)
                             <div class="slide-item2 py-3 d-flex justify-content-around border border-white">
-                                <a href="company/{{$companylogo->id}}"><img src="upload/companylogo/{{$companylogo->logo}}" alt="CompanyLogo" width="65" height="65" style="object-fit: cover;"></a>
+                                <a href="company/{{$companylogo->id}}"><img src="upload/companylogo/{{$companylogo->logo}}" alt="CompanyLogo" height="65" width="65" style="object-fit: contain;"></a>
                             </div>
                             @endforeach
                         </div>
@@ -125,7 +124,7 @@
 
             <div class="row mb-5">
                 <div class="col-md-12">
-                    <h4 style="text-decoration: underline 3px solid pink">Recruitment Agencies</h4>
+                    <h4 style="text-decoration: underline 3px solid pink;">Recruitment Agencies</h4>
                     <div id="slick3">
                         @foreach ($companylogos as $companylogo)
                         <div class="slide-item3 py-3 d-flex justify-content-around border border-white">
@@ -139,7 +138,7 @@
 
             <div class="row mb-5">
                 <div class="col-md-12">
-                    <h4 style="text-decoration: underline 3px solid pink">Career Resource</h4>
+                    <h4 style="text-decoration: underline 3px solid pink;">Career Resource</h4>
                     <div class="row g-3">
                         <div class="col-md-4">
                             <div class="bg-white rounded p-3">
@@ -181,7 +180,7 @@
 
             <div class="row mb-5">
                 <div class="col-md-12">
-                    <h4 style="text-decoration: underline 3px solid pink">Cooperation Partners</h4>
+                    <h4 style="text-decoration: underline 3px solid pink;">Cooperation Partners</h4>
                     <div id="slick4">
                         @foreach ($companylogos as $companylogo)
                         <div class="slide-item4 py-3 d-flex justify-content-around border border-white">
@@ -244,7 +243,7 @@
             arrows: false,
             infinite: true,
             speed: 300,
-            autoplay: true,
+            // autoplay: true,
             autoplaySpeed: 4000,
             slidesToShow: 5,
         });
@@ -254,9 +253,10 @@
             arrows: false,
             infinite: true,
             speed: 300,
-            autoplay: true,
+            // autoplay: true,
             autoplaySpeed: 4000,
             slidesToShow: 5,
         }); 
     </script>
 @endsection
+

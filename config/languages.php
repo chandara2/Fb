@@ -2,7 +2,7 @@
 
 return [
     'ch' => [
-        'display' => 'Chinese',
+        'display' => '中文',
         'flag-icon' => 'cn'
     ],
     'en' => [
@@ -10,11 +10,11 @@ return [
         'flag-icon' => 'gb'
     ],
     'kh' => [
-        'display' => 'Khmer',
+        'display' => 'ខ្មែរ',
         'flag-icon' => 'kh'
     ],
     'th' => [
-        'display' => 'Thai',
+        'display' => 'ไทย',
         'flag-icon' => 'th'
     ],
 ];
