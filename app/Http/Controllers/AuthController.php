@@ -99,10 +99,11 @@ class AuthController extends Controller
         $request->validate([
             'username' => 'required|unique:users',
             'password' => ['required', 'string', 'min:6'],
-            'password_confirmation' => 'required|same:password|min:6',
+            'password_confirmation' => 'required|same:password',
         ], [
             'username.required' => 'Please fill in username',
             'password.required' => 'Please fill in password',
+            'password.min' => 'Passwords must be at least 6 characters',
             'password_confirmation.required' => 'Please fill in confirm password',
             'password_confirmation.same' => 'Password and confirm password does not match',
         ]);
