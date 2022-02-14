@@ -102,14 +102,23 @@
                         </div>
 
                     </div>
-
+                    {{-- {{ dd(Route::current()) }} --}}
                 </div>
                 <div class="col-xl-4 col-lg-12 mb-xl-0"><!-- Job Augent -->
                     <ul class="list-group">
+                        
                         <li class="list-group-item active text-uppercase" aria-current="true" style="background: #1EA4D9; border: 1px solid #1EA4D9;">{{ __('text.Urgent_jobs') }}</li>
                         @foreach ($jobcompanys as $jobcompany)
                             <li class="list-group-item limit_str_jobcompany ps-0 py-1">
-                                <span class="position-relative"><a href="job/{{ $jobcompany->jobid }}" class="text-dark ps-3 text-decoration-none">{{$jobcompany->title_en}}</a></span> -
+                                <span class="position-relative"><a href="job/{{ $jobcompany->jobid }}" class="text-dark ps-3 text-decoration-none">
+                                    @if (Route::current()->getName() == '/lang/en')
+                                    {{$jobcompany->title_en}}
+                                    @elseif(Route::current()->getName() == '/lang/kh')
+                                    {{$jobcompany->title_kh}}
+                                    @else
+                                    {{$jobcompany->title_ch}}
+                                    @endif
+                                </a></span> -
                                 <span><a href="company/{{$jobcompany->com_id}}" class="text-danger ps-0 text-decoration-none">{{$jobcompany->company}}</a></span>
                             </li>
                         @endforeach

@@ -21,7 +21,9 @@
         <div class="col-md-12">
             <div class="row">
                 <div class="col-md-6">
-                    <h2>{{$jobcompany->title}}</h2>
+                    <h2>
+                        {{$jobcompany->title_en}}
+                    </h2>
                     <p>{{$jobcompany->company}}</p>
                     <h2 class="text-danger">{{$jobcompany->salary}}</h2>
                     <p class="text-danger">Closing Date: {{$jobcompany->expired_job}}</p>
@@ -32,7 +34,7 @@
                     <table class="table border">
                         <tr>
                             <th class="table-primary">Title</th>
-                            <td>Title {{$jobcompany->title}}</td>
+                            <td>Title {{$jobcompany->title_en}}</td>
                             <th class="table-primary">Term</th>
                             <td>{{$jobcompany->term}}</td>
                         </tr>
@@ -94,7 +96,7 @@
                             <li class="list-group-item active bg-danger border-danger" aria-current="true">Hot Jobs</li>
                             @foreach ($hotjobs as $hotjob)
                                 <li class="list-group-item ps-0 py-0">
-                                    <span class="position-relative"><a href="/job/{{$hotjob->id}}" class="text-dark ps-3 text-decoration-none">{{Str::limit($hotjob->title , 30)}}</a></span>
+                                    <span class="position-relative"><a href="/job/{{$hotjob->id}}" class="text-dark ps-3 text-decoration-none">{{Str::limit($hotjob->title_en , 30)}}</a></span>
                                     <span class="position-absolute end-0 pe-2 text-danger">{{$hotjob->salary}}</span>
                                     <span class="d-block"><a href="/company/{{$hotjob->com_id}}" class="text-muted ps-3 text-decoration-none" style="font-size: 12px;">{{$hotjob->company}}</a></span>
                                 </li>

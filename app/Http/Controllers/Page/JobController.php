@@ -66,7 +66,7 @@ class JobController extends Controller
         $hotjobs = DB::table('users')
             ->join('jobs', 'jobs.uid', '=', 'users.id')
             ->join('company_infos', 'company_infos.uid', '=', 'users.id')
-            ->select('jobs.id', 'jobs.created_at', 'jobs.title', 'jobs.salary', 'company_infos.company', 'company_infos.id as com_id')
+            ->select('jobs.id', 'jobs.created_at', 'jobs.title_en', 'jobs.title_kh', 'jobs.salary', 'company_infos.company', 'company_infos.id as com_id')
             ->latest()
             ->take(10)
             ->get();

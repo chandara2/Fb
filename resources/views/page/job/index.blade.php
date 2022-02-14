@@ -69,7 +69,7 @@
         <li class="list-group-item py-3">
             <div class="row">
                 <div class="col-md-8">
-                    <a href="/job/{{$jobscom->job_id}}" class="fw-bold job_title">{{ $jobscom->title }}</a>
+                    <a href="/job/{{$jobscom->job_id}}" class="fw-bold job_title">{{ $jobscom->title_en }}</a>
                     @if($jobscom->expired_job>now()->addDays(7)) <span class="bg-warning badge">New</span>
                     @else <span class="bg-danger badge">Urgent</span> @endif
                     <div class="py-1"><a href="/company/{{$jobscom->com_id}}" class="com_name">{{ $jobscom->company }}</a></div>
