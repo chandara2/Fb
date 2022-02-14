@@ -109,7 +109,7 @@
                         <li class="list-group-item active text-uppercase" aria-current="true" style="background: #1EA4D9; border: 1px solid #1EA4D9;">{{ __('text.Urgent_jobs') }}</li>
                         @foreach ($jobcompanys as $jobcompany)
                             <li class="list-group-item limit_str_jobcompany ps-0 py-1">
-                                <span class="position-relative"><a href="job/{{ $jobcompany->jobid }}" class="text-dark ps-3 text-decoration-none">{{$jobcompany->title}}</a></span> -
+                                <span class="position-relative"><a href="job/{{ $jobcompany->jobid }}" class="text-dark ps-3 text-decoration-none">{{$jobcompany->title_en}}</a></span> -
                                 <span><a href="company/{{$jobcompany->com_id}}" class="text-danger ps-0 text-decoration-none">{{$jobcompany->company}}</a></span>
                             </li>
                         @endforeach

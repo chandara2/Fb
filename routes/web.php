@@ -37,7 +37,10 @@ Route::get('showregister', [AuthController::class, 'showregister'])->name('showr
 Route::post('register', [AuthController::class, 'register'])->name('register');
 Route::get('showlogin', [AuthController::class, 'showlogin'])->name('showlogin')->middleware('guest');
 Route::post('login', [AuthController::class, 'login'])->name('login');
-Route::put('changepassword', [AuthController::class, 'changepassword'])->name('changepassword')->middleware('auth');
+// Route::put('changepassword', [AuthController::class, 'changepassword'])->name('changepassword')->middleware('auth');
+
+// Change Password
+Route::post('changepassword', [AuthController::class, 'changepassword'])->name('changepassword')->middleware('auth');
 
 // Auth Logout
 Route::get('logout', [AuthController::class, 'logout'])->name('logout')->middleware('auth');

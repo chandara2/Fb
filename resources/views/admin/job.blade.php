@@ -37,8 +37,30 @@
 
                         <div class="form-group mb-md-3">
                             <label>Job Title</label>
-                            <input name="title" type="text" class="form-control">
+                            {{-- <input name="title" type="text" class="form-control"> --}}
+
+                            <nav class="nav nav-tabs" id="nav-tab" role="tablist">
+                                <a class="nav-link active" id="nav-en-tab" data-bs-toggle="tab" href="#nav-en" role="tab" aria-controls="nav-en" aria-selected="true">English</a>
+                                <a class="nav-link" id="nav-ch-tab" data-bs-toggle="tab" href="#nav-ch" role="tab" aria-controls="nav-ch" aria-selected="false">Chinese</a>
+                                <a class="nav-link" id="nav-kh-tab" data-bs-toggle="tab" href="#nav-kh" role="tab" aria-controls="nav-kh" aria-selected="false">Khmer</a>
+                                <a class="nav-link" id="nav-th-tab" data-bs-toggle="tab" href="#nav-th" role="tab" aria-controls="nav-th" aria-selected="false">Thai</a>
+                            </nav>
+                            <div class="tab-content" id="nav-tabContent">
+                                <div class="tab-pane fade show active" id="nav-en" role="tabpanel" aria-labelledby="nav-en-tab">
+                                    <input name="title_en" type="text" class="form-control">
+                                </div>
+                                <div class="tab-pane fade" id="nav-ch" role="tabpanel" aria-labelledby="nav-ch-tab">
+                                    <input name="title_ch" type="text" class="form-control">
+                                </div>
+                                <div class="tab-pane fade" id="nav-kh" role="tabpanel" aria-labelledby="nav-kh-tab">
+                                    <input name="title_kh" type="text" class="form-control">
+                                </div>
+                                <div class="tab-pane fade" id="nav-th" role="tabpanel" aria-labelledby="nav-th-tab">
+                                    <input name="title_th" type="text" class="form-control">
+                                </div>
+                            </div>
                             <span class="text-danger error-text title_error"></span>
+
                         </div>
 
                         <div class="form-group mb-md-3">

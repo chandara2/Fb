@@ -20,7 +20,10 @@ class CreateJobsTable extends Migration
             $table->foreign('uid')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
 
             $table->boolean('approved')->default(false);
-            $table->string('title')->nullable();
+            $table->string('title_ch')->nullable();
+            $table->string('title_en')->nullable();
+            $table->string('title_kh')->nullable();
+            $table->string('title_th')->nullable();
             $table->string('age')->nullable();
             $table->string('contact')->nullable();
             $table->date('expired_job')->nullable();

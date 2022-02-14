@@ -25,7 +25,10 @@ class Job extends Model
         'salary',
         'sex',
         'term',
-        'title',
+        'title_ch',
+        'title_en',
+        'title_kh',
+        'title_th',
         'uid',
         'year_of_exp',
     ];

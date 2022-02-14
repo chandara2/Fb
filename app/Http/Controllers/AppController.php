@@ -24,7 +24,7 @@ class AppController extends Controller
         $jobcompanys = DB::table('users')
             ->join('jobs', 'users.id', '=', 'jobs.uid')
             ->join('company_infos', 'users.id', '=', 'company_infos.uid')
-            ->select('jobs.created_at', 'jobs.title', 'jobs.id as jobid', 'company_infos.company', 'company_infos.id as com_id')
+            ->select('jobs.created_at', 'jobs.title_ch', 'jobs.title_en', 'jobs.title_kh', 'jobs.title_th', 'jobs.id as jobid', 'company_infos.company', 'company_infos.id as com_id')
             ->where('approved', true)
             ->orderBy('expired_post')
             ->latest()

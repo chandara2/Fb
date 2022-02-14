@@ -75,7 +75,10 @@ class AdminJobController extends Controller
             'salary' => 'required',
             'sex' => 'required',
             'term' => 'required',
-            'title' => 'required',
+            'title_ch' => 'required',
+            'title_en' => 'required',
+            'title_kh' => 'required',
+            'title_th' => 'required',
             'year_of_exp' => 'required|numeric|min:0',
         ], [
             'age.required' => 'Age is required',
@@ -96,7 +99,10 @@ class AdminJobController extends Controller
             'salary.required' => 'Salary is required',
             'sex.required' => 'Sex is required',
             'term.required' => 'Term is required',
-            'title.required' => 'Job Title is required',
+            'title_ch.required' => 'Job Chinese Title is required',
+            'title_en.required' => 'Job English Title is required',
+            'title_kh.required' => 'Job Khmer Title is required',
+            'title_th.required' => 'Job Thai Title is required',
             'year_of_exp.required' => 'Year of experience is required',
             'year_of_exp.numeric' => 'Year of experience should be a number',
             'year_of_exp.min' => 'Year of experience should not be a negative number',
@@ -122,7 +128,10 @@ class AdminJobController extends Controller
             $jobs->salary = $request->salary;
             $jobs->sex = $request->sex;
             $jobs->term = $request->term;
-            $jobs->title = $request->title;
+            $jobs->title_ch = $request->title_ch;
+            $jobs->title_en = $request->title_en;
+            $jobs->title_kh = $request->title_kh;
+            $jobs->title_th = $request->title_th;
             $jobs->year_of_exp = $request->year_of_exp;
             $jobs->save();
             return response()->json(['status' => 1, 'msg' => 'Job announcement create successfully']);
