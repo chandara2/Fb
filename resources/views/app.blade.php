@@ -111,12 +111,14 @@
                         @foreach ($jobcompanys as $jobcompany)
                             <li class="list-group-item limit_str_jobcompany ps-0 py-1">
                                 <span class="position-relative"><a href="job/{{ $jobcompany->jobid }}" class="text-dark ps-3 text-decoration-none">
-                                    @if (Route::current()->getName() == '/lang/en')
+                                    @if (app()->getLocale() == 'ch')
+                                    {{$jobcompany->title_ch}}
+                                    @elseif(app()->getLocale() == 'en')
                                     {{$jobcompany->title_en}}
-                                    @elseif(Route::current()->getName() == '/lang/kh')
+                                    @elseif(app()->getLocale() == 'kh')
                                     {{$jobcompany->title_kh}}
                                     @else
-                                    {{$jobcompany->title_ch}}
+                                    {{$jobcompany->title_th}}
                                     @endif
                                 </a></span> -
                                 <span><a href="company/{{$jobcompany->com_id}}" class="text-danger ps-0 text-decoration-none">{{$jobcompany->company}}</a></span>
