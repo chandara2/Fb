@@ -57,9 +57,8 @@ class JobController extends Controller
      */
     public function show($id)
     {
-        $jobcompanys = DB::table('users')
-            ->join('jobs', 'jobs.uid', '=', 'users.id')
-            ->join('company_infos', 'company_infos.uid', '=', 'users.id')
+        $jobcompanys = DB::table('jobs')
+            ->join('company_infos', 'company_infos.company', '=', 'jobs.company')
             ->select('jobs.*', 'company_infos.*', 'company_infos.id as ciid')
             ->where('jobs.id', $id)
             ->get();

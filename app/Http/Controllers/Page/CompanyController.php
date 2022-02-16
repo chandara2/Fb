@@ -48,23 +48,22 @@ class CompanyController extends Controller
      */
     public function show($id)
     {
-        $companys = DB::table('users')
-            ->join('jobs', 'users.id', '=', 'jobs.uid')
-            ->join('company_infos', 'users.id', '=', 'company_infos.uid')
+        $companys = DB::table('jobs')
+            ->join('company_infos', 'company_infos.company', '=', 'jobs.company')
             ->select('jobs.*', 'company_infos.*')
             ->where('company_infos.id', $id)
             ->take(1)
             ->get();
-        $jobs = DB::table('users')
-            ->join('jobs', 'users.id', '=', 'jobs.uid')
-            ->join('company_infos', 'users.id', '=', 'company_infos.uid')
-            ->select('jobs.*', 'company_infos.*', 'jobs.id as job_id')
-            ->where('company_infos.id', $id)
-            ->get();
+        // $jobs = DB::table('jobs')
+        // ->join('company_infos', 'company_infos.company', '=', 'jobs.company')
+        //     ->join('company_infos', 'users.id', '=', 'company_infos.uid')
+        //     ->select('jobs.*', 'company_infos.*')
+        //     ->where('company_infos.id', $id)
+        //     ->get();
 
         return view('page.company.show', [
             'companys' => $companys,
-            'jobs' => $jobs,
+            // 'jobs' => $jobs,
         ]);
     }
 

@@ -15,7 +15,10 @@ class CreateJobSalariesTable extends Migration
     {
         Schema::create('job_salaries', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('salary_ch');
+            $table->string('salary_en');
+            $table->string('salary_kh');
+            $table->string('salary_th');
             $table->timestamps();
         });
     }

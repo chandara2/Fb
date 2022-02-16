@@ -10,6 +10,9 @@ class JobSalary extends Model
     use HasFactory;
 
     protected $fillable = [
-        'name',
+        'salary_ch',
+        'salary_en',
+        'salary_kh',
+        'salary_th',
     ];
 }

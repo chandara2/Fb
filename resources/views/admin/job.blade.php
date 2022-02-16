@@ -64,6 +64,17 @@
                         </div>
 
                         <div class="form-group mb-md-3">
+                            <label>Company</label>
+                            <select name="company" value="{{ old('company') }}" class="form-select">
+                                <option selected disabled>Select Company</option>
+                                @foreach ($company_infos as $company_info)
+                                    <option>{{ $company_info->company }}</option>
+                                @endforeach
+                            </select>
+                            <span class="text-danger error-text company_error"></span>
+                        </div>
+
+                        <div class="form-group mb-md-3">
                             <label>Function</label>
                             <select name="function" value="{{ old('function') }}" class="form-select">
                                 <option selected disabled>Select Job Function</option>
@@ -99,9 +110,9 @@
                         <div class="form-group mb-md-3">
                             <label>Salary</label>
                             <select name="salary" value="{{ old('salary') }}" class="form-select">
-                                <option selected disabled>Select Job Industry</option>
+                                <option selected disabled>Select Job Salary</option>
                                 @foreach ($job_salaries as $job_salary)
-                                    <option>{{ $job_salary->name }}</option>
+                                    <option>{{ $job_salary->salary_en }}</option>
                                 @endforeach
                             </select>
                             <span class="text-danger error-text salary_error"></span>

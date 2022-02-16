@@ -27,7 +27,7 @@ class AdminJobController extends Controller
         $delete_expired_post = Job::where('expired_post', '<', Carbon::now()->toDateString())->delete();
 
         $jobs = Job::orderBy('approved', 'asc')->get();
-        $company_infos = CompanyInfo::all()->where('uid', Auth::user()->id);
+        $company_infos = CompanyInfo::all();
         $job_functions = JobFunction::all();
         $job_industries = JobIndustry::all();
         $job_locations = JobLocation::all();
@@ -62,6 +62,7 @@ class AdminJobController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'age' => 'required',
+            'company' => 'required',
             'contact' => 'required',
             'detail' => 'required',
             'expired_job' => 'required|date',
@@ -83,6 +84,7 @@ class AdminJobController extends Controller
         ], [
             'age.required' => 'Age is required',
             'contact.required' => 'Contact is required',
+            'company.required' => 'Company is required',
             'detail.required' => 'Detail is required',
             'expired_job.required' => 'Expired job is required',
             'expired_job.date' => 'Expired job should be a date',
@@ -96,7 +98,7 @@ class AdminJobController extends Controller
             'language.required' => 'Language is required',
             'location.required' => 'Location is required',
             'qualification.required' => 'Qualification is required',
-            'salary.required' => 'Salary is required',
+            'salary.required' => 'Job Salary is required',
             'sex.required' => 'Sex is required',
             'term.required' => 'Term is required',
             'title_ch.required' => 'Job Chinese Title is required',
@@ -115,6 +117,7 @@ class AdminJobController extends Controller
             $jobs->uid = Auth::user()->id;
             $jobs->approved = true;
             $jobs->age = $request->age;
+            $jobs->company = $request->company;
             $jobs->contact = $request->contact;
             $jobs->detail = $request->detail;
             $jobs->expired_job = $request->expired_job;

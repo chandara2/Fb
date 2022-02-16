@@ -46,7 +46,7 @@
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuLink">
                         <li><a class="dropdown-item text-capitalize fw-bold" href="#"><i class="bi bi-person"></i> {{ Auth::user()->username }}</a></li>
                         <li><a class="dropdown-item" href="{{ route('admin.companyinfo.index') }}"><i class="bi bi-info-circle"></i> Company Info.</a></li>
-                        <li><a class="dropdown-item" href="{{ route('admin.companyinfo.index') }}"><i class="bi bi-building"></i> Add Company</a></li>
+                        <li><a class="dropdown-item" href="{{ route('admin.companyinfo.create') }}"><i class="bi bi-building"></i> Add Company</a></li>
                         <li><a class="dropdown-item" href="{{ route('admin.homepage.index') }}"><i class="bi bi-house"></i> Homepage</a></li>
                         <li role="separator" class="dropdown-divider"></li>
                         <li><a class="dropdown-item" href="{{ route('logout') }}"><i class="bi bi-power"></i> Logout</a></li>

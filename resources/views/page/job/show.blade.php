@@ -22,7 +22,15 @@
             <div class="row">
                 <div class="col-md-6">
                     <h2>
+                        @if (app()->getLocale() == 'ch')
+                        {{$jobcompany->title_ch}}
+                        @elseif(app()->getLocale() == 'en')
                         {{$jobcompany->title_en}}
+                        @elseif(app()->getLocale() == 'kh')
+                        {{$jobcompany->title_kh}}
+                        @else
+                        {{$jobcompany->title_th}}
+                        @endif
                     </h2>
                     <p>{{$jobcompany->company}}</p>
                     <h2 class="text-danger">{{$jobcompany->salary}}</h2>

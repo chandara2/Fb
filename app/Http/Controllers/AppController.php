@@ -21,15 +21,15 @@ class AppController extends Controller
         $companylogos = CompanyInfo::select('company_infos.logo', 'company_infos.id')->get();
         $homepage_slide = Homepage::select('slide')->get();
 
-        $jobcompanys = DB::table('users')
-            ->join('jobs', 'users.id', '=', 'jobs.uid')
-            ->join('company_infos', 'users.id', '=', 'company_infos.uid')
+        $jobcompanys = DB::table('jobs')
+            ->join('company_infos', 'company_infos.company', '=', 'jobs.company')
             ->select('jobs.created_at', 'jobs.title_ch', 'jobs.title_en', 'jobs.title_kh', 'jobs.title_th', 'jobs.id as jobid', 'company_infos.company', 'company_infos.id as com_id')
             ->where('approved', true)
             ->orderBy('expired_post')
             ->latest()
             ->take(12)
             ->get();
+        // dd($jobcompanys);
 
         $job_functions = Job::all()->countBy('function');
         $job_industries = Job::all()->countBy('industry');
