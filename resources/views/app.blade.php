@@ -108,7 +108,10 @@
                                             @else
                                             {{$salary->salary_th}}
                                             @endif
-                                            </a>
+
+                                            ({{ count((array)$salary->salary_en) }})
+
+                                            </a
                                         </li>
                                     @endforeach
                                 </ul>
