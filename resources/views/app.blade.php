@@ -94,15 +94,28 @@
                             </div>
                             <div role="tabpanel" class="tab-pane" id="salary">
                                 <ul class="list-unstyled ul_browsejobs p-lg-2 p-sm-2">
-                                    @foreach ($job_salaries as $salary=>$count)
+                                    {{-- @foreach ($job_salaries as $salary=>$count)
                                         <li><a href="jobsort/{{ $salary }}" class="text-decoration-none text-black">{{Str::limit($salary, 25)}} ({{ $count }})</a></li>
+                                    @endforeach --}}
+                                    @foreach ($job_salaries as $salary)
+                                        <li><a href="#" class="text-decoration-none text-black">
+                                            @if (app()->getLocale() == 'ch')
+                                            {{$salary->salary_ch}}
+                                            @elseif(app()->getLocale() == 'en')
+                                            {{$salary->salary_en}}
+                                            @elseif(app()->getLocale() == 'kh')
+                                            {{$salary->salary_kh}}
+                                            @else
+                                            {{$salary->salary_th}}
+                                            @endif
+                                            </a>
+                                        </li>
                                     @endforeach
                                 </ul>
                             </div>
                         </div>
 
                     </div>
-                    {{-- {{ dd(Route::current()) }} --}}
                 </div>
                 <div class="col-xl-4 col-lg-12 mb-xl-0"><!-- Job Augent -->
                     <ul class="list-group">

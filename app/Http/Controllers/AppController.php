@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\CompanyInfo;
-use App\Models\Homepage;
 use App\Models\Job;
+use App\Models\Homepage;
+use App\Models\JobSalary;
+use App\Models\CompanyInfo;
 use App\Models\JobFunction;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
 
 class AppController extends Controller
 {
@@ -34,7 +36,12 @@ class AppController extends Controller
         $job_functions = Job::all()->countBy('function');
         $job_industries = Job::all()->countBy('industry');
         $job_locations = Job::all()->countBy('location');
-        $job_salaries = Job::all()->countBy('salary');
+        // $job_salaries = Job::all()->countBy('salary');
+
+        $job_salaries = DB::table('jobs')
+        ->join('job_salaries', 'job_salaries.salary_en', '=', 'jobs.salary')
+        ->select('job_salaries.*')->get();
+        // dd($job_salaries);
 
         // $job_functions = DB::table('job_functions')
         //     ->join('jobs', 'jobs.function', 'job_functions.name')
