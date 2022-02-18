@@ -18,7 +18,7 @@ class AdminCompanyInfoController extends Controller
      */
     public function index()
     {
-        $companyinfos = CompanyInfo::all()->where('uid', Auth::user()->id);
+        $companyinfos = CompanyInfo::all();
         return view('admin.companyinfo', [
             'companyinfos' => $companyinfos,
         ]);
@@ -164,7 +164,7 @@ class AdminCompanyInfoController extends Controller
         ]);
 
         $companyinfo = CompanyInfo::find($id);
-        $companyinfo->uid = Auth::user()->id;
+        // $companyinfo->uid = Auth::user()->id;
         $companyinfo->company = $request->company;
         $companyinfo->number_staff = $request->number_staff;
         $companyinfo->industry = $request->industry;

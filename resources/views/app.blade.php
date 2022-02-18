@@ -94,11 +94,20 @@
                             </div>
                             <div role="tabpanel" class="tab-pane" id="salary">
                                 <ul class="list-unstyled ul_browsejobs p-lg-2 p-sm-2">
-                                    {{-- @foreach ($job_salaries as $salary=>$count)
-                                        <li><a href="jobsort/{{ $salary }}" class="text-decoration-none text-black">{{Str::limit($salary, 25)}} ({{ $count }})</a></li>
-                                    @endforeach --}}
-                                    @foreach ($job_salaries as $salary)
-                                        <li><a href="#" class="text-decoration-none text-black">
+                                    @foreach ($job_salaries as $salary=>$count)
+                                        <li>
+                                            <a href="jobsort/{{ $salary }}" class="text-decoration-none text-black">
+                                                {{Str::limit(
+                                                    $salary
+                                                    
+                                                    , 25)}} ({{ $count }})
+                                            </a>
+                                        </li>
+                                    @endforeach
+
+                                    {{-- @foreach ($job_salaries as $salary)
+                                        <li>
+                                            <a href="jobsort/{{ $salary->salary_en }}" class="text-decoration-none text-black">
                                             @if (app()->getLocale() == 'ch')
                                             {{$salary->salary_ch}}
                                             @elseif(app()->getLocale() == 'en')
@@ -111,9 +120,9 @@
 
                                             ({{ count((array)$salary->salary_en) }})
 
-                                            </a
+                                            </a>
                                         </li>
-                                    @endforeach
+                                    @endforeach --}}
                                 </ul>
                             </div>
                         </div>

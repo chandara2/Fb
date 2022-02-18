@@ -117,13 +117,14 @@ class JobController extends Controller
             ->join('job_functions', 'job_functions.name', '=', 'jobs.function')
             ->join('job_industries', 'job_industries.name', '=', 'jobs.industry')
             ->join('job_locations', 'job_locations.name', '=', 'jobs.location')
-            ->join('job_salaries', 'job_salaries.name', '=', 'jobs.salary')
+            ->join('job_salaries', 'job_salaries.salary_en', '=', 'jobs.salary')
             ->select('jobs.*', 'jobs.id as job_id', 'jobs.industry as job_industry', 'company_infos.*', 'company_infos.id as com_id')
             ->where('job_functions.name', $jobsort)
             ->orWhere('job_industries.name', $jobsort)
             ->orWhere('job_locations.name', $jobsort)
-            ->orWhere('job_salaries.name', $jobsort)
+            ->orWhere('job_salaries.salary_en', $jobsort)
             ->paginate(10);
+        
         return view('page.job.job_sort', [
             'jobscoms' => $jobscoms,
         ]);
@@ -137,7 +138,7 @@ class JobController extends Controller
                 ->join('jobs', 'jobs.uid', '=', 'users.id')
                 ->join('company_infos', 'company_infos.uid', '=', 'users.id')
                 ->select('jobs.*', 'jobs.id as job_id', 'company_infos.*', 'company_infos.id as com_id')
-                ->where('title', 'LIKE', "%$searchjob%")
+                ->where('title_en', 'LIKE', "%$searchjob%")
                 // ->orWhere('company', 'LIKE', "%$searchjob%")
                 ->orWhere('function', 'LIKE', "%$searchjob%")
                 ->orWhere('location', 'LIKE', "%$searchjob%")

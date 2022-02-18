@@ -16,7 +16,7 @@
                 <li><a href="{{ route('about.index') }}" class="nav-link px-2 link-dark class_aboutus">{{__('text.About_us')}}</a></li>
             </ul>
 
-            <form class="d-flex col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" action="{{ route('searchjob') }}" method="get">
+            <form id="form_searchjob_id" class="d-flex col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" action="{{ route('searchjob') }}" method="get">
                 <input class="form-control rounded-0 rounded-start border-end-0" type="search" placeholder="Search" aria-label="Search" name="searchjob">
                 <button class="btn brand_outline_btn3 rounded-0 rounded-end" type="submit"><i class="bi bi-search"></i></button>
             </form>

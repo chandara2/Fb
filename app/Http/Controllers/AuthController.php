@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\CompanyInfo;
 use App\Models\User;
 use App\Models\Usergroup;
-use Illuminate\Auth\Events\Registered;
+use App\Models\CompanyInfo;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Auth\Events\Registered;
 
 class AuthController extends Controller
 {
@@ -102,6 +103,7 @@ class AuthController extends Controller
             'password_confirmation' => 'required|same:password',
         ], [
             'username.required' => 'Please fill in username',
+            'username.unique' => 'This username already exists',
             'password.required' => 'Please fill in password',
             'password.min' => 'Passwords must be at least 6 characters',
             'password_confirmation.required' => 'Please fill in confirm password',
