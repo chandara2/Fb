@@ -24,7 +24,7 @@ class AppController extends Controller
         $homepage_slide = Homepage::select('slide')->get();
 
         $jobcompanys = DB::table('jobs')
-            ->join('company_infos', 'company_infos.company', '=', 'jobs.company')
+            ->join('company_infos', 'company_infos.uid', '=', 'jobs.uid')
             ->select('jobs.created_at', 'jobs.title_ch', 'jobs.title_en', 'jobs.title_kh', 'jobs.title_th', 'jobs.id as jobid', 'company_infos.company', 'company_infos.id as com_id')
             ->where('approved', true)
             ->orderBy('expired_post')
@@ -52,7 +52,6 @@ class AppController extends Controller
         //     ->groupBy('function')
         //     ->orderBy('function', 'asc') //Unless you use this array somewhere, it's not needed.
         //     ->get();
-
 
         return view('app', [
             'companylogos' => $companylogos,
