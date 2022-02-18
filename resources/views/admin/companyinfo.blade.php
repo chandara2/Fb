@@ -200,30 +200,11 @@
                         }else{
                             $('#addCompanyFormId')[0].reset()
                             $('#showCompanyModal').modal('hide')
-                            document.location.href = "{{ route('admin.job.index') }}"
+                            document.location.href = "{{ route('admin.companyinfo.index') }}"
                         }
                     }
                 });
             });
-        });
-
-        // Pending & Approved
-        $('.toggle-class').on('change', function() {
-            var approved = $(this).prop('checked') == true ? 1 : 0;
-            var id = $(this).data('id');
-            $.ajax({
-                type: 'GET',
-                dataType: 'JSON',
-                url: '/admin/changejobstatus',
-                data: {
-                    'approved': approved,
-                    'id': id
-                },
-                success:function(data) {
-                    console.log(data.successStatusMsg)
-                }
-            });
-        });
-        
+        }); 
     </script>
 @endsection
