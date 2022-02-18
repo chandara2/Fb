@@ -19,8 +19,10 @@ class AdminCompanyInfoController extends Controller
     public function index()
     {
         $companyinfos = CompanyInfo::all();
+        $job_industrys = JobIndustry::get();
         return view('admin.companyinfo', [
             'companyinfos' => $companyinfos,
+            'job_industrys' => $job_industrys,
         ]);
     }
 
@@ -31,10 +33,7 @@ class AdminCompanyInfoController extends Controller
      */
     public function create()
     {
-        $job_industrys = JobIndustry::get();
-        return view('admin.companyinfo_create', [
-            'job_industrys' => $job_industrys,
-        ]);
+        //
     }
 
     /**

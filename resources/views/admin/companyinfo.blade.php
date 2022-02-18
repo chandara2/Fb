@@ -9,6 +9,120 @@
     </div>
 
     <div class="container-fluid">
+        <nav aria-label="breadcrumb" style="--bs-breadcrumb-divider: '|';" class="mt-3">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}" class="text-decoration-none">Dashboard</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Company</li>
+                <li class="breadcrumb-item">
+                    <a href="#" class="text-decoration-none" data-bs-toggle="modal" data-bs-target="#showCompanyModal">New Company</a>
+                </li>
+            </ol>
+        </nav>
+    </div>
+
+    <!-- Modal Add about info -->
+    <div class="modal fade" id="showCompanyModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header bg-info bg-opacity-50">
+                <h5 class="modal-title" id="exampleModalLabel">Create Company</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form method="POST" action="{{ route('admin.companyinfo.store') }}" id="addCompanyFormId">
+                        @csrf
+
+                        <div class="form-group mb-md-3">
+                            <label>Company name</label>
+                            <input name="company" type="text" class="form-control">
+                            <span class="text-danger error-text company_error"></span>
+                        </div>
+
+                        <div class="form-group mb-md-3">
+                            <label>Industry</label>
+                            <select name="industry" value="{{ old('industry') }}" class="form-select">
+                                <option selected disabled>Select Job Industry</option>
+                                @foreach ($job_industrys as $job_industry)
+                                    <option>{{ $job_industry->name }}</option>
+                                @endforeach
+                            </select>
+                            <span class="text-danger error-text industry_error"></span>
+                        </div>
+
+                        <div class="form-group mb-md-3">
+                            <label>Number of staff</label>
+                            <input name="number_staff" type="text" class="form-control">
+                            <span class="text-danger error-text number_staff_error"></span>
+                        </div>
+
+                        <div class="form-group mb-md-3">
+                            <label>Website</label>
+                            <input name="website" type="text" class="form-control">
+                            <span class="text-danger error-text website_error"></span>
+                        </div>
+
+                        <div class="form-group mb-md-3">
+                            <label>Province/City</label>
+                            <input name="province" type="text" class="form-control">
+                            <span class="text-danger error-text province_error"></span>
+                        </div>
+
+                        <div class="form-group mb-md-3">
+                            <label>Detail Location</label>
+                            <input name="detail_location" type="text" class="form-control">
+                            <span class="text-danger error-text detail_location_error"></span>
+                        </div>
+
+                        <div class="form-group mb-md-3">
+                            <label>Company Profile</label>
+                            <textarea name="company_profile" class="textarea_autosize form-control"></textarea>
+                            <span class="text-danger error-text company_profile_error"></span>
+                        </div>
+
+                        <div class="form-group mb-md-3">
+                            <label>Company Logo</label>
+                            <input name="logo" type="file" class="form-control" value="{{ old('logo') }}" onchange="document.getElementById('companyinfologo').src = window.URL.createObjectURL(this.files[0])">
+                            <img id="companyinfologo" width="110px">
+                            <span class="text-danger error-text company_profile_error"></span>
+                        </div>
+
+                        <div class="h5 text-info text-center text-uppercase">Contact Information</div>
+
+                        <div class="form-group mb-md-3">
+                            <label>Contact Name</label>
+                            <input name="contact_name" type="text" class="form-control">
+                            <span class="text-danger error-text contact_name_error"></span>
+                        </div>
+
+                        <div class="form-group mb-md-3">
+                            <label>Contact Position</label>
+                            <input name="contact_position" type="text" class="form-control">
+                            <span class="text-danger error-text contact_position_error"></span>
+                        </div>
+
+                        <div class="form-group mb-md-3">
+                            <label>Contact Email</label>
+                            <input name="contact_email" type="text" class="form-control">
+                            <span class="text-danger error-text contact_email_error"></span>
+                        </div>
+
+                        <div class="form-group mb-md-3">
+                            <label>Contact Phone</label>
+                            <input name="contact_phone" type="text" class="form-control">
+                            <span class="text-danger error-text contact_phone_error"></span>
+                        </div>
+            
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-info">Create</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div> <!-- end add modal -->
+
+    <div class="container-fluid">
         @if (session('userdelete'))
             <div class="alert alert-success">{{session('userdelete')}}</div>
         @endif
@@ -54,4 +168,62 @@
 
     </div>
 
+@endsection
+
+@section('script')
+    <script>
+        $(document).ready(function () {
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+
+            // Save Job Form
+            $('#addCompanyFormId').on('submit', function (e) {
+                e.preventDefault();
+                $.ajax({
+                    method:$(this).attr('method'),
+                    url:$(this).attr('action'),
+                    data:new FormData(this),
+                    dataType: "json",
+                    processData:false,
+                    contentType:false,
+                    beforeSend: function(){
+                        $(document).find('span.error-text').text('')
+                    },
+                    success: function (data) {
+                        if(data.status==0){
+                            $.each(data.error, function(prefix, val){
+                                $('span.'+prefix+'_error').text(val[0])
+                            })
+                        }else{
+                            $('#addCompanyFormId')[0].reset()
+                            $('#showCompanyModal').modal('hide')
+                            document.location.href = "{{ route('admin.job.index') }}"
+                        }
+                    }
+                });
+            });
+        });
+
+        // Pending & Approved
+        $('.toggle-class').on('change', function() {
+            var approved = $(this).prop('checked') == true ? 1 : 0;
+            var id = $(this).data('id');
+            $.ajax({
+                type: 'GET',
+                dataType: 'JSON',
+                url: '/admin/changejobstatus',
+                data: {
+                    'approved': approved,
+                    'id': id
+                },
+                success:function(data) {
+                    console.log(data.successStatusMsg)
+                }
+            });
+        });
+        
+    </script>
 @endsection
