@@ -10,13 +10,13 @@
 
     <div class="container">
         <div class="row">
-            <a href="#" data-bs-toggle="modal" data-bs-target="#showSlideModal"><button type="submit" class="btn btn-sm btn-primary mb-3"><i class="bi bi-plus-square-dotted"></i> Slide</button></a>
+            <a href="#" data-bs-toggle="modal" data-bs-target="#showSlideModal"><button type="submit" class="btn btn-sm btn-primary mb-3 rounded-0"><i class="bi bi-plus-square-dotted"></i> Slide</button></a>
         </div>
 
         <div class="row">
             @forelse ($homepageslides as $i => $slide)
             <div class="col-xl-2 col-lg-3 col-md-4 mb-3">
-                <img src="{{asset('upload/homepageslide/')}}/{{$slide->slide}}" alt="slide" width="100%" height="100" style="object-fit: cover;">
+                <img src="{{asset('upload/homepageslide/')}}/{{$slide->slide}}" alt="slide" width="100%" height="100" style="object-fit: cover;" class="border border-info p-1">
                 <form action="/admin/homepage/{{ $slide->id }}" method="POST" onsubmit="return confirm('Are you sure? You won\'t be able to revert this!')" class="bg-info bg-opacity-10">
                     @csrf
                     @method('delete')
@@ -48,7 +48,7 @@
                             <label>Slide banner</label>
                             <input name="slide" type="file" class="form-control" value="{{ old('slide') }}" onchange="document.getElementById('companyinfoslide').src = window.URL.createObjectURL(this.files[0])">
                             <img id="companyinfoslide" width="110px">
-                            <span class="text-danger error-text company_profile_error"></span>
+                            <span class="text-danger error-text slide_error"></span>
                         </div>
             
                         <div class="modal-footer">
