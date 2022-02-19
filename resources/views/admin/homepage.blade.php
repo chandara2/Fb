@@ -10,25 +10,94 @@
 
     <div class="container">
         <div class="row">
-            <a href="{{ route('admin.homepage.create') }}"><button type="submit">Add Slide</button></a>
+            <a href="#" data-bs-toggle="modal" data-bs-target="#showSlideModal"><button type="submit" class="btn btn-sm btn-primary mb-3"><i class="bi bi-plus-square-dotted"></i> Slide</button></a>
         </div>
 
         <div class="row">
-            <ul class="list-group list-group-flush">
-                @forelse ($homepageslides as $slide)
-                <li class="list-group-item bg-light ps-0">
-                    <img src="{{asset('upload/homepageslide/')}}/{{$slide->slide}}" alt="slide" width="100" height="100">
-                    <form action="/admin/homepage/{{ $slide->id }}" method="POST" class="d-inline" onsubmit="return confirm('Are you sure? You won\'t be able to revert this!')">
-                        @csrf
-                        @method('delete')
-                        <button type="submit" class="text-danger" title="Delete"><i class="bi bi-trash"></i></button>
-                    </form>
-                </li>
-                @empty
-                    <p class="text-center bg-info">No slide to show</p>
-                @endforelse
-            </ul>
+            @forelse ($homepageslides as $i => $slide)
+            <div class="col-xl-2 col-lg-3 col-md-4 mb-3">
+                <img src="{{asset('upload/homepageslide/')}}/{{$slide->slide}}" alt="slide" width="100%" height="100" style="object-fit: cover;">
+                <form action="/admin/homepage/{{ $slide->id }}" method="POST" onsubmit="return confirm('Are you sure? You won\'t be able to revert this!')" class="bg-info bg-opacity-10">
+                    @csrf
+                    @method('delete')
+                    <div class="d-flex justify-content-between">
+                        <span>BANNER SLIDE {{$i+1}}</span>
+                        <button type="submit" class="text-danger btn p-0" title="Delete"><i class="bi bi-x-square"></i></button>
+                    </div>
+                </form>
+            </div>
+            @empty
+            <p class="text-center bg-info">No slide to show</p>
+            @endforelse
         </div>
     </div>
 
+    <!-- Modal Add about info -->
+    <div class="modal fade" id="showSlideModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-md">
+            <div class="modal-content">
+                <div class="modal-header bg-info bg-opacity-50">
+                <h5 class="modal-title" id="exampleModalLabel">Add banner slide</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form method="POST" action="{{ route('admin.homepage.store') }}" id="addSlideFormId">
+                        @csrf
+
+                        <div class="form-group mb-md-3">
+                            <label>Slide banner</label>
+                            <input name="slide" type="file" class="form-control" value="{{ old('slide') }}" onchange="document.getElementById('companyinfoslide').src = window.URL.createObjectURL(this.files[0])">
+                            <img id="companyinfoslide" width="110px">
+                            <span class="text-danger error-text company_profile_error"></span>
+                        </div>
+            
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-info">Add Slide</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div> <!-- end add modal -->
+
+@endsection
+
+@section('script')
+    <script>
+        $(document).ready(function () {
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+
+            // Save Job Form
+            $('#addSlideFormId').on('submit', function (e) {
+                e.preventDefault();
+                $.ajax({
+                    method:$(this).attr('method'),
+                    url:$(this).attr('action'),
+                    data:new FormData(this),
+                    dataType: "json",
+                    processData:false,
+                    contentType:false,
+                    beforeSend: function(){
+                        $(document).find('span.error-text').text('')
+                    },
+                    success: function (data) {
+                        if(data.status==0){
+                            $.each(data.error, function(prefix, val){
+                                $('span.'+prefix+'_error').text(val[0])
+                            })
+                        }else{
+                            $('#addSlideFormId')[0].reset()
+                            $('#showSlideModal').modal('hide')
+                            document.location.href = "{{ route('admin.homepage.index') }}"
+                        }
+                    }
+                });
+            });
+        }); 
+    </script>
 @endsection

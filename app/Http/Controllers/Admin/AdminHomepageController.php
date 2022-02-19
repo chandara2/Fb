@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
 use App\Models\Homepage;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Validator;
 
 class AdminHomepageController extends Controller
 {
@@ -41,27 +42,31 @@ class AdminHomepageController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
+        $validator = Validator::make($request->all(), [
             'slide' => 'required|image|mimes:jpeg,png,jpg,gif,svg',
         ], [
             'slide.required' => 'Please upload homepage slide',
         ]);
 
-        $homepageSlide = new Homepage();
-        if ($request->hasFile('slide')) {
-            $file = $request->file('slide');
-            $extension = $file->getClientOriginalExtension();
-            $filename = time() . '.' . $extension;
-            $file->move('upload/homepageslide/', $filename);
-            $homepageSlide->slide = $filename;
+        if ($validator->fails()) {
+            return response()->json(['status' => 0, 'error' => $validator->errors()->toArray()]);
+        } else {
+
+            $slideBanner = new Homepage();
+            if ($request->hasFile('slide')) {
+                $file = $request->file('slide');
+                $extension = $file->getClientOriginalExtension();
+                $filename = time() . '.' . $extension;
+                $file->move('upload/homepageslide/', $filename);
+                $slideBanner->slide = $filename;
+            }
+
+            $slide = new Homepage();
+            $slide->uid = Auth::user()->id;
+            $slide->slide = $filename;
+            $slide->save();
+            return response()->json(['status' => 1, 'msg' => 'Company create successfully']);
         }
-
-        $slide = new Homepage();
-        $slide->uid = Auth::user()->id;
-        $slide->slide = $filename;
-        $slide->save();
-
-        return redirect(route('admin.homepage.index'));
     }
 
     /**
