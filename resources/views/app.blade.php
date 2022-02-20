@@ -50,8 +50,8 @@
 
                     <div class="mb-4">
                         <ul class="nav nav-tabs d-flex justify-content-between mt-4">
-                            <li class="nav-item">{{__('text.Browse_Jobs')}}</li>
-                            <li></li>
+                            <li class="nav-item h5">{{__('text.Browse_Jobs')}}</li>
+                            {{-- <li></li> --}}
                             <li class="nav-item">
                                 <a href="#function" class="nav-link px-2 py-1" role="tab" data-bs-toggle="tab">{{__('text.Function')}}</a>
                             </li>
@@ -101,6 +101,7 @@
                                                     {{ Str::limit($salary->salary_ch, 25) }}
                                                 @elseif(app()->getLocale() == 'en')
                                                     {{ Str::limit($salary->salary_en, 25) }}
+                                                    {{ count(array($salary->salary_en)) }}
                                                 @elseif(app()->getLocale() == 'kh')
                                                     {{ Str::limit($salary->salary_kh, 25) }}
                                                 @else
