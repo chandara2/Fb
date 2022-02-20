@@ -24,7 +24,7 @@ class AppController extends Controller
         $homepage_slide = Homepage::select('slide')->get();
 
         $jobcompanys = DB::table('jobs')
-            ->join('company_infos', 'company_infos.uid', '=', 'jobs.uid')
+            ->join('company_infos', 'company_infos.company', '=', 'jobs.company')
             ->select('jobs.created_at', 'jobs.title_ch', 'jobs.title_en', 'jobs.title_kh', 'jobs.title_th', 'jobs.id as jobid', 'company_infos.company', 'company_infos.id as com_id')
             ->where('approved', true)
             ->orderBy('expired_post')
@@ -35,7 +35,12 @@ class AppController extends Controller
         $job_functions = Job::all()->countBy('function');
         $job_industries = Job::all()->countBy('industry');
         $job_locations = Job::all()->countBy('location');
-        $job_salaries = Job::all()->countBy('salary');
+        $job_salaries = DB::table('jobs')
+        ->join('job_salaries', 'job_salaries.salary_en', '=', 'jobs.salary')
+        ->select('job_salaries.*')
+        ->get();
+
+        // dd($job_salaries);
 
 
         $salaries = JobSalary::all();

@@ -53,7 +53,7 @@
                             <li class="nav-item">{{__('text.Browse_Jobs')}}</li>
                             <li></li>
                             <li class="nav-item">
-                                <a href="#function" class="nav-link active px-2 py-1" role="tab" data-bs-toggle="tab">{{__('text.Function')}}</a>
+                                <a href="#function" class="nav-link px-2 py-1" role="tab" data-bs-toggle="tab">{{__('text.Function')}}</a>
                             </li>
                             <li class="nav-item">
                                 <a href="#industry" class="nav-link px-2 py-1" role="tab" data-bs-toggle="tab">{{__('text.Industry')}}</a>
@@ -62,12 +62,12 @@
                                 <a href="#location" class="nav-link px-2 py-1" role="tab" data-bs-toggle="tab">{{__('text.Location')}}</a>
                             </li>
                             <li class="nav-item">
-                                <a href="#salary" class="nav-link px-2 py-1" role="tab" data-bs-toggle="tab">{{__('text.Salary')}}</a>
+                                <a href="#salary" class="nav-link active px-2 py-1" role="tab" data-bs-toggle="tab">{{__('text.Salary')}}</a>
                             </li>
                         </ul>
         
                         <div class="tab-content">
-                            <div role="tabpanel" class="tab-pane active" id="function">
+                            <div role="tabpanel" class="tab-pane" id="function">
                                 <ul class="list-unstyled ul_browsejobs p-lg-2 p-sm-2">
 
                                     @foreach ($job_functions as $function=>$count)
@@ -92,15 +92,20 @@
                                     @endforeach
                                 </ul>
                             </div>
-                            <div role="tabpanel" class="tab-pane" id="salary">
+                            <div role="tabpanel" class="tab-pane active" id="salary">
                                 <ul class="list-unstyled ul_browsejobs p-lg-2 p-sm-2">
-                                    @foreach ($job_salaries as $salary=>$count)
+                                    @foreach ($job_salaries as $salary)
                                         <li>
-                                            <a href="jobsort/{{ $salary }}" class="text-decoration-none text-black">
-                                                {{Str::limit(
-                                                    $salary
-                                                    
-                                                    , 25)}} ({{ $count }})
+                                            <a href="jobsort/{{ $salary->salary_en }}" class="text-decoration-none text-black">
+                                                @if (app()->getLocale() == 'ch')
+                                                    {{ Str::limit($salary->salary_ch, 25) }}
+                                                @elseif(app()->getLocale() == 'en')
+                                                    {{ Str::limit($salary->salary_en, 25) }}
+                                                @elseif(app()->getLocale() == 'kh')
+                                                    {{ Str::limit($salary->salary_kh, 25) }}
+                                                @else
+                                                    {{ Str::limit($salary->salary_th, 25) }}
+                                                @endif
                                             </a>
                                         </li>
                                     @endforeach

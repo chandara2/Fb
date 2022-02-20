@@ -16,9 +16,8 @@ class JobController extends Controller
      */
     public function index()
     {
-        $jobscoms = DB::table('users')
-            ->join('jobs', 'jobs.uid', '=', 'users.id')
-            ->join('company_infos', 'company_infos.uid', '=', 'users.id')
+        $jobscoms = DB::table('jobs')
+            ->join('company_infos', 'company_infos.company', '=', 'jobs.company')
             ->select('jobs.*', 'jobs.id as job_id', 'company_infos.*', 'company_infos.id as com_id')
             ->paginate(10);
 
@@ -113,7 +112,7 @@ class JobController extends Controller
     public function jobsort($jobsort)
     {
         $jobscoms = DB::table('jobs')
-            ->join('company_infos', 'company_infos.uid', '=', 'jobs.uid')
+            ->join('company_infos', 'company_infos.company', '=', 'jobs.company')
             ->join('job_functions', 'job_functions.name', '=', 'jobs.function')
             ->join('job_industries', 'job_industries.name', '=', 'jobs.industry')
             ->join('job_locations', 'job_locations.name', '=', 'jobs.location')
@@ -134,9 +133,8 @@ class JobController extends Controller
     {
         $searchjob = $request['searchjob'] ?? "";
         if ($searchjob != "") {
-            $jobscoms = DB::table('users')
-                ->join('jobs', 'jobs.uid', '=', 'users.id')
-                ->join('company_infos', 'company_infos.uid', '=', 'users.id')
+            $jobscoms = DB::table('jobs')
+                ->join('company_infos', 'company_infos.company', '=', 'jobs.company')
                 ->select('jobs.*', 'jobs.id as job_id', 'company_infos.*', 'company_infos.id as com_id')
                 ->where('title_en', 'LIKE', "%$searchjob%")
                 // ->orWhere('company', 'LIKE', "%$searchjob%")
@@ -156,9 +154,8 @@ class JobController extends Controller
                 // ->orWhere('detail', 'LIKE', "%$searchjob%")
                 ->paginate(10)->withQueryString();
         } else {
-            $jobscoms = DB::table('users')
-                ->join('jobs', 'jobs.uid', '=', 'users.id')
-                ->join('company_infos', 'company_infos.uid', '=', 'users.id')
+            $jobscoms = DB::table('jobs')
+                ->join('company_infos', 'company_infos.company', '=', 'jobs.company')
                 ->select('jobs.*', 'jobs.id as job_id', 'company_infos.*', 'company_infos.id as com_id')
                 ->paginate(10);
         }
