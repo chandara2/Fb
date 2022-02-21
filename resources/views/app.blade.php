@@ -70,8 +70,19 @@
                             <div role="tabpanel" class="tab-pane" id="function">
                                 <ul class="list-unstyled ul_browsejobs p-lg-2 p-sm-2">
 
-                                    @foreach ($job_functions as $function=>$count)
-                                        <li><a href="jobsort/{{ $function }}" class="text-decoration-none text-black">{{Str::limit($function, 25)}} ({{ $count }})</a></li>
+                                    @foreach ($job_functions as $function)
+                                        <li><a href="jobsort/{{ $function->function_en }}" class="text-decoration-none text-black">
+                                                @if (app()->getLocale() == 'ch')
+                                                    {{ Str::limit($function->function_ch, 25) }}
+                                                @elseif(app()->getLocale() == 'en')
+                                                    {{ Str::limit($function->function_en, 25) }}
+                                                @elseif(app()->getLocale() == 'kh')
+                                                    {{ Str::limit($function->function_kh, 25) }}
+                                                @else
+                                                    {{ Str::limit($function->function_th, 25) }}
+                                                @endif
+                                            </a>
+                                        </li>
                                     @endforeach
 
                                 </ul>
@@ -79,16 +90,38 @@
                             <div role="tabpanel" class="tab-pane" id="industry">
                                 <ul class="list-unstyled ul_browsejobs p-lg-2 p-sm-2">
 
-                                    @foreach ($job_industries as $industry=>$count)
-                                        <li><a href="jobsort/{{ $industry }}" class="text-decoration-none text-black">{{Str::limit($industry, 25)}} ({{ $count }})</a></li>
+                                    @foreach ($job_industries as $industry)
+                                        <li><a href="jobsort/{{ $industry->industry_en }}" class="text-decoration-none text-black">
+                                                @if (app()->getLocale() == 'ch')
+                                                    {{ Str::limit($industry->industry_ch, 25) }}
+                                                @elseif(app()->getLocale() == 'en')
+                                                    {{ Str::limit($industry->industry_en, 25) }}
+                                                @elseif(app()->getLocale() == 'kh')
+                                                    {{ Str::limit($industry->industry_kh, 25) }}
+                                                @else
+                                                    {{ Str::limit($industry->industry_th, 25) }}
+                                                @endif
+                                            </a>
+                                        </li>
                                     @endforeach
 
                                 </ul>
                             </div>
                             <div role="tabpanel" class="tab-pane" id="location">
                                 <ul class="list-unstyled ul_browsejobs p-lg-2 p-sm-2">
-                                    @foreach ($job_locations as $location=>$count)
-                                        <li><a href="jobsort/{{ $location }}" class="text-decoration-none text-black">{{Str::limit($location, 25)}} ({{ $count }})</a></li>
+                                    @foreach ($job_locations as $location)
+                                        <li><a href="jobsort/{{ $location->location_en }}" class="text-decoration-none text-black">
+                                                @if (app()->getLocale() == 'ch')
+                                                    {{ Str::limit($location->location_ch, 25) }}
+                                                @elseif(app()->getLocale() == 'en')
+                                                    {{ Str::limit($location->location_en, 25) }}
+                                                @elseif(app()->getLocale() == 'kh')
+                                                    {{ Str::limit($location->location_kh, 25) }}
+                                                @else
+                                                    {{ Str::limit($location->location_th, 25) }}
+                                                @endif
+                                            </a>
+                                        </li>
                                     @endforeach
                                 </ul>
                             </div>
@@ -101,34 +134,15 @@
                                                     {{ Str::limit($salary->salary_ch, 25) }}
                                                 @elseif(app()->getLocale() == 'en')
                                                     {{ Str::limit($salary->salary_en, 25) }}
-                                                    {{ count(array($salary->salary_en)) }}
                                                 @elseif(app()->getLocale() == 'kh')
                                                     {{ Str::limit($salary->salary_kh, 25) }}
+                                                    {{-- ({{ count((array)$salary->salary_en) }}) --}}
                                                 @else
                                                     {{ Str::limit($salary->salary_th, 25) }}
                                                 @endif
                                             </a>
                                         </li>
                                     @endforeach
-
-                                    {{-- @foreach ($job_salaries as $salary)
-                                        <li>
-                                            <a href="jobsort/{{ $salary->salary_en }}" class="text-decoration-none text-black">
-                                            @if (app()->getLocale() == 'ch')
-                                            {{$salary->salary_ch}}
-                                            @elseif(app()->getLocale() == 'en')
-                                            {{$salary->salary_en}}
-                                            @elseif(app()->getLocale() == 'kh')
-                                            {{$salary->salary_kh}}
-                                            @else
-                                            {{$salary->salary_th}}
-                                            @endif
-
-                                            ({{ count((array)$salary->salary_en) }})
-
-                                            </a>
-                                        </li>
-                                    @endforeach --}}
                                 </ul>
                             </div>
                         </div>

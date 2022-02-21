@@ -113,14 +113,14 @@ class JobController extends Controller
     {
         $jobscoms = DB::table('jobs')
             ->join('company_infos', 'company_infos.company', '=', 'jobs.company')
-            ->join('job_functions', 'job_functions.name', '=', 'jobs.function')
-            ->join('job_industries', 'job_industries.name', '=', 'jobs.industry')
-            ->join('job_locations', 'job_locations.name', '=', 'jobs.location')
+            ->join('job_functions', 'job_functions.function_en', '=', 'jobs.function')
+            ->join('job_industries', 'job_industries.industry_en', '=', 'jobs.industry')
+            ->join('job_locations', 'job_locations.location_en', '=', 'jobs.location')
             ->join('job_salaries', 'job_salaries.salary_en', '=', 'jobs.salary')
             ->select('jobs.*', 'jobs.id as job_id', 'jobs.industry as job_industry', 'company_infos.*', 'company_infos.id as com_id')
-            ->where('job_functions.name', $jobsort)
-            ->orWhere('job_industries.name', $jobsort)
-            ->orWhere('job_locations.name', $jobsort)
+            ->where('job_functions.function_en', $jobsort)
+            ->orWhere('job_industries.industry_en', $jobsort)
+            ->orWhere('job_locations.location_en', $jobsort)
             ->orWhere('job_salaries.salary_en', $jobsort)
             ->paginate(10);
         

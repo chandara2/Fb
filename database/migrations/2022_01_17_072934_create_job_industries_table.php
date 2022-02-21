@@ -15,7 +15,10 @@ class CreateJobIndustriesTable extends Migration
     {
         Schema::create('job_industries', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('industry_ch');
+            $table->string('industry_en');
+            $table->string('industry_kh');
+            $table->string('industry_th');
             $table->timestamps();
         });
     }

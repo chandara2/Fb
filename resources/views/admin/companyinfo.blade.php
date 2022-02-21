@@ -43,7 +43,7 @@
                             <select name="industry" value="{{ old('industry') }}" class="form-select">
                                 <option selected disabled>Select Job Industry</option>
                                 @foreach ($job_industrys as $job_industry)
-                                    <option>{{ $job_industry->name }}</option>
+                                    <option>{{ $job_industry->industry_en }}</option>
                                 @endforeach
                             </select>
                             <span class="text-danger error-text industry_error"></span>

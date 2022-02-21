@@ -79,7 +79,7 @@
                             <select name="function" value="{{ old('function') }}" class="form-select">
                                 <option selected disabled>Select Job Function</option>
                                 @foreach ($job_functions as $job_function)
-                                    <option>{{ $job_function->name }}</option>
+                                    <option>{{ $job_function->function_en }}</option>
                                 @endforeach
                             </select>
                             <span class="text-danger error-text function_error"></span>
@@ -90,7 +90,7 @@
                             <select name="industry" value="{{ old('industry') }}" class="form-select">
                                 <option selected disabled>Select Job Industry</option>
                                 @foreach ($job_industries as $job_industry)
-                                    <option>{{ $job_industry->name }}</option>
+                                    <option>{{ $job_industry->industry_en }}</option>
                                 @endforeach
                             </select>
                             <span class="text-danger error-text industry_error"></span>
@@ -101,7 +101,7 @@
                             <select name="location" value="{{ old('location') }}" class="form-select">
                                 <option selected disabled>Select Job Function</option>
                                 @foreach ($job_locations as $job_location)
-                                    <option>{{ $job_location->name }}</option>
+                                    <option>{{ $job_location->location_en }}</option>
                                 @endforeach
                             </select>
                             <span class="text-danger error-text location_error"></span>

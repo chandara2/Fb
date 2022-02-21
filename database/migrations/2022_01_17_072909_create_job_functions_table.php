@@ -15,7 +15,10 @@ class CreateJobFunctionsTable extends Migration
     {
         Schema::create('job_functions', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('function_ch');
+            $table->string('function_en');
+            $table->string('function_kh');
+            $table->string('function_th');
             $table->timestamps();
         });
     }

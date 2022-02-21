@@ -10,6 +10,9 @@ class JobLocation extends Model
     use HasFactory;
 
     protected $fillable = [
-        'name',
+        'location_ch',
+        'location_en',
+        'location_kh',
+        'location_th',
     ];
 }

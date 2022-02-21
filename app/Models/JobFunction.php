@@ -10,6 +10,9 @@ class JobFunction extends Model
     use HasFactory;
 
     protected $fillable = [
-        'name',
+        'function_ch',
+        'function_en',
+        'function_kh',
+        'function_th',
     ];
 }

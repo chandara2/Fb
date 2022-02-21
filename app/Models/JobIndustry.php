@@ -10,6 +10,9 @@ class JobIndustry extends Model
     use HasFactory;
 
     protected $fillable = [
-        'name',
+        'industry_ch',
+        'industry_en',
+        'industry_kh',
+        'industry_th',
     ];
 }

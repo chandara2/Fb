@@ -32,13 +32,24 @@ class AppController extends Controller
             ->take(12)
             ->get();
 
-        $job_functions = Job::all()->countBy('function');
-        $job_industries = Job::all()->countBy('industry');
-        $job_locations = Job::all()->countBy('location');
+        $job_functions = DB::table('jobs')
+        ->join('job_functions', 'job_functions.function_en', '=', 'jobs.function')
+        ->select('job_functions.*')
+        ->get();
+        $job_industries = DB::table('jobs')
+        ->join('job_industries', 'job_industries.industry_en', '=', 'jobs.industry')
+        ->select('job_industries.*')
+        ->get();
+        $job_locations = DB::table('jobs')
+        ->join('job_locations', 'job_locations.location_en', '=', 'jobs.location')
+        ->select('job_locations.*')
+        ->get();
         $job_salaries = DB::table('jobs')
             ->join('job_salaries', 'job_salaries.salary_en', '=', 'jobs.salary')
             ->select('job_salaries.*')
             ->get();
+
+        $js = Job::all()->countBy('salary');
 
         // $job_functions = DB::table('job_functions')
         //     ->join('jobs', 'jobs.function', 'job_functions.name')
@@ -57,6 +68,7 @@ class AppController extends Controller
             'job_industries' => $job_industries,
             'job_locations' => $job_locations,
             'job_salaries' => $job_salaries,
+            'js' => $js,
         ]);
     }
 
