@@ -15,7 +15,7 @@
                 <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}" class="text-decoration-none">Dashboard</a></li>
                 <li class="breadcrumb-item active" aria-current="page">Job</li>
                 <li class="breadcrumb-item">
-                    @if (auth()->user()!=null && $company_infos->isEmpty()) <a href="{{ route('admin.companyinfo.create') }}" class="text-decoration-none">New Job</a>
+                    @if (auth()->user()!=null && $company_infos->isEmpty()) <a href="{{ route('admin.companyinfo.index') }}" class="text-decoration-none">New Job</a>
                     @else <a href="#" class="text-decoration-none" data-bs-toggle="modal" data-bs-target="#showJobModal">New Job</a>
                     @endif
                 </li>
@@ -65,7 +65,7 @@
 
                         <div class="form-group mb-md-3">
                             <label>Company</label>
-                            <select name="company" value="{{ old('company') }}" class="form-select">
+                            <select name="company_id" value="{{ old('company_id') }}" class="form-select">
                                 <option selected disabled>Select Company</option>
                                 @foreach ($company_infos as $company_info)
                                     <option value="{{ $company_info->id }}">{{ $company_info->company }}</option>

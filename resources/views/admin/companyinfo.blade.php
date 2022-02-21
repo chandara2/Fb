@@ -139,7 +139,7 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach ($companyinfos as $i => $companyinfo)
+                @forelse ($companyinfos as $i => $companyinfo)
                 <tr>
                     <td>{{$i+1}}</td>
                     <td>{{$companyinfo->id}}</td>
@@ -152,7 +152,9 @@
                         <a href="/admin/companyinfo/{{ $companyinfo->id }}/edit"><i class="bi bi-pencil-square btn text-muted pe-0" style="font-size:24px;"></i></a>    
                     </td>
                 </tr>
-                @endforeach
+                @empty
+                <div class="alert alert-info text-center fw-bold text-primary">Please create a company before posting a job.</div>
+                @endforelse
             </tbody>
             <tfoot class="table-primary">
                 <tr>

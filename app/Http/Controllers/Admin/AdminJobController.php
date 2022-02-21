@@ -27,7 +27,7 @@ class AdminJobController extends Controller
         $delete_expired_post = Job::where('expired_post', '<', Carbon::now()->toDateString())->delete();
 
         $jobs = DB::table('jobs')
-        ->join('company_infos', 'company_infos.id', 'jobs.company')
+        ->join('company_infos', 'company_infos.id', 'jobs.company_id')
         ->orderBy('approved', 'asc')->get();
         $company_infos = CompanyInfo::orderBy('company', 'asc')->get();
         $job_functions = JobFunction::all();
@@ -64,7 +64,7 @@ class AdminJobController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'age' => 'required',
-            'company' => 'required',
+            'company_id' => 'required',
             'contact' => 'required',
             'detail' => 'required',
             'expired_job' => 'required|date',
@@ -85,7 +85,7 @@ class AdminJobController extends Controller
             'year_of_exp' => 'required|numeric|min:0',
         ], [
             'age.required' => 'Age is required',
-            'contact.required' => 'Contact is required',
+            'contact_id.required' => 'Contact is required',
             'company.required' => 'Company is required',
             'detail.required' => 'Detail is required',
             'expired_job.required' => 'Expired job is required',
@@ -119,7 +119,7 @@ class AdminJobController extends Controller
             $jobs->uid = Auth::user()->id;
             $jobs->approved = true;
             $jobs->age = $request->age;
-            $jobs->company = $request->company;
+            $jobs->contact_id = $request->contact_id;
             $jobs->contact = $request->contact;
             $jobs->detail = $request->detail;
             $jobs->expired_job = $request->expired_job;

@@ -12,7 +12,7 @@ class Job extends Model
     protected $fillable = [
         'age',
         'approved',
-        'company',
+        'company_id',
         'contact',
         'detail',
         'expired_job',
