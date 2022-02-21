@@ -26,8 +26,10 @@ class AdminJobController extends Controller
     {
         $delete_expired_post = Job::where('expired_post', '<', Carbon::now()->toDateString())->delete();
 
-        $jobs = Job::orderBy('approved', 'asc')->get();
-        $company_infos = CompanyInfo::all();
+        $jobs = DB::table('jobs')
+        ->join('company_infos', 'company_infos.id', 'jobs.company')
+        ->orderBy('approved', 'asc')->get();
+        $company_infos = CompanyInfo::orderBy('company', 'asc')->get();
         $job_functions = JobFunction::all();
         $job_industries = JobIndustry::all();
         $job_locations = JobLocation::all();

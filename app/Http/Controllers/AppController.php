@@ -24,8 +24,8 @@ class AppController extends Controller
         $homepage_slide = Homepage::select('slide')->get();
 
         $jobcompanys = DB::table('jobs')
-            ->join('company_infos', 'company_infos.company', '=', 'jobs.company')
-            ->select('jobs.created_at', 'jobs.title_ch', 'jobs.title_en', 'jobs.title_kh', 'jobs.title_th', 'jobs.id as jobid', 'company_infos.company', 'company_infos.id as com_id')
+            ->join('company_infos', 'company_infos.id', '=', 'jobs.company')
+            ->select('jobs.created_at', 'jobs.title_ch', 'jobs.title_en', 'jobs.title_kh', 'jobs.title_th', 'jobs.id as jobid', 'company_infos.company as cic', 'company_infos.id as com_id')
             ->where('approved', true)
             ->orderBy('expired_post')
             ->latest()

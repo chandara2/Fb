@@ -166,7 +166,7 @@
                                     {{$jobcompany->title_th}}
                                     @endif
                                 </a></span> -
-                                <span><a href="company/{{$jobcompany->com_id}}" class="text-danger ps-0 text-decoration-none">{{$jobcompany->company}}</a></span>
+                                <span><a href="company/{{$jobcompany->com_id}}" class="text-danger ps-0 text-decoration-none">{{$jobcompany->cic}}</a></span>
                             </li>
                         @endforeach
                     </ul>

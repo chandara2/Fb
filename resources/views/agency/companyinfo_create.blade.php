@@ -32,7 +32,7 @@
                     <select name="industry" class="form-select">
                         <option selected disabled>Select Job Industry</option>
                         @forelse ($job_industrys as $job_industry)
-                        <option>{{ $job_industry->name }}</option>
+                        <option>{{ $job_industry->industry_en }}</option>
                         @endforeach
                     </select>
                     <span class="text-danger">@error('industry'){{$message}}@enderror</span>

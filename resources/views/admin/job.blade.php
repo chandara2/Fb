@@ -68,7 +68,7 @@
                             <select name="company" value="{{ old('company') }}" class="form-select">
                                 <option selected disabled>Select Company</option>
                                 @foreach ($company_infos as $company_info)
-                                    <option>{{ $company_info->company }}</option>
+                                    <option value="{{ $company_info->id }}">{{ $company_info->company }}</option>
                                 @endforeach
                             </select>
                             <span class="text-danger error-text company_error"></span>
@@ -205,7 +205,7 @@
                 <tr>
                     <th>No</th>
                     <th>Job Title</th>
-                    <th>Location</th>
+                    <th>Company</th>
                     <th>Expired Post</th>
                     <th>Status</th>
                     <th>Action</th>
@@ -215,8 +215,8 @@
                 @foreach ($jobs as $i => $job)
                 <tr>
                     <td>{{$i+1}}</td>
-                    <td>{{$job->title}}</td>
-                    <td>{{$job->location}}</td>
+                    <td>{{$job->title_en}}</td>
+                    <td>{{$job->company}}</td>
                     <td>
                         @if ($job->expired_post<now())
                             <span class="text-danger" title="Will be deleted the next day">{{  date('d \\ M Y', strtotime($job->expired_post)) }}</span>
@@ -243,7 +243,7 @@
                 <tr>
                     <th>No</th>
                     <th>Job Title</th>
-                    <th>Location</th>
+                    <th>Company</th>
                     <th>Expired Post</th>
                     <th>Status</th>
                     <th>Action</th>

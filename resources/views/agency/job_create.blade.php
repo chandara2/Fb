@@ -20,7 +20,7 @@
                 <div class="col-xl-6 col-md-8 mb-md-0 mb-sm-2">
                     <select name="industry" class="form-select">
                         @foreach ($job_industries as $job_industry)
-                            <option @if (old('industry') == $job_industry->name) selected @endif>{{ $job_industry->name }}</option>
+                            <option @if (old('industry') == $job_industry->industry_en) selected @endif>{{ $job_industry->industry_en }}</option>
                         @endforeach
                     </select>
                     <span class="text-danger">@error('industry'){{$message}}@enderror</span>
@@ -31,7 +31,7 @@
                 <div class="col-xl-6 col-md-8 mb-md-0 mb-sm-2">
                     <select name="function" class="form-select">
                         @foreach ($job_functions as $job_function)
-                            <option @if (old('function') == $job_function->name) selected @endif>{{ $job_function->name }}</option>
+                            <option @if (old('function') == $job_function->function_en) selected @endif>{{ $job_function->function_en }}</option>
                         @endforeach
                     </select>
                     <span class="text-danger">@error('function'){{$message}}@enderror</span>
@@ -42,7 +42,7 @@
                 <div class="col-xl-6 col-md-8 mb-md-0 mb-sm-2">
                     <select name="salary" class="form-select">
                         @foreach ($job_salaries as $job_salary)
-                            <option @if (old('salary') == $job_salary->name) selected @endif>{{ $job_salary->name }}</option>
+                            <option @if (old('salary') == $job_salary->salary_en) selected @endif>{{ $job_salary->salary_en }}</option>
                         @endforeach
                     </select>
                     <span class="text-danger">@error('salary'){{$message}}@enderror</span>
@@ -53,7 +53,7 @@
                 <div class="col-xl-6 col-md-8 mb-md-0 mb-sm-2">
                     <select name="location" class="form-select">
                         @foreach ($job_locations as $job_location)
-                            <option @if (old('location') == $job_location->name) selected @endif>{{ $job_location->name }}</option>
+                            <option @if (old('location') == $job_location->location_en) selected @endif>{{ $job_location->location_en }}</option>
                         @endforeach
                     </select>
                     <span class="text-danger">@error('location'){{$message}}@enderror</span>
