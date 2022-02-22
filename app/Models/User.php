@@ -37,12 +37,12 @@ class User extends Authenticatable
         'remember_token',
     ];
 
-    public function companyinfos()
-    {
-        return $this->hasOne(CompanyInfo::class);
-    }
-    public function jobs()
-    {
-        return $this->hasMany(Job::class);
-    }
+    // public function companyinfos()
+    // {
+    //     return $this->hasOne(CompanyInfo::class);
+    // }
+    // public function jobs()
+    // {
+    //     return $this->hasMany(Job::class);
+    // }
 }

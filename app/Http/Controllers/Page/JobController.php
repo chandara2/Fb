@@ -19,6 +19,7 @@ class JobController extends Controller
         $jobscoms = DB::table('jobs')
             ->join('company_infos', 'company_infos.id', '=', 'jobs.company_id')
             ->select('jobs.*', 'jobs.id as job_id', 'company_infos.*', 'company_infos.id as com_id')
+            ->where('approved', true)
             ->paginate(10);
 
 
@@ -60,6 +61,7 @@ class JobController extends Controller
             ->join('company_infos', 'company_infos.id', '=', 'jobs.company_id')
             ->select('jobs.*', 'company_infos.*', 'company_infos.id as ciid')
             ->where('jobs.id', $id)
+            ->where('approved', true)
             ->get();
         $hotjobs = DB::table('jobs')
             ->join('company_infos', 'company_infos.id', '=', 'jobs.company_id')
@@ -138,7 +140,7 @@ class JobController extends Controller
                 ->join('company_infos', 'company_infos.id', '=', 'jobs.company_id')
                 ->select('jobs.*', 'jobs.id as job_id', 'company_infos.*', 'company_infos.id as com_id')
                 ->where('title_en', 'LIKE', "%$searchjob%")
-                // ->orWhere('company', 'LIKE', "%$searchjob%")
+                ->orWhere('company', 'LIKE', "%$searchjob%")
                 // ->orWhere('industry', 'LIKE', "%$searchjob%")
                 ->orWhere('function', 'LIKE', "%$searchjob%")
                 ->orWhere('location', 'LIKE', "%$searchjob%")

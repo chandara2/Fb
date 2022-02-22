@@ -37,8 +37,8 @@ class Job extends Model
         'year_of_exp',
     ];
 
-    public function users()
-    {
-        return $this->belongsTo(User::class);
-    }
+    // public function users()
+    // {
+    //     return $this->belongsTo(User::class);
+    // }
 }

@@ -90,11 +90,9 @@ class AdmindbController extends Controller
     {
         $users = User::count();
         $jobs = Job::count();
-        $job_pendings = Job::where('jobs.approved', false)->count();
         return view('admin.dashboard', [
             'users' => $users,
             'jobs' => $jobs,
-            'job_pendings' => $job_pendings,
         ]);
     }
 }
