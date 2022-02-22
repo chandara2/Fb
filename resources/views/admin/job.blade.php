@@ -231,9 +231,10 @@
                         @endif
                     </td>
                     <td>
-                        <input type="checkbox" class="toggle-class" data-id="{{ $job->id }}" data-toggle="toggle" data-onstyle="success" data-offstyle="danger" data-on="Approved" data-off="Pending" {{ $job->approved == true ? 'checked' : ''}}>
+                        {{-- <input type="checkbox" class="toggle-class" data-id="{{ $job->id }}" data-toggle="toggle" data-onstyle="success" data-offstyle="danger" data-on="Approved" data-off="Pending" {{ $job->approved == true ? 'checked' : ''}}> --}}
 
-                        {{-- <input data-id="{{ $job->id }}" class="toggle-class" type="checkbox" data-onstyle="success" data-offstyle="danger" data-toggle="toggle" data-on="Approved" data-off="Pending" {{ $job->approved ? 'checked' : ''}}> --}}
+                        <input type="checkbox" class="toggle-class" data-id="{{ $job->id }}" data-toggle="toggle"  data-offstyle="danger" data-on="Enabled" data-off="Disabled" {{ $job->approved == true ? 'checked' : ''}}>
+                        
                     </td>
                     <td>
                         <a href="/admin/job/{{ $job->id }}/edit" title="Edit"><i class="bi bi-pencil-square text-primary"></i></a>
@@ -298,40 +299,28 @@
                     }
                 });
             });
-        });
 
-        // Pending & Approved
-        $('.toggle-class').on('change', function() {
-            var approved = $(this).prop('checked') == true ? 1 : 0;
-            var id = $(this).data('id');
-            $.ajax({
-                type: 'GET',
-                dataType: 'JSON',
-                url: '/admin/changejobstatus',
-                data: {
-                    'approved': approved,
-                    'id': id
-                },
-                success:function(data) {
-                    console.log(data.successStatusMsg)
-                }
+            
+            // Pending & Approved
+            $('.toggle-class').on('change', function() {
+                var approved = $(this).prop('checked') == true ? 1 : 0;
+                var id = $(this).data('id');
+                $.ajax({
+                    type: 'GET',
+                    dataType: 'JSON',
+                    url: '/admin/changejobstatus',
+                    data: {
+                        'approved': approved,
+                        'id': id
+                    },
+                    success:function(data) {
+                        console.log(data.successStatusMsg)
+                    }
+                });
             });
         });
-        // $(function(){
-        //     $('.toggle-class').change(function(){
-        //         var approved = $(this).prop('checked') == true ? 1:0;
-        //         var id = $(this).data('id');
-        //         $.ajax({
-        //             type: "GET",
-        //             dataType: "json",
-        //             url: "/admin/changejobstatus",
-        //             data: {'approved': approved, 'id': id},
-        //             success: function (data) {
-        //                 console.log('Success');
-        //             }
-        //         });
-        //     });
-        // });
+
+
         
     </script>
 @endsection

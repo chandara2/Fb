@@ -28,6 +28,7 @@ class AdminJobController extends Controller
 
         $jobs = DB::table('jobs')
         ->join('company_infos', 'company_infos.id', 'jobs.company_id')
+        ->select('jobs.*', 'company_infos.company')
         ->orderBy('approved', 'asc')->get();
         $company_infos = CompanyInfo::orderBy('company', 'asc')->get();
         $job_functions = JobFunction::all();
