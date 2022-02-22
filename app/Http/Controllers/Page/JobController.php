@@ -138,6 +138,7 @@ class JobController extends Controller
                 ->select('jobs.*', 'jobs.id as job_id', 'company_infos.*', 'company_infos.id as com_id')
                 ->where('title_en', 'LIKE', "%$searchjob%")
                 // ->orWhere('company', 'LIKE', "%$searchjob%")
+                // ->orWhere('industry', 'LIKE', "%$searchjob%")
                 ->orWhere('function', 'LIKE', "%$searchjob%")
                 ->orWhere('location', 'LIKE', "%$searchjob%")
                 ->orWhere('salary', 'LIKE', "%$searchjob%")
@@ -145,7 +146,6 @@ class JobController extends Controller
                 // ->orWhere('contact', 'LIKE', "%$searchjob%")
                 // ->orWhere('expired_job', 'LIKE', "%$searchjob%")
                 // ->orWhere('hiring', 'LIKE', "%$searchjob%")
-                // ->orWhere('industry', 'LIKE', "%$searchjob%")
                 // ->orWhere('language', 'LIKE', "%$searchjob%")
                 // ->orWhere('qualification', 'LIKE', "%$searchjob%")
                 // ->orWhere('sex', 'LIKE', "%$searchjob%")
@@ -155,7 +155,7 @@ class JobController extends Controller
                 ->paginate(10)->withQueryString();
         } else {
             $jobscoms = DB::table('jobs')
-                ->join('company_infos', 'company_infos.company', '=', 'jobs.company')
+                ->join('company_infos', 'company_infos.id', '=', 'jobs.company_id')
                 ->select('jobs.*', 'jobs.id as job_id', 'company_infos.*', 'company_infos.id as com_id')
                 ->paginate(10);
         }

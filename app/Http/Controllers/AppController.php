@@ -20,14 +20,8 @@ class AppController extends Controller
      */
     public function index()
     {
-        // $companylogos = CompanyInfo::select('company_infos.logo', 'company_infos.id')->get();
-        $companylogos = DB::table('company_infos')
-        ->join('jobs', 'jobs.company_id', '=', 'company_infos.id')
-        ->select('company_infos.logo', 'company_infos.id')
-        ->get();
-        
+        $companylogos = CompanyInfo::select('company_infos.logo', 'company_infos.id')->get();
         $homepage_slide = Homepage::select('slide')->get();
-
         $jobcompanys = DB::table('jobs')
             ->join('company_infos', 'company_infos.id', '=', 'jobs.company_id')
             ->select('jobs.created_at', 'jobs.title_ch', 'jobs.title_en', 'jobs.title_kh', 'jobs.title_th', 'jobs.id as jobid', 'company_infos.company as cic', 'company_infos.id as com_id')
@@ -36,44 +30,18 @@ class AppController extends Controller
             ->latest()
             ->take(12)
             ->get();
-
-        $job_functions = DB::table('jobs')
-        ->join('job_functions', 'job_functions.function_en', '=', 'jobs.function')
-        ->select('job_functions.*')
-        ->get();
-        $job_industries = DB::table('jobs')
-        ->join('job_industries', 'job_industries.industry_en', '=', 'jobs.industry')
-        ->select('job_industries.*')
-        ->get();
-        $job_locations = DB::table('jobs')
-        ->join('job_locations', 'job_locations.location_en', '=', 'jobs.location')
-        ->select('job_locations.*')
-        ->get();
-        $job_salaries = DB::table('jobs')
+        $jobsorts = DB::table('jobs')
+            ->join('job_functions', 'job_functions.function_en', '=', 'jobs.function')
+            ->join('job_industries', 'job_industries.industry_en', '=', 'jobs.industry')
+            ->join('job_locations', 'job_locations.location_en', '=', 'jobs.location')
             ->join('job_salaries', 'job_salaries.salary_en', '=', 'jobs.salary')
-            ->select('job_salaries.*')
+            ->select('job_functions.*','job_industries.*','job_locations.*','job_salaries.*')
             ->get();
-
-        $js = Job::all()->countBy('salary');
-
-        // $job_functions = DB::table('job_functions')
-        //     ->join('jobs', 'jobs.function', 'job_functions.name')
-        //     ->select('function')
-        //     ->selectRaw('count(*) as number')
-        //     ->whereNotIn('function', [''])
-        //     ->groupBy('function')
-        //     ->orderBy('function', 'asc') //Unless you use this array somewhere, it's not needed.
-        //     ->get();
-
         return view('app', [
             'companylogos' => $companylogos,
             'homepage_slide' => $homepage_slide,
             'jobcompanys' => $jobcompanys,
-            'job_functions' => $job_functions,
-            'job_industries' => $job_industries,
-            'job_locations' => $job_locations,
-            'job_salaries' => $job_salaries,
-            'js' => $js,
+            'jobsorts' => $jobsorts,
         ]);
     }
 

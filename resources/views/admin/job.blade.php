@@ -59,7 +59,13 @@
                                     <input name="title_th" type="text" class="form-control">
                                 </div>
                             </div>
-                            <span class="text-danger error-text title_error"></span>
+                            <ul class="ps-0" style="list-style: none;">
+                                <li><span class="text-danger error-text title_ch_error"></span></li>
+                                <li><span class="text-danger error-text title_en_error"></span></li>
+                                <li><span class="text-danger error-text title_kh_error"></span></li>
+                                <li><span class="text-danger error-text title_th_error"></span></li>
+                            </ul>
+                            
 
                         </div>
 

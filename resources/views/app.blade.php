@@ -70,7 +70,7 @@
                             <div role="tabpanel" class="tab-pane" id="function">
                                 <ul class="list-unstyled ul_browsejobs p-lg-2 p-sm-2">
 
-                                    @foreach ($job_functions as $function)
+                                    @foreach ($jobsorts as $function)
                                         <li><a href="jobsort/{{ $function->function_en }}" class="text-decoration-none text-black">
                                                 @if (app()->getLocale() == 'ch')
                                                     {{ Str::limit($function->function_ch, 25) }}
@@ -90,7 +90,7 @@
                             <div role="tabpanel" class="tab-pane" id="industry">
                                 <ul class="list-unstyled ul_browsejobs p-lg-2 p-sm-2">
 
-                                    @foreach ($job_industries as $industry)
+                                    @foreach ($jobsorts as $industry)
                                         <li><a href="jobsort/{{ $industry->industry_en }}" class="text-decoration-none text-black">
                                                 @if (app()->getLocale() == 'ch')
                                                     {{ Str::limit($industry->industry_ch, 25) }}
@@ -109,7 +109,7 @@
                             </div>
                             <div role="tabpanel" class="tab-pane" id="location">
                                 <ul class="list-unstyled ul_browsejobs p-lg-2 p-sm-2">
-                                    @foreach ($job_locations as $location)
+                                    @foreach ($jobsorts as $location)
                                         <li><a href="jobsort/{{ $location->location_en }}" class="text-decoration-none text-black">
                                                 @if (app()->getLocale() == 'ch')
                                                     {{ Str::limit($location->location_ch, 25) }}
@@ -127,7 +127,7 @@
                             </div>
                             <div role="tabpanel" class="tab-pane active" id="salary">
                                 <ul class="list-unstyled ul_browsejobs p-lg-2 p-sm-2">
-                                    @foreach ($job_salaries as $salary)
+                                    @foreach ($jobsorts as $salary)
                                         <li>
                                             <a href="jobsort/{{ $salary->salary_en }}" class="text-decoration-none text-black">
                                                 @if (app()->getLocale() == 'ch')

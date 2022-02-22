@@ -54,6 +54,12 @@ class CompanyController extends Controller
             ->where('company_infos.id', $id)
             ->take(1)
             ->get();
+        
+        $company_jobs = DB::table('jobs')
+        ->join('company_infos', 'company_infos.id', '=', 'jobs.company_id')
+        ->select('jobs.*', 'jobs.id as job_id', 'company_infos.*', 'company_infos.id as com_id')
+        ->where('company_infos.id', $id)
+        ->get();
         // $jobs = DB::table('jobs')
         // ->join('company_infos', 'company_infos.company', '=', 'jobs.company')
         //     ->join('company_infos', 'users.id', '=', 'company_infos.uid')
@@ -63,7 +69,7 @@ class CompanyController extends Controller
 
         return view('page.company.show', [
             'companys' => $companys,
-            // 'jobs' => $jobs,
+            'company_jobs' => $company_jobs,
         ]);
     }
 
