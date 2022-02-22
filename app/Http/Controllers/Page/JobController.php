@@ -17,7 +17,7 @@ class JobController extends Controller
     public function index()
     {
         $jobscoms = DB::table('jobs')
-            ->join('company_infos', 'company_infos.company', '=', 'jobs.company')
+            ->join('company_infos', 'company_infos.id', '=', 'jobs.company_id')
             ->select('jobs.*', 'jobs.id as job_id', 'company_infos.*', 'company_infos.id as com_id')
             ->paginate(10);
 
@@ -57,7 +57,7 @@ class JobController extends Controller
     public function show($id)
     {
         $jobcompanys = DB::table('jobs')
-            ->join('company_infos', 'company_infos.company', '=', 'jobs.company')
+            ->join('company_infos', 'company_infos.id', '=', 'jobs.company_id')
             ->select('jobs.*', 'company_infos.*', 'company_infos.id as ciid')
             ->where('jobs.id', $id)
             ->get();
@@ -112,7 +112,7 @@ class JobController extends Controller
     public function jobsort($jobsort)
     {
         $jobscoms = DB::table('jobs')
-            ->join('company_infos', 'company_infos.company', '=', 'jobs.company')
+            ->join('company_infos', 'company_infos.id', '=', 'jobs.company_id')
             ->join('job_functions', 'job_functions.function_en', '=', 'jobs.function')
             ->join('job_industries', 'job_industries.industry_en', '=', 'jobs.industry')
             ->join('job_locations', 'job_locations.location_en', '=', 'jobs.location')
@@ -134,7 +134,7 @@ class JobController extends Controller
         $searchjob = $request['searchjob'] ?? "";
         if ($searchjob != "") {
             $jobscoms = DB::table('jobs')
-                ->join('company_infos', 'company_infos.company', '=', 'jobs.company')
+                ->join('company_infos', 'company_infos.id', '=', 'jobs.company_id')
                 ->select('jobs.*', 'jobs.id as job_id', 'company_infos.*', 'company_infos.id as com_id')
                 ->where('title_en', 'LIKE', "%$searchjob%")
                 // ->orWhere('company', 'LIKE', "%$searchjob%")

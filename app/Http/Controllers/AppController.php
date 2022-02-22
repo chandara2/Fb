@@ -20,7 +20,12 @@ class AppController extends Controller
      */
     public function index()
     {
-        $companylogos = CompanyInfo::select('company_infos.logo', 'company_infos.id')->get();
+        // $companylogos = CompanyInfo::select('company_infos.logo', 'company_infos.id')->get();
+        $companylogos = DB::table('company_infos')
+        ->join('jobs', 'jobs.company_id', '=', 'company_infos.id')
+        ->select('company_infos.logo', 'company_infos.id')
+        ->get();
+        
         $homepage_slide = Homepage::select('slide')->get();
 
         $jobcompanys = DB::table('jobs')

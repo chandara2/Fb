@@ -7,9 +7,7 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div id="wrap_agency_profile" class="position-relative">
-                @if (auth()->user()!=null && $companys->isEmpty())
-                    @include('agency.create')
-                @else
+
                     @foreach ($companys as $company)
                     <div class="row py-5 bg-light">
                         <div class="col-md-2">
@@ -47,7 +45,6 @@
                         @endif
                     </div>
                     @endforeach
-                @endif
             </div>
         </div>
     </div>

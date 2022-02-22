@@ -85,8 +85,8 @@ class AdminJobController extends Controller
             'year_of_exp' => 'required|numeric|min:0',
         ], [
             'age.required' => 'Age is required',
-            'contact_id.required' => 'Contact is required',
-            'company.required' => 'Company is required',
+            'company_id.required' => 'Company is required',
+            'contact.required' => 'Contact is required',
             'detail.required' => 'Detail is required',
             'expired_job.required' => 'Expired job is required',
             'expired_job.date' => 'Expired job should be a date',
@@ -119,7 +119,7 @@ class AdminJobController extends Controller
             $jobs->uid = Auth::user()->id;
             $jobs->approved = true;
             $jobs->age = $request->age;
-            $jobs->contact_id = $request->contact_id;
+            $jobs->company_id = $request->company_id;
             $jobs->contact = $request->contact;
             $jobs->detail = $request->detail;
             $jobs->expired_job = $request->expired_job;
