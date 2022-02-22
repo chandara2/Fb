@@ -28,6 +28,15 @@
                         <i class="bi bi-briefcase display-5 text-primary"></i>
                         <h4 class="text-muted">Job Announcement</h4>
                         <h4 class="text-muted">{{ $jobs }}</h4>
+                        <h4>
+                            {{-- <button type="button" class="btn btn-primary position-relative">
+                                Pending
+                            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"> --}}
+                                {{ $job_pendings }}
+                                {{-- <span class="visually-hidden">unread messages</span>
+                            </span>
+                            </button> --}}
+                        </h4>
                     </div>
                 </div>
             </div>
