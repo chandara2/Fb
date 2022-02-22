@@ -231,9 +231,9 @@
                         @endif
                     </td>
                     <td>
-                        {{-- <input type="checkbox" class="toggle-class" data-id="{{ $job->id }}" data-toggle="toggle" data-onstyle="success" data-offstyle="danger" data-on="Approved" data-off="Pending" {{ $job->approved == true ? 'checked' : ''}}> --}}
+                        <input type="checkbox" class="toggle-class" data-id="{{ $job->id }}" data-toggle="toggle" data-onstyle="success" data-offstyle="danger" data-on="Approved" data-off="Pending" {{ $job->approved == true ? 'checked' : ''}}>
 
-                        <input data-id="{{ $job->id }}" class="toggle-class" type="checkbox" data-onstyle="success" data-offstyle="danger" data-toggle="toggle" data-on="Approved" data-off="Pending" {{ $job->approved ? 'checked' : ''}}>
+                        {{-- <input data-id="{{ $job->id }}" class="toggle-class" type="checkbox" data-onstyle="success" data-offstyle="danger" data-toggle="toggle" data-on="Approved" data-off="Pending" {{ $job->approved ? 'checked' : ''}}> --}}
                     </td>
                     <td>
                         <a href="/admin/job/{{ $job->id }}/edit" title="Edit"><i class="bi bi-pencil-square text-primary"></i></a>
