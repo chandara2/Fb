@@ -231,9 +231,7 @@
                         @endif
                     </td>
                     <td>
-                        {{-- <input type="checkbox" class="toggle-class" data-id="{{ $job->id }}" data-toggle="toggle" data-onstyle="success" data-offstyle="danger" data-on="Approved" data-off="Pending" {{ $job->approved == true ? 'checked' : ''}}> --}}
-
-                        <input type="checkbox" class="toggle-class" data-id="{{ $job->id }}" data-toggle="toggle"  data-offstyle="danger" data-on="Enabled" data-off="Disabled" {{ $job->approved == true ? 'checked' : ''}}>
+                        <input type="checkbox" class="toggle-class" data-id="{{ $job->id }}" data-toggle="toggle"  data-offstyle="danger" data-on="Approved" data-off="Pending" {{ $job->approved == true ? 'checked' : ''}}>
                         
                     </td>
                     <td>

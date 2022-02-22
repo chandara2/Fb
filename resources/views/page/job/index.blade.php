@@ -66,11 +66,42 @@
         <li class="list-group-item py-3">
             <div class="row">
                 <div class="col-md-8">
-                    <a href="/job/{{$jobscom->job_id}}" class="fw-bold job_title">{{ $jobscom->title_en }}</a>
+                    <a href="/job/{{$jobscom->job_id}}" class="fw-bold job_title">
+                        @if (app()->getLocale() == 'ch')
+                            {{ $jobscom->title_ch }}
+                        @elseif(app()->getLocale() == 'en')
+                            {{ $jobscom->title_en }}
+                        @elseif(app()->getLocale() == 'kh')
+                            {{ $jobscom->title_kh }}
+                        @else
+                            {{ $jobscom->title_th }}
+                        @endif
+                    </a>
                     @if($jobscom->expired_job>now()->addDays(7)) <span class="bg-warning badge">New</span>
                     @else <span class="bg-danger badge">Urgent</span> @endif
                     <div class="py-1"><a href="/company/{{$jobscom->com_id}}" class="com_name">{{ $jobscom->company }}</a></div>
-                    <div style="font-size: 12px;" class="text-muted">{{ $jobscom->term }} | {{ $jobscom->location }} <span class="text-danger px-1">{{ $jobscom->salary }}</span></div>
+                    <div style="font-size: 12px;" class="text-muted">{{ $jobscom->term }} | 
+                        @if (app()->getLocale() == 'ch')
+                            {{ $jobscom->location_ch }}
+                        @elseif(app()->getLocale() == 'en')
+                            {{ $jobscom->location_en }}
+                        @elseif(app()->getLocale() == 'kh')
+                            {{ $jobscom->location_kh }}
+                        @else
+                            {{ $jobscom->location_th }}
+                        @endif
+                        <span class="text-danger px-1">
+                            @if (app()->getLocale() == 'ch')
+                                {{ $jobscom->salary_ch }}
+                            @elseif(app()->getLocale() == 'en')
+                                {{ $jobscom->salary_en }}
+                            @elseif(app()->getLocale() == 'kh')
+                                {{ $jobscom->salary_kh }}
+                            @else
+                                {{ $jobscom->salary_th }}
+                            @endif
+                        </span>
+                    </div>
                 </div>
                 <div class="col-md-4 text-md-end text-sm-start">{{  date('d \\ M Y', strtotime($jobscom->expired_job)) }}</div>
             </div>

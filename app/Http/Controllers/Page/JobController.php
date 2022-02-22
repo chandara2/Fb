@@ -18,7 +18,9 @@ class JobController extends Controller
     {
         $jobscoms = DB::table('jobs')
             ->join('company_infos', 'company_infos.id', '=', 'jobs.company_id')
-            ->select('jobs.*', 'jobs.id as job_id', 'company_infos.*', 'company_infos.id as com_id')
+            ->join('job_locations', 'job_locations.location_en', '=', 'jobs.location')
+            ->join('job_salaries', 'job_salaries.salary_en', '=', 'jobs.salary')
+            ->select('jobs.*', 'jobs.id as job_id', 'company_infos.*', 'company_infos.id as com_id', 'job_locations.*', 'job_salaries.*')
             ->where('approved', true)
             ->paginate(10);
 
@@ -59,7 +61,8 @@ class JobController extends Controller
     {
         $jobcompanys = DB::table('jobs')
             ->join('company_infos', 'company_infos.id', '=', 'jobs.company_id')
-            ->select('jobs.*', 'company_infos.*', 'company_infos.id as ciid')
+            ->join('job_salaries', 'job_salaries.salary_en', '=', 'jobs.salary')
+            ->select('jobs.*', 'company_infos.*', 'company_infos.id as ciid', 'job_salaries.*')
             ->where('jobs.id', $id)
             ->where('approved', true)
             ->get();

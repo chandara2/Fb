@@ -33,8 +33,18 @@
                         {{$jobcompany->title_th}}
                         @endif
                     </h2>
-                    <p>{{$jobcompany->company}}</p>
-                    <h2 class="text-danger">{{$jobcompany->salary}}</h2>
+                    <p><a href="/company/{{$jobcompany->ciid}}" class="text-decoration-none text-dark"><i class="bi bi-building"></i> {{$jobcompany->company}}</a></p>
+                    <h2 class="text-danger">
+                        @if (app()->getLocale() == 'ch')
+                            {{ $jobcompany->salary_ch }}
+                        @elseif(app()->getLocale() == 'en')
+                            {{ $jobcompany->salary_en }}
+                        @elseif(app()->getLocale() == 'kh')
+                            {{ $jobcompany->salary_kh }}
+                        @else
+                            {{ $jobcompany->salary_th }}
+                        @endif
+                    </h2>
                     <p class="text-danger">Closing Date: {{$jobcompany->expired_job}}</p>
                 </div>
             </div>
