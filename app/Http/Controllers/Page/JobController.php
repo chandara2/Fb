@@ -61,10 +61,11 @@ class JobController extends Controller
             ->select('jobs.*', 'company_infos.*', 'company_infos.id as ciid')
             ->where('jobs.id', $id)
             ->get();
-        $hotjobs = DB::table('users')
-            ->join('jobs', 'jobs.uid', '=', 'users.id')
-            ->join('company_infos', 'company_infos.uid', '=', 'users.id')
-            ->select('jobs.id', 'jobs.created_at', 'jobs.title_en', 'jobs.title_kh', 'jobs.salary', 'company_infos.company', 'company_infos.id as com_id')
+        $hotjobs = DB::table('jobs')
+            ->join('company_infos', 'company_infos.id', '=', 'jobs.company_id')
+            ->select('jobs.created_at', 'jobs.title_ch', 'jobs.title_en', 'jobs.title_kh', 'jobs.title_th', 'jobs.salary', 'jobs.id as job_id', 'company_infos.company', 'company_infos.id as com_id')
+            ->where('approved', true)
+            ->where('jobs.id', '<>', $id)
             ->latest()
             ->take(10)
             ->get();
@@ -123,7 +124,7 @@ class JobController extends Controller
             ->orWhere('job_locations.location_en', $jobsort)
             ->orWhere('job_salaries.salary_en', $jobsort)
             ->paginate(10);
-        
+
         return view('page.job.job_sort', [
             'jobscoms' => $jobscoms,
         ]);

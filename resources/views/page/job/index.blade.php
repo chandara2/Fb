@@ -2,9 +2,6 @@
 @section('title', 'JOB')
 @section('style')
     <style>
-        .class_jobs{
-            color: #1EA4D9;
-        }
         .job_title{
             color: #333;
             text-decoration: none;

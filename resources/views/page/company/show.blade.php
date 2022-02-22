@@ -1,5 +1,22 @@
 @extends('layout.layout_app')
 @section('title', 'ABOUT US')
+@section('style')
+    <style>
+        .job_title{
+            color: #333;
+            text-decoration: none;
+        }
+        .job_title:hover{
+            text-decoration: underline;
+        }
+        .com_name{
+            text-decoration: none;
+        }
+        .com_name:hover{
+            text-decoration: underline;
+        }
+    </style>
+@endsection
 
 @section('content')
 

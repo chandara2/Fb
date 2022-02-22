@@ -5,6 +5,7 @@
         .company_hover{
             text-decoration: none;
             color: black;
+            font-size: 20px;
         }
         .company_hover:hover{
             text-decoration: underline;
@@ -104,7 +105,7 @@
                             <li class="list-group-item active bg-danger border-danger" aria-current="true">Hot Jobs</li>
                             @foreach ($hotjobs as $hotjob)
                                 <li class="list-group-item ps-0 py-0">
-                                    <span class="position-relative"><a href="/job/{{$hotjob->id}}" class="text-dark ps-3 text-decoration-none">{{Str::limit($hotjob->title_en , 30)}}</a></span>
+                                    <span class="position-relative"><a href="/job/{{$hotjob->job_id}}" class="text-dark ps-3 text-decoration-none">{{Str::limit($hotjob->title_en , 30)}}</a></span>
                                     <span class="position-absolute end-0 pe-2 text-danger">{{$hotjob->salary}}</span>
                                     <span class="d-block"><a href="/company/{{$hotjob->com_id}}" class="text-muted ps-3 text-decoration-none" style="font-size: 12px;">{{$hotjob->company}}</a></span>
                                 </li>
