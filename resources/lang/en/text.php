@@ -7,6 +7,7 @@ return [
     'Home_page' => 'Home',
     'Industry' => 'Industry',
     'Job_page' => 'Jobs',
+    'Job_title' => 'Job Title',
     'Location' => 'Location',
     'n1jic' => 'No.1 Jobsite in Cambodia',
     'Salary' => 'Salary',

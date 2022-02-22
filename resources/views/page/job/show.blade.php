@@ -52,7 +52,7 @@
                 <div class="col-md-8">
                     <table class="table border">
                         <tr>
-                            <th class="table-primary">Title</th>
+                            <th class="table-primary">{{ __('text.Job_title') }}</th>
                             <td>Title {{$jobcompany->title_en}}</td>
                             <th class="table-primary">Term</th>
                             <td>{{$jobcompany->term}}</td>
