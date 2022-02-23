@@ -175,7 +175,7 @@
 
             <div class="row mb-5 mt-xl-1 mt-md-5">
                 <div class="col-md-12">
-                    <h4 style="text-decoration: underline 3px solid pink;">Featured Employers</h4>
+                    <h4 class="underline_highlight">Featured Employers</h4>
 
                     <div class="slick-wrapper w-100 bg-white">
                         <div id="slick2">
@@ -192,7 +192,7 @@
 
             <div class="row mb-5">
                 <div class="col-md-12">
-                    <h4 style="text-decoration: underline 3px solid pink;">Recruitment Agencies</h4>
+                    <h4 class="underline_highlight">Recruitment Agencies</h4>
                     <div id="slick3">
                         @foreach ($companylogos as $companylogo)
                         <div class="slide-item3 py-3 d-flex justify-content-around border border-white">
@@ -206,7 +206,7 @@
 
             <div class="row mb-5">
                 <div class="col-md-12">
-                    <h4 style="text-decoration: underline 3px solid pink;">Career Resource</h4>
+                    <h4 class="underline_highlight">Career Resource</h4>
                     <div class="row g-3">
                         <div class="col-md-4">
                             <div class="bg-white rounded p-3">
@@ -248,7 +248,7 @@
 
             <div class="row mb-5">
                 <div class="col-md-12">
-                    <h4 style="text-decoration: underline 3px solid pink;">Cooperation Partners</h4>
+                    <h4 class="underline_highlight">Cooperation Partners</h4>
                     <div id="slick4">
                         @foreach ($companylogos as $companylogo)
                         <div class="slide-item4 py-3 d-flex justify-content-around border border-white">

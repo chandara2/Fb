@@ -46,11 +46,15 @@ class AdminUserController extends Controller
     {
         $request->validate([
             'username' => 'required|unique:users',
-            'password' => 'required',
-            'password_confirmation' => 'required|same:password'
+            'password' => ['required', 'string', 'min:6'],
+            'password_confirmation' => 'required|same:password',
         ], [
             'username.required' => 'Please fill in username',
-            'password.required' => 'Please fill in password'
+            'username.unique' => 'This username already exists',
+            'password.required' => 'Please fill in password',
+            'password.min' => 'Passwords must be at least 6 characters',
+            'password_confirmation.required' => 'Please fill in confirm password',
+            'password_confirmation.same' => 'Password and confirm password does not match',
         ]);
 
         $user = User::create([
@@ -103,11 +107,15 @@ class AdminUserController extends Controller
         //validation rules
         $request->validate([
             'username' => ['required', Rule::unique('users')->ignore($id)],
-            'password' => 'required',
-            'password_confirmation' => 'required|same:password'
+            'password' => ['required', 'string', 'min:6'],
+            'password_confirmation' => 'required|same:password',
         ], [
             'username.required' => 'Please fill in username',
-            'password.required' => 'Please fill in password'
+            'username.unique' => 'This username already exists',
+            'password.required' => 'Please fill in password',
+            'password.min' => 'Passwords must be at least 6 characters',
+            'password_confirmation.required' => 'Please fill in confirm password',
+            'password_confirmation.same' => 'Password and confirm password does not match',
         ]);
 
         $user = User::find($id);

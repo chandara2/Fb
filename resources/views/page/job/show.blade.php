@@ -11,6 +11,14 @@
             text-decoration: underline;
             color: darkblue;
         }
+        .ul_browsejobs{
+            column-count: 2;
+        }
+        @media only screen and (max-width: 991px) {
+            .ul_browsejobs{
+                column-count: 1;
+            }
+        }
     </style>
 @endsection
 @section('content')
@@ -20,7 +28,7 @@
     @foreach ($jobcompanys as $jobcompany)
     <div class="row justify-content-center">
         <div class="col-md-12">
-            <div class="row">
+            <div class="row"> <!-- Top info -->
                 <div class="col-md-6">
                     <h2>
                         @if (app()->getLocale() == 'ch')
@@ -49,12 +57,12 @@
                 </div>
             </div>
             <div class="row my-5">
-                <div class="col-md-8">
+                <div class="col-lg-8"> <!-- Table & more job -->
                     <table class="table border">
                         <tr>
                             <th class="table-primary">{{ __('text.Job_title') }}</th>
                             <td>
-                                @if (app()->getLocale() == 'ch')
+                                @if(app()->getLocale() == 'ch')
                                 {{$jobcompany->title_ch}}
                                 @elseif(app()->getLocale() == 'en')
                                 {{$jobcompany->title_en}}
@@ -70,7 +78,7 @@
                         <tr>
                             <th class="table-primary">{{ __('text.Salary') }}</th>
                             <td>
-                                @if (app()->getLocale() == 'ch')
+                                @if(app()->getLocale() == 'ch')
                                 {{$jobcompany->salary_ch}}
                                 @elseif(app()->getLocale() == 'en')
                                 {{$jobcompany->salary_en}}
@@ -86,7 +94,7 @@
                         <tr>
                             <th class="table-primary">{{ __('text.Location') }}</th>
                             <td>
-                                @if (app()->getLocale() == 'ch')
+                                @if(app()->getLocale() == 'ch')
                                 {{$jobcompany->location_ch}}
                                 @elseif(app()->getLocale() == 'en')
                                 {{$jobcompany->location_en}}
@@ -108,7 +116,7 @@
                         <tr>
                             <th class="table-primary">{{ __('text.Function') }}</th>
                             <td>
-                                @if (app()->getLocale() == 'ch')
+                                @if(app()->getLocale() == 'ch')
                                 {{$jobcompany->function_ch}}
                                 @elseif(app()->getLocale() == 'en')
                                 {{$jobcompany->function_en}}
@@ -120,7 +128,7 @@
                             </td>
                             <th class="table-primary">{{ __('text.Industry') }}</th>
                             <td>
-                                @if (app()->getLocale() == 'ch')
+                                @if(app()->getLocale() == 'ch')
                                 {{$jobcompany->industry_ch}}
                                 @elseif(app()->getLocale() == 'en')
                                 {{$jobcompany->industry_en}}
@@ -138,17 +146,19 @@
                             <td>{{$jobcompany->year_of_exp}}</td>
                         </tr>
                     </table>
+
                     <h5 class="mt-4 underline_highlight">{{ __('text.Job_description_requirements') }}</h5>
                     <textarea disabled class="textarea_autosize form-control border-0 bg-light">{{$jobcompany->detail}}</textarea>
+
                     <h5 class="mt-4 underline_highlight">{{ __('text.Company_profile') }}</h5>
                     <textarea disabled class="textarea_autosize form-control border-0 bg-light">{{$jobcompany->company_profile}}</textarea>
+
                     <h5 class="underline_highlight">{{ __('text.Contact_information') }}</h5>
                     <img src="{{asset('asset/image/user2.png')}}" alt="" width="65" class="mb-2">
                     <div><i class="bi bi-phone-vibrate"></i>&nbsp;{{$jobcompany->contact_phone}}</div>
                     <div><i class="bi bi-envelope"></i>&nbsp;{{$jobcompany->contact_email}}</div>
-                    <h5 class="mt-4 underline_highlight">Similar Jobs</h5>
                 </div>
-                <div class="col-md-4">
+                <div class="col-lg-4"> <!-- Company & Hotjob -->
                     <div>
                         <img src="{{asset('upload/companylogo/')}}/{{$jobcompany->logo}}" alt="AgencyLogo" height="100">
                         <p class="mb-4 mt-3"><a href="/company/{{$jobcompany->ciid}}" class="company_hover">{{$jobcompany->company}}</a></p>
