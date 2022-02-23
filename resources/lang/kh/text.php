@@ -1,15 +1,26 @@
 <?php
 
 return [
+    'abcdefghijklmnopqrstuvwxyz'=>'a',
     'About_us' => 'អំពី​ពួក​យើង',
+    'Age'=>'អាយុ',
     'Browse_Jobs' => 'រកមើលការងារ',
+    'Company_profile' => 'ប្រវត្តិ​ក្រុមហ៊ុន',
+    'Contact_information' => 'ព័ត៌មានទំនាក់ទំនង',
     'Function' => 'មុខងារ',
+    'Hiring'=>'ជួល',
     'Home_page' => 'ទំព័រដើម',
     'Industry' => 'ឧស្សាហកម្ម',
+    'Job_description_requirements' => 'ការពិពណ៌នាការងារ និងតម្រូវការ',
     'Job_page' => 'ទំព័រការងារ',
     'Job_title' => 'ចំណងជើងការងារ',
+    'Language'=>'ភាសា',
     'Location' => 'ទីតាំង',
     'n1jic' => 'គេហទំព័រការងារលេខ១នៅកម្ពុជា',
+    'Qualification'=>'គុណវុឌ្ឍិ',
     'Salary' => 'ប្រាក់ខែ',
+    'Sex'=>'ភេទ',
+    'Term'=>'រយៈពេល',
     'Urgent_jobs' => 'ការងារបន្ទាន់',
+    'Year_of_experience'=>'ឆ្នាំនៃបទពិសោធន៍',
 ];

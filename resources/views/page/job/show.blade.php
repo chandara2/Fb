@@ -53,50 +53,100 @@
                     <table class="table border">
                         <tr>
                             <th class="table-primary">{{ __('text.Job_title') }}</th>
-                            <td>Title {{$jobcompany->title_en}}</td>
-                            <th class="table-primary">Term</th>
+                            <td>
+                                @if (app()->getLocale() == 'ch')
+                                {{$jobcompany->title_ch}}
+                                @elseif(app()->getLocale() == 'en')
+                                {{$jobcompany->title_en}}
+                                @elseif(app()->getLocale() == 'kh')
+                                {{$jobcompany->title_kh}}
+                                @else
+                                {{$jobcompany->title_th}}
+                                @endif
+                            </td>
+                            <th class="table-primary">{{ __('text.Term') }}</th>
                             <td>{{$jobcompany->term}}</td>
                         </tr>
                         <tr>
-                            <th class="table-primary">Salary</th>
-                            <td>{{$jobcompany->salary}}</td>
-                            <th class="table-primary">Sex</th>
+                            <th class="table-primary">{{ __('text.Salary') }}</th>
+                            <td>
+                                @if (app()->getLocale() == 'ch')
+                                {{$jobcompany->salary_ch}}
+                                @elseif(app()->getLocale() == 'en')
+                                {{$jobcompany->salary_en}}
+                                @elseif(app()->getLocale() == 'kh')
+                                {{$jobcompany->salary_kh}}
+                                @else
+                                {{$jobcompany->salary_th}}
+                                @endif
+                            </td>
+                            <th class="table-primary">{{ __('text.Sex') }}</th>
                             <td>{{$jobcompany->sex}}</td>
                         </tr>
                         <tr>
-                            <th class="table-primary">Location</th>
-                            <td>{{$jobcompany->location}}</td>
-                            <th class="table-primary">Age</th>
+                            <th class="table-primary">{{ __('text.Location') }}</th>
+                            <td>
+                                @if (app()->getLocale() == 'ch')
+                                {{$jobcompany->location_ch}}
+                                @elseif(app()->getLocale() == 'en')
+                                {{$jobcompany->location_en}}
+                                @elseif(app()->getLocale() == 'kh')
+                                {{$jobcompany->location_kh}}
+                                @else
+                                {{$jobcompany->location_th}}
+                                @endif
+                            </td>
+                            <th class="table-primary">{{ __('text.Age') }}</th>
                             <td>{{$jobcompany->age}}</td>
                         </tr>
                         <tr>
-                            <th class="table-primary">Language</th>
+                            <th class="table-primary">{{ __('text.Language') }}</th>
                             <td>{{$jobcompany->language}}</td>
-                            <th class="table-primary">Hiring</th>
+                            <th class="table-primary">{{ __('text.Hiring') }}</th>
                             <td>{{$jobcompany->hiring}}</td>
                         </tr>
                         <tr>
-                            <th class="table-primary">Function </th>
-                            <td>{{$jobcompany->function }}</td>
-                            <th class="table-primary">Industry</th>
-                            <td>{{$jobcompany->industry}}</td>
+                            <th class="table-primary">{{ __('text.Function') }}</th>
+                            <td>
+                                @if (app()->getLocale() == 'ch')
+                                {{$jobcompany->function_ch}}
+                                @elseif(app()->getLocale() == 'en')
+                                {{$jobcompany->function_en}}
+                                @elseif(app()->getLocale() == 'kh')
+                                {{$jobcompany->function_kh}}
+                                @else
+                                {{$jobcompany->function_th}}
+                                @endif
+                            </td>
+                            <th class="table-primary">{{ __('text.Industry') }}</th>
+                            <td>
+                                @if (app()->getLocale() == 'ch')
+                                {{$jobcompany->industry_ch}}
+                                @elseif(app()->getLocale() == 'en')
+                                {{$jobcompany->industry_en}}
+                                @elseif(app()->getLocale() == 'kh')
+                                {{$jobcompany->industry_kh}}
+                                @else
+                                {{$jobcompany->industry_th}}
+                                @endif
+                            </td>
                         </tr>
                         <tr>
-                            <th class="table-primary">Qualification</th>
+                            <th class="table-primary">{{ __('text.Qualification') }}</th>
                             <td>{{$jobcompany->qualification}}</td>
-                            <th class="table-primary">Year of experience</th>
+                            <th class="table-primary">{{ __('text.Year_of_experience') }}</th>
                             <td>{{$jobcompany->year_of_exp}}</td>
                         </tr>
                     </table>
-                    <h5 class="mt-4" style="text-decoration: underline 3px solid pink">Job Description & Requirements</h5>
+                    <h5 class="mt-4 underline_highlight">{{ __('text.Job_description_requirements') }}</h5>
                     <textarea disabled class="textarea_autosize form-control border-0 bg-light">{{$jobcompany->detail}}</textarea>
-                    <h5 class="mt-4" style="text-decoration: underline 3px solid pink">Company Profile</h5>
+                    <h5 class="mt-4 underline_highlight">{{ __('text.Company_profile') }}</h5>
                     <textarea disabled class="textarea_autosize form-control border-0 bg-light">{{$jobcompany->company_profile}}</textarea>
-                    <h5>Contact Information</h5>
-                    <img src="{{asset('pics/user2.png')}}" alt="" width="65" class="mb-2">
+                    <h5 class="underline_highlight">{{ __('text.Contact_information') }}</h5>
+                    <img src="{{asset('asset/image/user2.png')}}" alt="" width="65" class="mb-2">
                     <div><i class="bi bi-phone-vibrate"></i>&nbsp;{{$jobcompany->contact_phone}}</div>
                     <div><i class="bi bi-envelope"></i>&nbsp;{{$jobcompany->contact_email}}</div>
-                    <h5>Similar Jobs</h5>
+                    <h5 class="mt-4 underline_highlight">Similar Jobs</h5>
                 </div>
                 <div class="col-md-4">
                     <div>

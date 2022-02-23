@@ -1,15 +1,26 @@
 <?php
 
 return [
+    'abcdefghijklmnopqrstuvwxyz'=>'a',
     'About_us' => 'เกี่ยวกับเรา',
+    'Age'=>'อายุ',
     'Browse_Jobs' => 'หางาน',
+    'Company_profile' => 'ข้อมูลบริษัท',
+    'Contact_information' => 'ข้อมูลติดต่อ',
     'Function' => 'การทำงาน',
+    'Hiring'=>'การจ้างงาน',
     'Home_page' => 'หน้าแรก',
     'Industry' => 'อุตสาหกรรม',
+    'Job_description_requirements' => 'รายละเอียดงานและข้อกำหนด',
     'Job_page' => 'หน้างาน',
     'Job_title' => 'ตำแหน่งงาน',
+    'Language'=>'ภาษา',
     'Location' => 'ที่ตั้ง',
     'n1jic' => 'ตำแหน่งงานอันดับ 1 ในกัมพูชา',
+    'Qualification'=>'คุณสมบัติ',
     'Salary' => 'เงินเดือน',
+    'Sex'=>'เพศ',
+    'Term'=>'ภาคเรียน',
     'Urgent_jobs' => 'งานด่วน',
+    'Year_of_experience'=>'ปีแห่งประสบการณ์',
 ];

@@ -2,6 +2,9 @@
     #menu_hovers li a:hover{
         color: blue;
     }
+    .underline_highlight{
+        text-decoration: underline 3px solid pink;
+    }
 </style>
 
 <header class="p-3 mb-3 border-bottom">

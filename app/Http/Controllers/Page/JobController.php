@@ -62,7 +62,10 @@ class JobController extends Controller
         $jobcompanys = DB::table('jobs')
             ->join('company_infos', 'company_infos.id', '=', 'jobs.company_id')
             ->join('job_salaries', 'job_salaries.salary_en', '=', 'jobs.salary')
-            ->select('jobs.*', 'company_infos.*', 'company_infos.id as ciid', 'job_salaries.*')
+            ->join('job_industries', 'job_industries.industry_en', '=', 'jobs.industry')
+            ->join('job_locations', 'job_locations.location_en', '=', 'jobs.location')
+            ->join('job_functions', 'job_functions.function_en', '=', 'jobs.function')
+            ->select('jobs.*', 'company_infos.*', 'company_infos.id as ciid', 'job_salaries.*','job_industries.*', 'job_locations.*','job_functions.*')
             ->where('jobs.id', $id)
             ->where('approved', true)
             ->get();
