@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\Validator;
 
 class AdminUserController extends Controller
 {
@@ -21,7 +22,11 @@ class AdminUserController extends Controller
     public function index()
     {
         $users = User::all();
-        return view('admin.user', compact('users'));
+        $usergroups = Usergroup::orderBy('name', 'desc')->get();
+        return view('admin.user',[
+            'users'=>$users,    
+            'usergroups'=>$usergroups,
+        ]);
     }
 
     /**
@@ -44,7 +49,7 @@ class AdminUserController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
+        $validator = Validator::make($request->all(), [
             'username' => 'required|unique:users',
             'password' => ['required', 'string', 'min:6'],
             'password_confirmation' => 'required|same:password',
@@ -57,15 +62,20 @@ class AdminUserController extends Controller
             'password_confirmation.same' => 'Password and confirm password does not match',
         ]);
 
-        $user = User::create([
-            'fname' => $request->fname,
-            'gname' => $request->gname,
-            'username' => $request->username,
-            'phone' => $request->phone,
-            'password' => Hash::make($request->password),
-            'gid' => $request->gid,
-        ]);
-        return redirect(route('admin.user.index'));
+        if ($validator->fails()) {
+            return response()->json(['status' => 0, 'error' => $validator->errors()->toArray()]);
+        } else {
+            $users = new User();
+            $users->fname = $request->fname;
+            $users->gname = $request->gname;
+            $users->username = $request->username;
+            $users->phone = $request->phone;
+            $users->password = Hash::make($request->password);
+            $users->gid = $request->gid;
+            
+            $users->save();
+            return response()->json(['status' => 1, 'msg' => 'Job announcement create successfully']);
+        }
     }
 
     /**
@@ -143,6 +153,6 @@ class AdminUserController extends Controller
     {
         $user = User::find($id);
         $user->delete();
-        return back()->with('userdelete', 'You have create a user');
+        return back()->with('userdelete', 'You have delete a user');
     }
 }

@@ -37,8 +37,6 @@
 
                         <div class="form-group mb-md-3">
                             <label>Job Title</label>
-                            {{-- <input name="title" type="text" class="form-control"> --}}
-
                             <nav class="nav nav-tabs" id="nav-tab" role="tablist">
                                 <a class="nav-link active" id="nav-en-tab" data-bs-toggle="tab" href="#nav-en" role="tab" aria-controls="nav-en" aria-selected="true">English</a>
                                 <a class="nav-link" id="nav-ch-tab" data-bs-toggle="tab" href="#nav-ch" role="tab" aria-controls="nav-ch" aria-selected="false">Chinese</a>
@@ -235,13 +233,16 @@
                         
                     </td>
                     <td>
+                        @if ($job->approved != true)
+                        <a href="#" title="Can not edit pending" style="cursor: not-allowed;"><i class="bi bi-pencil-square text-primary"></i></a>
+                        @else
                         <a href="/admin/job/{{ $job->id }}/edit" title="Edit"><i class="bi bi-pencil-square text-primary"></i></a>
+                        @endif
                         <form action="/admin/job/{{ $job->id }}" method="POST" class="d-inline" onsubmit="return confirm('Are you sure? You won\'t be able to revert this!')">
                             @csrf
                             @method('delete')
                             <button type="submit" class="btn btn-sm text-danger" title="Delete"><i class="bi bi-trash"></i></button>
                         </form>
-                        <a href="#" title="Detail"><i class="bi bi-eye text-success"></i></a>
                     </td>
                 </tr>
                 @endforeach
