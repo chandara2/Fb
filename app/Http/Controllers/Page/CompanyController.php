@@ -59,6 +59,7 @@ class CompanyController extends Controller
         ->join('company_infos', 'company_infos.id', '=', 'jobs.company_id')
         ->select('jobs.*', 'jobs.id as job_id', 'company_infos.*', 'company_infos.id as com_id')
         ->where('company_infos.id', $id)
+        ->where('approved', true)
         ->get();
         // $jobs = DB::table('jobs')
         // ->join('company_infos', 'company_infos.company', '=', 'jobs.company')
