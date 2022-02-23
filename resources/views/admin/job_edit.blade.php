@@ -42,7 +42,7 @@
                 <select name="company_id" class="form-select">
                     @foreach ($currentcom as $ccom)
                         @if($ccom->ccomid == $jobid->company_id)
-                            <option>{{ $ccom->company }}</option>
+                            <option value="{{ $ccom->ccomid }}">{{ $ccom->company }}</option>
                         @endif
                     @endforeach
                     @foreach ($company_infos as $company)

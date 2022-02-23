@@ -233,11 +233,7 @@
                         
                     </td>
                     <td>
-                        @if ($job->approved != true)
-                        <a href="#" title="Can not edit pending" style="cursor: not-allowed;"><i class="bi bi-pencil-square text-primary"></i></a>
-                        @else
                         <a href="/admin/job/{{ $job->id }}/edit" title="Edit"><i class="bi bi-pencil-square text-primary"></i></a>
-                        @endif
                         <form action="/admin/job/{{ $job->id }}" method="POST" class="d-inline" onsubmit="return confirm('Are you sure? You won\'t be able to revert this!')">
                             @csrf
                             @method('delete')
