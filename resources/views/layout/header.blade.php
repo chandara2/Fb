@@ -43,6 +43,7 @@
             <div class="dropdown text-end">
                 <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
                 <img src="{{ asset('asset/image/user.png') }}" alt="mdo" width="32" height="32" class="rounded-circle">
+                {{-- <i class="bi bi-gear" style="font-size: 32px;"></i> --}}
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end text-small" aria-labelledby="dropdownUser1">
                 <li><a class="dropdown-item text-capitalize fw-bold" href="#"><i class="bi bi-person"></i> {{ Auth::user()->username }}</a></li>

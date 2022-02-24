@@ -10,7 +10,7 @@
 
     <div class="container">
         <div class="row">
-            <a href="#" data-bs-toggle="modal" data-bs-target="#showSlideModal"><button type="submit" class="btn btn-sm btn-primary mb-3 rounded-0"><i class="bi bi-plus-square-dotted"></i> Slide</button></a>
+            <button type="submit" data-bs-toggle="modal" data-bs-target="#showSlideModal" class="btn btn-sm btn-primary mb-3 rounded-0 w-auto"><i class="bi bi-plus-square-dotted"></i> Slide</button>
         </div>
 
         <div class="row">
