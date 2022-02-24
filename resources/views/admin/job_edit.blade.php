@@ -95,10 +95,15 @@
                 </select>
                 <span class="text-danger">@error('salary'){{$message}}@enderror</span>
             </div>
-                
+            
             <div class="form-group mb-md-3">
                 <label>Sex</label>
-                <input name="sex" type="text" value="{{ $jobid->sex }}" class="form-control">
+                <select name="sex" class="form-select">
+                    <option>{{ $jobid->sex }}</option>
+                    @foreach ($job_genders as $gender)
+                        <option>{{ $gender->gender_en }}</option>
+                    @endforeach
+                </select>
                 <span class="text-danger">@error('sex'){{$message}}@enderror</span>
             </div>
                 
@@ -113,10 +118,26 @@
                 <input name="term" type="text" value="{{ $jobid->term }}" class="form-control">
                 <span class="text-danger">@error('term'){{$message}}@enderror</span>
             </div>
-                
+
+            <div class="form-group mb-md-3">
+                <label>Level</label>
+                <select name="level" class="form-select">
+                    <option>{{ $jobid->level }}</option>
+                    @foreach ($job_levels as $level)
+                        <option>{{ $level->level_en }}</option>
+                    @endforeach
+                </select>
+                <span class="text-danger">@error('level'){{$message}}@enderror</span>
+            </div>
+
             <div class="form-group mb-md-3">
                 <label>Qualification</label>
-                <input name="qualification" type="text" value="{{ $jobid->qualification }}" class="form-control">
+                <select name="qualification" class="form-select">
+                    <option>{{ $jobid->qualification }}</option>
+                    @foreach ($job_qualifications as $qualification)
+                        <option>{{ $qualification->qualification_en }}</option>
+                    @endforeach
+                </select>
                 <span class="text-danger">@error('qualification'){{$message}}@enderror</span>
             </div>
                 
@@ -128,13 +149,18 @@
                 
             <div class="form-group mb-md-3">
                 <label>Years of exp</label>
-                <input name="year_of_exp" type="text" value="{{ $jobid->year_of_exp }}" class="form-control">
+                <select name="year_of_exp" class="form-select">
+                    <option>{{ $jobid->year_of_exp }}</option>
+                    @foreach ($job_experiences as $experience)
+                        <option>{{ $experience->experience_en }}</option>
+                    @endforeach
+                </select>
                 <span class="text-danger">@error('year_of_exp'){{$message}}@enderror</span>
             </div>
                 
             <div class="form-group mb-md-3">
                 <label>Hiring</label>
-                <input name="hiring" type="text" value="{{ $jobid->hiring }}" class="form-control">
+                <input name="hiring" type="number" value="{{ $jobid->hiring }}" class="form-control">
                 <span class="text-danger">@error('hiring'){{$message}}@enderror</span>
             </div>
                 

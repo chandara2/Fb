@@ -53,7 +53,7 @@
                             <li class="nav-item h5">{{__('text.Browse_Jobs')}}</li>
                             {{-- <li></li> --}}
                             <li class="nav-item">
-                                <a href="#function" class="nav-link px-2 py-1" role="tab" data-bs-toggle="tab">{{__('text.Function')}}</a>
+                                <a href="#function" class="nav-link active px-2 py-1" role="tab" data-bs-toggle="tab">{{__('text.Function')}}</a>
                             </li>
                             <li class="nav-item">
                                 <a href="#industry" class="nav-link px-2 py-1" role="tab" data-bs-toggle="tab">{{__('text.Industry')}}</a>
@@ -62,12 +62,12 @@
                                 <a href="#location" class="nav-link px-2 py-1" role="tab" data-bs-toggle="tab">{{__('text.Location')}}</a>
                             </li>
                             <li class="nav-item">
-                                <a href="#salary" class="nav-link active px-2 py-1" role="tab" data-bs-toggle="tab">{{__('text.Salary')}}</a>
+                                <a href="#salary" class="nav-link px-2 py-1" role="tab" data-bs-toggle="tab">{{__('text.Salary')}}</a>
                             </li>
                         </ul>
         
                         <div class="tab-content">
-                            <div role="tabpanel" class="tab-pane" id="function">
+                            <div role="tabpanel" class="tab-pane active" id="function">
                                 <ul class="list-unstyled ul_browsejobs p-lg-2 p-sm-2"> <!-- Function Sort -->
 
                                     @if(app()->getLocale() == 'ch')
@@ -193,7 +193,7 @@
 
                                 </ul>
                             </div>
-                            <div role="tabpanel" class="tab-pane active" id="salary">
+                            <div role="tabpanel" class="tab-pane" id="salary">
                                 <ul class="list-unstyled ul_browsejobs p-lg-2 p-sm-2"> <!-- Salary Sort -->
 
                                     @if(app()->getLocale() == 'ch')

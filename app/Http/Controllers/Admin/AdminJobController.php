@@ -190,6 +190,11 @@ class AdminJobController extends Controller
         $job_industries = JobIndustry::all();
         $job_locations = JobLocation::all();
         $job_salaries = JobSalary::all();
+        $job_levels = JobLevel::all();
+        $job_genders = JobGender::all();
+        $job_terms = JobTerm::all();
+        $job_experiences = JobExperience::all();
+        $job_qualifications = JobQualification::all();
         return view('admin.job_edit', [
             'company_infos' => $company_infos,
             'currentcom' => $currentcom,
@@ -198,6 +203,11 @@ class AdminJobController extends Controller
             'job_industries' => $job_industries,
             'job_locations' => $job_locations,
             'job_salaries' => $job_salaries,
+            'job_levels' => $job_levels,
+            'job_genders' => $job_genders,
+            'job_terms' => $job_terms,
+            'job_experiences' => $job_experiences,
+            'job_qualifications' => $job_qualifications,
         ]);
     }
 
