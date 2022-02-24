@@ -127,10 +127,22 @@ class JobController extends Controller
             ->join('job_locations', 'job_locations.location_en', '=', 'jobs.location')
             ->join('job_salaries', 'job_salaries.salary_en', '=', 'jobs.salary')
             ->select('jobs.*', 'jobs.id as job_id', 'jobs.industry as job_industry', 'company_infos.*', 'company_infos.id as com_id')
-            ->where('job_functions.function_en', $jobsort)
+            ->orWhere('job_functions.function_ch', $jobsort)
+            ->orWhere('job_functions.function_en', $jobsort)
+            ->orWhere('job_functions.function_kh', $jobsort)
+            ->orWhere('job_functions.function_th', $jobsort)
+            ->orWhere('job_industries.industry_ch', $jobsort)
             ->orWhere('job_industries.industry_en', $jobsort)
+            ->orWhere('job_industries.industry_kh', $jobsort)
+            ->orWhere('job_industries.industry_th', $jobsort)
+            ->orWhere('job_locations.location_ch', $jobsort)
             ->orWhere('job_locations.location_en', $jobsort)
+            ->orWhere('job_locations.location_kh', $jobsort)
+            ->orWhere('job_locations.location_th', $jobsort)
+            ->orWhere('job_salaries.salary_ch', $jobsort)
             ->orWhere('job_salaries.salary_en', $jobsort)
+            ->orWhere('job_salaries.salary_kh', $jobsort)
+            ->orWhere('job_salaries.salary_th', $jobsort)
             ->paginate(10);
 
         return view('page.job.job_sort', [

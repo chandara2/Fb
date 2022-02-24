@@ -36,12 +36,125 @@ class AppController extends Controller
             ->join('job_locations', 'job_locations.location_en', '=', 'jobs.location')
             ->join('job_salaries', 'job_salaries.salary_en', '=', 'jobs.salary')
             ->select('job_functions.*','job_industries.*','job_locations.*','job_salaries.*')
+            ->where('approved', true)
+            ->get();
+        $function_ch = DB::table('jobs')
+            ->join('job_functions', 'job_functions.function_en', '=', 'jobs.function')
+            ->select('job_functions.function_ch', DB::raw('count(*) as count'))
+            ->groupBy('job_functions.function_ch')
+            ->where('approved', true)
+            ->get();
+        $function_en = DB::table('jobs')
+            ->join('job_functions', 'job_functions.function_en', '=', 'jobs.function')
+            ->select('job_functions.function_en', DB::raw('count(*) as count'))
+            ->groupBy('job_functions.function_en')
+            ->where('approved', true)
+            ->get();
+        $function_kh = DB::table('jobs')
+            ->join('job_functions', 'job_functions.function_en', '=', 'jobs.function')
+            ->select('job_functions.function_kh', DB::raw('count(*) as count'))
+            ->groupBy('job_functions.function_kh')
+            ->where('approved', true)
+            ->get();
+        $function_th = DB::table('jobs')
+            ->join('job_functions', 'job_functions.function_en', '=', 'jobs.function')
+            ->select('job_functions.function_th', DB::raw('count(*) as count'))
+            ->groupBy('job_functions.function_th')
+            ->where('approved', true)
+            ->get();
+        $industry_ch = DB::table('jobs')
+            ->join('job_industries', 'job_industries.industry_en', '=', 'jobs.industry')
+            ->select('job_industries.industry_ch', DB::raw('count(*) as count'))
+            ->groupBy('job_industries.industry_ch')
+            ->where('approved', true)
+            ->get();
+        $industry_en = DB::table('jobs')
+            ->join('job_industries', 'job_industries.industry_en', '=', 'jobs.industry')
+            ->select('job_industries.industry_en', DB::raw('count(*) as count'))
+            ->groupBy('job_industries.industry_en')
+            ->where('approved', true)
+            ->get();
+        $industry_kh = DB::table('jobs')
+            ->join('job_industries', 'job_industries.industry_en', '=', 'jobs.industry')
+            ->select('job_industries.industry_kh', DB::raw('count(*) as count'))
+            ->groupBy('job_industries.industry_kh')
+            ->where('approved', true)
+            ->get();
+        $industry_th = DB::table('jobs')
+            ->join('job_industries', 'job_industries.industry_en', '=', 'jobs.industry')
+            ->select('job_industries.industry_th', DB::raw('count(*) as count'))
+            ->groupBy('job_industries.industry_th')
+            ->where('approved', true)
+            ->get();
+        $location_ch = DB::table('jobs')
+            ->join('job_locations', 'job_locations.location_en', '=', 'jobs.location')
+            ->select('job_locations.location_ch', DB::raw('count(*) as count'))
+            ->groupBy('job_locations.location_ch')
+            ->where('approved', true)
+            ->get();
+        $location_en = DB::table('jobs')
+            ->join('job_locations', 'job_locations.location_en', '=', 'jobs.location')
+            ->select('job_locations.location_en', DB::raw('count(*) as count'))
+            ->groupBy('job_locations.location_en')
+            ->where('approved', true)
+            ->get();
+        $location_kh = DB::table('jobs')
+            ->join('job_locations', 'job_locations.location_en', '=', 'jobs.location')
+            ->select('job_locations.location_kh', DB::raw('count(*) as count'))
+            ->groupBy('job_locations.location_kh')
+            ->where('approved', true)
+            ->get();
+        $location_th = DB::table('jobs')
+            ->join('job_locations', 'job_locations.location_en', '=', 'jobs.location')
+            ->select('job_locations.location_th', DB::raw('count(*) as count'))
+            ->groupBy('job_locations.location_th')
+            ->where('approved', true)
+            ->get();
+        $salary_ch = DB::table('jobs')
+            ->join('job_salaries', 'job_salaries.salary_en', '=', 'jobs.salary')
+            ->select('job_salaries.salary_ch', DB::raw('count(*) as count'))
+            ->groupBy('job_salaries.salary_ch')
+            ->where('approved', true)
+            ->get();
+        $salary_en = DB::table('jobs')
+            ->join('job_salaries', 'job_salaries.salary_en', '=', 'jobs.salary')
+            ->select('job_salaries.salary_en', DB::raw('count(*) as count'))
+            ->groupBy('job_salaries.salary_en')
+            ->where('approved', true)
+            ->get();
+        $salary_kh = DB::table('jobs')
+            ->join('job_salaries', 'job_salaries.salary_en', '=', 'jobs.salary')
+            ->select('job_salaries.salary_kh', DB::raw('count(*) as count'))
+            ->groupBy('job_salaries.salary_kh')
+            ->where('approved', true)
+            ->get();
+        $salary_th = DB::table('jobs')
+            ->join('job_salaries', 'job_salaries.salary_en', '=', 'jobs.salary')
+            ->select('job_salaries.salary_th', DB::raw('count(*) as count'))
+            ->groupBy('job_salaries.salary_th')
+            ->where('approved', true)
             ->get();
         return view('app', [
             'companylogos' => $companylogos,
             'homepage_slide' => $homepage_slide,
             'jobcompanys' => $jobcompanys,
             'jobsorts' => $jobsorts,
+            'function_ch' => $function_ch,
+            'function_en' => $function_en,
+            'function_kh' => $function_kh,
+            'function_th' => $function_th,
+            'industry_ch' => $industry_ch,
+            'industry_en' => $industry_en,
+            'industry_kh' => $industry_kh,
+            'industry_th' => $industry_th,
+            'location_ch' => $location_ch,
+            'location_en' => $location_en,
+            'location_kh' => $location_kh,
+            'location_th' => $location_th,
+            'salary_ch' => $salary_ch,
+            'salary_en' => $salary_en,
+            'salary_kh' => $salary_kh,
+            'salary_th' => $salary_th,
         ]);
     }
 
