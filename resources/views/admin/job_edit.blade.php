@@ -95,7 +95,7 @@
                 </select>
                 <span class="text-danger">@error('salary'){{$message}}@enderror</span>
             </div>
-            
+
             <div class="form-group mb-md-3">
                 <label>Sex</label>
                 <select name="sex" class="form-select">
@@ -185,7 +185,11 @@
     
             <div class="form-group mb-md-3">
                 <label>Detail</label>
-                <textarea name="detail" class="textarea_autosize form-control">{{ $jobid->detail }}</textarea>
+                <textarea name="detail" class="textarea_autosize form-control" id="summernote">
+                    @php
+                        echo $jobid->detail
+                    @endphp
+                </textarea>
                 <span class="text-danger">@error('detail'){{$message}}@enderror</span>
             </div>
     

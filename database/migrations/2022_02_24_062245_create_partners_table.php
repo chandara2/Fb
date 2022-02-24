@@ -15,6 +15,10 @@ class CreatePartnersTable extends Migration
     {
         Schema::create('partners', function (Blueprint $table) {
             $table->id();
+
+            // $table->unsignedBigInteger('uid');
+            // $table->foreign('uid')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
+
             $table->string('logo')->nullable();
             $table->string('link')->nullable();
             $table->timestamps();

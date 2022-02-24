@@ -204,6 +204,14 @@ class AdminCompanyInfoController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $companys = CompanyInfo::find($id);
+
+        $image_path = 'upload/companylogo/' . $companys->logo;
+        if (File::exists($image_path)) {
+            File::delete($image_path);
+        }
+
+        $companys->delete();
+        return back()->with('companyDelete', 'You have delete a company');
     }
 }

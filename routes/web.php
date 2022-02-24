@@ -54,6 +54,9 @@ Route::prefix('admin')->name('admin.')->middleware('isadmin')->group(function ()
     Route::resource('/about', AdminAboutController::class);
     Route::get('/changejobstatus', [AdminJobController::class, 'changejobstatus'])->name('changejobstatus');
     Route::resource('/homepage', AdminHomepageController::class);
+    Route::get('/partner', [AdminHomepageController::class, 'partner'])->name('partner');
+    Route::post('/partner', [AdminHomepageController::class, 'partnerstore'])->name('partner.store');
+    Route::delete('/partner/{partner}', [AdminHomepageController::class, 'partnerdestroy'])->name('partner.destroy');
 });
 
 // Agency Dashboard

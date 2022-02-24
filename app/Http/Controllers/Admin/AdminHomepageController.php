@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\Partner;
 use App\Models\Homepage;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -120,5 +121,57 @@ class AdminHomepageController extends Controller
 
         $slide->delete();
         return back()->with('slideDelete', 'You have delete a slide');
+    }
+
+    public function partner()
+    {
+        $partners = Partner::all();
+        return view('admin.partner', [
+            'partners' => $partners,
+        ]);
+    }
+
+    public function partnerstore(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'logo' => 'required|image|mimes:jpeg,png,jpg,gif,svg',
+            'link' => 'required',
+        ], [
+            'logo.required' => 'Please upload homepage slide',
+            'link.required' => 'Please inpute partner link',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json(['status' => 0, 'error' => $validator->errors()->toArray()]);
+        } else {
+
+            $partnerLogo = new Partner();
+            if ($request->hasFile('logo')) {
+                $file = $request->file('logo');
+                $extension = $file->getClientOriginalExtension();
+                $filename = time() . '.' . $extension;
+                $file->move('upload/partnerlogo/', $filename);
+                $partnerLogo->slide = $filename;
+            }
+
+            $partner = new Partner();
+            $partner->logo = $filename;
+            $partner->link = $request->link;
+            $partner->save();
+            return response()->json(['status' => 1, 'msg' => 'Company partner successfully']);
+        }
+    }
+
+    public function partnerdestroy($id)
+    {
+        $partner = Partner::find($id);
+
+        $image_path = 'upload/partnerlogo/' . $partner->logo;
+        if (File::exists($image_path)) {
+            File::delete($image_path);
+        }
+
+        $partner->delete();
+        return back()->with('partnerDelete', 'You have delete a partner');
     }
 }

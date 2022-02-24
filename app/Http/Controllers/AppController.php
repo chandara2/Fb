@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Job;
+use App\Models\Partner;
 use App\Models\Homepage;
 use App\Models\JobSalary;
 use App\Models\CompanyInfo;
@@ -21,7 +22,9 @@ class AppController extends Controller
     public function index()
     {
         $companylogos = CompanyInfo::select('company_infos.logo', 'company_infos.id')->get();
+        $comlogocounts = $companylogos->count();
         $homepage_slide = Homepage::select('slide')->get();
+        $partners = Partner::select('logo', 'link')->get();
         $jobcompanys = DB::table('jobs')
             ->join('company_infos', 'company_infos.id', '=', 'jobs.company_id')
             ->select('jobs.created_at', 'jobs.title_ch', 'jobs.title_en', 'jobs.title_kh', 'jobs.title_th', 'jobs.id as jobid', 'company_infos.company as cic', 'company_infos.id as com_id')
@@ -35,7 +38,7 @@ class AppController extends Controller
             ->join('job_industries', 'job_industries.industry_en', '=', 'jobs.industry')
             ->join('job_locations', 'job_locations.location_en', '=', 'jobs.location')
             ->join('job_salaries', 'job_salaries.salary_en', '=', 'jobs.salary')
-            ->select('job_functions.*','job_industries.*','job_locations.*','job_salaries.*')
+            ->select('job_functions.*', 'job_industries.*', 'job_locations.*', 'job_salaries.*')
             ->where('approved', true)
             ->get();
         $function_ch = DB::table('jobs')
@@ -136,7 +139,9 @@ class AppController extends Controller
             ->get();
         return view('app', [
             'companylogos' => $companylogos,
+            'comlogocounts' => $comlogocounts,
             'homepage_slide' => $homepage_slide,
+            'partners' => $partners,
             'jobcompanys' => $jobcompanys,
             'jobsorts' => $jobsorts,
             'function_ch' => $function_ch,

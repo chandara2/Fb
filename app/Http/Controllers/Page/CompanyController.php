@@ -48,12 +48,14 @@ class CompanyController extends Controller
      */
     public function show($id)
     {
-        $companys = DB::table('jobs')
-            ->join('company_infos', 'company_infos.id', '=', 'jobs.company_id')
-            ->select('jobs.*', 'company_infos.*')
-            ->where('company_infos.id', $id)
-            ->take(1)
-            ->get();
+        // $companys = DB::table('jobs')
+        //     ->join('company_infos', 'company_infos.id', '=', 'jobs.company_id')
+        //     ->select('jobs.*', 'company_infos.*')
+        //     ->where('company_infos.id', $id)
+        //     ->take(1)
+        //     ->get();
+        $companys = Companyinfo::where('company_infos.id', $id)->take(1)->get();
+        // dd($companys);
         
         $company_jobs = DB::table('jobs')
         ->join('company_infos', 'company_infos.id', '=', 'jobs.company_id')

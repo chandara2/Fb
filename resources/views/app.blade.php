@@ -268,7 +268,14 @@
                     <h4 class="underline_highlight">Featured Employers</h4>
 
                     <div class="slick-wrapper w-100 bg-white">
-                        <div id="slick2">
+                        <div class="
+                            @if($comlogocounts<12)slick2 
+                            @elseif($comlogocounts<18)slick2sm 
+                            @elseif($comlogocounts<24)slick2md 
+                            @else slick2lg 
+                            @endif
+                            ">
+
                             @foreach ($companylogos as $companylogo)
                             <div class="slide-item2 py-3 d-flex justify-content-around border border-white">
                                 <a href="company/{{$companylogo->id}}"><img src="upload/companylogo/{{$companylogo->logo}}" alt="CompanyLogo" height="65" width="65" style="object-fit: contain;"></a>
@@ -340,9 +347,9 @@
                 <div class="col-md-12">
                     <h4 class="underline_highlight">Cooperation Partners</h4>
                     <div id="slick4">
-                        @foreach ($companylogos as $companylogo)
+                        @foreach ($partners as $partner)
                         <div class="slide-item4 py-3 d-flex justify-content-around border border-white">
-                            <a href="company/{{$companylogo->id}}"><img src="upload/companylogo/{{$companylogo->logo}}" alt="CompanyLogo" width="65" height="65" style="object-fit: cover;"></a>
+                            <a href="{{$partner->link}}" target="_blank"><img src="upload/partnerlogo/{{$partner->logo}}" alt="Partner Logo" width="65" height="65" style="object-fit: cover;"></a>
                         </div>
                         @endforeach
                     </div>
@@ -364,16 +371,109 @@
             autoplay: true,
             autoplaySpeed: 7000,
             slidesToShow: 1,
+            // loop: true,
+            fade: true,
+            // cssEase: 'ease-in-out'
         });
 
-        $('#slick2').slick({
+        $('.slick2').slick({
             rows: 1,
             arrows: false,
             infinite: true,
             speed: 1500,
             autoplay: true,
-            autoplaySpeed: 7000,
-            slidesToShow: 5,
+            autoplaySpeed: 3000,
+            slidesToShow: 6,
+            responsive: [
+                {
+                breakpoint: 1200,
+                    settings: {
+                        slidesToShow: 5,
+                    },
+                },
+                {
+                breakpoint: 1008,
+                    settings: {
+                        slidesToShow: 3,
+                    },
+                },
+                {
+                breakpoint: 800,
+                    settings: {
+                        slidesToShow: 2,
+                    },
+                },
+            ],
+        });
+
+        $('.slick2sm').slick({
+            rows: 2,
+            arrows: false,
+            infinite: true,
+            speed: 1500,
+            autoplay: true,
+            autoplaySpeed: 3000,
+            slidesToShow: 6,
+            responsive: [
+                {
+                breakpoint: 1200,
+                    settings: {
+                        slidesToShow: 5,
+                    },
+                },
+                {
+                breakpoint: 1008,
+                    settings: {
+                        slidesToShow: 3,
+                    },
+                },
+                {
+                breakpoint: 800,
+                    settings: {
+                        slidesToShow: 2,
+                    },
+                },
+            ],
+        });
+
+        $('.slick2md').slick({
+            rows: 3,
+            arrows: false,
+            infinite: true,
+            speed: 1500,
+            autoplay: true,
+            autoplaySpeed: 3000,
+            slidesToShow: 6,
+            responsive: [
+                {
+                breakpoint: 1200,
+                    settings: {
+                        slidesToShow: 5,
+                    },
+                },
+                {
+                breakpoint: 1008,
+                    settings: {
+                        slidesToShow: 3,
+                    },
+                },
+                {
+                breakpoint: 800,
+                    settings: {
+                        slidesToShow: 2,
+                    },
+                },
+            ],
+        });
+
+        $('.slick2lg').slick({
+            rows: 4,
+            arrows: false,
+            infinite: true,
+            speed: 1500,
+            autoplay: true,
+            autoplaySpeed: 3000,
+            slidesToShow: 6,
             responsive: [
                 {
                 breakpoint: 1200,
@@ -411,8 +511,8 @@
             arrows: false,
             infinite: true,
             speed: 300,
-            // autoplay: true,
-            autoplaySpeed: 4000,
+            autoplay: true,
+            autoplaySpeed: 10000,
             slidesToShow: 5,
         }); 
     </script>

@@ -40,7 +40,7 @@ class CreateJobsTable extends Migration
             $table->string('sex')->nullable();
             $table->string('term')->nullable();
             $table->string('year_of_exp')->nullable();
-            $table->text('detail')->nullable();
+            $table->mediumText('detail')->nullable();
 
             $table->timestamps();
         });

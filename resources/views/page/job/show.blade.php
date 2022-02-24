@@ -188,7 +188,11 @@
                     </table>
 
                     <h5 class="mt-4 underline_highlight">{{ __('text.Job_description_requirements') }}</h5>
-                    <textarea disabled class="textarea_autosize form-control border-0 bg-light">{{$jobcompany->detail}}</textarea>
+                    {{-- <textarea disabled class="textarea_autosize form-control border-0 bg-light"> --}}
+                        @php
+                            echo $jobcompany->detail
+                        @endphp
+                    {{-- </textarea> --}}
 
                     <h5 class="mt-4 underline_highlight">{{ __('text.Company_profile') }}</h5>
                     <textarea disabled class="textarea_autosize form-control border-0 bg-light">{{$jobcompany->company_profile}}</textarea>
