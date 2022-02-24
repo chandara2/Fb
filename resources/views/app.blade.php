@@ -40,15 +40,15 @@
     <main>
         <div class="container">
             <div class="row mb-5 mb-md-0">
-                <div class="col-xl-8 col-lg-12"><!-- Slider 1 -->
+                <div class="col-xl-8 col-lg-12">
 
-                    <div id="slick1">
+                    <div id="slick1"> <!-- Slider 1 -->
                         @foreach ($homepage_slide as $slide)
                         <div class="slide-item1 d-flex justify-content-around border border-white"><img src="{{asset('upload/homepageslide/')}}/{{$slide->slide}}" alt="slide" width="100%" height='352' style="object-fit:cover;"></div>
                         @endforeach
                     </div>
 
-                    <div class="mb-4">
+                    <div class="mb-4"> <!-- Browse Job Sort -->
                         <ul class="nav nav-tabs d-flex justify-content-between mt-4">
                             <li class="nav-item h5">{{__('text.Browse_Jobs')}}</li>
                             {{-- <li></li> --}}

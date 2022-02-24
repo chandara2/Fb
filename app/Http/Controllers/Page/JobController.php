@@ -126,7 +126,7 @@ class JobController extends Controller
             ->join('job_industries', 'job_industries.industry_en', '=', 'jobs.industry')
             ->join('job_locations', 'job_locations.location_en', '=', 'jobs.location')
             ->join('job_salaries', 'job_salaries.salary_en', '=', 'jobs.salary')
-            ->select('jobs.*', 'jobs.id as job_id', 'jobs.industry as job_industry', 'company_infos.*', 'company_infos.id as com_id')
+            ->select('jobs.*', 'jobs.id as job_id', 'jobs.industry as job_industry', 'company_infos.*', 'company_infos.id as com_id', 'job_locations.*', 'job_salaries.*')
             ->orWhere('job_functions.function_ch', $jobsort)
             ->orWhere('job_functions.function_en', $jobsort)
             ->orWhere('job_functions.function_kh', $jobsort)

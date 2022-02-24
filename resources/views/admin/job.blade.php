@@ -130,7 +130,7 @@
 
                         <div class="form-group mb-md-3">
                             <label>Age</label>
-                            <input name="age" type="text" class="form-control">
+                            <input name="age" type="text" class="form-control" placeholder="Age Unlimited / 20 ~ 35">
                             <span class="text-danger error-text age_error"></span>
                         </div>
 
