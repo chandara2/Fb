@@ -65,7 +65,11 @@ class JobController extends Controller
             ->join('job_industries', 'job_industries.industry_en', '=', 'jobs.industry')
             ->join('job_locations', 'job_locations.location_en', '=', 'jobs.location')
             ->join('job_salaries', 'job_salaries.salary_en', '=', 'jobs.salary')
-            ->select('jobs.*', 'company_infos.*', 'company_infos.id as ciid','job_functions.*','job_industries.*', 'job_locations.*', 'job_salaries.*')
+            ->join('job_qualifications', 'job_qualifications.qualification_en', '=', 'jobs.qualification')
+            ->join('job_genders', 'job_genders.gender_en', '=', 'jobs.sex')
+            ->join('job_terms', 'job_terms.term_en', '=', 'jobs.term')
+            ->join('job_experiences', 'job_experiences.experience_en', '=', 'jobs.year_of_exp')
+            ->select('jobs.*', 'company_infos.*', 'company_infos.id as ciid','job_functions.*','job_industries.*', 'job_locations.*', 'job_salaries.*', 'job_qualifications.*', 'job_terms.*','job_genders.*', 'job_experiences.*')
             ->where('jobs.id', $id)
             ->where('approved', true)
             ->get();

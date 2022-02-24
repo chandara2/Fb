@@ -33,12 +33,13 @@ class CreateJobsTable extends Migration
             $table->smallInteger('hiring')->nullable();
             $table->string('industry')->nullable();
             $table->string('language')->nullable();
+            $table->string('level')->nullable();
             $table->string('location')->nullable();
             $table->string('qualification')->nullable();
             $table->string('salary')->nullable();
             $table->string('sex')->nullable();
             $table->string('term')->nullable();
-            $table->smallInteger('year_of_exp')->nullable();
+            $table->string('year_of_exp')->nullable();
             $table->text('detail')->nullable();
 
             $table->timestamps();

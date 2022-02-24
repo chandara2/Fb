@@ -73,7 +73,17 @@
                                 @endif
                             </td>
                             <th class="table-primary">{{ __('text.Term') }}</th>
-                            <td>{{$jobcompany->term}}</td>
+                            <td>
+                                @if(app()->getLocale() == 'ch')
+                                {{$jobcompany->term_ch}}
+                                @elseif(app()->getLocale() == 'en')
+                                {{$jobcompany->term_en}}
+                                @elseif(app()->getLocale() == 'kh')
+                                {{$jobcompany->term_kh}}
+                                @else
+                                {{$jobcompany->term_th}}
+                                @endif
+                            </td>
                         </tr>
                         <tr>
                             <th class="table-primary">{{ __('text.Salary') }}</th>
@@ -89,7 +99,17 @@
                                 @endif
                             </td>
                             <th class="table-primary">{{ __('text.Sex') }}</th>
-                            <td>{{$jobcompany->sex}}</td>
+                            <td>
+                                @if(app()->getLocale() == 'ch')
+                                {{$jobcompany->gender_ch}}
+                                @elseif(app()->getLocale() == 'en')
+                                {{$jobcompany->gender_en}}
+                                @elseif(app()->getLocale() == 'kh')
+                                {{$jobcompany->gender_kh}}
+                                @else
+                                {{$jobcompany->gender_th}}
+                                @endif
+                            </td>
                         </tr>
                         <tr>
                             <th class="table-primary">{{ __('text.Location') }}</th>
@@ -141,9 +161,29 @@
                         </tr>
                         <tr>
                             <th class="table-primary">{{ __('text.Qualification') }}</th>
-                            <td>{{$jobcompany->qualification}}</td>
+                            <td>
+                                @if(app()->getLocale() == 'ch')
+                                {{$jobcompany->qualification_ch}}
+                                @elseif(app()->getLocale() == 'en')
+                                {{$jobcompany->qualification_en}}
+                                @elseif(app()->getLocale() == 'kh')
+                                {{$jobcompany->qualification_kh}}
+                                @else
+                                {{$jobcompany->qualification_th}}
+                                @endif
+                            </td>
                             <th class="table-primary">{{ __('text.Year_of_experience') }}</th>
-                            <td>{{$jobcompany->year_of_exp}}</td>
+                            <td>
+                                @if(app()->getLocale() == 'ch')
+                                {{$jobcompany->experience_ch}}
+                                @elseif(app()->getLocale() == 'en')
+                                {{$jobcompany->experience_en}}
+                                @elseif(app()->getLocale() == 'kh')
+                                {{$jobcompany->experience_kh}}
+                                @else
+                                {{$jobcompany->experience_th}}
+                                @endif
+                            </td>
                         </tr>
                     </table>
 

@@ -124,7 +124,12 @@
 
                         <div class="form-group mb-md-3">
                             <label>Sex</label>
-                            <input name="sex" type="text" class="form-control">
+                            <select name="sex" value="{{ old('sex') }}" class="form-select">
+                                <option selected disabled>Select Job Gender</option>
+                                @foreach ($job_genders as $job_gender)
+                                    <option>{{ $job_gender->gender_en }}</option>
+                                @endforeach
+                            </select>
                             <span class="text-danger error-text sex_error"></span>
                         </div>
 
@@ -136,13 +141,34 @@
 
                         <div class="form-group mb-md-3">
                             <label>Term</label>
-                            <input name="term" type="text" class="form-control">
+                            <select name="term" value="{{ old('term') }}" class="form-select">
+                                <option selected disabled>Select Job Term</option>
+                                @foreach ($job_terms as $job_term)
+                                    <option>{{ $job_term->term_en }}</option>
+                                @endforeach
+                            </select>
                             <span class="text-danger error-text term_error"></span>
                         </div>
 
                         <div class="form-group mb-md-3">
+                            <label>Level</label>
+                            <select name="level" value="{{ old('level') }}" class="form-select">
+                                <option selected disabled>Select Job Level</option>
+                                @foreach ($job_levels as $job_level)
+                                    <option>{{ $job_level->level_en }}</option>
+                                @endforeach
+                            </select>
+                            <span class="text-danger error-text level_error"></span>
+                        </div>
+
+                        <div class="form-group mb-md-3">
                             <label>Qualification</label>
-                            <input name="qualification" type="text" class="form-control">
+                            <select name="qualification" value="{{ old('qualification') }}" class="form-select">
+                                <option selected disabled>Select Job Qualification</option>
+                                @foreach ($job_qualifications as $job_qualification)
+                                    <option>{{ $job_qualification->qualification_en }}</option>
+                                @endforeach
+                            </select>
                             <span class="text-danger error-text qualification_error"></span>
                         </div>
 
@@ -154,13 +180,18 @@
 
                         <div class="form-group mb-md-3">
                             <label>Years of experience</label>
-                            <input name="year_of_exp" type="text" class="form-control">
+                            <select name="year_of_exp" value="{{ old('year_of_exp') }}" class="form-select">
+                                <option selected disabled>Select Job Experiences</option>
+                                @foreach ($job_experiences as $job_experience)
+                                    <option>{{ $job_experience->experience_en }}</option>
+                                @endforeach
+                            </select>
                             <span class="text-danger error-text year_of_exp_error"></span>
                         </div>
 
                         <div class="form-group mb-md-3">
                             <label>Hiring</label>
-                            <input name="hiring" type="text" class="form-control">
+                            <input name="hiring" type="number" class="form-control">
                             <span class="text-danger error-text hiring_error"></span>
                         </div>
 

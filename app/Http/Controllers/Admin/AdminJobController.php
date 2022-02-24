@@ -2,17 +2,22 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
-use App\Models\CompanyInfo;
+use Carbon\Carbon;
 use App\Models\Job;
+use App\Models\JobTerm;
+use App\Models\JobLevel;
+use App\Models\JobGender;
+use App\Models\JobSalary;
+use App\Models\CompanyInfo;
 use App\Models\JobFunction;
 use App\Models\JobIndustry;
 use App\Models\JobLocation;
-use App\Models\JobSalary;
-use Carbon\Carbon;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+use App\Models\JobExperience;
+use App\Models\JobQualification;
 use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
 class AdminJobController extends Controller
@@ -35,6 +40,11 @@ class AdminJobController extends Controller
         $job_industries = JobIndustry::all();
         $job_locations = JobLocation::all();
         $job_salaries = JobSalary::all();
+        $job_levels = JobLevel::all();
+        $job_genders = JobGender::all();
+        $job_terms = JobTerm::all();
+        $job_experiences = JobExperience::all();
+        $job_qualifications = JobQualification::all();
         return view('admin.job', [
             'jobs' => $jobs,
             'company_infos' => $company_infos,
@@ -42,6 +52,11 @@ class AdminJobController extends Controller
             'job_industries' => $job_industries,
             'job_locations' => $job_locations,
             'job_salaries' => $job_salaries,
+            'job_levels' => $job_levels,
+            'job_genders' => $job_genders,
+            'job_terms' => $job_terms,
+            'job_experiences' => $job_experiences,
+            'job_qualifications' => $job_qualifications,
         ]);
     }
 
@@ -75,6 +90,7 @@ class AdminJobController extends Controller
             'industry' => 'required',
             'language' => 'required',
             'location' => 'required',
+            'level' => 'required',
             'qualification' => 'required',
             'salary' => 'required',
             'sex' => 'required',
@@ -83,7 +99,7 @@ class AdminJobController extends Controller
             'title_en' => 'required',
             'title_kh' => 'required',
             'title_th' => 'required',
-            'year_of_exp' => 'required|numeric|min:0',
+            'year_of_exp' => 'required',
         ], [
             'age.required' => 'Age is required',
             'company_id.required' => 'Company is required',
@@ -100,6 +116,7 @@ class AdminJobController extends Controller
             'industry.required' => 'Industry is required',
             'language.required' => 'Language is required',
             'location.required' => 'Location is required',
+            'level.required' => 'Level is required',
             'qualification.required' => 'Qualification is required',
             'salary.required' => 'Job Salary is required',
             'sex.required' => 'Sex is required',
@@ -109,8 +126,6 @@ class AdminJobController extends Controller
             'title_kh.required' => 'Job Khmer Title is required',
             'title_th.required' => 'Job Thai Title is required',
             'year_of_exp.required' => 'Year of experience is required',
-            'year_of_exp.numeric' => 'Year of experience should be a number',
-            'year_of_exp.min' => 'Year of experience should not be a negative number',
         ]);
 
         if ($validator->fails()) {
@@ -130,6 +145,7 @@ class AdminJobController extends Controller
             $jobs->hiring = $request->hiring;
             $jobs->language = $request->language;
             $jobs->location = $request->location;
+            $jobs->level = $request->level;
             $jobs->qualification = $request->qualification;
             $jobs->salary = $request->salary;
             $jobs->sex = $request->sex;
@@ -207,6 +223,7 @@ class AdminJobController extends Controller
             'industry' => 'required',
             'language' => 'required',
             'location' => 'required',
+            'level' => 'required',
             'qualification' => 'required',
             'salary' => 'required',
             'sex' => 'required',
@@ -215,7 +232,7 @@ class AdminJobController extends Controller
             'title_en' => 'required',
             'title_kh' => 'required',
             'title_th' => 'required',
-            'year_of_exp' => 'required|numeric|min:0',
+            'year_of_exp' => 'required',
         ], [
             'age.required' => 'Age is required',
             'company_id.required' => 'Company is required',
@@ -232,6 +249,7 @@ class AdminJobController extends Controller
             'industry.required' => 'Industry is required',
             'language.required' => 'Language is required',
             'location.required' => 'Location is required',
+            'level.required' => 'Level is required',
             'qualification.required' => 'Qualification is required',
             'salary.required' => 'Job Salary is required',
             'sex.required' => 'Sex is required',
@@ -241,8 +259,6 @@ class AdminJobController extends Controller
             'title_kh.required' => 'Job Khmer Title is required',
             'title_th.required' => 'Job Thai Title is required',
             'year_of_exp.required' => 'Year of experience is required',
-            'year_of_exp.numeric' => 'Year of experience should be a number',
-            'year_of_exp.min' => 'Year of experience should not be a negative number',
         ]);
 
         $jobs = Job::find($id);
@@ -257,6 +273,7 @@ class AdminJobController extends Controller
         $jobs->hiring = $request->hiring;
         $jobs->language = $request->language;
         $jobs->location = $request->location;
+        $jobs->level = $request->level;
         $jobs->qualification = $request->qualification;
         $jobs->salary = $request->salary;
         $jobs->sex = $request->sex;

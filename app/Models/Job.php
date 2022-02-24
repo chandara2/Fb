@@ -21,6 +21,7 @@ class Job extends Model
         'hiring',
         'industry',
         'language',
+        'level',
         'location',
         'qualification',
         'salary_ch',

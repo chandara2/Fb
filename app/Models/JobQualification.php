@@ -5,14 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class JobEducation extends Model
+class JobQualification extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'education_ch',
-        'education_en',
-        'education_kh',
-        'education_th',
+        'qualification_ch',
+        'qualification_en',
+        'qualification_kh',
+        'qualification_th',
     ];
 }
