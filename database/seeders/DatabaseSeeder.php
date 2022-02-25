@@ -15,6 +15,7 @@ class DatabaseSeeder extends Seeder
     {
         // \App\Models\User::factory(10)->create();
         $this->call([
+            UserGroupSeeder::class,
             JobExperienceSeeder::class,
             JobFunctionSeeder::class,
             JobGenderSeeder::class,
@@ -24,8 +25,6 @@ class DatabaseSeeder extends Seeder
             JobQualificationSeeder::class,
             JobSalarySeeder::class,
             JobTermSeeder::class,
-            UserGroupSeeder::class,
         ]);
-        
     }
 }

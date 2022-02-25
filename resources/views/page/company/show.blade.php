@@ -24,7 +24,6 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div id="wrap_agency_profile" class="position-relative">
-
                 @foreach ($companys as $company)
                 <div class="row py-5 bg-light">
                     <div class="col-md-2">
@@ -66,6 +65,7 @@
                         <span>No Active Jobs</span>
                         @endif
                     
+                    </div>
                 </div>
                 <div class="row my-5">
                     <div class="col-md-12">

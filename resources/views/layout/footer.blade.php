@@ -9,8 +9,12 @@
             </div>
             <div class="col-md-6 mt-md-0 mt-sm-3">
                 <h3 class="text-decoration-underline">Camjobs38</h3>
-                <p>About Us</p>
-                <p>Contact Us</p>
+                <div>
+                    <a href="" class="text-decoration-none text-dark">About Us</a>
+                </div>
+                <div class="mb-3">
+                    <a href="/about" class="text-decoration-none text-dark">Contact Us</a>
+                </div>
                 <div class="h4">
                     <i class="bi bi-facebook"></i>
                     <i class="bi bi-twitter"></i>

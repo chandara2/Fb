@@ -48,6 +48,7 @@
                         <li><a class="dropdown-item" href="{{ route('admin.companyinfo.index') }}"><i class="bi bi-building"></i> Company Info.</a></li>
                         <li><a class="dropdown-item" href="{{ route('admin.homepage.index') }}"><i class="bi bi-images"></i> Banner Slide</a></li>
                         <li><a class="dropdown-item" href="{{ route('admin.partner') }}"><i class="bi bi-stars"></i> Partner</a></li>
+                        <li><a class="dropdown-item" href="{{ route('admin.footer.index') }}"><i class="bi bi-sort-down"></i> Footer</a></li>
                         <li role="separator" class="dropdown-divider"></li>
                         <li><a class="dropdown-item" href="{{ route('logout') }}"><i class="bi bi-power"></i> Logout</a></li>
                     </ul>

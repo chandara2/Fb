@@ -49,19 +49,19 @@ class CompanyController extends Controller
     public function show($id)
     {
         $companys = DB::table('company_infos')
-        ->join('job_industries', 'job_industries.industry_en', '=', 'company_infos.industry')
-        ->join('job_locations', 'job_locations.location_en', '=', 'company_infos.province')
-        ->where('company_infos.id', $id)
-        ->select('company_infos.*', 'job_industries.*', 'job_locations.*')
-        ->take(1)->get();
+            ->join('job_industries', 'job_industries.industry_en', '=', 'company_infos.industry')
+            ->join('job_locations', 'job_locations.location_en', '=', 'company_infos.province')
+            ->where('company_infos.id', $id)
+            ->select('company_infos.*', 'job_industries.*', 'job_locations.*')
+            ->take(1)->get();
         $company_jobs = DB::table('jobs')
-        ->join('company_infos', 'company_infos.id', '=', 'jobs.company_id')
-        ->join('job_terms', 'job_terms.term_en', '=', 'jobs.term')
-        ->join('job_locations', 'job_locations.location_en', '=', 'jobs.location')
-        ->select('jobs.*', 'jobs.id as job_id', 'company_infos.*', 'company_infos.id as com_id', 'job_terms.*', 'job_locations.*')
-        ->where('company_infos.id', $id)
-        ->where('approved', true)
-        ->get();
+            ->join('company_infos', 'company_infos.id', '=', 'jobs.company_id')
+            ->join('job_terms', 'job_terms.term_en', '=', 'jobs.term')
+            ->join('job_locations', 'job_locations.location_en', '=', 'jobs.location')
+            ->select('jobs.*', 'jobs.id as job_id', 'company_infos.*', 'company_infos.id as com_id', 'job_terms.*', 'job_locations.*')
+            ->where('company_infos.id', $id)
+            ->where('approved', true)
+            ->get();
         $com_job_count = $company_jobs->count();
 
         return view('page.company.show', [

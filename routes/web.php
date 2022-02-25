@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\AdminAboutController;
 use App\Http\Controllers\Admin\AdminCompanyInfoController;
 use App\Http\Controllers\Admin\AdmindbController;
+use App\Http\Controllers\Admin\AdminFooterController;
 use App\Http\Controllers\Admin\AdminHomepageController;
 use App\Http\Controllers\Admin\AdminJobController;
 use App\Http\Controllers\Admin\AdminUserController;
@@ -27,7 +28,7 @@ Route::get('/jobsort/{jobshow}', [JobController::class, 'jobsort'])->where('jobs
 Route::get('searchjob', [JobController::class, 'searchjob'])->name('searchjob');
 
 // About page
-Route::resource('about', AboutController::class);
+Route::resource('about', AboutController::class)->only('index');
 
 // Company page
 Route::resource('company', CompanyController::class);
@@ -57,6 +58,7 @@ Route::prefix('admin')->name('admin.')->middleware('isadmin')->group(function ()
     Route::get('/partner', [AdminHomepageController::class, 'partner'])->name('partner');
     Route::post('/partner', [AdminHomepageController::class, 'partnerstore'])->name('partner.store');
     Route::delete('/partner/{partner}', [AdminHomepageController::class, 'partnerdestroy'])->name('partner.destroy');
+    Route::resource('/footer', AdminFooterController::class);
 });
 
 // Agency Dashboard
