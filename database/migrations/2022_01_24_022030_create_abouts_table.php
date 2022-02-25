@@ -16,14 +16,10 @@ class CreateAboutsTable extends Migration
         Schema::create('abouts', function (Blueprint $table) {
             $table->id();
             $table->string('banner')->nullable();
-            $table->text('mission')->nullable();
-            $table->text('goal')->nullable();
-            $table->text('value')->nullable();
-            $table->string('email')->nullable();
-            $table->string('phone')->nullable();
-            $table->string('address')->nullable();
-            $table->string('social')->nullable();
-            $table->string('operating')->nullable();
+            $table->longText('aboutus_ch')->nullable();
+            $table->longText('aboutus_en')->nullable();
+            $table->longText('aboutus_kh')->nullable();
+            $table->longText('aboutus_th')->nullable();
             $table->timestamps();
         });
     }

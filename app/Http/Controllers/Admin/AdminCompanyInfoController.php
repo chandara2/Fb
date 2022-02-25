@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\CompanyInfo;
 use App\Models\JobIndustry;
+use App\Models\JobLocation;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
@@ -21,9 +22,11 @@ class AdminCompanyInfoController extends Controller
     {
         $companyinfos = CompanyInfo::all();
         $job_industrys = JobIndustry::get();
+        $job_locations = JobLocation::get();
         return view('admin.companyinfo', [
             'companyinfos' => $companyinfos,
             'job_industrys' => $job_industrys,
+            'job_locations' => $job_locations,
         ]);
     }
 
@@ -125,8 +128,12 @@ class AdminCompanyInfoController extends Controller
     public function edit($id)
     {
         $companyinfos = CompanyInfo::find($id);
+        $job_industrys = JobIndustry::get();
+        $job_locations = JobLocation::get();
         return view('admin.companyinfo_edit', [
             'companyinfos' => $companyinfos,
+            'job_industrys' => $job_industrys,
+            'job_locations' => $job_locations,
         ]);
     }
 

@@ -35,11 +35,37 @@
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item">{{$company->number_staff}}</li>
-                                <li class="breadcrumb-item">{{$company->industry}}</li>
-                                <li class="breadcrumb-item">{{$company->province}}</li>
+                                <li class="breadcrumb-item">
+                                    @if (app()->getLocale() == 'ch')
+                                    {{$company->industry_ch}}
+                                    @elseif(app()->getLocale() == 'en')
+                                    {{$company->industry_en}}
+                                    @elseif(app()->getLocale() == 'kh')
+                                    {{$company->industry_kh}}
+                                    @else
+                                    {{$company->industry_th}}
+                                    @endif
+                                </li>
+                                <li class="breadcrumb-item">
+                                    @if (app()->getLocale() == 'ch')
+                                    {{$company->location_ch}}
+                                    @elseif(app()->getLocale() == 'en')
+                                    {{$company->location_en}}
+                                    @elseif(app()->getLocale() == 'kh')
+                                    {{$company->location_kh}}
+                                    @else
+                                    {{$company->location_th}}
+                                    @endif
+                                </li>
                             </ol>
                         </nav>
-                    </div>
+                        @if($com_job_count>0)
+                            <span class="h2">{{ $com_job_count }}</span>
+                            <span>Active Jobs</span>
+                        @else
+                        <span>No Active Jobs</span>
+                        @endif
+                    
                 </div>
                 <div class="row my-5">
                     <div class="col-md-12">
@@ -80,11 +106,41 @@
                 <li class="list-group-item py-3">
                     <div class="row">
                         <div class="col-md-8">
-                            <a href="/job/{{$company_job->job_id}}" class="fw-bold job_title">{{ $company_job->title_en }}</a>
+                            <a href="/job/{{$company_job->job_id}}" class="fw-bold job_title">
+                                @if (app()->getLocale() == 'ch')
+                                {{$company_job->title_ch}}
+                                @elseif(app()->getLocale() == 'en')
+                                {{$company_job->title_en}}
+                                @elseif(app()->getLocale() == 'kh')
+                                {{$company_job->title_kh}}
+                                @else
+                                {{$company_job->title_th}}
+                                @endif
+                            </a>
                             @if($company_job->expired_job>now()->addDays(7)) <span class="bg-warning badge">New</span>
                             @else <span class="bg-danger badge">Urgent</span> @endif
                             <div class="py-1"><a href="/company/{{$company_job->com_id}}" class="com_name">{{ $company_job->company }}</a></div>
-                            <div style="font-size: 12px;" class="text-muted">{{ $company_job->term }} | {{ $company_job->location }} <span class="text-danger px-1">{{ $company_job->salary }}</span></div>
+                            <div style="font-size: 12px;" class="text-muted">
+                                @if (app()->getLocale() == 'ch')
+                                {{$company_job->term_ch}}
+                                @elseif(app()->getLocale() == 'en')
+                                {{$company_job->term_en}}
+                                @elseif(app()->getLocale() == 'kh')
+                                {{$company_job->term_kh}}
+                                @else
+                                {{$company_job->term_th}}
+                                @endif
+                                | 
+                                @if (app()->getLocale() == 'ch')
+                                {{$company_job->location_ch}}
+                                @elseif(app()->getLocale() == 'en')
+                                {{$company_job->location_en}}
+                                @elseif(app()->getLocale() == 'kh')
+                                {{$company_job->location_kh}}
+                                @else
+                                {{$company_job->location_th}}
+                                @endif
+                                <span class="text-danger px-1">{{ $company_job->salary }}</span></div>
                         </div>
                         <div class="col-md-4 text-md-end text-sm-start">{{  date('d \\ M Y', strtotime($company_job->expired_job)) }}</div>
                     </div>

@@ -20,7 +20,7 @@
         </nav>
     </div>
 
-    <!-- Modal Add about info -->
+    <!-- Modal Add company info -->
     <div class="modal fade" id="showCompanyModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
@@ -41,7 +41,7 @@
                         <div class="form-group mb-md-3">
                             <label>Industry</label>
                             <select name="industry" value="{{ old('industry') }}" class="form-select">
-                                <option selected disabled>Select Job Industry</option>
+                                <option selected disabled>Select Company Industry</option>
                                 @foreach ($job_industrys as $job_industry)
                                     <option>{{ $job_industry->industry_en }}</option>
                                 @endforeach
@@ -63,9 +63,15 @@
 
                         <div class="form-group mb-md-3">
                             <label>Province/City</label>
-                            <input name="province" type="text" class="form-control">
+                            <select name="province" value="{{ old('province') }}" class="form-select">
+                                <option selected disabled>Select Company Province</option>
+                                @foreach ($job_locations as $location)
+                                    <option>{{ $location->location_en }}</option>
+                                @endforeach
+                            </select>
                             <span class="text-danger error-text province_error"></span>
                         </div>
+
 
                         <div class="form-group mb-md-3">
                             <label>Detail Location</label>

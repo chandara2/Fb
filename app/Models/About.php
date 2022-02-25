@@ -11,13 +11,9 @@ class About extends Model
 
     protected $fillable = [
         'banner',
-        'mission',
-        'goal',
-        'value',
-        'email',
-        'phone',
-        'address',
-        'social',
-        'operating',
+        'aboutus_ch',
+        'aboutus_en',
+        'aboutus_kh',
+        'aboutus_th',
     ];
 }

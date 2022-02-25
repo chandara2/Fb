@@ -40,51 +40,27 @@
                         </div>
                 
                         <div class="form-group mb-md-3">
-                            <label>Mission</label>
-                            <textarea name="mission" class="textarea_autosize form-control"></textarea>
-                            <span class="text-danger error-text mission_error"></span>
+                            <label>About info. Chinese</label>
+                            <textarea name="aboutus_ch" class="textarea_autosize form-control summernote"></textarea>
+                            <span class="text-danger error-text aboutus_ch_error"></span>
                         </div>
-                
+
                         <div class="form-group mb-md-3">
-                            <label>Goal</label>
-                            <textarea name="goal" class="textarea_autosize form-control"></textarea>
-                            <span class="text-danger error-text goal_error"></span>
+                            <label>About info. English</label>
+                            <textarea name="aboutus_en" class="textarea_autosize form-control summernote"></textarea>
+                            <span class="text-danger error-text aboutus_en_error"></span>
                         </div>
-                
+
                         <div class="form-group mb-md-3">
-                            <label>Value</label>
-                            <textarea name="value" class="textarea_autosize form-control"></textarea>
-                            <span class="text-danger error-text value_error"></span>
+                            <label>About info. Khmer</label>
+                            <textarea name="aboutus_kh" class="textarea_autosize form-control summernote"></textarea>
+                            <span class="text-danger error-text aboutus_kh_error"></span>
                         </div>
-                
+
                         <div class="form-group mb-md-3">
-                            <label>Email</label>
-                            <input name="email" type="email" class="form-control">
-                            <span class="text-danger error-text email_error"></span>
-                        </div>
-                
-                        <div class="form-group mb-md-3">
-                            <label>Phone</label>
-                            <input name="phone" type="text" class="form-control">
-                            <span class="text-danger error-text phone_error"></span>
-                        </div>
-                
-                        <div class="form-group mb-md-3">
-                            <label>Address</label>
-                            <input name="address" type="text" class="form-control">
-                            <span class="text-danger error-text address_error"></span>
-                        </div>
-                
-                        <div class="form-group mb-md-3">
-                            <label>Social Media</label>
-                            <input name="social" type="text" class="form-control">
-                            <span class="text-danger error-text social_error"></span>
-                        </div>
-                
-                        <div class="form-group mb-md-3">
-                            <label>Operating</label>
-                            <input name="operating" type="text" class="form-control" placeholder="Day&time">
-                            <span class="text-danger error-text operating_error"></span>
+                            <label>About info. Thai</label>
+                            <textarea name="aboutus_th" class="textarea_autosize form-control summernote"></textarea>
+                            <span class="text-danger error-text aboutus_th_error"></span>
                         </div>
                 
                         <div class="modal-footer">
