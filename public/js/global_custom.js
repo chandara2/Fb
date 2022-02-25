@@ -24,4 +24,4 @@ $(document).ready(function() {
 autosize(document.getElementsByClassName("textarea_autosize"));
 
 //Summernote
-$('#summernote').summernote();
+$('.summernote').summernote();

@@ -75,7 +75,7 @@
 
                         <div class="form-group mb-md-3">
                             <label>Company Profile</label>
-                            <textarea name="company_profile" class="textarea_autosize form-control"></textarea>
+                            <textarea name="company_profile" class="textarea_autosize form-control summernote"></textarea>
                             <span class="text-danger error-text company_profile_error"></span>
                         </div>
 

@@ -277,7 +277,7 @@
                             ">
 
                             @foreach ($companylogos as $companylogo)
-                            <div class="slide-item2 py-3 d-flex justify-content-around border border-white">
+                            <div class="slide-item2 py-3 d-flex justify-content-around border border-light border-5">
                                 <a href="company/{{$companylogo->id}}"><img src="upload/companylogo/{{$companylogo->logo}}" alt="CompanyLogo" height="65" width="65" style="object-fit: contain;"></a>
                             </div>
                             @endforeach
@@ -286,12 +286,13 @@
 
                 </div>
             </div>
-
+            
+            @if ($con_rec_count > 0)
             <div class="row mb-5">
                 <div class="col-md-12">
                     <h4 class="underline_highlight">Recruitment Agencies</h4>
                     <div id="slick3">
-                        @foreach ($companylogos as $companylogo)
+                        @foreach ($company_recruitment as $companylogo)
                         <div class="slide-item3 py-3 d-flex justify-content-around border border-white">
                             <a href="company/{{$companylogo->id}}"><img src="upload/companylogo/{{$companylogo->logo}}" alt="CompanyLogo" width="65" height="65" style="object-fit: cover;"></a>
                         </div>
@@ -300,6 +301,7 @@
 
                 </div>
             </div>
+            @endif
 
             <div class="row mb-5">
                 <div class="col-md-12">
@@ -503,7 +505,7 @@
             speed: 300,
             // autoplay: true,
             autoplaySpeed: 4000,
-            slidesToShow: 5,
+            slidesToShow: 6,
         });
 
         $('#slick4').slick({
@@ -513,7 +515,7 @@
             speed: 300,
             autoplay: true,
             autoplaySpeed: 10000,
-            slidesToShow: 5,
+            slidesToShow: 6,
         }); 
     </script>
 @endsection

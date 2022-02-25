@@ -22,6 +22,9 @@ class AppController extends Controller
     public function index()
     {
         $companylogos = CompanyInfo::select('company_infos.logo', 'company_infos.id')->get();
+        $company_recruitment = CompanyInfo::select('company_infos.logo', 'company_infos.id')->where('company_infos.recruitment', true)->get();
+        $con_rec_count = $company_recruitment->count();
+        // dd($company_recruitment);
         $comlogocounts = $companylogos->count();
         $homepage_slide = Homepage::select('slide')->get();
         $partners = Partner::select('logo', 'link')->get();
@@ -139,6 +142,8 @@ class AppController extends Controller
             ->get();
         return view('app', [
             'companylogos' => $companylogos,
+            'company_recruitment' => $company_recruitment,
+            'con_rec_count' => $con_rec_count,
             'comlogocounts' => $comlogocounts,
             'homepage_slide' => $homepage_slide,
             'partners' => $partners,

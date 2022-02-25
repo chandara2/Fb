@@ -54,8 +54,10 @@
                 <label class="col-xl-3 col-md-2 col-form-label text-md-end pb-0">Company Profile</label>
                 <div class="col-xl-6 col-md-8 mb-md-0 mb-sm-2">
                     <div class="form-floating">
-                        <textarea class="textarea_autosize form-control" name="company_profile">
-                            {{ $companyinfos->company_profile }}
+                        <textarea class="textarea_autosize form-control summernote" name="company_profile">
+                            @php
+                                echo $companyinfos->company_profile
+                            @endphp
                         </textarea>
                         <span class="text-danger">@error('company_profile'){{$message}}@enderror</span>
                     </div>
@@ -96,6 +98,13 @@
                 <div class="col-xl-6 col-md-8 mb-md-0 mb-sm-2">
                     <input type="text" name="contact_phone" value="{{ $companyinfos->contact_phone }}" class="form-control">
                     <span class="text-danger">@error('contact_phone'){{$message}}@enderror</span>
+                </div>
+            </div>
+
+            <div class="form-group row mb-md-3">
+                <label class="col-xl-3 col-md-2 col-form-label text-md-end pb-0">Recruitment Agency</label>
+                <div class="col-xl-6 col-md-8 mb-md-0 mb-sm-2">
+                    <input class="form-check-input" type="checkbox" name="recruitment" @if($companyinfos->recruitment == 1) checked @endif> Is Recruitment Agency
                 </div>
             </div>
 

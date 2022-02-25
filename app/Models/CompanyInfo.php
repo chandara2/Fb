@@ -23,6 +23,7 @@ class CompanyInfo extends Model
         'contact_position',
         'contact_email',
         'contact_phone',
+        'recruitment',
     ];
 
     // public function users()

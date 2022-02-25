@@ -178,6 +178,7 @@ class AdminCompanyInfoController extends Controller
         $companyinfo->contact_email = $request->contact_email;
         $companyinfo->contact_phone = $request->contact_phone;
         $companyinfo->company_profile = $request->company_profile;
+        $companyinfo->recruitment = $request->boolean('recruitment');
 
         if ($request->hasFile('logo')) {
             $path = 'upload/companylogo/' . $companyinfo->logo;

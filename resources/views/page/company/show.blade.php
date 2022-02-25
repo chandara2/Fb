@@ -44,7 +44,11 @@
                 <div class="row my-5">
                     <div class="col-md-12">
                         <h5 style="text-decoration: underline 3px solid pink">Company Profile</h5>
-                        <textarea disabled class="textarea_autosize form-control border-0 bg-light">{{$company->company_profile}}</textarea>
+                        <!-- Summernote -->
+                        @php
+                            echo $company->company_profile
+                        @endphp
+                        <!-- Summernote -->
                         <br>
                         <h5 style="text-decoration: underline 3px solid pink">Location</h5>
                         <p>{{$company->detail_location}}</p>

@@ -216,7 +216,7 @@
                 
                         <div class="form-group mb-md-3">
                             <label>Detail</label>
-                            <textarea name="detail" class="textarea_autosize form-control" id="summernote"></textarea>
+                            <textarea name="detail" class="textarea_autosize form-control summernote"></textarea>
                             <span class="text-danger error-text detail_error"></span>
                         </div>
                 

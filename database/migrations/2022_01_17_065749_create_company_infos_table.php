@@ -24,13 +24,14 @@ class CreateCompanyInfosTable extends Migration
             $table->string('industry')->nullable();
             $table->string('number_staff')->nullable();
             $table->string('website')->nullable();
-            $table->text('company_profile')->nullable();
+            $table->mediumText('company_profile')->nullable();
             $table->string('province')->nullable();
             $table->string('detail_location')->nullable();
             $table->string('contact_name')->nullable();
             $table->string('contact_position')->nullable();
             $table->string('contact_email')->nullable();
             $table->string('contact_phone')->nullable();
+            $table->boolean('recruitment')->default(0);
 
             $table->timestamps();
         });
