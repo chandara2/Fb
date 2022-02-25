@@ -17,51 +17,28 @@
     </div>
 </section>
 
-<section>
-    <div class="container mt-5">
-        <p class="h4 text-decoration-underline">Our Mission</p>
-        <textarea disabled class="textarea_autosize form-control border-0 bg-light">{{$about->mission}}</textarea>
-    </div>
-</section>
+<div class="container my-5">
+    @if (app()->getLocale() == 'ch')
+        <!-- Summernote -->
+        @php
+            echo $about->aboutus_ch
+        @endphp
+        <!-- Summernote -->
+    @elseif(app()->getLocale() == 'en')
+        @php
+            echo $about->aboutus_en
+        @endphp
+    @elseif(app()->getLocale() == 'kh')
+        @php
+            echo $about->aboutus_kh
+        @endphp
+    @else
+        @php
+            echo $about->aboutus_th
+        @endphp             
+    @endif
+</div>
 
-<section>
-    <div class="container">
-        <p class="h4 text-decoration-underline mt-3">Goals</p>
-        <textarea disabled class="textarea_autosize form-control border-0 bg-light">{{$about->goal}}</textarea>
-        <p class="h4 text-decoration-underline mt-3">Values</p>
-        <textarea disabled class="textarea_autosize form-control border-0 bg-light">{{$about->value}}</textarea>
-    </div>
-</section>
-
-<section>
-    <div class="container">
-        <p class="h4 text-center text-decoration-underline mt-3">Contact Us</p>
-        <div class="row">
-
-            <div class="col-md-4">
-                <p class="fw-bold">Jobs Posting Email</p>
-                <p>{{$about->email}}</p>
-            </div>
-
-            <div class="col-md-4">
-                <p class="fw-bold">Service Hotline</p>
-                <p>{{$about->phone}}</p>
-            </div>
-
-            <div class="col-md-4">
-                <p class="fw-bold">Our Address</p>
-                <p>{{$about->address}}</p>
-            </div>
-
-        </div>
-    </div>
-</section>
-
-<section>
-    <div class="container">
-        <p class="h4 text-decoration-underline mt-3">Map Company</p>
-    </div>
-</section>
 @empty
 <p class="text-center">No About us info. to show</p>
 @endforelse

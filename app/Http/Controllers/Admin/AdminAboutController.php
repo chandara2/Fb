@@ -113,15 +113,15 @@ class AdminAboutController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'aboutus_ch' => 'required',
+            'aboutus_ch' => 'required_without:aboutus_en',
             'aboutus_en' => 'required',
-            'aboutus_kh' => 'required',
-            'aboutus_th' => 'required',
+            'aboutus_kh' => 'required_without:aboutus_en',
+            'aboutus_th' => 'required_without:aboutus_en',
         ], [
-            'aboutus_ch.required' => 'Please input about us page infomation in Chinese',
+            'aboutus_ch.required_without' => 'Please input about us page infomation in Chinese',
             'aboutus_en.required' => 'Please input about us page infomation in English',
-            'aboutus_kh.required' => 'Please input about us page infomation in Khmer',
-            'aboutus_th.required' => 'Please input about us page infomation in Thai',
+            'aboutus_kh.required_without' => 'Please input about us page infomation in Khmer',
+            'aboutus_th.required_without' => 'Please input about us page infomation in Thai',
         ]);
 
         $abouts = About::find($id);

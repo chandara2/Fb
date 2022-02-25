@@ -8,7 +8,7 @@
         </div>
     </div>
 
-    <div class="container-fluid">
+    <div class="container">
         <nav aria-label="breadcrumb" style="--bs-breadcrumb-divider: '|';" class="mt-3">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}" class="text-decoration-none">Dashboard</a></li>
@@ -73,41 +73,49 @@
         </div>
     </div> <!-- end add modal -->
 
-    <div class="container-fluid">
+    <div class="container">
         <ul class="list-group list-group-flush mt-3 position-relative">
             @forelse ($abouts as $about)
     
             <li class="list-group-item text-center">
                 <img src="{{asset('upload/aboutsbanner/')}}/{{$about->banner}}" alt="Banner" width="256" class="img-thumbnail" style="max-height: 128px; object-fit: cover;">
             </li>
-            <li class="list-group-item">
-                <div class="text-danger h4">Mission</div>
-                <textarea disabled class="textarea_autosize form-control border-0 bg-white">{{$about->mission}}</textarea>
-            </li>
-            <li class="list-group-item">
-                <div class="text-danger h4">Goal</div>
-                <textarea disabled class="textarea_autosize form-control border-0 bg-white">{{$about->goal}}</textarea>
-            </li>
-            <li class="list-group-item">
-                <div class="text-danger h4">Value</div>
-                <textarea disabled class="textarea_autosize form-control border-0 bg-white">{{$about->value}}</textarea>
-            </li>
-            <li class="list-group-item">
-                <span class="text-danger h4">Email</span>
-                <textarea disabled class="textarea_autosize form-control border-0 bg-white">{{$about->email}}</textarea>
-            </li>
-            <li class="list-group-item">
-                <span class="text-danger h4">Phone</span>
-                <textarea disabled class="textarea_autosize form-control border-0 bg-white">{{$about->phone}}</textarea>
-            </li>
-            <li class="list-group-item">
-                <span class="text-danger h4">Social Media</span>
-                <textarea disabled class="textarea_autosize form-control border-0 bg-white">{{$about->social}}</textarea>
-            </li>
-            <li class="list-group-item">
-                <span class="text-danger h4">Operating Hours</span>
-                <textarea disabled class="textarea_autosize form-control border-0 bg-white">{{$about->operating}}</textarea>
-            </li>
+            <nav class="nav nav-tabs" id="nav-tab" role="tablist">
+                <a class="nav-link" id="nav-ch-tab" data-bs-toggle="tab" href="#nav-ch" role="tab" aria-controls="nav-ch" aria-selected="false">Chinese</a>
+                <a class="nav-link active" id="nav-en-tab" data-bs-toggle="tab" href="#nav-en" role="tab" aria-controls="nav-en" aria-selected="true">English</a>
+                <a class="nav-link" id="nav-kh-tab" data-bs-toggle="tab" href="#nav-kh" role="tab" aria-controls="nav-kh" aria-selected="false">Khmer</a>
+                <a class="nav-link" id="nav-th-tab" data-bs-toggle="tab" href="#nav-th" role="tab" aria-controls="nav-th" aria-selected="false">Thai</a>
+            </nav>
+            <div class="tab-content" id="nav-tabContent">
+                <div class="tab-pane fade" id="nav-ch" role="tabpanel" aria-labelledby="nav-ch-tab">
+                    <!-- Summernote -->
+                    @php
+                        echo $about->aboutus_ch
+                    @endphp
+                    <!-- Summernote -->
+                </div>
+                <div class="tab-pane fade show active" id="nav-en" role="tabpanel" aria-labelledby="nav-en-tab">
+                    <!-- Summernote -->
+                    @php
+                        echo $about->aboutus_en
+                    @endphp
+                    <!-- Summernote -->
+                </div>
+                <div class="tab-pane fade" id="nav-kh" role="tabpanel" aria-labelledby="nav-kh-tab">
+                    <!-- Summernote -->
+                    @php
+                        echo $about->aboutus_kh
+                    @endphp
+                    <!-- Summernote -->
+                </div>
+                <div class="tab-pane fade" id="nav-th" role="tabpanel" aria-labelledby="nav-th-tab">
+                    <!-- Summernote -->
+                    @php
+                        echo $about->aboutus_th
+                    @endphp
+                    <!-- Summernote -->
+                </div>
+            </div>
 
             <div class="position-absolute top-0 end-0">
                 <a href="{{ route('admin.about.edit', $about->id) }}" class="btn"><i class="bi bi-pencil-square text-muted pe-0" style="font-size:24px;"></i></a>
