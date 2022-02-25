@@ -265,7 +265,7 @@
 
             <div class="row mb-5 mt-xl-1 mt-md-5">
                 <div class="col-md-12">
-                    <h4 class="underline_highlight">Featured Employers</h4>
+                    <h4 class="underline_highlight">{{ __('text.Featured_employers') }}</h4>
 
                     <div class="slick-wrapper w-100 bg-white">
                         <div class="
@@ -286,15 +286,15 @@
 
                 </div>
             </div>
-            
+
             @if ($con_rec_count > 0)
             <div class="row mb-5">
                 <div class="col-md-12">
-                    <h4 class="underline_highlight">Recruitment Agencies</h4>
+                    <h4 class="underline_highlight">{{ __('text.Recruitment_agencies') }}</h4>
                     <div id="slick3">
                         @foreach ($company_recruitment as $companylogo)
-                        <div class="slide-item3 py-3 d-flex justify-content-around border border-white">
-                            <a href="company/{{$companylogo->id}}"><img src="upload/companylogo/{{$companylogo->logo}}" alt="CompanyLogo" width="65" height="65" style="object-fit: cover;"></a>
+                        <div class="slide-item3 py-3 d-flex justify-content-around border border-white border-5">
+                            <a href="company/{{$companylogo->id}}"><img src="upload/companylogo/{{$companylogo->logo}}" alt="CompanyLogo" width="65" height="65" style="object-fit: contain;"></a>
                         </div>
                         @endforeach
                     </div>
@@ -305,7 +305,7 @@
 
             <div class="row mb-5">
                 <div class="col-md-12">
-                    <h4 class="underline_highlight">Career Resource</h4>
+                    <h4 class="underline_highlight">{{ __('text.Career_resource') }}</h4>
                     <div class="row g-3">
                         <div class="col-md-4">
                             <div class="bg-white rounded p-3">
@@ -347,11 +347,11 @@
 
             <div class="row mb-5">
                 <div class="col-md-12">
-                    <h4 class="underline_highlight">Cooperation Partners</h4>
+                    <h4 class="underline_highlight">{{ __('text.Cooperatio_partners') }}</h4>
                     <div id="slick4">
                         @foreach ($partners as $partner)
-                        <div class="slide-item4 py-3 d-flex justify-content-around border border-white">
-                            <a href="{{$partner->link}}" target="_blank"><img src="upload/partnerlogo/{{$partner->logo}}" alt="Partner Logo" width="65" height="65" style="object-fit: cover;"></a>
+                        <div class="slide-item4 py-3 d-flex justify-content-around border border-white border-5">
+                            <a href="{{$partner->link}}" target="_blank"><img src="upload/partnerlogo/{{$partner->logo}}" alt="Partner Logo" width="65" height="65" style="object-fit: contain;"></a>
                         </div>
                         @endforeach
                     </div>

@@ -16,6 +16,8 @@
         <!-- Slick Slider -->
         <link rel="stylesheet" href="{{ asset('asset/slick/slick.css') }}">
         <link rel="stylesheet" href="{{ asset('asset/slick/slick-theme.css') }}">
+        <!-- Summernote -->
+        <link rel="stylesheet" href="{{asset('asset/summernote/summernote-lite.min.css')}}">
         <!-- Global Custom CSS -->
         <link rel="stylesheet" href="{{ asset('css/global_custom.css') }}">
         <!-- Individual Custom CSS -->
@@ -48,6 +50,8 @@
         <script src="{{ asset('asset/slick/slick.js') }}"></script>
         <!-- Auto Resize Textarea -->
         <script src="{{ asset('asset/autosize.min.js') }}"></script>
+        <!-- Summernote -->
+        <script src="{{ asset('asset/summernote/summernote-lite.min.js') }}"></script>
         <!-- Global Custom JS -->
         <script src="{{ asset('js/global_custom.js') }}"></script>
         <!-- Individual Custom CSS -->

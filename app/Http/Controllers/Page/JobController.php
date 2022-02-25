@@ -164,23 +164,53 @@ class JobController extends Controller
                 ->join('job_industries', 'job_industries.industry_en', '=', 'jobs.industry')
                 ->join('job_locations', 'job_locations.location_en', '=', 'jobs.location')
                 ->join('job_salaries', 'job_salaries.salary_en', '=', 'jobs.salary')
+                ->join('job_qualifications', 'job_qualifications.qualification_en', '=', 'jobs.qualification')
+                ->join('job_genders', 'job_genders.gender_en', '=', 'jobs.sex')
+                ->join('job_terms', 'job_terms.term_en', '=', 'jobs.term')
                 ->select('jobs.*', 'jobs.id as job_id', 'company_infos.*', 'company_infos.id as com_id','job_functions.*','job_industries.*', 'job_locations.*', 'job_salaries.*')
-                ->where('title_en', 'LIKE', "%$searchjob%")
+                //Search by
                 ->orWhere('company', 'LIKE', "%$searchjob%")
-                // ->orWhere('industry', 'LIKE', "%$searchjob%")
-                ->orWhere('function', 'LIKE', "%$searchjob%")
-                ->orWhere('location', 'LIKE', "%$searchjob%")
-                ->orWhere('salary', 'LIKE', "%$searchjob%")
-                ->orWhere('age', 'LIKE', "%$searchjob%")
-                // ->orWhere('contact', 'LIKE', "%$searchjob%")
-                // ->orWhere('expired_job', 'LIKE', "%$searchjob%")
-                ->orWhere('hiring', 'LIKE', "%$searchjob%")
-                ->orWhere('language', 'LIKE', "%$searchjob%")
-                ->orWhere('qualification', 'LIKE', "%$searchjob%")
-                ->orWhere('sex', 'LIKE', "%$searchjob%")
-                ->orWhere('term', 'LIKE', "%$searchjob%")
-                // ->orWhere('year_of_exp', 'LIKE', "%$searchjob%")
-                // ->orWhere('detail', 'LIKE', "%$searchjob%")
+
+                ->where('title_ch', 'LIKE', "%$searchjob%")
+                ->orWhere('title_en', 'LIKE', "%$searchjob%")
+                ->orWhere('title_kh', 'LIKE', "%$searchjob%")
+                ->orWhere('title_th', 'LIKE', "%$searchjob%")
+                
+                ->orWhere('industry_ch', 'LIKE', "%$searchjob%")
+                ->orWhere('industry_en', 'LIKE', "%$searchjob%")
+                ->orWhere('industry_kh', 'LIKE', "%$searchjob%")
+                ->orWhere('industry_th', 'LIKE', "%$searchjob%")
+
+                ->orWhere('function_ch', 'LIKE', "%$searchjob%")
+                ->orWhere('function_en', 'LIKE', "%$searchjob%")
+                ->orWhere('function_kh', 'LIKE', "%$searchjob%")
+                ->orWhere('function_th', 'LIKE', "%$searchjob%")
+
+                ->orWhere('location_ch', 'LIKE', "%$searchjob%")
+                ->orWhere('location_en', 'LIKE', "%$searchjob%")
+                ->orWhere('location_kh', 'LIKE', "%$searchjob%")
+                ->orWhere('location_th', 'LIKE', "%$searchjob%")
+
+                ->orWhere('salary_ch', 'LIKE', "%$searchjob%")
+                ->orWhere('salary_en', 'LIKE', "%$searchjob%")
+                ->orWhere('salary_kh', 'LIKE', "%$searchjob%")
+                ->orWhere('salary_th', 'LIKE', "%$searchjob%")
+
+                ->orWhere('qualification_ch', 'LIKE', "%$searchjob%")
+                ->orWhere('qualification_en', 'LIKE', "%$searchjob%")
+                ->orWhere('qualification_kh', 'LIKE', "%$searchjob%")
+                ->orWhere('qualification_th', 'LIKE', "%$searchjob%")
+                
+                ->orWhere('gender_ch', 'LIKE', "%$searchjob%")
+                ->orWhere('gender_en', 'LIKE', "%$searchjob%")
+                ->orWhere('gender_kh', 'LIKE', "%$searchjob%")
+                ->orWhere('gender_th', 'LIKE', "%$searchjob%")
+
+                ->orWhere('term_ch', 'LIKE', "%$searchjob%")
+                ->orWhere('term_en', 'LIKE', "%$searchjob%")
+                ->orWhere('term_kh', 'LIKE', "%$searchjob%")
+                ->orWhere('term_th', 'LIKE', "%$searchjob%")
+
                 ->paginate(10)->withQueryString();
         } else {
             $jobscoms = DB::table('jobs')
