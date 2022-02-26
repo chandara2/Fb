@@ -11,7 +11,7 @@
             <a href="{{ route('admin.footer.index') }}"><button type="button" class="btn-close"></button></a>
             </div>
             <div class="modal-body">
-                <form method="POST" enctype="multipart/form-data" action="{{ route('admin.footer.update', $footercontact->id) }}">
+                <form method="POST" enctype="multipart/form-data" action="{{ route('admin.footer.update', $footerct->id) }}">
                     @csrf
                     @method('PUT')
                     
@@ -20,7 +20,7 @@
                         <label>Footer contact in Chinese</label>
                         <textarea class="textarea_autosize form-control summernote" name="contact_ch">
                             @php
-                                echo $footercontact->contact_ch
+                                echo $footerct->contact_ch
                             @endphp
                         </textarea>
                         <span class="text-danger">@error('contact_ch'){{$message}}@enderror</span>
@@ -29,7 +29,7 @@
                         <label>Footer contact in English</label>
                         <textarea class="textarea_autosize form-control summernote" name="contact_en">
                             @php
-                                echo $footercontact->contact_en
+                                echo $footerct->contact_en
                             @endphp
                         </textarea>
                         <span class="text-danger">@error('contact_en'){{$message}}@enderror</span>
@@ -38,7 +38,7 @@
                         <label>Footer contact in Khmer</label>
                         <textarea class="textarea_autosize form-control summernote" name="contact_kh">
                             @php
-                                echo $footercontact->contact_kh
+                                echo $footerct->contact_kh
                             @endphp
                         </textarea>
                         <span class="text-danger">@error('contact_kh'){{$message}}@enderror</span>
@@ -47,7 +47,7 @@
                         <label>Footer contact in Thai</label>
                         <textarea class="textarea_autosize form-control summernote" name="contact_th">
                             @php
-                                echo $footercontact->contact_th
+                                echo $footerct->contact_th
                             @endphp
                         </textarea>
                         <span class="text-danger">@error('contact_th'){{$message}}@enderror</span>

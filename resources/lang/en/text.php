@@ -8,6 +8,7 @@ return [
     'Career_resource' => 'Career Resource',
     'Company_profile' => 'Company Profile',
     'Contact_information' => 'Contact Information',
+    'Contact_us' => 'Contact Us',
     'Cooperatio_partners' => 'Cooperation Partners',
     'Featured_employers' => 'Featured Employers',
     'Function' => 'Function',

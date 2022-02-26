@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class FooterSocialMedia extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'social_media',
+        'social_media_link',
+    ];
 }

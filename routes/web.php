@@ -59,6 +59,10 @@ Route::prefix('admin')->name('admin.')->middleware('isadmin')->group(function ()
     Route::post('/partner', [AdminHomepageController::class, 'partnerstore'])->name('partner.store');
     Route::delete('/partner/{partner}', [AdminHomepageController::class, 'partnerdestroy'])->name('partner.destroy');
     Route::resource('/footer', AdminFooterController::class);
+    Route::post('/footersm', [AdminFooterController::class, 'footersm_store'])->name('footersm.store');
+    Route::delete('/footersm/{footersm}', [AdminFooterController::class, 'footersm_destroy'])->name('footersm.destroy');
+    Route::post('/footerqrcode', [AdminFooterController::class, 'footerqrcode_store'])->name('footerqrcode.store');
+    Route::delete('/footerqrcode/{footerqrcode}', [AdminFooterController::class, 'footerqrcode_destroy'])->name('footerqrcode.destroy');
 });
 
 // Agency Dashboard

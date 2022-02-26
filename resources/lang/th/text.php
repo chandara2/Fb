@@ -8,6 +8,7 @@ return [
     'Career_resource' => 'ทรัพยากรอาชีพ',
     'Company_profile' => 'ข้อมูลบริษัท',
     'Contact_information' => 'ข้อมูลติดต่อ',
+    'Contact_us' => 'ติดต่อเรา',
     'Cooperatio_partners' => 'พันธมิตรความร่วมมือ',
     'Featured_employers' => 'นายจ้างที่โดดเด่น',
     'Function' => 'การทำงาน',

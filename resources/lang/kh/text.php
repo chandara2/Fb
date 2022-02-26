@@ -8,6 +8,7 @@ return [
     'Career_resource' => 'អត្ថបទការងារ',
     'Company_profile' => 'ប្រវត្តិ​ក្រុមហ៊ុន',
     'Contact_information' => 'ព័ត៌មានទំនាក់ទំនង',
+    'Contact_us' => 'ទាក់ទង​មក​ពួក​យើង',
     'Cooperatio_partners' => 'ដៃគូសហប្រតិបត្តិការ',
     'Featured_employers' => 'ក្រុមហ៊ុនស្តង់ដារ',
     'Function' => 'មុខងារ',
