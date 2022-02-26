@@ -11,21 +11,18 @@
     <div class="container"> <!-- Breadcrumb list -->
         <nav aria-label="breadcrumb" style="--bs-breadcrumb-divider: '|';" class="mt-3">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}" class="text-decoration-none">Dashboard</a></li>
                 <li class="breadcrumb-item active" aria-current="page">Footer</li>
                 @if ($footercontact->isEmpty())
                     <li class="breadcrumb-item">
                         <a href="#" class="text-decoration-none" data-bs-toggle="modal" data-bs-target="#showFooterContactModal">Add Contact</a>
                     </li>
                 @endif
-                
                 <li class="breadcrumb-item">
                     <a href="#" class="text-decoration-none" data-bs-toggle="modal" data-bs-target="#showFooterSmModal">Add Social Media</a>
                 </li>
                 <li class="breadcrumb-item">
                     <a href="#" class="text-decoration-none" data-bs-toggle="modal" data-bs-target="#showFooterQrcodeModal">Add Qrcode</a>
                 </li>
-
             </ol>
         </nav>
     </div>
@@ -35,8 +32,8 @@
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header bg-info bg-opacity-50">
-                <h5 class="modal-title" id="exampleModalLabel">Create Footer Contact</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <h5 class="modal-title" id="exampleModalLabel">Create Footer Contact</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <form method="POST" action="{{ route('admin.footer.store') }}" id="addFooterContactFormId">
@@ -78,8 +75,8 @@
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header bg-info bg-opacity-50">
-                <h5 class="modal-title" id="exampleModalLabel">Create Footer social media</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <h5 class="modal-title" id="exampleModalLabel">Create Footer social media</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <form method="POST" action="{{ route('admin.footersm.store') }}" id="addFooterSmFormId">
@@ -112,8 +109,8 @@
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header bg-info bg-opacity-50">
-                <h5 class="modal-title" id="exampleModalLabel">Create Footer Qrcode</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <h5 class="modal-title" id="exampleModalLabel">Create Footer Qrcode</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <form method="POST" action="{{ route('admin.footerqrcode.store') }}" id="addFooterQrcodeFormId">
@@ -151,46 +148,46 @@
         <ul class="list-group list-group-flush position-relative ps-0">
             @forelse ($footercontact as $footerct)
     
-            <nav class="nav nav-tabs" id="nav-tab" role="tablist">
-                <a class="nav-link" id="nav-ch-tab" data-bs-toggle="tab" href="#nav-ch" role="tab" aria-controls="nav-ch" aria-selected="false">Chinese</a>
-                <a class="nav-link active" id="nav-en-tab" data-bs-toggle="tab" href="#nav-en" role="tab" aria-controls="nav-en" aria-selected="true">English</a>
-                <a class="nav-link" id="nav-kh-tab" data-bs-toggle="tab" href="#nav-kh" role="tab" aria-controls="nav-kh" aria-selected="false">Khmer</a>
-                <a class="nav-link" id="nav-th-tab" data-bs-toggle="tab" href="#nav-th" role="tab" aria-controls="nav-th" aria-selected="false">Thai</a>
-            </nav>
-            <div class="tab-content" id="nav-tabContent">
-                <div class="tab-pane fade" id="nav-ch" role="tabpanel" aria-labelledby="nav-ch-tab">
-                    <!-- Summernote -->
-                    @php
-                        echo $footerct->contact_ch
-                    @endphp
-                    <!-- Summernote -->
+                <nav class="nav nav-tabs" id="nav-tab" role="tablist">
+                    <a class="nav-link" id="nav-ch-tab" data-bs-toggle="tab" href="#nav-ch" role="tab" aria-controls="nav-ch" aria-selected="false">Chinese</a>
+                    <a class="nav-link active" id="nav-en-tab" data-bs-toggle="tab" href="#nav-en" role="tab" aria-controls="nav-en" aria-selected="true">English</a>
+                    <a class="nav-link" id="nav-kh-tab" data-bs-toggle="tab" href="#nav-kh" role="tab" aria-controls="nav-kh" aria-selected="false">Khmer</a>
+                    <a class="nav-link" id="nav-th-tab" data-bs-toggle="tab" href="#nav-th" role="tab" aria-controls="nav-th" aria-selected="false">Thai</a>
+                </nav>
+                <div class="tab-content" id="nav-tabContent">
+                    <div class="tab-pane fade" id="nav-ch" role="tabpanel" aria-labelledby="nav-ch-tab">
+                        <!-- Summernote -->
+                        @php
+                            echo $footerct->contact_ch
+                        @endphp
+                        <!-- Summernote -->
+                    </div>
+                    <div class="tab-pane fade show active" id="nav-en" role="tabpanel" aria-labelledby="nav-en-tab">
+                        <!-- Summernote -->
+                        @php
+                            echo $footerct->contact_en
+                        @endphp
+                        <!-- Summernote -->
+                    </div>
+                    <div class="tab-pane fade" id="nav-kh" role="tabpanel" aria-labelledby="nav-kh-tab">
+                        <!-- Summernote -->
+                        @php
+                            echo $footerct->contact_kh
+                        @endphp
+                        <!-- Summernote -->
+                    </div>
+                    <div class="tab-pane fade" id="nav-th" role="tabpanel" aria-labelledby="nav-th-tab">
+                        <!-- Summernote -->
+                        @php
+                            echo $footerct->contact_th
+                        @endphp
+                        <!-- Summernote -->
+                    </div>
                 </div>
-                <div class="tab-pane fade show active" id="nav-en" role="tabpanel" aria-labelledby="nav-en-tab">
-                    <!-- Summernote -->
-                    @php
-                        echo $footerct->contact_en
-                    @endphp
-                    <!-- Summernote -->
-                </div>
-                <div class="tab-pane fade" id="nav-kh" role="tabpanel" aria-labelledby="nav-kh-tab">
-                    <!-- Summernote -->
-                    @php
-                        echo $footerct->contact_kh
-                    @endphp
-                    <!-- Summernote -->
-                </div>
-                <div class="tab-pane fade" id="nav-th" role="tabpanel" aria-labelledby="nav-th-tab">
-                    <!-- Summernote -->
-                    @php
-                        echo $footerct->contact_th
-                    @endphp
-                    <!-- Summernote -->
-                </div>
-            </div>
 
-            <div class="position-absolute top-0 end-0">
-                <a href="{{ route('admin.footer.edit', $footerct->id) }}" class="btn"><i class="bi bi-pencil-square text-muted pe-0" style="font-size:24px;"></i></a>
-            </div>
+                <div class="position-absolute top-0 end-0">
+                    <a href="{{ route('admin.footer.edit', $footerct->id) }}" class="btn"><i class="bi bi-pencil-square text-muted pe-0" style="font-size:24px;"></i></a>
+                </div>
     
             @empty
                 <p class="text-center">No contact to show</p>

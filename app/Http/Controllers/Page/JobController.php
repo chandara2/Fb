@@ -23,8 +23,7 @@ class JobController extends Controller
             ->select('jobs.*', 'jobs.id as job_id', 'company_infos.*', 'company_infos.id as com_id', 'job_locations.*', 'job_salaries.*')
             ->where('approved', true)
             ->paginate(10);
-
-
+        
         return view('page.job.index', [
             'jobscoms' => $jobscoms,
         ]);
@@ -169,9 +168,9 @@ class JobController extends Controller
                 ->join('job_terms', 'job_terms.term_en', '=', 'jobs.term')
                 ->select('jobs.*', 'jobs.id as job_id', 'company_infos.*', 'company_infos.id as com_id','job_functions.*','job_industries.*', 'job_locations.*', 'job_salaries.*')
                 //Search by
-                ->orWhere('company', 'LIKE', "%$searchjob%")
+                ->where('company', 'LIKE', "%$searchjob%")
 
-                ->where('title_ch', 'LIKE', "%$searchjob%")
+                ->orWhere('title_ch', 'LIKE', "%$searchjob%")
                 ->orWhere('title_en', 'LIKE', "%$searchjob%")
                 ->orWhere('title_kh', 'LIKE', "%$searchjob%")
                 ->orWhere('title_th', 'LIKE', "%$searchjob%")

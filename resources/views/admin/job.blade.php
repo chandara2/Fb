@@ -3,16 +3,15 @@
 
 @section('content')
 
-    <div class="container-fluid">
+    <div class="container">
         <div class="row mt-3">
             <h1 class="text-center text-uppercase" style="text-decoration: underline 3px solid pink">Jobs</h1>
         </div>
     </div>
 
-    <div class="container-fluid">
+    <div class="container">
         <nav aria-label="breadcrumb" style="--bs-breadcrumb-divider: '|';" class="mt-3">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}" class="text-decoration-none">Dashboard</a></li>
                 <li class="breadcrumb-item active" aria-current="page">Job</li>
                 <li class="breadcrumb-item">
                     @if (auth()->user()!=null && $company_infos->isEmpty()) <a href="{{ route('admin.companyinfo.index') }}" class="text-decoration-none">New Job</a>
@@ -230,7 +229,7 @@
         </div>
     </div> <!-- end add modal -->
 
-    <div class="container-fluid">
+    <div class="container">
         @if (session('userdelete'))
             <div class="alert alert-success">{{session('userdelete')}}</div>
         @endif

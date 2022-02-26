@@ -2,18 +2,15 @@
 @section('title', 'ADMIN USER')
 
 @section('content')
-    <div class="container-fluid">
+    <div class="container">
         <div class="row mt-3">
             <h1 class="text-center text-uppercase" style="text-decoration: underline 3px solid pink">Users</h1>
         </div>
     </div>
 
-    <div class="container-fluid">
+    <div class="container">
         <nav aria-label="breadcrumb" style="--bs-breadcrumb-divider: '|';" class="mt-3">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item">
-                    <a href="{{ route('admin.dashboard') }}" class="text-decoration-none">Dashboard</a>
-                </li>
                 <li class="breadcrumb-item active" aria-current="page">User</li>
                 <li class="breadcrumb-item" data-bs-toggle="modal" data-bs-target="#showUserModal">
                     <a href="#" class="text-decoration-none">New User</a>
@@ -79,7 +76,7 @@
     </div>
     <!-- end add modal -->
 
-    <div class="container-fluid">
+    <div class="container">
         @if (session('userdelete'))
             <div class="alert alert-success text-center fw-bold">{{session('userdelete')}}</div>
         @endif

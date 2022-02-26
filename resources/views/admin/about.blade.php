@@ -11,7 +11,6 @@
     <div class="container">
         <nav aria-label="breadcrumb" style="--bs-breadcrumb-divider: '|';" class="mt-3">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}" class="text-decoration-none">Dashboard</a></li>
                 <li class="breadcrumb-item active" aria-current="page">About</li>
                 @if ($abouts->isEmpty())
                     <li class="breadcrumb-item text-primary" id="add_about_info" style="cursor: pointer;" data-bs-toggle="modal" data-bs-target="#showAboutModal">Add Information</li>
