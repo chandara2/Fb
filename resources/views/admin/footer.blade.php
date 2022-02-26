@@ -148,7 +148,7 @@
 
     <div class="container"> <!-- Footer Contact -->
         <h4>Contact</h4>
-        <ul class="list-group list-group-flush mt-3 position-relative">
+        <ul class="list-group list-group-flush mt-3 position-relative ps-0">
             @forelse ($footercontact as $footerct)
     
             <nav class="nav nav-tabs" id="nav-tab" role="tablist">
@@ -201,7 +201,7 @@
 
     <div class="container"> <!-- Footer Social Media -->
         <h4>Social Media</h4>
-        <ul>
+        <ul class="ps-0">
             @forelse ($footersocialmedia as $sm)
                 <li style="list-style: none;">
 
@@ -225,7 +225,7 @@
 
     <div class="container"> <!-- Footer Qrcode -->
         <h4>Qrcode</h4>
-        <ul>
+        <ul class="ps-0">
             @forelse ($footerqrcode as $qrcode)
                 <li style="list-style: none;">
 
