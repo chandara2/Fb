@@ -2,13 +2,13 @@
 @section('title', 'ADMIN FOOTRR')
 
 @section('content')
-    <div class="container-fluid">
+    <div class="container">
         <div class="row mt-3">
             <h1 class="text-center text-uppercase" style="text-decoration: underline 3px solid pink">Footer</h1>
         </div>
     </div>
 
-    <div class="container-fluid"> <!-- Breadcrumb list -->
+    <div class="container"> <!-- Breadcrumb list -->
         <nav aria-label="breadcrumb" style="--bs-breadcrumb-divider: '|';" class="mt-3">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}" class="text-decoration-none">Dashboard</a></li>
@@ -148,7 +148,7 @@
 
     <div class="container"> <!-- Footer Contact -->
         <h4>Contact</h4>
-        <ul class="list-group list-group-flush mt-3 position-relative ps-0">
+        <ul class="list-group list-group-flush position-relative ps-0">
             @forelse ($footercontact as $footerct)
     
             <nav class="nav nav-tabs" id="nav-tab" role="tablist">
