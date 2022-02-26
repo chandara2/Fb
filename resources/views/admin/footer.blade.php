@@ -8,7 +8,7 @@
         </div>
     </div>
 
-    <div class="container-fluid">
+    <div class="container-fluid"> <!-- Breadcrumb list -->
         <nav aria-label="breadcrumb" style="--bs-breadcrumb-divider: '|';" class="mt-3">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}" class="text-decoration-none">Dashboard</a></li>
