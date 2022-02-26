@@ -206,7 +206,7 @@
                 <li style="list-style: none;">
 
                     <img src="{{asset('upload/socialmedia/')}}/{{ $sm->social_media }}" alt="slide" width="30" class="border border-info p-1">
-                    <form action="/admin/footersm/{{ $sm->id }}" method="POST" onsubmit="return confirm('Are you sure? You won\'t be able to revert this!')" class="bg-info bg-opacity-10">
+                    <form action="/admin/footersm/{{ $sm->id }}" method="POST" onsubmit="return confirm('Are you sure? You won\'t be able to revert this!')">
                         @csrf
                         @method('delete')
                         <div class="d-flex justify-content-between">
@@ -230,7 +230,7 @@
                 <li style="list-style: none;">
 
                     <img src="{{asset('upload/qrcode/')}}/{{ $qrcode->qrcode }}" alt="slide" width="30" class="border border-info p-1">
-                    <form action="/admin/footerqrcode/{{ $qrcode->id }}" method="POST" onsubmit="return confirm('Are you sure? You won\'t be able to revert this!')" class="bg-info bg-opacity-10">
+                    <form action="/admin/footerqrcode/{{ $qrcode->id }}" method="POST" onsubmit="return confirm('Are you sure? You won\'t be able to revert this!')">
                         @csrf
                         @method('delete')
                         <div class="d-flex justify-content-between">
@@ -238,7 +238,7 @@
                         </div>
                     </form>
                     
-                    <p>{{ $qrcode->app_title }}</p>
+                    <p class="mb-0">{{ $qrcode->app_title }}</p>
                     <p>{{ $qrcode->qrcode_link }}</p>
                 </li>
             @empty

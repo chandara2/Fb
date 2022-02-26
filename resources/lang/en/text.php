@@ -18,6 +18,7 @@ return [
     'Job_description_requirements' => 'Job Description & Requirements',
     'Job_page' => 'Jobs',
     'Job_title' => 'Job Title',
+    'Know_your_worth' => 'know your worth',
     'Language'=>'Language',
     'Location' => 'Location',
     'n1jic' => 'No.1 Jobsite in Cambodia',

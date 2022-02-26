@@ -18,6 +18,7 @@ return [
     'Job_description_requirements' => '职位描述和要求',
     'Job_page' => '工作页面',
     'Job_title' => '职称',
+    'Know_your_worth' => '知道你的价值',
     'Language'=>'语言',
     'Location' => '地点',
     'n1jic' => '柬埔寨第一工地',

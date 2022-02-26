@@ -18,6 +18,7 @@ return [
     'Job_description_requirements' => 'ការពិពណ៌នាការងារ និងតម្រូវការ',
     'Job_page' => 'ទំព័រការងារ',
     'Job_title' => 'ចំណងជើងការងារ',
+    'Know_your_worth' => 'ដឹងពីតម្លៃរបស់អ្នក',
     'Language'=>'ភាសា',
     'Location' => 'ទីតាំង',
     'n1jic' => 'គេហទំព័រការងារលេខ១នៅកម្ពុជា',

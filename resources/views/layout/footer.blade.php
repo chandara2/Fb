@@ -40,8 +40,8 @@
                     @endforelse
                 </div>
             </div>
-            <div class="col-md-4 mt-md-0 mt-sm-3">
-                <h3 class="text-decoration-underline">Camjob38 know your worth</h3>
+            <div class="col-md-4 mt-md-0 mt-sm-3 mt-3">
+                <h3 class="text-decoration-underline">Camjob38 {{ __('text.Know_your_worth') }}</h3>
                 <div class="row">
                     @forelse ($footerqrcode as $qrcode)
                         <div class="col-xl-4 col-lg-6">

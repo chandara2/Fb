@@ -18,6 +18,7 @@ return [
     'Job_description_requirements' => 'รายละเอียดงานและข้อกำหนด',
     'Job_page' => 'หน้างาน',
     'Job_title' => 'ตำแหน่งงาน',
+    'Know_your_worth' => 'รู้คุณค่าของคุณ',
     'Language' => 'ภาษา',
     'Location' => 'ที่ตั้ง',
     'n1jic' => 'ตำแหน่งงานอันดับ 1 ในกัมพูชา',
