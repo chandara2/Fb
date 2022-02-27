@@ -11,6 +11,7 @@ use App\Models\JobFunction;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use App\Models\CareerResource;
 
 class AppController extends Controller
 {
@@ -24,7 +25,6 @@ class AppController extends Controller
         $companylogos = CompanyInfo::select('company_infos.logo', 'company_infos.id')->get();
         $company_recruitment = CompanyInfo::select('company_infos.logo', 'company_infos.id')->where('company_infos.recruitment', true)->get();
         $con_rec_count = $company_recruitment->count();
-        // dd($company_recruitment);
         $comlogocounts = $companylogos->count();
         $homepage_slide = Homepage::select('slide')->get();
         $partners = Partner::select('logo', 'link')->get();
@@ -140,6 +140,22 @@ class AppController extends Controller
             ->groupBy('job_salaries.salary_th')
             ->where('approved', true)
             ->get();
+        $career_howto = CareerResource::where('type','1')
+        ->select('id','title_ch','title_en','title_kh','title_th','created_at')
+        ->latest()
+        ->take(3)
+        ->get();
+        $career_sample = CareerResource::where('type','2')
+        ->select('id','title_ch','title_en','title_kh','title_th','created_at')
+        ->latest()
+        ->take(3)
+        ->get();
+        $career_tip = CareerResource::where('type','3')
+        ->select('id','title_ch','title_en','title_kh','title_th','created_at')
+        ->latest()
+        ->take(3)
+        ->get();
+
         return view('app', [
             'companylogos' => $companylogos,
             'company_recruitment' => $company_recruitment,
@@ -165,6 +181,9 @@ class AppController extends Controller
             'salary_en' => $salary_en,
             'salary_kh' => $salary_kh,
             'salary_th' => $salary_th,
+            'career_howto' => $career_howto,
+            'career_sample' => $career_sample,
+            'career_tip' => $career_tip,
         ]);
     }
 

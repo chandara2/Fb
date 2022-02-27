@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\AdminAboutController;
+use App\Http\Controllers\Admin\AdminCareerResourceController;
 use App\Http\Controllers\Admin\AdminCompanyInfoController;
 use App\Http\Controllers\Admin\AdmindbController;
 use App\Http\Controllers\Admin\AdminFooterController;
@@ -14,6 +15,7 @@ use App\Http\Controllers\AppController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\LocalizationController;
 use App\Http\Controllers\Page\AboutController;
+use App\Http\Controllers\Page\CareerController;
 use App\Http\Controllers\Page\CompanyController;
 use App\Http\Controllers\Page\JobController;
 use App\Http\Controllers\User\UserdbController;
@@ -29,6 +31,9 @@ Route::get('searchjob', [JobController::class, 'searchjob'])->name('searchjob');
 
 // About page
 Route::resource('about', AboutController::class)->only('index');
+
+// Career page
+Route::resource('career', CareerController::class);
 
 // Company page
 Route::resource('company', CompanyController::class);
@@ -62,6 +67,7 @@ Route::prefix('admin')->name('admin.')->middleware('isadmin')->group(function ()
     Route::delete('/footersm/{footersm}', [AdminFooterController::class, 'footersm_destroy'])->name('footersm.destroy');
     Route::post('/footerqrcode', [AdminFooterController::class, 'footerqrcode_store'])->name('footerqrcode.store');
     Route::delete('/footerqrcode/{footerqrcode}', [AdminFooterController::class, 'footerqrcode_destroy'])->name('footerqrcode.destroy');
+    Route::resource('/career', AdminCareerResourceController::class);
 });
 
 // Agency Dashboard

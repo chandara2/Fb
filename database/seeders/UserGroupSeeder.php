@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Postgroup;
 use App\Models\User;
 use App\Models\Usergroup;
 use Illuminate\Database\Seeder;
@@ -17,6 +18,7 @@ class UserGroupSeeder extends Seeder
      */
     public function run()
     {
+        // Usergroup
         DB::table('usergroups')->delete();
 
         $usergroup = [
@@ -59,5 +61,15 @@ class UserGroupSeeder extends Seeder
             ],
         ];
         User::insert($user);
+
+        // Post type
+        DB::table('postgroups')->delete();
+
+        $postgroup = [
+            ['type' => 'How to'],
+            ['type' => 'Sample'],
+            ['type' => 'Tip'],
+        ];
+        Postgroup::insert($postgroup);
     }
 }

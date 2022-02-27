@@ -196,12 +196,12 @@
         </ul>
     </div>
 
-    <div class="container"> <!-- Footer Social Media -->
+    <div class="container my-3 py-3"> <!-- Footer Social Media -->
         <h4>Social Media</h4>
         <ul class="ps-0">
             @forelse ($footersocialmedia as $sm)
                 <li style="list-style: none;">
-
+                    
                     <img src="{{asset('upload/socialmedia/')}}/{{ $sm->social_media }}" alt="slide" width="30" class="border border-info p-1">
                     <form action="/admin/footersm/{{ $sm->id }}" method="POST" onsubmit="return confirm('Are you sure? You won\'t be able to revert this!')">
                         @csrf

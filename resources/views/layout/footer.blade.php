@@ -32,13 +32,11 @@
                 <div class="mb-3">
                     <a href="/about" class="text-decoration-none text-dark">{{ __('text.Contact_us') }}</a>
                 </div>
-                <div class="h4">
-                    @forelse ($footersm as $sm)
-                        <a href="{{ $sm->social_media_link }}" target="_blank"><img src="{{asset('upload/socialmedia/')}}/{{$sm->social_media}}" alt="Social Media Logo" class="me-1" width="32"></a>
-                    @empty
-                        <p class="text-center">No Social Media to show</p>
-                    @endforelse
-                </div>
+                @forelse ($footersm as $sm)
+                    <a href="{{ $sm->social_media_link }}" target="_blank"><img src="{{asset('upload/socialmedia/')}}/{{$sm->social_media}}" alt="Social Media Logo" class="me-1" width="32"></a>
+                @empty
+                    <p class="text-center">No Social Media to show</p>
+                @endforelse
             </div>
             <div class="col-md-4 mt-md-0 mt-sm-3 mt-3">
                 <h3 class="text-decoration-underline">Camjob38 {{ __('text.Know_your_worth') }}</h3>

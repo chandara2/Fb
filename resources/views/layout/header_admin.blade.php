@@ -8,12 +8,6 @@
 
             <ul class="nav col-12 col-lg-auto my-2 justify-content-center my-md-0 text-small">
                 <li>
-                    <a href="/" class="nav-link text-white">
-                        <i class="bi bi-house-door d-block mx-auto mb-1 text-center" style="font-size:24px;"></i>
-                        Home
-                    </a>
-                </li>
-                <li>
                     <a href="{{ route('admin.dashboard') }}" class="nav-link text-white">
                         <i class="bi bi-speedometer2 d-block mx-auto mb-1 text-center" style="font-size:24px;"></i>
                         Dashboard
@@ -37,6 +31,12 @@
                         About us
                     </a>
                 </li>
+                <li>
+                    <a href="{{ route('admin.career.index') }}" class="nav-link text-white">
+                        <i class="bi bi-collection d-block mx-auto mb-1 text-center" style="font-size:24px;"></i>
+                        Post
+                    </a>
+                </li>
                 <li class="dropdown">
                     <a href="#" class="nav-link text-white dropdown-toggle" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
                         <i class="bi bi-gear d-block mx-auto mb-1 text-center" style="font-size:24px;"></i>
@@ -47,7 +47,6 @@
                         <li><a class="dropdown-item text-capitalize fw-bold" href="#"><i class="bi bi-person"></i> {{ Auth::user()->username }}</a></li>
                         <li><a class="dropdown-item" href="{{ route('admin.companyinfo.index') }}"><i class="bi bi-building"></i> Company Info.</a></li>
                         <li><a class="dropdown-item" href="{{ route('admin.homepage.index') }}"><i class="bi bi-images"></i> Slide <i class="bi bi-stars"></i>Partner</a></li>
-                        {{-- <li><a class="dropdown-item" href="{{ route('admin.partner') }}"><i class="bi bi-stars"></i> Partner</a></li> --}}
                         <li><a class="dropdown-item" href="{{ route('admin.footer.index') }}"><i class="bi bi-sort-down"></i> Footer</a></li>
                         <li role="separator" class="dropdown-divider"></li>
                         <li><a class="dropdown-item" href="{{ route('logout') }}"><i class="bi bi-power"></i> Logout</a></li>

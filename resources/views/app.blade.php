@@ -313,9 +313,21 @@
                                 <span>CV & Cover Letters</span>
                                 <div class="border border-bottom my-3"></div>
                                 <ul class="list-unstyled">
-                                    <li>How to Write a Cover Letter for a Recruitment Consultant</li>
-                                    <li>How to write a CV when you have no work experience</li>
-                                    <li>How to Write a CV Career Summary</li>
+                                    @foreach ($career_howto as $howto)
+                                        <li>
+                                            <a href="career/{{ $howto->id }}" class="text-decoration-none">
+                                            @if (app()->getLocale() == 'ch')
+                                            {{$howto->title_ch}}
+                                            @elseif(app()->getLocale() == 'en')
+                                            {{$howto->title_en}}
+                                            @elseif(app()->getLocale() == 'kh')
+                                            {{$howto->title_kh}}
+                                            @else
+                                            {{$howto->title_th}}
+                                            @endif
+                                            </a>
+                                        </li>
+                                    @endforeach
                                 </ul>
                             </div>
                         </div>
