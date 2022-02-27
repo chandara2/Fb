@@ -45,8 +45,10 @@
                 <div class="row">
                     @forelse ($footerqrcode as $qrcode)
                         <div class="col-xl-4 col-lg-6">
-                            <p class="mb-lg-1 mb-1">{{ $qrcode->app_title }}</p>
-                            <a href="{{ $qrcode->qrcode_link }}" target="_blank"><img src="{{asset('upload/qrcode/')}}/{{$qrcode->qrcode}}" alt="Qrcode Logo" class="mb-md-3 mb-3" width="65"></a>
+                            <div class="text-center">
+                                <p class="mb-lg-1 mb-1">{{ $qrcode->app_title }}</p>
+                                <a href="{{ $qrcode->qrcode_link }}" target="_blank"><img src="{{asset('upload/qrcode/')}}/{{$qrcode->qrcode}}" alt="Qrcode Logo" class="mb-md-3 mb-3" width="65"></a>
+                            </div>
                         </div>
                     @empty
                         <p class="text-center">No Qrcode to show</p>
