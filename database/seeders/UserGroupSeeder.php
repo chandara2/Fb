@@ -26,17 +26,35 @@ class UserGroupSeeder extends Seeder
         ];
         Usergroup::insert($usergroup);
 
-        // Admin
+        // Admin, Agency, User
         DB::table('users')->delete();
 
         $user = [
             [
                 'gid' => '1',
-                'fname'=>'Chan',
+                'fname'=>'Admin',
                 'gname'=>'Dara',
-                'username'=>'admin',
+                'username'=>'admindara',
                 'phone'=>'0885275842',
-                'password'=>Hash::make('adminadmin'),
+                'password'=>Hash::make('admindaraadmindara'),
+                'visible'=> true,
+            ],
+            [
+                'gid' => '2',
+                'fname'=>'Agency',
+                'gname'=>'Dara',
+                'username'=>'agencydara',
+                'phone'=>'0885275843',
+                'password'=>Hash::make('agencydaraagencydara'),
+                'visible'=> true,
+            ],
+            [
+                'gid' => '3',
+                'fname'=>'User',
+                'gname'=>'Dara',
+                'username'=>'userdara',
+                'phone'=>'0885275844',
+                'password'=>Hash::make('userdarauserdara'),
                 'visible'=> true,
             ],
         ];

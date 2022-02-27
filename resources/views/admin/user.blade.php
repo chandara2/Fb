@@ -8,7 +8,7 @@
         </div>
     </div>
 
-    <div class="container">
+    <div class="container-fluid">
         <nav aria-label="breadcrumb" style="--bs-breadcrumb-divider: '|';" class="mt-3">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item active" aria-current="page">User</li>
@@ -76,7 +76,7 @@
     </div>
     <!-- end add modal -->
 
-    <div class="container">
+    <div class="container-fluid">
         @if (session('userdelete'))
             <div class="alert alert-success text-center fw-bold">{{session('userdelete')}}</div>
         @endif

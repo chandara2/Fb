@@ -9,20 +9,18 @@
         </div>
     </div>
 
-    <div class="container">
+    <div class="container-fluid">
         <nav aria-label="breadcrumb" style="--bs-breadcrumb-divider: '|';" class="mt-3">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item active" aria-current="page">Job</li>
                 <li class="breadcrumb-item">
-                    @if (auth()->user()!=null && $company_infos->isEmpty()) <a href="{{ route('admin.companyinfo.index') }}" class="text-decoration-none">New Job</a>
-                    @else <a href="#" class="text-decoration-none" data-bs-toggle="modal" data-bs-target="#showJobModal">New Job</a>
-                    @endif
+                    <a href="#" class="text-decoration-none" data-bs-toggle="modal" data-bs-target="#showJobModal">New Job</a>
                 </li>
             </ol>
         </nav>
     </div>
 
-    <!-- Modal Add about info -->
+    <!-- Modal Add Job -->
     <div class="modal fade" id="showJobModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
@@ -74,7 +72,7 @@
                                     <option value="{{ $company_info->id }}">{{ $company_info->company }}</option>
                                 @endforeach
                             </select>
-                            <span class="text-danger error-text company_error"></span>
+                            <span class="text-danger error-text company_id_error"></span>
                         </div>
 
                         <div class="form-group mb-md-3">
@@ -229,7 +227,7 @@
         </div>
     </div> <!-- end add modal -->
 
-    <div class="container">
+    <div class="container-fluid">
         @if (session('userdelete'))
             <div class="alert alert-success">{{session('userdelete')}}</div>
         @endif

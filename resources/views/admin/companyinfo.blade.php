@@ -11,7 +11,6 @@
     <div class="container-fluid">
         <nav aria-label="breadcrumb" style="--bs-breadcrumb-divider: '|';" class="mt-3">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}" class="text-decoration-none">Dashboard</a></li>
                 <li class="breadcrumb-item active" aria-current="page">Company</li>
                 <li class="breadcrumb-item">
                     <a href="#" class="text-decoration-none" data-bs-toggle="modal" data-bs-target="#showCompanyModal">New Company</a>
@@ -165,7 +164,7 @@
                     </td>
                 </tr>
                 @empty
-                <div class="alert alert-info text-center fw-bold text-primary">Please create a company before posting a job.</div>
+                <p class="text-center text-info">No Company Info.</p>
                 @endforelse
             </tbody>
             <tfoot class="table-primary">
