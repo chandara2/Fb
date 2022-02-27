@@ -24,7 +24,7 @@ Route::resource('/', AppController::class)->only('index');
 
 // Job page
 Route::resource('job', JobController::class);
-Route::get('/jobsort/{jobshow}', [JobController::class, 'jobsort'])->where('jobshow', '.*');
+Route::get('/jobsort/{jobshow}', [JobController::class, 'jobsort'])->where('jobshow', '.*'); //Prevent error with slash and more...
 Route::get('searchjob', [JobController::class, 'searchjob'])->name('searchjob');
 
 // About page
@@ -54,8 +54,7 @@ Route::prefix('admin')->name('admin.')->middleware('isadmin')->group(function ()
     Route::resource('/companyinfo', AdminCompanyInfoController::class);
     Route::resource('/about', AdminAboutController::class);
     Route::get('/changejobstatus', [AdminJobController::class, 'changejobstatus'])->name('changejobstatus');
-    Route::resource('/homepage', AdminHomepageController::class);
-    Route::get('/partner', [AdminHomepageController::class, 'partner'])->name('partner');
+    Route::resource('/homepage', AdminHomepageController::class)->only(['index', 'store', 'destroy']);
     Route::post('/partner', [AdminHomepageController::class, 'partnerstore'])->name('partner.store');
     Route::delete('/partner/{partner}', [AdminHomepageController::class, 'partnerdestroy'])->name('partner.destroy');
     Route::resource('/footer', AdminFooterController::class);

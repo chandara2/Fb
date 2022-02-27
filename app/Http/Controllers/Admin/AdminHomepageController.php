@@ -20,8 +20,10 @@ class AdminHomepageController extends Controller
     public function index()
     {
         $homepageslides = Homepage::all();
+        $partners = Partner::all();
         return view('admin.homepage', [
             'homepageslides' => $homepageslides,
+            'partners' => $partners,
         ]);
     }
 
@@ -32,7 +34,7 @@ class AdminHomepageController extends Controller
      */
     public function create()
     {
-        return view('admin.homepage_create');
+        //
     }
 
     /**
@@ -123,13 +125,6 @@ class AdminHomepageController extends Controller
         return back()->with('slideDelete', 'You have delete a slide');
     }
 
-    public function partner()
-    {
-        $partners = Partner::all();
-        return view('admin.partner', [
-            'partners' => $partners,
-        ]);
-    }
 
     public function partnerstore(Request $request)
     {
