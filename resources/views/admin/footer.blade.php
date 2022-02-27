@@ -40,22 +40,22 @@
                         @csrf
 
                         <div class="form-group mb-md-3">
-                            <label>Contact Detail in Chinese</label>
+                            <label class="text-primary">Contact Detail in Chinese</label>
                             <textarea name="contact_ch" class="textarea_autosize form-control summernote"></textarea>
                             <span class="text-danger error-text contact_ch_error"></span>
                         </div>
                         <div class="form-group mb-md-3">
-                            <label>Contact Detail in English</label>
+                            <label class="text-primary">Contact Detail in English</label>
                             <textarea name="contact_en" class="textarea_autosize form-control summernote"></textarea>
                             <span class="text-danger error-text contact_en_error"></span>
                         </div>
                         <div class="form-group mb-md-3">
-                            <label>Contact Detail in Khmer</label>
+                            <label class="text-primary">Contact Detail in Khmer</label>
                             <textarea name="contact_kh" class="textarea_autosize form-control summernote"></textarea>
                             <span class="text-danger error-text contact_kh_error"></span>
                         </div>
                         <div class="form-group mb-md-3">
-                            <label>Contact Detail in Thai</label>
+                            <label class="text-primary">Contact Detail in Thai</label>
                             <textarea name="contact_th" class="textarea_autosize form-control summernote"></textarea>
                             <span class="text-danger error-text contact_th_error"></span>
                         </div>
@@ -72,7 +72,7 @@
 
     <!-- Modal Add Footer social media info -->
     <div class="modal fade" id="showFooterSmModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
+        <div class="modal-dialog modal-md">
             <div class="modal-content">
                 <div class="modal-header bg-info bg-opacity-50">
                     <h5 class="modal-title" id="exampleModalLabel">Create Footer social media</h5>
@@ -106,7 +106,7 @@
 
     <!-- Modal Add Footer Qrcode info -->
     <div class="modal fade" id="showFooterQrcodeModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
+        <div class="modal-dialog modal-md">
             <div class="modal-content">
                 <div class="modal-header bg-info bg-opacity-50">
                     <h5 class="modal-title" id="exampleModalLabel">Create Footer Qrcode</h5>

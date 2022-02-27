@@ -93,29 +93,36 @@
 
                         <div class="h5 text-info text-center text-uppercase">Contact Information</div>
 
-                        <div class="form-group mb-md-3">
-                            <label>Contact Name</label>
-                            <input name="contact_name" type="text" class="form-control">
-                            <span class="text-danger error-text contact_name_error"></span>
-                        </div>
-
-                        <div class="form-group mb-md-3">
-                            <label>Contact Position</label>
-                            <input name="contact_position" type="text" class="form-control">
-                            <span class="text-danger error-text contact_position_error"></span>
-                        </div>
-
-                        <div class="form-group mb-md-3">
-                            <label>Contact Email</label>
-                            <input name="contact_email" type="text" class="form-control">
-                            <span class="text-danger error-text contact_email_error"></span>
-                        </div>
-
-                        <div class="form-group mb-md-3">
-                            <label>Contact Phone</label>
-                            <input name="contact_phone" type="text" class="form-control">
-                            <span class="text-danger error-text contact_phone_error"></span>
-                        </div>
+                        <div class="row"> <!-- Row Contact -->
+                            <div class="col-md-6">
+                                <div class="form-group mb-md-3">
+                                    <label>Contact Name</label>
+                                    <input name="contact_name" type="text" class="form-control">
+                                    <span class="text-danger error-text contact_name_error"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group mb-md-3">
+                                    <label>Contact Position</label>
+                                    <input name="contact_position" type="text" class="form-control">
+                                    <span class="text-danger error-text contact_position_error"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group mb-md-3">
+                                    <label>Contact Email</label>
+                                    <input name="contact_email" type="text" class="form-control">
+                                    <span class="text-danger error-text contact_email_error"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group mb-md-3">
+                                    <label>Contact Phone</label>
+                                    <input name="contact_phone" type="text" class="form-control">
+                                    <span class="text-danger error-text contact_phone_error"></span>
+                                </div>
+                            </div>
+                        </div> <!-- End row -->
             
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

@@ -22,7 +22,7 @@
 
     <!-- Modal Add Job -->
     <div class="modal fade" id="showJobModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
+        <div class="modal-dialog modal-xl">
             <div class="modal-content">
                 <div class="modal-header bg-info bg-opacity-50">
                 <h5 class="modal-title" id="exampleModalLabel">Create Job Announcement</h5>
@@ -60,157 +60,173 @@
                                 <li><span class="text-danger error-text title_kh_error"></span></li>
                                 <li><span class="text-danger error-text title_th_error"></span></li>
                             </ul>
-                            
-
                         </div>
 
-                        <div class="form-group mb-md-3">
-                            <label>Company</label>
-                            <select name="company_id" value="{{ old('company_id') }}" class="form-select">
-                                <option selected disabled>Select Company</option>
-                                @foreach ($company_infos as $company_info)
-                                    <option value="{{ $company_info->id }}">{{ $company_info->company }}</option>
-                                @endforeach
-                            </select>
-                            <span class="text-danger error-text company_id_error"></span>
-                        </div>
+                        <div class="row"> <!--Row Input -->
+                            <div class="col-md-6">
+                                <div class="form-group mb-md-3">
+                                    <label>Company</label>
+                                    <select name="company_id" value="{{ old('company_id') }}" class="form-select">
+                                        <option selected disabled>Select Company</option>
+                                        @foreach ($company_infos as $company_info)
+                                            <option value="{{ $company_info->id }}">{{ $company_info->company }}</option>
+                                        @endforeach
+                                    </select>
+                                    <span class="text-danger error-text company_id_error"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group mb-md-3">
+                                    <label>Function</label>
+                                    <select name="function" value="{{ old('function') }}" class="form-select">
+                                        <option selected disabled>Select Job Function</option>
+                                        @foreach ($job_functions as $job_function)
+                                            <option>{{ $job_function->function_en }}</option>
+                                        @endforeach
+                                    </select>
+                                    <span class="text-danger error-text function_error"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group mb-md-3">
+                                    <label>Industry</label>
+                                    <select name="industry" value="{{ old('industry') }}" class="form-select">
+                                        <option selected disabled>Select Job Industry</option>
+                                        @foreach ($job_industries as $job_industry)
+                                            <option>{{ $job_industry->industry_en }}</option>
+                                        @endforeach
+                                    </select>
+                                    <span class="text-danger error-text industry_error"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group mb-md-3">
+                                    <label>Location</label>
+                                    <select name="location" value="{{ old('location') }}" class="form-select">
+                                        <option selected disabled>Select Job Function</option>
+                                        @foreach ($job_locations as $job_location)
+                                            <option>{{ $job_location->location_en }}</option>
+                                        @endforeach
+                                    </select>
+                                    <span class="text-danger error-text location_error"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group mb-md-3">
+                                    <label>Salary</label>
+                                    <select name="salary" value="{{ old('salary') }}" class="form-select">
+                                        <option selected disabled>Select Job Salary</option>
+                                        @foreach ($job_salaries as $job_salary)
+                                            <option>{{ $job_salary->salary_en }}</option>
+                                        @endforeach
+                                    </select>
+                                    <span class="text-danger error-text salary_error"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group mb-md-3">
+                                    <label>Sex</label>
+                                    <select name="sex" value="{{ old('sex') }}" class="form-select">
+                                        <option selected disabled>Select Job Gender</option>
+                                        @foreach ($job_genders as $job_gender)
+                                            <option>{{ $job_gender->gender_en }}</option>
+                                        @endforeach
+                                    </select>
+                                    <span class="text-danger error-text sex_error"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group mb-md-3">
+                                    <label>Age</label>
+                                    <input name="age" type="text" class="form-control" placeholder="Age Unlimited / 20 ~ 35">
+                                    <span class="text-danger error-text age_error"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group mb-md-3">
+                                    <label>Term</label>
+                                    <select name="term" value="{{ old('term') }}" class="form-select">
+                                        <option selected disabled>Select Job Term</option>
+                                        @foreach ($job_terms as $job_term)
+                                            <option>{{ $job_term->term_en }}</option>
+                                        @endforeach
+                                    </select>
+                                    <span class="text-danger error-text term_error"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group mb-md-3">
+                                    <label>Level</label>
+                                    <select name="level" value="{{ old('level') }}" class="form-select">
+                                        <option selected disabled>Select Job Level</option>
+                                        @foreach ($job_levels as $job_level)
+                                            <option>{{ $job_level->level_en }}</option>
+                                        @endforeach
+                                    </select>
+                                    <span class="text-danger error-text level_error"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group mb-md-3">
+                                    <label>Qualification</label>
+                                    <select name="qualification" value="{{ old('qualification') }}" class="form-select">
+                                        <option selected disabled>Select Job Qualification</option>
+                                        @foreach ($job_qualifications as $job_qualification)
+                                            <option>{{ $job_qualification->qualification_en }}</option>
+                                        @endforeach
+                                    </select>
+                                    <span class="text-danger error-text qualification_error"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group mb-md-3">
+                                    <label>Language</label>
+                                    <input name="language" type="text" class="form-control">
+                                    <span class="text-danger error-text language_error"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group mb-md-3">
+                                    <label>Years of experience</label>
+                                    <select name="year_of_exp" value="{{ old('year_of_exp') }}" class="form-select">
+                                        <option selected disabled>Select Job Experiences</option>
+                                        @foreach ($job_experiences as $job_experience)
+                                            <option>{{ $job_experience->experience_en }}</option>
+                                        @endforeach
+                                    </select>
+                                    <span class="text-danger error-text year_of_exp_error"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group mb-md-3">
+                                    <label>Hiring</label>
+                                    <input name="hiring" type="number" class="form-control">
+                                    <span class="text-danger error-text hiring_error"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group mb-md-3">
+                                    <label>Contact</label>
+                                    <input name="contact" type="text" class="form-control">
+                                    <span class="text-danger error-text contact_error"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group mb-md-3">
+                                    <label>Expired Job</label>
+                                    <input name="expired_job" type="text" onfocus="(this.type='date')" placeholder="Dec 31 2022" class="form-control">
+                                    <span class="text-danger error-text expired_job_error"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group mb-md-3">
+                                    <label>Expired Post</label>
+                                    <input name="expired_post" type="text" onfocus="(this.type='date')" placeholder="Dec 31 2023" class="form-control">
+                                    <span class="text-danger error-text expired_post_error"></span>
+                                </div>
+                            </div>
+                        </div> <!-- End row -->
 
-                        <div class="form-group mb-md-3">
-                            <label>Function</label>
-                            <select name="function" value="{{ old('function') }}" class="form-select">
-                                <option selected disabled>Select Job Function</option>
-                                @foreach ($job_functions as $job_function)
-                                    <option>{{ $job_function->function_en }}</option>
-                                @endforeach
-                            </select>
-                            <span class="text-danger error-text function_error"></span>
-                        </div>
-
-                        <div class="form-group mb-md-3">
-                            <label>Industry</label>
-                            <select name="industry" value="{{ old('industry') }}" class="form-select">
-                                <option selected disabled>Select Job Industry</option>
-                                @foreach ($job_industries as $job_industry)
-                                    <option>{{ $job_industry->industry_en }}</option>
-                                @endforeach
-                            </select>
-                            <span class="text-danger error-text industry_error"></span>
-                        </div>
-
-                        <div class="form-group mb-md-3">
-                            <label>Location</label>
-                            <select name="location" value="{{ old('location') }}" class="form-select">
-                                <option selected disabled>Select Job Function</option>
-                                @foreach ($job_locations as $job_location)
-                                    <option>{{ $job_location->location_en }}</option>
-                                @endforeach
-                            </select>
-                            <span class="text-danger error-text location_error"></span>
-                        </div>
-
-                        <div class="form-group mb-md-3">
-                            <label>Salary</label>
-                            <select name="salary" value="{{ old('salary') }}" class="form-select">
-                                <option selected disabled>Select Job Salary</option>
-                                @foreach ($job_salaries as $job_salary)
-                                    <option>{{ $job_salary->salary_en }}</option>
-                                @endforeach
-                            </select>
-                            <span class="text-danger error-text salary_error"></span>
-                        </div>
-
-                        <div class="form-group mb-md-3">
-                            <label>Sex</label>
-                            <select name="sex" value="{{ old('sex') }}" class="form-select">
-                                <option selected disabled>Select Job Gender</option>
-                                @foreach ($job_genders as $job_gender)
-                                    <option>{{ $job_gender->gender_en }}</option>
-                                @endforeach
-                            </select>
-                            <span class="text-danger error-text sex_error"></span>
-                        </div>
-
-                        <div class="form-group mb-md-3">
-                            <label>Age</label>
-                            <input name="age" type="text" class="form-control" placeholder="Age Unlimited / 20 ~ 35">
-                            <span class="text-danger error-text age_error"></span>
-                        </div>
-
-                        <div class="form-group mb-md-3">
-                            <label>Term</label>
-                            <select name="term" value="{{ old('term') }}" class="form-select">
-                                <option selected disabled>Select Job Term</option>
-                                @foreach ($job_terms as $job_term)
-                                    <option>{{ $job_term->term_en }}</option>
-                                @endforeach
-                            </select>
-                            <span class="text-danger error-text term_error"></span>
-                        </div>
-
-                        <div class="form-group mb-md-3">
-                            <label>Level</label>
-                            <select name="level" value="{{ old('level') }}" class="form-select">
-                                <option selected disabled>Select Job Level</option>
-                                @foreach ($job_levels as $job_level)
-                                    <option>{{ $job_level->level_en }}</option>
-                                @endforeach
-                            </select>
-                            <span class="text-danger error-text level_error"></span>
-                        </div>
-
-                        <div class="form-group mb-md-3">
-                            <label>Qualification</label>
-                            <select name="qualification" value="{{ old('qualification') }}" class="form-select">
-                                <option selected disabled>Select Job Qualification</option>
-                                @foreach ($job_qualifications as $job_qualification)
-                                    <option>{{ $job_qualification->qualification_en }}</option>
-                                @endforeach
-                            </select>
-                            <span class="text-danger error-text qualification_error"></span>
-                        </div>
-
-                        <div class="form-group mb-md-3">
-                            <label>Language</label>
-                            <input name="language" type="text" class="form-control">
-                            <span class="text-danger error-text language_error"></span>
-                        </div>
-
-                        <div class="form-group mb-md-3">
-                            <label>Years of experience</label>
-                            <select name="year_of_exp" value="{{ old('year_of_exp') }}" class="form-select">
-                                <option selected disabled>Select Job Experiences</option>
-                                @foreach ($job_experiences as $job_experience)
-                                    <option>{{ $job_experience->experience_en }}</option>
-                                @endforeach
-                            </select>
-                            <span class="text-danger error-text year_of_exp_error"></span>
-                        </div>
-
-                        <div class="form-group mb-md-3">
-                            <label>Hiring</label>
-                            <input name="hiring" type="number" class="form-control">
-                            <span class="text-danger error-text hiring_error"></span>
-                        </div>
-
-
-                        <div class="form-group mb-md-3">
-                            <label>Contact</label>
-                            <input name="contact" type="text" class="form-control">
-                            <span class="text-danger error-text contact_error"></span>
-                        </div>
-
-                        <div class="form-group mb-md-3">
-                            <label>Expired Job</label>
-                            <input name="expired_job" type="text" onfocus="(this.type='date')" placeholder="Dec 31 2022" class="form-control">
-                            <span class="text-danger error-text expired_job_error"></span>
-                        </div>
-
-                        <div class="form-group mb-md-3">
-                            <label>Expired Post</label>
-                            <input name="expired_post" type="text" onfocus="(this.type='date')" placeholder="Dec 31 2023" class="form-control">
-                            <span class="text-danger error-text expired_post_error"></span>
-                        </div>
-                
                         <div class="form-group mb-md-3">
                             <label>Detail</label>
                             <textarea name="detail" class="textarea_autosize form-control summernote"></textarea>

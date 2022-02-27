@@ -321,16 +321,6 @@
                         </div>
                         <div class="col-md-4">
                             <div class="bg-white rounded p-3">
-                                <i class="bi bi-boxes text-primary"></i>
-                                <span>CV Samples</span>
-                                <div class="border border-bottom my-3"></div>
-                                <ul class="list-unstyled">
-                                    <li>CURRICULUME VITAE</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="bg-white rounded p-3">
                                 <i class="bi bi-chat-dots text-success"></i>
                                 <span>Interview Tips</span>
                                 <div class="border border-bottom my-3"></div>
@@ -338,6 +328,16 @@
                                     <li>How to Face an Interview</li>
                                     <li>How to Perform Well in a Group Interview</li>
                                     <li>How to Prepare for a Video Interview at Home</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="bg-white rounded p-3">
+                                <i class="bi bi-boxes text-primary"></i>
+                                <span>CV Samples</span>
+                                <div class="border border-bottom my-3"></div>
+                                <ul class="list-unstyled">
+                                    <li>CURRICULUME VITAE</li>
                                 </ul>
                             </div>
                         </div>
@@ -506,6 +506,26 @@
             // autoplay: true,
             autoplaySpeed: 4000,
             slidesToShow: 6,
+            responsive: [
+                {
+                breakpoint: 1200,
+                    settings: {
+                        slidesToShow: 5,
+                    },
+                },
+                {
+                breakpoint: 1008,
+                    settings: {
+                        slidesToShow: 3,
+                    },
+                },
+                {
+                breakpoint: 800,
+                    settings: {
+                        slidesToShow: 2,
+                    },
+                },
+            ],
         });
 
         $('#slick4').slick({
@@ -516,6 +536,26 @@
             autoplay: true,
             autoplaySpeed: 10000,
             slidesToShow: 6,
+            responsive: [
+                {
+                breakpoint: 1200,
+                    settings: {
+                        slidesToShow: 5,
+                    },
+                },
+                {
+                breakpoint: 1008,
+                    settings: {
+                        slidesToShow: 3,
+                    },
+                },
+                {
+                breakpoint: 800,
+                    settings: {
+                        slidesToShow: 2,
+                    },
+                },
+            ],
         }); 
     </script>
 @endsection
