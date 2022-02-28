@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\CareerResource;
 use App\Models\Postgroup;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Validator;
 
 class AdminCareerResourceController extends Controller
@@ -69,7 +70,17 @@ class AdminCareerResourceController extends Controller
             return response()->json(['status' => 0, 'error' => $validator->errors()->toArray()]);
         } else {
 
+            $blogpost = new CareerResource();
+            if ($request->hasFile('post_img')) {
+                $file = $request->file('post_img');
+                $extension = $file->getClientOriginalExtension();
+                $filename = time() . '.' . $extension;
+                $file->move('upload/blogpost/', $filename);
+                $blogpost->post_img = $filename;
+            }
+
             $career = new CareerResource();
+            $career->post_img = $filename;
             $career->title_ch = $request->title_ch;
             $career->title_en = $request->title_en;
             $career->title_kh = $request->title_kh;
@@ -152,6 +163,19 @@ class AdminCareerResourceController extends Controller
         $careers->post_kh = $request->post_kh;
         $careers->post_th = $request->post_th;
         $careers->type = $request->type;
+
+        if ($request->hasFile('post_img')) {
+            $path = 'upload/blogpost/' . $careers->post_img;
+            if (File::exists($path)) {
+                File::delete($path);
+            }
+            $file = $request->file('post_img');
+            $extension = $file->getClientOriginalExtension();
+            $filename = time() . '.' . $extension;
+            $file->move('upload/blogpost/', $filename);
+            $careers->post_img = $filename;
+        }
+
         $careers->update();
 
         return redirect(route('admin.career.index'));

@@ -27,6 +27,13 @@
                     </div>
 
                     <div class="form-group mb-md-3">
+                        <label>Blog Post Image</label>
+                        <input type="file" name="post_img" class="form-control" value="{{ $career_id->post_img }}" onchange="document.getElementById('blogpost').src = window.URL.createObjectURL(this.files[0])">
+                        <img id="blogpost" width="110px" src="{{ asset('upload/blogpost/'.$career_id->post_img) }}">
+                        <span class="text-danger">@error('post_img'){{$message}}@enderror</span>
+                    </div>
+
+                    <div class="form-group mb-md-3">
                         <nav class="nav nav-tabs" id="nav-tab" role="tablist">
                             <a class="nav-link active" id="nav-en-tab" data-bs-toggle="tab" href="#nav-en" role="tab" aria-controls="nav-en" aria-selected="true">English</a>
                             <a class="nav-link" id="nav-ch-tab" data-bs-toggle="tab" href="#nav-ch" role="tab" aria-controls="nav-ch" aria-selected="false">Chinese</a>

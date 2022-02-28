@@ -16,94 +16,51 @@
 
     <div class="container my-5 bg-white">
         <div class="px-3">
-            @if (app()->getLocale() == 'ch')
-                <ul class="list-group list-group-flush">
-                    @forelse ( $careers as $career )
-                    <li class="list-group-item">
-                        <div class="row my-3">
-                            <div class="col-xl-3 col-lg-3">
-                                <img src="{{asset('asset/image/slide2.jpg')}}" alt="" width="200" height="120">
-                            </div>
-                            <div class="col-xl-9 col-lg-9">
-                                <a href="career/{{ $career->id }}" class="text-decoration-none text-dark h4">{{ $career->title_ch }}</a>
-                                <div class="mt-3">
+            <ul class="list-group list-group-flush">
+                @forelse ( $careers as $career )
+                <li class="list-group-item">
+                    <div class="row my-3">
+                        <div class="col-xl-3 col-lg-3">
+                            <img src="{{asset('upload/blogpost/')}}/{{$career->post_img}}" alt="" width="200" height="120">
+                        </div>
+                        <div class="col-xl-9 col-lg-9">
+                            <a href="career/{{ $career->id }}" class="text-decoration-none text-dark h4">
+                                @if (app()->getLocale() == 'ch')
+                                    {{ $career->title_ch }}
+                                @elseif (app()->getLocale() == 'en')
+                                    {{ $career->title_en }}
+                                @elseif (app()->getLocale() == 'kh')
+                                    {{ $career->title_kh }}
+                                @else
+                                    {{ $career->title_th }}
+                                @endif
+                            </a>
+                            <div class="mt-3">
+                                @if (app()->getLocale() == 'ch')
                                     @php
                                         echo substr($career->post_ch, 0, 400)
                                     @endphp
-                                </div>
+                                @elseif (app()->getLocale() == 'en')
+                                    @php
+                                        echo substr($career->post_en, 0, 400)
+                                    @endphp
+                                @elseif (app()->getLocale() == 'kh')
+                                    @php
+                                        echo substr($career->post_kh, 0, 400)
+                                    @endphp
+                                @else
+                                    @php
+                                        echo substr($career->post_th, 0, 400)
+                                    @endphp
+                                @endif
                             </div>
                         </div>
-                        
-                    </li>
-                    @empty
-                        <p class="text-center">No career us info. to show</p>
-                    @endforelse
-                </ul>
-                
-            @elseif(app()->getLocale() == 'en')
-            <ul class="list-group list-group-flush">
-                @forelse ( $careers as $career )
-                <li class="list-group-item">
-                    <div class="row my-3">
-                        <div class="col-xl-3 col-lg-3">
-                            <img src="{{asset('asset/image/slide2.jpg')}}" alt="" width="200" height="120">
-                        </div>
-                        <div class="col-xl-9 col-lg-9">
-                            <h4>{{ $career->title_en }}</h4>
-                            @php
-                                echo substr($career->post_en, 0, 400)
-                            @endphp
-                        </div>
                     </div>
-                    
                 </li>
                 @empty
                     <p class="text-center">No career us info. to show</p>
                 @endforelse
             </ul>
-            @elseif(app()->getLocale() == 'kh')
-            <ul class="list-group list-group-flush">
-                @forelse ( $careers as $career )
-                <li class="list-group-item">
-                    <div class="row my-3">
-                        <div class="col-xl-3 col-lg-3">
-                            <img src="{{asset('asset/image/slide2.jpg')}}" alt="" width="200" height="120">
-                        </div>
-                        <div class="col-xl-9 col-lg-9">
-                            <h4>{{ $career->title_kh }}</h4>
-                            @php
-                                echo substr($career->post_kh, 0, 400)
-                            @endphp
-                        </div>
-                    </div>
-                    
-                </li>
-                @empty
-                    <p class="text-center">No career us info. to show</p>
-                @endforelse
-            </ul>
-            @else
-            <ul class="list-group list-group-flush">
-                @forelse ( $careers as $career )
-                <li class="list-group-item">
-                    <div class="row my-3">
-                        <div class="col-xl-3 col-lg-3">
-                            <img src="{{asset('asset/image/slide2.jpg')}}" alt="" width="200" height="120">
-                        </div>
-                        <div class="col-xl-9 col-lg-9">
-                            <h4>{{ $career->title_th }}</h4>
-                            @php
-                                echo substr($career->post_th, 0, 400)
-                            @endphp
-                        </div>
-                    </div>
-                    
-                </li>
-                @empty
-                    <p class="text-center">No career us info. to show</p>
-                @endforelse
-            </ul>             
-            @endif
         </div>
 
     </div>

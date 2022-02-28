@@ -10,6 +10,7 @@ class CareerResource extends Model
     use HasFactory;
 
     protected $fillable = [
+        'post_img',
         'title_ch',
         'title_en',
         'title_kh',

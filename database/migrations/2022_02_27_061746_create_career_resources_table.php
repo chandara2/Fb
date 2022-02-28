@@ -15,6 +15,7 @@ class CreateCareerResourcesTable extends Migration
     {
         Schema::create('career_resources', function (Blueprint $table) {
             $table->id();
+            $table->string('post_img')->nullable();
             $table->string('title_ch')->nullable();
             $table->string('title_en')->nullable();
             $table->string('title_kh')->nullable();
