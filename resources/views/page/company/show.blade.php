@@ -69,19 +69,19 @@
                 </div>
                 <div class="row my-5">
                     <div class="col-md-12">
-                        <h5 style="text-decoration: underline 3px solid pink">Company Profile</h5>
+                        <h5 style="text-decoration: underline 3px solid pink">{{ __('text.Company_profile') }}</h5>
                         <!-- Summernote -->
                         @php
                             echo $company->company_profile
                         @endphp
                         <!-- Summernote -->
                         <br>
-                        <h5 style="text-decoration: underline 3px solid pink">Location</h5>
+                        <h5 style="text-decoration: underline 3px solid pink">{{ __('text.Location') }}</h5>
 
                         <p>{{$company->province}}</p>
                         <p>{{$company->detail_location}}</p>
                         <br>
-                        <h5 style="text-decoration: underline 3px solid pink">Contact Information</h5>
+                        <h5 style="text-decoration: underline 3px solid pink">{{ __('text.Contact_information') }}</h5>
                         <img src="{{asset('asset/image/programmer.png')}}" alt="Contact Info" width="65">
                         {{-- <i class="bi bi-person-circle text-info" style="font-size: 65px;"></i> --}}
                         <div><i class="bi bi-phone-vibrate"></i>&nbsp;{{$company->contact_phone}}</div>
@@ -101,7 +101,7 @@
 
     <div class="row">
         <div class="col-md-12">
-            <p>Company Jobs</p>
+            <p>{{ __('text.Company_jobs') }}</p>
 
             <ul class="list-group list-group-flush">
                 @forelse ($company_jobs as $company_job)

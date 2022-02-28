@@ -7,6 +7,7 @@ return [
     'Browse_Jobs' => 'រកមើលការងារ',
     'Camjobs38_resources' => 'Camjobs38 ធនធាន',
     'Career_resource' => 'អត្ថបទការងារ',
+    'Company_jobs' => 'ការងារក្រុមហ៊ុន',
     'Company_profile' => 'ប្រវត្តិ​ក្រុមហ៊ុន',
     'Contact_information' => 'ព័ត៌មានទំនាក់ទំនង',
     'Contact_us' => 'ទាក់ទង​មក​ពួក​យើង',

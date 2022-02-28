@@ -7,6 +7,7 @@ return [
     'Browse_Jobs' => 'หางาน',
     'Camjobs38_resources' => 'Camjobs38 ทรัพยากร',
     'Career_resource' => 'ทรัพยากรอาชีพ',
+    'Company_jobs' => 'งานบริษัท',
     'Company_profile' => 'ข้อมูลบริษัท',
     'Contact_information' => 'ข้อมูลติดต่อ',
     'Contact_us' => 'ติดต่อเรา',

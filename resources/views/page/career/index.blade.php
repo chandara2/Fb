@@ -11,7 +11,7 @@
 
     <div class="position-relative">
         <img src="{{asset('asset/image/slide2.jpg')}}" alt="Career Resource" width="100%" height="400" style="object-fit: cover; filter: brightness(0.30);">
-        <span class="position-absolute top-50 start-50 translate-middle-x h1 text-light" style="text-shadow: 2px 2px #000;">{{__('text.Camjobs38_resources')}}</span>
+        <span class="position-absolute top-50 start-50 translate-middle h1 text-light text-center" style="text-shadow: 2px 2px #000;">{{__('text.Camjobs38_resources')}}</span>
     </div>
 
     <div class="container my-5 bg-white">
@@ -23,7 +23,7 @@
                         <div class="col-xl-3 col-lg-3">
                             <img src="{{asset('upload/blogpost/')}}/{{$career->post_img}}" alt="" width="200" height="120">
                         </div>
-                        <div class="col-xl-9 col-lg-9">
+                        <div class="col-xl-9 col-lg-9 mt-lg-0 mt-3">
                             <a href="career/{{ $career->id }}" class="text-decoration-none text-dark h4">
                                 @if (app()->getLocale() == 'ch')
                                     {{ $career->title_ch }}

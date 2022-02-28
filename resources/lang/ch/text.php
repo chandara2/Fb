@@ -7,6 +7,7 @@ return [
     'Browse_Jobs' => '浏览工作',
     'Camjobs38_resources' => 'Camjobs38 资源',
     'Career_resource' => '职业资源',
+    'Company_jobs' => '公司职位',
     'Company_profile' => '公司简介',
     'Contact_information' => '联系信息',
     'Contact_us' => '联系我们',

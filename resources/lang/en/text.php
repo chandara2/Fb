@@ -7,6 +7,7 @@ return [
     'Browse_Jobs' => 'Browse Jobs',
     'Camjobs38_resources' => 'Camjobs38 Resources',
     'Career_resource' => 'Career Resource',
+    'Company_jobs' => 'Company Jobs',
     'Company_profile' => 'Company Profile',
     'Contact_information' => 'Contact Information',
     'Contact_us' => 'Contact Us',
