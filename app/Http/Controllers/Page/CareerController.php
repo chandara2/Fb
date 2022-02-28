@@ -50,10 +50,12 @@ class CareerController extends Controller
      */
     public function show($id)
     {
-        $career = CareerResource::where('id', $id)->get();
+        $careers = CareerResource::where('id', $id)->get();
+        $careers_last = CareerResource::latest()->take(10)->get();
 
         return view('page.career.show', [
-            'career' => $career,
+            'careers' => $careers,
+            'careers_last' => $careers_last,
         ]);
     }
 

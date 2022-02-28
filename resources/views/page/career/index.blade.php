@@ -25,10 +25,12 @@
                                 <img src="{{asset('asset/image/slide2.jpg')}}" alt="" width="200" height="120">
                             </div>
                             <div class="col-xl-9 col-lg-9">
-                                <a href="career/{{ $career->id }}" class="text-decoration-none text-dark"><h4>{{ $career->title_ch }}</h4></a>
-                                @php
-                                    echo substr($career->post_ch, 0, 400)
-                                @endphp
+                                <a href="career/{{ $career->id }}" class="text-decoration-none text-dark h4">{{ $career->title_ch }}</a>
+                                <div class="mt-3">
+                                    @php
+                                        echo substr($career->post_ch, 0, 400)
+                                    @endphp
+                                </div>
                             </div>
                         </div>
                         
