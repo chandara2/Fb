@@ -5,9 +5,11 @@ namespace App\Http\Controllers\Agency;
 use App\Http\Controllers\Controller;
 use App\Models\CompanyInfo;
 use App\Models\JobIndustry;
+use App\Models\JobLocation;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Validator;
 
 class AgencyCompanyInfoController extends Controller
 {
@@ -42,7 +44,7 @@ class AgencyCompanyInfoController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
+        $validator = Validator::make($request->all(), [
             'logo' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'company' => 'required',
             'number_staff' => 'required',
@@ -70,34 +72,36 @@ class AgencyCompanyInfoController extends Controller
             'company_profile.required' => 'Please fill in company profile',
         ]);
 
-        $uid = Auth::user()->id;
+        if ($validator->fails()) {
+            return response()->json(['status' => 0, 'error' => $validator->errors()->toArray()]);
+        } else {
 
-        $companylogo = new CompanyInfo();
-        if ($request->hasFile('logo')) {
-            $file = $request->file('logo');
-            $extension = $file->getClientOriginalExtension();
-            $filename = time() . '.' . $extension;
-            $file->move('upload/companylogo/', $filename);
-            $companylogo->logo = $filename;
+            $companylogo = new CompanyInfo();
+            if ($request->hasFile('logo')) {
+                $file = $request->file('logo');
+                $extension = $file->getClientOriginalExtension();
+                $filename = time() . '.' . $extension;
+                $file->move('upload/companylogo/', $filename);
+                $companylogo->logo = $filename;
+            }
+
+            $companys = new CompanyInfo();
+            $companys->uid = Auth::user()->id;
+            $companys->logo = $filename;
+            $companys->company = $request->company;
+            $companys->number_staff = $request->number_staff;
+            $companys->industry = $request->industry;
+            $companys->website = $request->website;
+            $companys->province = $request->province;
+            $companys->detail_location = $request->detail_location;
+            $companys->contact_name = $request->contact_name;
+            $companys->contact_position = $request->contact_position;
+            $companys->contact_email = $request->contact_email;
+            $companys->contact_phone = $request->contact_phone;
+            $companys->company_profile = $request->company_profile;
+            $companys->save();
+            return response()->json(['status' => 1, 'msg' => 'Company create successfully']);
         }
-
-        $companyinfo = CompanyInfo::create([
-            'uid' => $uid,
-            'logo' => $filename,
-            'company' => $request->company,
-            'number_staff' => $request->number_staff,
-            'industry' => $request->industry,
-            'website' => $request->website,
-            'province' => $request->province,
-            'detail_location' => $request->detail_location,
-            'contact_name' => $request->contact_name,
-            'contact_position' => $request->contact_position,
-            'contact_email' => $request->contact_email,
-            'contact_phone' => $request->contact_phone,
-            'company_profile' => $request->company_profile
-        ]);
-
-        return redirect(route('agency.job.create'));
     }
 
     /**
@@ -120,8 +124,12 @@ class AgencyCompanyInfoController extends Controller
     public function edit($id)
     {
         $companyinfos = CompanyInfo::find($id);
+        $job_industrys = JobIndustry::get();
+        $job_locations = JobLocation::get();
         return view('agency.companyinfo_edit', [
             'companyinfos' => $companyinfos,
+            'job_industrys' => $job_industrys,
+            'job_locations' => $job_locations,
         ]);
     }
 
@@ -161,7 +169,7 @@ class AgencyCompanyInfoController extends Controller
         ]);
 
         $companyinfo = CompanyInfo::find($id);
-        $companyinfo->uid = Auth::user()->id;
+        // $companyinfo->uid = Auth::user()->id;
         $companyinfo->company = $request->company;
         $companyinfo->number_staff = $request->number_staff;
         $companyinfo->industry = $request->industry;

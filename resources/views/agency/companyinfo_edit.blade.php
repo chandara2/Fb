@@ -15,13 +15,20 @@
                     <span class="text-danger">@error('company'){{$message}}@enderror</span>
                 </div>
             </div>
+
             <div class="form-group row mb-md-3">
                 <label class="col-xl-3 col-md-2 col-form-label text-md-end pb-0">Industry</label>
                 <div class="col-xl-6 col-md-8 mb-md-0 mb-sm-2">
-                    <input type="text" name="industry" value="{{ $companyinfos->industry }}" class="form-control">
-                    <span class="text-danger">@error('industry'){{$message}}@enderror</span>
+                    <select name="industry" class="form-select">
+                        <option>{{ $companyinfos->industry }}</option>
+                        @foreach ($job_industrys as $job_industry)
+                            <option>{{ $job_industry->industry_en }}</option>
+                        @endforeach
+                    </select>
                 </div>
+                <span class="text-danger">@error('industry'){{$message}}@enderror</span>
             </div>
+
             <div class="form-group row mb-md-3">
                 <label class="col-xl-3 col-md-2 col-form-label text-md-end pb-0">Number of staff</label>
                 <div class="col-xl-6 col-md-8 mb-md-0 mb-sm-2">
@@ -36,13 +43,20 @@
                     <span class="text-danger">@error('website'){{$message}}@enderror</span>
                 </div>
             </div>
+
             <div class="form-group row mb-md-3">
                 <label class="col-xl-3 col-md-2 col-form-label text-md-end pb-0">Province/City</label>
                 <div class="col-xl-6 col-md-8 mb-md-0 mb-sm-2">
-                    <input type="text" name="province" value="{{ $companyinfos->province }}" class="form-control">
-                    <span class="text-danger">@error('province'){{$message}}@enderror</span>
+                    <select name="province" class="form-select">
+                        <option>{{ $companyinfos->province }}</option>
+                        @foreach ($job_locations as $job_location)
+                            <option>{{ $job_location->location_en }}</option>
+                        @endforeach
+                    </select>
                 </div>
+                <span class="text-danger">@error('industry'){{$message}}@enderror</span>
             </div>
+
             <div class="form-group row mb-md-3">
                 <label class="col-xl-3 col-md-2 col-form-label text-md-end pb-0">Detail Location</label>
                 <div class="col-xl-6 col-md-8 mb-md-0 mb-sm-2">
@@ -54,8 +68,10 @@
                 <label class="col-xl-3 col-md-2 col-form-label text-md-end pb-0">Company Profile</label>
                 <div class="col-xl-6 col-md-8 mb-md-0 mb-sm-2">
                     <div class="form-floating">
-                        <textarea class="textarea_autosize form-control" name="company_profile">
-                            {{ $companyinfos->company_profile }}
+                        <textarea class="textarea_autosize form-control summernote" name="company_profile">
+                            @php
+                                echo $companyinfos->company_profile
+                            @endphp
                         </textarea>
                         <span class="text-danger">@error('company_profile'){{$message}}@enderror</span>
                     </div>
@@ -100,7 +116,7 @@
             </div>
 
             <div class="modal-footer">
-                <a href="{{ route('admin.companyinfo.index') }}" class="btn btn-secondary">Close</a>
+                <a href="{{ route('agency.dashboard') }}" class="btn btn-secondary">Close</a>
                 <button type="submit" class="btn btn-primary">Update</button>
             </div>
         </form>

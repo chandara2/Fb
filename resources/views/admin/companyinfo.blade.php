@@ -199,7 +199,7 @@
                 }
             });
 
-            // Save Job Form
+            // Save Company Form
             $('#addCompanyFormId').on('submit', function (e) {
                 e.preventDefault();
                 $.ajax({
