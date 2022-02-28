@@ -24,8 +24,12 @@ class JobController extends Controller
             ->where('approved', true)
             ->paginate(10);
         
+        $job_count = Job::all()->where('approved', true)->count(); //Use for prevent error while search and no job
+
         return view('page.job.index', [
             'jobscoms' => $jobscoms,
+            'job_count' => $job_count,
+
         ]);
     }
 
@@ -155,6 +159,7 @@ class JobController extends Controller
 
     public function searchjob(Request $request)
     {
+        $job_count = Job::all()->where('approved', true)->count(); //Use for prevent error while search and no job
         $searchjob = $request['searchjob'] ?? "";
         if ($searchjob != "") {
             $jobscoms = DB::table('jobs')
@@ -218,6 +223,7 @@ class JobController extends Controller
                 ->paginate(10);
         }
         return view('page.job.index', [
+            'job_count' => $job_count,
             'jobscoms' => $jobscoms,
             'searchjob' => $searchjob,
         ]);
