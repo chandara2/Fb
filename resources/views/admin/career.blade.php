@@ -37,7 +37,7 @@
                             <select name="type" value="{{ old('type') }}" class="form-select">
                                 <option selected disabled>Select Post Type</option>
                                 @foreach ($postgroups as $type)
-                                    <option value="{{ $type->id }}">{{ $type->type }}</option>
+                                    <option>{{ $type->type }}</option>
                                 @endforeach
                             </select>
                             <span class="text-danger error-text type_error"></span>
@@ -114,6 +114,7 @@
                 <tr>
                     <th>No</th>
                     <th>Post</th>
+                    <th>Type</th>
                     <th>Action</th>
                 </tr>
             </thead>
@@ -122,6 +123,7 @@
                 <tr>
                     <td>{{$i+1}}</td>
                     <td>{{$career->title_en}}</td>
+                    <td>{{$career->type}}</td>
                     <td>
                         <a href="/admin/career/{{ $career->id }}/edit" title="Edit"><i class="bi bi-pencil-square text-primary"></i></a>
                         <form action="/admin/career/{{ $career->id }}" method="POST" class="d-inline" onsubmit="return confirm('Are you sure? You won\'t be able to revert this!')">
@@ -137,6 +139,7 @@
                 <tr>
                     <th>No</th>
                     <th>Post</th>
+                    <th>Type</th>
                     <th>Action</th>
                 </tr>
             </tfoot>

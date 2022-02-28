@@ -140,17 +140,17 @@ class AppController extends Controller
             ->groupBy('job_salaries.salary_th')
             ->where('approved', true)
             ->get();
-        $career_howto = CareerResource::where('type','1')
+        $career_howto = CareerResource::where('type','How to') // How to
         ->select('id','title_ch','title_en','title_kh','title_th','created_at')
         ->latest()
         ->take(3)
         ->get();
-        $career_sample = CareerResource::where('type','2')
+        $career_sample = CareerResource::where('type','Sample') // Sample
         ->select('id','title_ch','title_en','title_kh','title_th','created_at')
         ->latest()
         ->take(3)
         ->get();
-        $career_tip = CareerResource::where('type','3')
+        $career_tip = CareerResource::where('type','Tip') // Tip
         ->select('id','title_ch','title_en','title_kh','title_th','created_at')
         ->latest()
         ->take(3)

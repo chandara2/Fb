@@ -315,7 +315,7 @@
                                 <ul class="list-unstyled">
                                     @foreach ($career_howto as $howto)
                                         <li>
-                                            <a href="career/{{ $howto->id }}" class="text-decoration-none">
+                                            <a href="career/{{ $howto->id }}" class="text-decoration-none text-dark">
                                             @if (app()->getLocale() == 'ch')
                                             {{$howto->title_ch}}
                                             @elseif(app()->getLocale() == 'en')
@@ -337,9 +337,21 @@
                                 <span>Interview Tips</span>
                                 <div class="border border-bottom my-3"></div>
                                 <ul class="list-unstyled">
-                                    <li>How to Face an Interview</li>
-                                    <li>How to Perform Well in a Group Interview</li>
-                                    <li>How to Prepare for a Video Interview at Home</li>
+                                    @foreach ($career_tip as $tip)
+                                        <li>
+                                            <a href="career/{{ $howto->id }}" class="text-decoration-none text-dark">
+                                            @if (app()->getLocale() == 'ch')
+                                            {{$tip->title_ch}}
+                                            @elseif(app()->getLocale() == 'en')
+                                            {{$tip->title_en}}
+                                            @elseif(app()->getLocale() == 'kh')
+                                            {{$tip->title_kh}}
+                                            @else
+                                            {{$tip->title_th}}
+                                            @endif
+                                            </a>
+                                        </li>
+                                    @endforeach
                                 </ul>
                             </div>
                         </div>
@@ -349,7 +361,21 @@
                                 <span>CV Samples</span>
                                 <div class="border border-bottom my-3"></div>
                                 <ul class="list-unstyled">
-                                    <li>CURRICULUME VITAE</li>
+                                    @foreach ($career_sample as $sample)
+                                        <li>
+                                            <a href="career/{{ $howto->id }}" class="text-decoration-none text-dark">
+                                            @if (app()->getLocale() == 'ch')
+                                            {{$sample->title_ch}}
+                                            @elseif(app()->getLocale() == 'en')
+                                            {{$sample->title_en}}
+                                            @elseif(app()->getLocale() == 'kh')
+                                            {{$sample->title_kh}}
+                                            @else
+                                            {{$sample->title_th}}
+                                            @endif
+                                            </a>
+                                        </li>
+                                    @endforeach
                                 </ul>
                             </div>
                         </div>

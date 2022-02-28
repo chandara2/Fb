@@ -18,6 +18,7 @@
             <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0" id="menu_hovers">
                 <li><a href="/" class="nav-link px-2 link-secondary class_homepage">{{__('text.Home_page')}}</a></li>
                 <li><a href="{{ route('job.index') }}" class="nav-link px-2 link-dark class_jobs">{{__('text.Job_page')}}</a></li>
+                <li><a href="{{ route('career.index') }}" class="nav-link px-2 link-dark class_career">{{__('text.Resources')}}</a></li>
                 <li><a href="{{ route('about.index') }}" class="nav-link px-2 link-dark class_aboutus">{{__('text.About_us')}}</a></li>
             </ul>
 

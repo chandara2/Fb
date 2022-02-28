@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Page;
 
 use App\Http\Controllers\Controller;
+use App\Models\CareerResource;
 use Illuminate\Http\Request;
 
 class CareerController extends Controller
@@ -14,7 +15,10 @@ class CareerController extends Controller
      */
     public function index()
     {
-        //
+        $careers = CareerResource::all();
+        return view('page.career.index',[
+            'careers'=>$careers,
+        ]);
     }
 
     /**
@@ -46,7 +50,11 @@ class CareerController extends Controller
      */
     public function show($id)
     {
-        //
+        $career = CareerResource::where('id', $id)->get();
+
+        return view('page.career.show', [
+            'career' => $career,
+        ]);
     }
 
     /**
