@@ -15,7 +15,7 @@ class CareerController extends Controller
      */
     public function index()
     {
-        $careers = CareerResource::all();
+        $careers = CareerResource::paginate(10);
         return view('page.career.index',[
             'careers'=>$careers,
         ]);
