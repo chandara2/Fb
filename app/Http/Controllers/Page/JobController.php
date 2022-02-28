@@ -78,10 +78,11 @@ class JobController extends Controller
             ->get();
         $hotjobs = DB::table('jobs')
             ->join('company_infos', 'company_infos.id', '=', 'jobs.company_id')
-            ->select('jobs.created_at', 'jobs.title_ch', 'jobs.title_en', 'jobs.title_kh', 'jobs.title_th', 'jobs.salary', 'jobs.id as job_id', 'company_infos.company', 'company_infos.id as com_id')
+            ->join('job_salaries', 'job_salaries.salary_en', '=', 'jobs.salary')
+            ->select('jobs.created_at', 'jobs.title_ch', 'jobs.title_en', 'jobs.title_kh', 'jobs.title_th', 'jobs.id as job_id', 'company_infos.company', 'company_infos.id as com_id', 'job_salaries.*')
             ->where('approved', true)
             ->where('jobs.id', '<>', $id)
-            ->latest()
+            ->orderBy('jobs.created_at', 'desc')
             ->take(10)
             ->get();
 

@@ -210,8 +210,28 @@
                     <div>
                         <img src="{{asset('upload/companylogo/')}}/{{$jobcompany->logo}}" alt="AgencyLogo" height="100">
                         <p class="mb-4 mt-3"><a href="/company/{{$jobcompany->ciid}}" class="company_hover">{{$jobcompany->company}}</a></p>
-                        <p><i class="bi bi-diagram-2-fill"></i> {{$jobcompany->industry}}</p>
-                        <p><i class="bi bi-geo-alt-fill"></i> {{$jobcompany->province}}</p>
+                        <p><i class="bi bi-diagram-2-fill"></i> 
+                            @if(app()->getLocale() == 'ch')
+                            {{$jobcompany->industry_ch}}
+                            @elseif(app()->getLocale() == 'en')
+                            {{$jobcompany->industry_en}}
+                            @elseif(app()->getLocale() == 'kh')
+                            {{$jobcompany->industry_kh}}
+                            @else
+                            {{$jobcompany->industry_th}}
+                            @endif
+                        </p>
+                        <p><i class="bi bi-geo-alt-fill"></i> 
+                            @if(app()->getLocale() == 'ch')
+                            {{$jobcompany->location_ch}}
+                            @elseif(app()->getLocale() == 'en')
+                            {{$jobcompany->location_en}}
+                            @elseif(app()->getLocale() == 'kh')
+                            {{$jobcompany->location_kh}}
+                            @else
+                            {{$jobcompany->location_th}}
+                            @endif
+                        </p>
                         <p><i class="bi bi-geo-alt-fill"></i> {{$jobcompany->detail_location}}</p>
                         <p><i class="bi bi-people"></i> {{$jobcompany->number_staff}}</p>
                         <p><i class="bi bi-globe"></i> <a target="_blank" href="{{$jobcompany->website}}">{{$jobcompany->website}}</a></p>
@@ -223,8 +243,29 @@
                             <li class="list-group-item active bg-danger border-danger" aria-current="true">Hot Jobs</li>
                             @foreach ($hotjobs as $hotjob)
                                 <li class="list-group-item ps-0 py-0">
-                                    <span class="position-relative"><a href="/job/{{$hotjob->job_id}}" class="text-dark ps-3 text-decoration-none">{{Str::limit($hotjob->title_en , 30)}}</a></span>
-                                    <span class="position-absolute end-0 pe-2 text-danger">{{$hotjob->salary}}</span>
+                                    <span class="position-relative"><a href="/job/{{$hotjob->job_id}}" class="text-dark ps-3 text-decoration-none">
+                                        @if(app()->getLocale() == 'ch')
+                                        {{Str::limit($hotjob->title_ch , 30)}}
+                                        @elseif(app()->getLocale() == 'en')
+                                        {{Str::limit($hotjob->title_en , 30)}}
+                                        @elseif(app()->getLocale() == 'kh')
+                                        {{Str::limit($hotjob->title_kh , 30)}}
+                                        @else
+                                        {{Str::limit($hotjob->title_th , 30)}}
+                                        @endif
+                                    </a></span>
+                                    <span class="position-absolute end-0 pe-2 text-danger">
+                                        @if (app()->getLocale() == 'ch')
+                                            {{ $hotjob->salary_ch }}
+                                        @elseif(app()->getLocale() == 'en')
+                                            {{ $hotjob->salary_en }}
+                                        @elseif(app()->getLocale() == 'kh')
+                                            {{ $hotjob->salary_kh }}
+                                        @else
+                                            {{ $hotjob->salary_th }}
+                                        @endif
+                                        {{-- {{$hotjob->salary}} --}}
+                                    </span>
                                     <span class="d-block"><a href="/company/{{$hotjob->com_id}}" class="text-muted ps-3 text-decoration-none" style="font-size: 12px;">{{$hotjob->company}}</a></span>
                                 </li>
                             @endforeach
