@@ -77,6 +77,8 @@
                         <!-- Summernote -->
                         <br>
                         <h5 style="text-decoration: underline 3px solid pink">Location</h5>
+
+                        <p>{{$company->province}}</p>
                         <p>{{$company->detail_location}}</p>
                         <br>
                         <h5 style="text-decoration: underline 3px solid pink">Contact Information</h5>

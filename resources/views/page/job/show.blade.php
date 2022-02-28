@@ -194,7 +194,12 @@
                     @endphp
                     <!-- Summernote -->
                     <h5 class="mt-4 underline_highlight">{{ __('text.Company_profile') }}</h5>
-                    <textarea disabled class="textarea_autosize form-control border-0 bg-light">{{$jobcompany->company_profile}}</textarea>
+                    <!-- Summernote -->
+                        @php
+                            echo $jobcompany->company_profile
+                        @endphp
+                    <!-- Summernote -->
+                    {{-- <textarea disabled class="textarea_autosize form-control border-0 bg-light">{{$jobcompany->company_profile}}</textarea> --}}
 
                     <h5 class="underline_highlight">{{ __('text.Contact_information') }}</h5>
                     <img src="{{asset('asset/image/user2.png')}}" alt="" width="65" class="mb-2">
