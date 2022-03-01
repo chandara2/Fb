@@ -8,30 +8,6 @@
         </div>
     </div>
 
-    <div class="container"> <!-- Banner Slide -->
-        <div class="row">
-            <button type="submit" data-bs-toggle="modal" data-bs-target="#showSlideModal" class="btn btn-sm btn-primary mb-3 rounded-0 w-auto"><i class="bi bi-plus-square-dotted"></i> Slide</button>
-        </div>
-
-        <div class="row">
-            @forelse ($homepageslides as $i => $slide)
-            <div class="col-xl-2 col-lg-3 col-md-4 mb-3">
-                <img src="{{asset('upload/homepageslide/')}}/{{$slide->slide}}" alt="slide" width="100%" height="100" style="object-fit: cover;" class="border border-info p-1">
-                <form action="/admin/homepage/{{ $slide->id }}" method="POST" onsubmit="return confirm('Are you sure? You won\'t be able to revert this!')" class="bg-info bg-opacity-10">
-                    @csrf
-                    @method('delete')
-                    <div class="d-flex justify-content-between">
-                        <span>BANNER SLIDE {{$i+1}}</span>
-                        <button type="submit" class="text-danger btn p-0" title="Delete"><i class="bi bi-x-square"></i></button>
-                    </div>
-                </form>
-            </div>
-            @empty
-            <p class="text-center bg-info">No slide to show</p>
-            @endforelse
-        </div>
-    </div>
-
     <!-- Modal Add Banner Slide -->
     <div class="modal fade" id="showSlideModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-md">
@@ -60,30 +36,6 @@
             </div>
         </div>
     </div> <!-- end add modal -->
-
-    <div class="container"> <!-- Partner -->
-        <div class="row">
-            <button type="submit" data-bs-toggle="modal" data-bs-target="#showPartnerModal" class="btn btn-sm btn-primary mb-3 rounded-0 w-auto"><i class="bi bi-plus-square-dotted"></i> Partner</button>
-        </div>
-
-        <div class="row">
-            @forelse ($partners as $i => $partner)
-            <div class="col-xl-2 col-lg-3 col-md-4 mb-3">
-                <img src="{{asset('upload/partnerlogo/')}}/{{$partner->logo}}" alt="slide" width="100%" height="100" style="object-fit: cover;" class="border border-info p-1">
-                <form action="/admin/partner/{{ $partner->id }}" method="POST" onsubmit="return confirm('Are you sure? You won\'t be able to revert this!')" class="bg-info bg-opacity-10">
-                    @csrf
-                    @method('delete')
-                    <div class="d-flex justify-content-between">
-                        <span title="{{ $partner->link }}">Partner Link {{$i+1}}</span>
-                        <button type="submit" class="text-danger btn p-0" title="Delete"><i class="bi bi-x-square"></i></button>
-                    </div>
-                </form>
-            </div>
-            @empty
-            <p class="text-center bg-info">No partner to show</p>
-            @endforelse
-        </div>
-    </div>
 
     <!-- Modal Add Partner -->
     <div class="modal fade" id="showPartnerModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -119,7 +71,53 @@
         </div>
     </div> <!-- end add modal -->
 
+    <div class="container"> <!-- Banner Slide -->
+        <div class="row">
+            <button type="submit" data-bs-toggle="modal" data-bs-target="#showSlideModal" class="btn btn-sm btn-primary mb-3 rounded-0 w-auto"><i class="bi bi-plus-square-dotted"></i> Slide</button>
+        </div>
 
+        <div class="row">
+            @forelse ($homepageslides as $i => $slide)
+            <div class="col-xl-2 col-lg-3 col-md-4 mb-3">
+                <img src="{{asset('upload/homepageslide/')}}/{{$slide->slide}}" alt="slide" width="100%" height="100" style="object-fit: cover;" class="border border-info p-1">
+                <form action="/admin/homepage/{{ $slide->id }}" method="POST" onsubmit="return confirm('Are you sure? You won\'t be able to revert this!')" class="bg-info bg-opacity-10">
+                    @csrf
+                    @method('delete')
+                    <div class="d-flex justify-content-between">
+                        <span>BANNER SLIDE {{$i+1}}</span>
+                        <button type="submit" class="text-danger btn p-0" title="Delete"><i class="bi bi-x-square"></i></button>
+                    </div>
+                </form>
+            </div>
+            @empty
+            <p class="text-center bg-info">No slide to show</p>
+            @endforelse
+        </div>
+    </div>
+
+    <div class="container"> <!-- Partner -->
+        <div class="row">
+            <button type="submit" data-bs-toggle="modal" data-bs-target="#showPartnerModal" class="btn btn-sm btn-primary mb-3 rounded-0 w-auto"><i class="bi bi-plus-square-dotted"></i> Partner</button>
+        </div>
+
+        <div class="row">
+            @forelse ($partners as $i => $partner)
+            <div class="col-xl-2 col-lg-3 col-md-4 mb-3">
+                <img src="{{asset('upload/partnerlogo/')}}/{{$partner->logo}}" alt="slide" width="100%" height="100" style="object-fit: cover;" class="border border-info p-1">
+                <form action="/admin/partner/{{ $partner->id }}" method="POST" onsubmit="return confirm('Are you sure? You won\'t be able to revert this!')" class="bg-info bg-opacity-10">
+                    @csrf
+                    @method('delete')
+                    <div class="d-flex justify-content-between">
+                        <span title="{{ $partner->link }}">Partner Link {{$i+1}}</span>
+                        <button type="submit" class="text-danger btn p-0" title="Delete"><i class="bi bi-x-square"></i></button>
+                    </div>
+                </form>
+            </div>
+            @empty
+            <p class="text-center bg-info">No partner to show</p>
+            @endforelse
+        </div>
+    </div>
 
 @endsection
 

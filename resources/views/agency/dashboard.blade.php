@@ -424,7 +424,7 @@
         </div>
     </div>
 
-    <div class="container" id="job_list_id"> <!-- Job Index -->
+    <div class="container mb-3" id="job_list_id"> <!-- Job Index -->
         @if (auth()->user()!=null && $jobs->isNotEmpty())
             
             <table class="customdatatable table table-hover table-bordered" style="width:100%">
