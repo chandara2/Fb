@@ -19,6 +19,7 @@ class CreateCvsTable extends Migration
             $table->unsignedBigInteger('uid');
             $table->foreign('uid')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
 
+            $table->string('photo')->nullable();
             $table->string('position_apply')->nullable();
             $table->string('expected_salary')->nullable();
             $table->string('kname')->nullable();

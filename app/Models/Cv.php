@@ -11,6 +11,7 @@ class Cv extends Model
     
     protected $fillable = [
         'uid',
+        'photo',
         'position_apply',
         'expected_salary',
         'kname',

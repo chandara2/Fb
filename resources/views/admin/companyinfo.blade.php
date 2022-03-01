@@ -87,8 +87,8 @@
                         <div class="form-group mb-md-3">
                             <label>Company Logo</label>
                             <input name="logo" type="file" class="form-control" value="{{ old('logo') }}" onchange="document.getElementById('companyinfologo').src = window.URL.createObjectURL(this.files[0])">
+                            <span class="text-danger error-text logo_error"></span>
                             <img id="companyinfologo" width="110px">
-                            <span class="text-danger error-text company_profile_error"></span>
                         </div>
 
                         <div class="h5 text-info text-center text-uppercase">Contact Information</div>
