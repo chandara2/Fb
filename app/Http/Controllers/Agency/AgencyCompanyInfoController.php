@@ -193,7 +193,7 @@ class AgencyCompanyInfoController extends Controller
 
         $companyinfo->update();
 
-        return redirect(route('agency.dashboard'));
+        return redirect(route('agency.dashboard'))->with('comupdate', 'You have update company information');
     }
 
     /**

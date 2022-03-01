@@ -2,12 +2,27 @@
 @section('title', 'AGENCY DB')
 
 @section('content')
-    <div class="container">
+
+    <div> <!-- Alert Session -->
+        @if (session('comupdate'))
+            <div class="text-center alert alert-success fw-bold">{{session('comupdate')}}</div>
+        @endif
+    
+        @if (session('jobupdate'))
+            <div class="text-center alert alert-success fw-bold">{{session('jobupdate')}}</div>
+        @endif
+    
+        @if (session('jobdelete'))
+            <div class="text-center alert alert-success fw-bold">{{session('jobdelete')}}</div>
+        @endif
+    </div>
+
+    <div class="container"> <!-- Page menu -->
         <nav aria-label="breadcrumb" style="--bs-breadcrumb-divider: '|';" class="mt-3">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item active">Agency</li>
-                @if (auth()->user()!=null && $company_infos->isNotEmpty())
-                <li class="breadcrumb-item"><a href="{{ route('agency.job.index') }}" class="text-decoration-none">Job List</a></li>
+                @if (auth()->user()!=null && $jobs->isNotEmpty())
+                <li class="breadcrumb-item"><a href="#job_list_id" class="text-decoration-none">Job List</a></li>
                 @endif
                 <li class="breadcrumb-item"><a href="#" data-bs-toggle="modal" data-bs-target="#showJobModal" class="text-decoration-none">New Job</a>
                 </li>
@@ -409,57 +424,55 @@
         </div>
     </div>
 
-    <div class="container"> <!-- Job Index -->
-        @if (session('userdelete'))
-            <div class="alert alert-success">{{session('userdelete')}}</div>
-        @endif
-        
-        <table class="customdatatable table table-hover table-bordered" style="width:100%">
-            <thead class="table-primary">
-                <tr>
-                    <th>No</th>
-                    <th>Job Title</th>
-                    <th>Location</th>
-                    <th>Expired Post</th>
-                    <th>Action</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach ($jobs as $i => $job)
-                <tr>
-                    <td>{{$i+1}}</td>
-                    <td>{{$job->title_en}}</td>
-                    <td>{{$job->location}}</td>
-                    <td>
-                        @if ($job->expired_post<now())
-                            <span class="text-danger" title="Will be deleted the next day">{{$job->expired_post}}</span>
-                        @else
-                            {{$job->expired_post}}
-                        @endif
-                    </td>
-                    <td>
-                        <a href="/agency/job/{{ $job->id }}/edit" class="btn btn-sm"><i class="bi bi-pencil-square text-primary"></i>Edit</a>
-                        <form action="/agency/job/{{ $job->id }}" method="POST" class="d-inline" onsubmit="return confirm('Are you sure? You won\'t be able to revert this!')">
-                            @csrf
-                            @method('delete')
-                            <button type="submit" class="btn btn-sm"><i class="bi bi-trash text-danger"></i>Delete</button>
-                        </form>
-                        <a href="/agency/job/{{$job->id}}" class="btn btn-sm"><i class="bi bi-exclamation-circle text-info"></i>Detail</a>
-                    </td>
-                </tr>
-                @endforeach
-            </tbody>
-            <tfoot class="table-primary">
-                <tr>
-                    <th>No</th>
-                    <th>Job Title</th>
-                    <th>Location</th>
-                    <th>Expired Post</th>
-                    <th>Action</th>
-                </tr>
-            </tfoot>
-        </table>
+    <div class="container" id="job_list_id"> <!-- Job Index -->
+        @if (auth()->user()!=null && $jobs->isNotEmpty())
+            
+            <table class="customdatatable table table-hover table-bordered" style="width:100%">
+                <thead class="table-primary">
+                    <tr>
+                        <th>No</th>
+                        <th>Job Title</th>
+                        <th>Location</th>
+                        <th>Expired Post</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($jobs as $i => $job)
+                    <tr>
+                        <td>{{$i+1}}</td>
+                        <td>{{$job->title_en}}</td>
+                        <td>{{$job->location}}</td>
+                        <td>
+                            @if ($job->expired_post<now())
+                                <span class="text-danger" title="Will be deleted the next day">{{$job->expired_post}}</span>
+                            @else
+                                {{$job->expired_post}}
+                            @endif
+                        </td>
+                        <td>
+                            <a href="/agency/job/{{ $job->id }}/edit" class="btn btn-sm"><i class="bi bi-pencil-square text-primary"></i>Edit</a>
+                            <form action="/agency/job/{{ $job->id }}" method="POST" class="d-inline" onsubmit="return confirm('Are you sure? You won\'t be able to revert this!')">
+                                @csrf
+                                @method('delete')
+                                <button type="submit" class="btn btn-sm"><i class="bi bi-trash text-danger"></i>Delete</button>
+                            </form>
+                        </td>
+                    </tr>
+                    @endforeach
+                </tbody>
+                <tfoot class="table-primary">
+                    <tr>
+                        <th>No</th>
+                        <th>Job Title</th>
+                        <th>Location</th>
+                        <th>Expired Post</th>
+                        <th>Action</th>
+                    </tr>
+                </tfoot>
+            </table>
 
+        @endif
     </div>
 
 @endsection
