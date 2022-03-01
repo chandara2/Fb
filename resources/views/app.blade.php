@@ -310,7 +310,7 @@
                         <div class="col-md-4">
                             <div class="bg-white rounded p-3">
                                 <i class="bi bi-person-workspace text-info"></i>
-                                <span>CV & Cover Letters</span>
+                                <span>{{ __('text.Cv_coverletter') }}</span>
                                 <div class="border border-bottom my-3"></div>
                                 <ul class="list-unstyled">
                                     @foreach ($career_howto as $howto)
@@ -334,7 +334,7 @@
                         <div class="col-md-4">
                             <div class="bg-white rounded p-3">
                                 <i class="bi bi-chat-dots text-success"></i>
-                                <span>Interview Tips</span>
+                                <span>{{ __('text.Interview_tips') }}</span>
                                 <div class="border border-bottom my-3"></div>
                                 <ul class="list-unstyled">
                                     @foreach ($career_tip as $tip)
@@ -358,7 +358,7 @@
                         <div class="col-md-4">
                             <div class="bg-white rounded p-3">
                                 <i class="bi bi-boxes text-primary"></i>
-                                <span>CV Samples</span>
+                                <span>{{ __('text.Cv_samples') }}</span>
                                 <div class="border border-bottom my-3"></div>
                                 <ul class="list-unstyled">
                                     @foreach ($career_sample as $sample)
