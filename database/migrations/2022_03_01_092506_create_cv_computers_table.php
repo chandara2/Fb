@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePartnersTable extends Migration
+class CreateCvComputersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,14 @@ class CreatePartnersTable extends Migration
      */
     public function up()
     {
-        Schema::create('partners', function (Blueprint $table) {
+        Schema::create('cv_computers', function (Blueprint $table) {
             $table->id();
 
-            $table->string('logo')->nullable();
-            $table->string('link')->nullable();
+            $table->unsignedBigInteger('uid');
+            $table->foreign('uid')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
+
+            $table->string('skill')->nullable();
+
             $table->timestamps();
         });
     }
@@ -29,6 +32,6 @@ class CreatePartnersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('partners');
+        Schema::dropIfExists('cv_computers');
     }
 }

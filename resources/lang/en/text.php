@@ -27,6 +27,7 @@ return [
     'Language'=>'Language',
     'Location' => 'Location',
     'n1jic' => 'No.1 Jobsite in Cambodia',
+    'Popular_article' => 'Popular Article',
     'Qualification'=>'Qualification',
     'Recruitment_agencies' => 'Recruitment Agencies',
     'Resources' => 'Resources',

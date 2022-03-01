@@ -27,6 +27,7 @@ return [
     'Language' => 'ภาษา',
     'Location' => 'ที่ตั้ง',
     'n1jic' => 'ตำแหน่งงานอันดับ 1 ในกัมพูชา',
+    'Popular_article' => 'บทความยอดนิยม',
     'Qualification' => 'คุณสมบัติ',
     'Recruitment_agencies' => 'บริษัทจัดหางาน',
     'Resources' => 'ทรัพยากร',

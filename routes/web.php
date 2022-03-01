@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\AdminAboutController;
 use App\Http\Controllers\Admin\AdminCareerResourceController;
 use App\Http\Controllers\Admin\AdminCompanyInfoController;
+use App\Http\Controllers\Admin\AdminCvController;
 use App\Http\Controllers\Admin\AdmindbController;
 use App\Http\Controllers\Admin\AdminFooterController;
 use App\Http\Controllers\Admin\AdminHomepageController;
@@ -68,6 +69,7 @@ Route::prefix('admin')->name('admin.')->middleware('isadmin')->group(function ()
     Route::post('/footerqrcode', [AdminFooterController::class, 'footerqrcode_store'])->name('footerqrcode.store');
     Route::delete('/footerqrcode/{footerqrcode}', [AdminFooterController::class, 'footerqrcode_destroy'])->name('footerqrcode.destroy');
     Route::resource('/career', AdminCareerResourceController::class);
+    Route::resource('/cv', AdminCvController::class);
 });
 
 // Agency Dashboard

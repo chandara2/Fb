@@ -1,14 +1,3 @@
-<style>
-    #menu_hovers li a:hover{
-        color: blue;
-    }
-    .underline_highlight{
-        /* text-decoration: underline 3px solid pink; */
-        text-decoration: underline 3px solid #80d9ff;
-        
-    }
-</style>
-
 <header class="p-3 mb-3 border-bottom">
     <div class="container">
         <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">

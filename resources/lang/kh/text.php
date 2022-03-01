@@ -27,6 +27,7 @@ return [
     'Language'=>'ភាសា',
     'Location' => 'ទីតាំង',
     'n1jic' => 'គេហទំព័រការងារលេខ១នៅកម្ពុជា',
+    'Popular_article' => 'អត្ថបទពេញនិយម',
     'Qualification'=>'គុណវុឌ្ឍិ',
     'Recruitment_agencies' => 'ភ្នាក់ងារជ្រើសរើសបុគ្គលិក',
     'Resources' => 'ធនធាន',

@@ -21,10 +21,10 @@
                 <li class="list-group-item">
                     <div class="row my-3">
                         <div class="col-xl-3 col-lg-3">
-                            <img src="{{asset('upload/blogpost/')}}/{{$career->post_img}}" alt="" width="200" height="120">
+                            <img src="{{asset('upload/blogpost/')}}/{{$career->post_img}}" alt="" width="200" height="120" style="object-fit: cover;">
                         </div>
                         <div class="col-xl-9 col-lg-9 mt-lg-0 mt-3">
-                            <a href="career/{{ $career->id }}" class="text-decoration-none text-dark h4">
+                            <a href="career/{{ $career->id }}" class="text-decoration-none h4 text_hover">
                                 @if (app()->getLocale() == 'ch')
                                     {{ $career->title_ch }}
                                 @elseif (app()->getLocale() == 'en')
@@ -36,23 +36,25 @@
                                 @endif
                             </a>
                             <div class="mt-3">
-                                @if (app()->getLocale() == 'ch')
-                                    @php
-                                        echo substr($career->post_ch, 0, 400)
-                                    @endphp
-                                @elseif (app()->getLocale() == 'en')
-                                    @php
-                                        echo substr($career->post_en, 0, 400)
-                                    @endphp
-                                @elseif (app()->getLocale() == 'kh')
-                                    @php
-                                        echo substr($career->post_kh, 0, 400)
-                                    @endphp
-                                @else
-                                    @php
-                                        echo substr($career->post_th, 0, 400)
-                                    @endphp
-                                @endif
+                                <div style="overflow: hidden;">
+                                    @if (app()->getLocale() == 'ch')
+                                        @php
+                                            echo substr($career->post_ch, 0, 500).'...'
+                                        @endphp
+                                    @elseif (app()->getLocale() == 'en')
+                                        @php
+                                            echo substr($career->post_en, 0, 500).'...'
+                                        @endphp
+                                    @elseif (app()->getLocale() == 'kh')
+                                        @php
+                                            echo substr($career->post_kh, 0, 500).'...'
+                                        @endphp
+                                    @else
+                                        @php
+                                            echo substr($career->post_th, 0, 500).'...'
+                                        @endphp
+                                    @endif
+                                </div>
                             </div>
                         </div>
                     </div>

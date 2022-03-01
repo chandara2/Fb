@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Page;
+namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\CareerResource;
+use App\Models\Cv;
 use Illuminate\Http\Request;
 
-class CareerController extends Controller
+class AdminCvController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,10 +15,8 @@ class CareerController extends Controller
      */
     public function index()
     {
-        $careers = CareerResource::paginate(10);
-        return view('page.career.index',[
-            'careers'=>$careers,
-        ]);
+        $cvs = Cv::all();
+        return view('admin.cv');
     }
 
     /**
@@ -50,15 +48,7 @@ class CareerController extends Controller
      */
     public function show($id)
     {
-        $careers = CareerResource::where('id', $id)->get();
-        $careers_last = CareerResource::latest()->take(10)->get();
-        $careers_next = CareerResource::where('id', $id+1)->take(1)->get();
-        
-        return view('page.career.show', [
-            'careers' => $careers,
-            'careers_last' => $careers_last,
-            'careers_next' => $careers_next,
-        ]);
+        //
     }
 
     /**

@@ -245,7 +245,7 @@
                         <li class="list-group-item active text-uppercase" aria-current="true" style="background: #1EA4D9; border: 1px solid #1EA4D9;">{{ __('text.Urgent_jobs') }}</li>
                         @foreach ($jobcompanys as $jobcompany)
                             <li class="list-group-item limit_str_jobcompany ps-0 py-1">
-                                <span class="position-relative"><a href="job/{{ $jobcompany->jobid }}" class="text-dark ps-3 text-decoration-none">
+                                <span class="position-relative"><a href="job/{{ $jobcompany->jobid }}" class="text_hover ps-3 text-decoration-none">
                                     @if (app()->getLocale() == 'ch')
                                     {{$jobcompany->title_ch}}
                                     @elseif(app()->getLocale() == 'en')
@@ -339,7 +339,7 @@
                                 <ul class="list-unstyled">
                                     @foreach ($career_tip as $tip)
                                         <li>
-                                            <a href="career/{{ $howto->id }}" class="text-decoration-none text-dark">
+                                            <a href="career/{{ $tip->id }}" class="text-decoration-none text-dark">
                                             @if (app()->getLocale() == 'ch')
                                             {{$tip->title_ch}}
                                             @elseif(app()->getLocale() == 'en')
@@ -363,7 +363,7 @@
                                 <ul class="list-unstyled">
                                     @foreach ($career_sample as $sample)
                                         <li>
-                                            <a href="career/{{ $howto->id }}" class="text-decoration-none text-dark">
+                                            <a href="career/{{ $sample->id }}" class="text-decoration-none text-dark">
                                             @if (app()->getLocale() == 'ch')
                                             {{$sample->title_ch}}
                                             @elseif(app()->getLocale() == 'en')

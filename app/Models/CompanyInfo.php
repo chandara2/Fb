@@ -26,8 +26,4 @@ class CompanyInfo extends Model
         'recruitment',
     ];
 
-    // public function users()
-    // {
-    //     return $this->belongsTo(User::class);
-    // }
 }

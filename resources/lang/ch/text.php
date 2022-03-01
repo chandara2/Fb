@@ -27,6 +27,7 @@ return [
     'Language'=>'语言',
     'Location' => '地点',
     'n1jic' => '柬埔寨第一工地',
+    'Popular_article' => '热门文章',
     'Qualification'=>'资质',
     'Recruitment_agencies' => '招聘机构',
     'Resources' => '资源',
