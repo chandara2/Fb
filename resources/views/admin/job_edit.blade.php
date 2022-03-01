@@ -6,7 +6,7 @@
         <form action="{{ route('admin.job.update', $jobid->id) }}" method="POST">
             @csrf
             @method('PUT')
-            <h1 class="text-center text-uppercase mb-5" style="text-decoration: underline 3px solid pink">Create new job announcement</h1>
+            <h1 class="text-center text-uppercase mb-5" style="text-decoration: underline 3px solid pink">Edit Job</h1>
 
             <div class="form-group mb-md-3">
                 <label>Job Title</label>

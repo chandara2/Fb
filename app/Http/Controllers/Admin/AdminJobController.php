@@ -220,7 +220,6 @@ class AdminJobController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //validation rules
         $request->validate([
             'age' => 'required',
             'company_id' => 'required',

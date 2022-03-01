@@ -366,7 +366,7 @@
         </div>
     </div>
 
-    <div class="container">
+    <div class="container"> <!-- Company Index -->
         <div id="wrap_agency_profile" class="position-relative">
             @foreach ($company_infos as $company_info)
             <div class="row py-5 brand-bg5">
@@ -392,7 +392,6 @@
                     @php
                         echo $company_info->company_profile
                     @endphp
-                    {{-- <textarea disabled class="textarea_autosize form-control border-0 bg-light px-0">{{$company_info->company_profile}}</textarea> --}}
                     <br>
                     <div class="h5">Location</div>
                     <p>{{$company_info->detail_location}}</p>
@@ -408,6 +407,59 @@
             </div>
             @endforeach
         </div>
+    </div>
+
+    <div class="container"> <!-- Job Index -->
+        @if (session('userdelete'))
+            <div class="alert alert-success">{{session('userdelete')}}</div>
+        @endif
+        
+        <table class="customdatatable table table-hover table-bordered" style="width:100%">
+            <thead class="table-primary">
+                <tr>
+                    <th>No</th>
+                    <th>Job Title</th>
+                    <th>Location</th>
+                    <th>Expired Post</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($jobs as $i => $job)
+                <tr>
+                    <td>{{$i+1}}</td>
+                    <td>{{$job->title_en}}</td>
+                    <td>{{$job->location}}</td>
+                    <td>
+                        @if ($job->expired_post<now())
+                            <span class="text-danger" title="Will be deleted the next day">{{$job->expired_post}}</span>
+                        @else
+                            {{$job->expired_post}}
+                        @endif
+                    </td>
+                    <td>
+                        <a href="/agency/job/{{ $job->id }}/edit" class="btn btn-sm"><i class="bi bi-pencil-square text-primary"></i>Edit</a>
+                        <form action="/agency/job/{{ $job->id }}" method="POST" class="d-inline" onsubmit="return confirm('Are you sure? You won\'t be able to revert this!')">
+                            @csrf
+                            @method('delete')
+                            <button type="submit" class="btn btn-sm"><i class="bi bi-trash text-danger"></i>Delete</button>
+                        </form>
+                        <a href="/agency/job/{{$job->id}}" class="btn btn-sm"><i class="bi bi-exclamation-circle text-info"></i>Detail</a>
+                    </td>
+                </tr>
+                @endforeach
+            </tbody>
+            <tfoot class="table-primary">
+                <tr>
+                    <th>No</th>
+                    <th>Job Title</th>
+                    <th>Location</th>
+                    <th>Expired Post</th>
+                    <th>Action</th>
+                </tr>
+            </tfoot>
+        </table>
+
     </div>
 
 @endsection
@@ -449,7 +501,7 @@
             });
 
             // Save Job Form
-            $('#addUserFormId').on('submit', function (e) {
+            $('#addJobFormId').on('submit', function (e) {
                 e.preventDefault();
                 $.ajax({
                     method:$(this).attr('method'),
@@ -467,8 +519,8 @@
                                 $('span.'+prefix+'_error').text(val[0])
                             })
                         }else{
-                            $('#addUserFormId')[0].reset()
-                            $('#showUserModal').modal('hide')
+                            $('#addJobFormId')[0].reset()
+                            $('#showJobModal').modal('hide')
                             document.location.href = "{{ route('agency.dashboard') }}"
                         }
                     }

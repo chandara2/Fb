@@ -30,10 +30,7 @@ class AgencyCompanyInfoController extends Controller
      */
     public function create()
     {
-        $job_industrys = JobIndustry::get();
-        return view('agency.companyinfo_create', [
-            'job_industrys' => $job_industrys,
-        ]);
+        //
     }
 
     /**

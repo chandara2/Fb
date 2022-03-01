@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Agency;
 
 use App\Http\Controllers\Controller;
 use App\Models\CompanyInfo;
+use App\Models\Job;
 use App\Models\JobExperience;
 use App\Models\JobFunction;
 use App\Models\JobGender;
@@ -96,6 +97,7 @@ class AgencydbController extends Controller
     public function dashboard()
     {
         $company_infos = CompanyInfo::all()->where('uid', Auth::user()->id);
+        $jobs = Job::all()->where('uid', '=', Auth::user()->id);
         $job_industrys = JobIndustry::get();
         $job_locations = JobLocation::get();
         $job_functions = JobFunction::all();
@@ -107,6 +109,7 @@ class AgencydbController extends Controller
         $job_experiences  = JobExperience::all();
         return view('agency.dashboard', [
             'company_infos' => $company_infos,
+            'jobs'=>$jobs,
             'job_industrys' => $job_industrys,
             'job_locations' => $job_locations,
             'job_functions' => $job_functions,
