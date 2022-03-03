@@ -21,7 +21,7 @@
 
     <!-- Modal Add company info -->
     <div class="modal fade" id="showCvModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-fullscreen">
+        <div class="modal-dialog modal-xl">
             <div class="modal-content">
                 <div class="modal-header bg-info bg-opacity-50">
                 <h5 class="modal-title" id="exampleModalLabel">Create Company</h5>
@@ -30,197 +30,177 @@
                 <div class="modal-body">
                     <form method="POST" action="{{ route('admin.cv.store') }}" id="addCvFormId">
                         @csrf
-
-                        <div class="form-group mb-md-3">
-                            <label>CV Profil</label>
-                            <input name="photo" type="file" class="form-control" value="{{ old('photo') }}" onchange="document.getElementById('cvprofile').src = window.URL.createObjectURL(this.files[0])">
-                            <span class="text-danger error-text photo_error"></span>
-                            <img id="cvprofile" width="110px">
-                        </div>
-
-                        <div class="form-group mb-md-3">
-                            <label>Position Apply</label>
-                            <input name="position_apply" type="text" class="form-control">
-                            <span class="text-danger error-text position_apply_error"></span>
-                        </div>
-
-                        <div class="form-group mb-md-3">
-                            <label>Expected Salary</label>
-                            <input name="expected_salary" type="text" class="form-control">
-                            <span class="text-danger error-text expected_salary_error"></span>
-                        </div>
-
-                        <div class="form-group mb-md-3">
-                            <label>Khmer Name</label>
-                            <input name="kname" type="text" class="form-control">
-                            <span class="text-danger error-text kname_error"></span>
-                        </div>
-
-                        <div class="form-group mb-md-3">
-                            <label>English Name</label>
-                            <input name="ename" type="text" class="form-control">
-                            <span class="text-danger error-text ename_error"></span>
-                        </div>
-
-                        <div class="form-group mb-md-3">
-                            <label>Nick Name</label>
-                            <input name="nname" type="text" class="form-control">
-                            <span class="text-danger error-text nname_error"></span>
-                        </div>
-
-                        <div class="form-group mb-md-3">
-                            <label>House No.</label>
-                            <input name="house_no" type="text" class="form-control">
-                            <span class="text-danger error-text house_no_error"></span>
-                        </div>
-
-                        <div class="form-group mb-md-3">
-                            <label>Streat No.</label>
-                            <input name="streat_no" type="text" class="form-control">
-                            <span class="text-danger error-text streat_no_error"></span>
-                        </div>
-
-                        <div class="form-group mb-md-3">
-                            <label>Group No.</label>
-                            <input name="group_no" type="text" class="form-control">
-                            <span class="text-danger error-text group_no_error"></span>
-                        </div>
-
-                        <div class="form-group mb-md-3">
-                            <label>Village</label>
-                            <input name="village" type="text" class="form-control">
-                            <span class="text-danger error-text village_error"></span>
-                        </div>
-
-                        <div class="form-group mb-md-3">
-                            <label>Commune</label>
-                            <input name="commune" type="text" class="form-control">
-                            <span class="text-danger error-text commune_error"></span>
-                        </div>
-
-                        <div class="form-group mb-md-3">
-                            <label>District</label>
-                            <input name="district" type="text" class="form-control">
-                            <span class="text-danger error-text district_error"></span>
-                        </div>
-
-                        <div class="form-group mb-md-3">
-                            <label>province</label>
-                            <input name="province" type="text" class="form-control">
-                            <span class="text-danger error-text province_error"></span>
-                        </div>
-
-                        <div class="form-group mb-md-3">
-                            <label>country</label>
-                            <input name="country" type="text" class="form-control">
-                            <span class="text-danger error-text country_error"></span>
-                        </div>
-
-                        <div class="form-group mb-md-3">
-                            <label>dob</label>
-                            <input name="dob" type="text" class="form-control">
-                            <span class="text-danger error-text dob_error"></span>
-                        </div>
-
-                        <div class="form-group mb-md-3">
-                            <label>sex</label>
-                            <input name="sex" type="text" class="form-control">
-                            <span class="text-danger error-text sex_error"></span>
-                        </div>
-
-                        <div class="form-group mb-md-3">
-                            <label>email</label>
-                            <input name="email" type="text" class="form-control">
-                            <span class="text-danger error-text email_error"></span>
-                        </div>
-
-                        <div class="form-group mb-md-3">
-                            <label>Khmer Phone</label>
-                            <input name="kphone" type="text" class="form-control">
-                            <span class="text-danger error-text kphone_error"></span>
-                        </div>
-
-                        <div class="form-group mb-md-3">
-                            <label>Country Code</label>
-                            <input name="country_code" type="text" class="form-control">
-                            <span class="text-danger error-text country_code_error"></span>
-                        </div>
-
-                        <div class="form-group mb-md-3">
-                            <label>Passport</label>
-                            <input name="passport" type="text" class="form-control">
-                            <span class="text-danger error-text passport_error"></span>
-                        </div>
-
-                        <div class="form-group mb-md-3">
-                            <label>id_card</label>
-                            <input name="id_card" type="text" class="form-control">
-                            <span class="text-danger error-text id_card_error"></span>
-                        </div>
-
-                        <div class="form-group mb-md-3">
-                            <label>height</label>
-                            <input name="height" type="text" class="form-control">
-                            <span class="text-danger error-text height_error"></span>
-                        </div>
-
-                        <div class="form-group mb-md-3">
-                            <label>weight</label>
-                            <input name="weight" type="text" class="form-control">
-                            <span class="text-danger error-text weight_error"></span>
-                        </div>
-                        <div class="form-group mb-md-3">
-                            <label>nationality</label>
-                            <input name="nationality" type="text" class="form-control">
-                            <span class="text-danger error-text nationality_error"></span>
-                        </div>
-                        <div class="form-group mb-md-3">
-                            <label>marital_status</label>
-                            <input name="marital_status" type="text" class="form-control">
-                            <span class="text-danger error-text marital_status_error"></span>
-                        </div>
-
-
-
-                        {{-- <div class="form-group mb-md-3">
-                            <label>Nick Name</label>
-                            <textarea name="nname" class="textarea_autosize form-control summernote"></textarea>
-                            <span class="text-danger error-text nname_error"></span>
-                        </div> --}}
-
-                        <div class="h5 text-info text-center text-uppercase">Contact Information</div>
-
-                        <div class="row"> <!-- Row Contact -->
-                            <div class="col-md-6">
+                        
+                        <div class="row">
+                            <div class="col-md-12">
                                 <div class="form-group mb-md-3">
-                                    <label>Contact Name</label>
-                                    <input name="contact_name" type="text" class="form-control">
-                                    <span class="text-danger error-text contact_name_error"></span>
+                                    <label>CV Profil</label>
+                                    <input name="photo" type="file" class="form-control" value="{{ old('photo') }}" onchange="document.getElementById('cvprofile').src = window.URL.createObjectURL(this.files[0])">
+                                    <span class="text-danger error-text photo_error"></span>
+                                    <img id="cvprofile" width="110px">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group mb-md-3">
-                                    <label>Contact Position</label>
-                                    <input name="contact_position" type="text" class="form-control">
-                                    <span class="text-danger error-text contact_position_error"></span>
+                                    <label>Position Apply</label>
+                                    <input name="position_apply" type="text" class="form-control">
+                                    <span class="text-danger error-text position_apply_error"></span>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group mb-md-3">
-                                    <label>Contact Email</label>
-                                    <input name="contact_email" type="text" class="form-control">
-                                    <span class="text-danger error-text contact_email_error"></span>
+                                    <label>Expected Salary</label>
+                                    <input name="expected_salary" type="text" class="form-control">
+                                    <span class="text-danger error-text expected_salary_error"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group mb-md-3">
+                                    <label>Khmer Name</label>
+                                    <input name="kname" type="text" class="form-control">
+                                    <span class="text-danger error-text kname_error"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group mb-md-3">
+                                    <label>English Name</label>
+                                    <input name="ename" type="text" class="form-control">
+                                    <span class="text-danger error-text ename_error"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group mb-md-3">
+                                    <label>Nick Name</label>
+                                    <input name="nname" type="text" class="form-control">
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group mb-md-3">
+                                    <label>House No.</label>
+                                    <input name="house_no" type="text" class="form-control">
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group mb-md-3">
+                                    <label>Streat No.</label>
+                                    <input name="streat_no" type="text" class="form-control">
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group mb-md-3">
+                                    <label>Group No.</label>
+                                    <input name="group_no" type="text" class="form-control">
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group mb-md-3">
+                                    <label>Village</label>
+                                    <input name="village" type="text" class="form-control">
+                                    <span class="text-danger error-text village_error"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group mb-md-3">
+                                    <label>Commune</label>
+                                    <input name="commune" type="text" class="form-control">
+                                    <span class="text-danger error-text commune_error"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group mb-md-3">
+                                    <label>District</label>
+                                    <input name="district" type="text" class="form-control">
+                                    <span class="text-danger error-text district_error"></span>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group mb-md-3">
-                                    <label>Contact Phone</label>
-                                    <input name="contact_phone" type="text" class="form-control">
-                                    <span class="text-danger error-text contact_phone_error"></span>
+                                    <label>province</label>
+                                    <input name="province" type="text" class="form-control">
+                                    <span class="text-danger error-text province_error"></span>
                                 </div>
                             </div>
-                        </div> <!-- End row -->
-            
+                            <div class="col-md-6">
+                                <div class="form-group mb-md-3">
+                                    <label>country</label>
+                                    <input name="country" type="text" class="form-control">
+                                    <span class="text-danger error-text country_error"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group mb-md-3">
+                                    <label>dob</label>
+                                    <input name="dob" type="date" class="form-control">
+                                    <span class="text-danger error-text dob_error"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group mb-md-3">
+                                    <label>sex</label>
+                                    <input name="sex" type="text" class="form-control">
+                                    <span class="text-danger error-text sex_error"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group mb-md-3">
+                                    <label>email</label>
+                                    <input name="email" type="email" class="form-control">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group mb-md-3">
+                                    <label>Khmer Phone</label>
+                                    <input name="kphone" type="text" class="form-control">
+                                    <span class="text-danger error-text kphone_error"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group mb-md-3">
+                                    <label>Country Code</label>
+                                    <input name="country_code" type="text" class="form-control">
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group mb-md-3">
+                                    <label>Passport</label>
+                                    <input name="passport" type="text" class="form-control">
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group mb-md-3">
+                                    <label>id_card</label>
+                                    <input name="id_card" type="text" class="form-control">
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group mb-md-3">
+                                    <label>height</label>
+                                    <input name="height" type="number" class="form-control">
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group mb-md-3">
+                                    <label>weight</label>
+                                    <input name="weight" type="number" class="form-control">
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group mb-md-3">
+                                    <label>nationality</label>
+                                    <input name="nationality" type="text" class="form-control">
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group mb-md-3">
+                                    <label>marital_status</label>
+                                    <input name="marital_status" type="text" class="form-control">
+                                    <span class="text-danger error-text marital_status_error"></span>
+                                </div>
+                            </div>
+                            {{-- <div class="col-md-6"></div> --}}
+
+                        </div>
+                        
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                             <button type="submit" class="btn btn-info">Create</button>
@@ -231,7 +211,7 @@
         </div>
     </div> <!-- end add modal -->
 
-    {{-- <div class="container-fluid">
+    <div class="container-fluid">
         @if (session('userdelete'))
             <div class="alert alert-success">{{session('userdelete')}}</div>
         @endif
@@ -240,24 +220,23 @@
             <thead class="table-primary">
                 <tr>
                     <th>No</th>
-                    <th>Company</th>
-                    <th>Logo</th>
+                    <th>Uid</th>
+                    <th>Profile</th>
                     <th>Action</th>
                 </tr>
             </thead>
             <tbody>
-                @forelse ($companyinfos as $i => $companyinfo)
+                @forelse ($cvs as $i => $cv)
                 <tr>
                     <td>{{$i+1}}</td>
-                    <td>{{$companyinfo->company}}</td>
+                    <td>{{$cv->uid}}</td>
                     <td>
-                        <img src="{{asset('upload/companylogo/')}}/{{$companyinfo->logo}}" alt="logo here" class="me-3" style="width: 50px; height: 50px; object-fit: contain;">
-                        @if($companyinfo->recruitment == true)<i class="bi bi-person-check"></i>@endif
+                        <img src="{{asset('upload/cvprofile/')}}/{{$cv->photo}}" alt="CV Profile" class="me-3" style="width: 50px; height: 50px; object-fit: contain;">
                     </td>
                     <td>
-                        <a href="/admin/companyinfo/{{ $companyinfo->id }}/edit"><i class="bi bi-pencil-square btn text-muted pe-0" style="font-size:24px;"></i></a>
+                        <a href="/admin/cv/{{ $cv->id }}/edit"><i class="bi bi-pencil-square btn text-muted pe-0" style="font-size:24px;"></i></a>
                         
-                        <form action="/admin/companyinfo/{{ $companyinfo->id }}" method="POST" class="d-inline" onsubmit="return confirm('Are you sure? You won\'t be able to revert this!')">
+                        <form action="/admin/cv/{{ $cv->id }}" method="POST" class="d-inline" onsubmit="return confirm('Are you sure? You won\'t be able to revert this!')">
                             @csrf
                             @method('delete')
                             <button type="submit" class="btn btn-sm text-danger" title="Delete"><i class="bi bi-trash" style="font-size:24px;"></i></button>
@@ -271,14 +250,14 @@
             <tfoot class="table-primary">
                 <tr>
                     <th>No</th>
-                    <th>Company</th>
-                    <th>Logo</th>
+                    <th>Uid</th>
+                    <th>Profile</th>
                     <th>Action</th>
                 </tr>
             </tfoot>
         </table>
 
-    </div> --}}
+    </div>
 
 @endsection
 
@@ -312,7 +291,7 @@
                         }else{
                             $('#addCvFormId')[0].reset()
                             $('#showCvModal').modal('hide')
-                            document.location.href = "{{ route('admin.companyinfo.index') }}"
+                            document.location.href = "{{ route('admin.cv.index') }}"
                         }
                     }
                 });

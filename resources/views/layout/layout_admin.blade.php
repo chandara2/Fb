@@ -22,11 +22,6 @@
         <link rel="stylesheet" href="{{ asset('css/global_custom.css') }}">
         <!-- Individual Custom CSS -->
         @yield('style')
-        <style>
-            .amhover li:hover{
-                background: #000;
-            }
-        </style>
     </head>
     <body>
         
