@@ -21,7 +21,7 @@
 
     <!-- Modal Add company info -->
     <div class="modal fade" id="showCvModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
+        <div class="modal-dialog modal-fullscreen">
             <div class="modal-content">
                 <div class="modal-header bg-info bg-opacity-50">
                 <h5 class="modal-title" id="exampleModalLabel">Create Company</h5>
@@ -33,40 +33,160 @@
 
                         <div class="form-group mb-md-3">
                             <label>CV Profil</label>
-                            <input name="photo" type="file" class="form-control" value="{{ old('photo') }}" onchange="document.getElementById('companyinfologo').src = window.URL.createObjectURL(this.files[0])">
+                            <input name="photo" type="file" class="form-control" value="{{ old('photo') }}" onchange="document.getElementById('cvprofile').src = window.URL.createObjectURL(this.files[0])">
                             <span class="text-danger error-text photo_error"></span>
-                            <img id="companyinfologo" width="110px">
+                            <img id="cvprofile" width="110px">
                         </div>
 
                         <div class="form-group mb-md-3">
-                            <label>Company name</label>
-                            <input name="company" type="text" class="form-control">
-                            <span class="text-danger error-text company_error"></span>
+                            <label>Position Apply</label>
+                            <input name="position_apply" type="text" class="form-control">
+                            <span class="text-danger error-text position_apply_error"></span>
                         </div>
 
                         <div class="form-group mb-md-3">
-                            <label>Number of staff</label>
-                            <input name="number_staff" type="text" class="form-control">
-                            <span class="text-danger error-text number_staff_error"></span>
+                            <label>Expected Salary</label>
+                            <input name="expected_salary" type="text" class="form-control">
+                            <span class="text-danger error-text expected_salary_error"></span>
                         </div>
 
                         <div class="form-group mb-md-3">
-                            <label>Website</label>
-                            <input name="website" type="text" class="form-control">
-                            <span class="text-danger error-text website_error"></span>
+                            <label>Khmer Name</label>
+                            <input name="kname" type="text" class="form-control">
+                            <span class="text-danger error-text kname_error"></span>
                         </div>
 
                         <div class="form-group mb-md-3">
-                            <label>Detail Location</label>
-                            <input name="detail_location" type="text" class="form-control">
-                            <span class="text-danger error-text detail_location_error"></span>
+                            <label>English Name</label>
+                            <input name="ename" type="text" class="form-control">
+                            <span class="text-danger error-text ename_error"></span>
                         </div>
 
                         <div class="form-group mb-md-3">
-                            <label>Company Profile</label>
-                            <textarea name="company_profile" class="textarea_autosize form-control summernote"></textarea>
-                            <span class="text-danger error-text company_profile_error"></span>
+                            <label>Nick Name</label>
+                            <input name="nname" type="text" class="form-control">
+                            <span class="text-danger error-text nname_error"></span>
                         </div>
+
+                        <div class="form-group mb-md-3">
+                            <label>House No.</label>
+                            <input name="house_no" type="text" class="form-control">
+                            <span class="text-danger error-text house_no_error"></span>
+                        </div>
+
+                        <div class="form-group mb-md-3">
+                            <label>Streat No.</label>
+                            <input name="streat_no" type="text" class="form-control">
+                            <span class="text-danger error-text streat_no_error"></span>
+                        </div>
+
+                        <div class="form-group mb-md-3">
+                            <label>Group No.</label>
+                            <input name="group_no" type="text" class="form-control">
+                            <span class="text-danger error-text group_no_error"></span>
+                        </div>
+
+                        <div class="form-group mb-md-3">
+                            <label>Village</label>
+                            <input name="village" type="text" class="form-control">
+                            <span class="text-danger error-text village_error"></span>
+                        </div>
+
+                        <div class="form-group mb-md-3">
+                            <label>Commune</label>
+                            <input name="commune" type="text" class="form-control">
+                            <span class="text-danger error-text commune_error"></span>
+                        </div>
+
+                        <div class="form-group mb-md-3">
+                            <label>District</label>
+                            <input name="district" type="text" class="form-control">
+                            <span class="text-danger error-text district_error"></span>
+                        </div>
+
+                        <div class="form-group mb-md-3">
+                            <label>province</label>
+                            <input name="province" type="text" class="form-control">
+                            <span class="text-danger error-text province_error"></span>
+                        </div>
+
+                        <div class="form-group mb-md-3">
+                            <label>country</label>
+                            <input name="country" type="text" class="form-control">
+                            <span class="text-danger error-text country_error"></span>
+                        </div>
+
+                        <div class="form-group mb-md-3">
+                            <label>dob</label>
+                            <input name="dob" type="text" class="form-control">
+                            <span class="text-danger error-text dob_error"></span>
+                        </div>
+
+                        <div class="form-group mb-md-3">
+                            <label>sex</label>
+                            <input name="sex" type="text" class="form-control">
+                            <span class="text-danger error-text sex_error"></span>
+                        </div>
+
+                        <div class="form-group mb-md-3">
+                            <label>email</label>
+                            <input name="email" type="text" class="form-control">
+                            <span class="text-danger error-text email_error"></span>
+                        </div>
+
+                        <div class="form-group mb-md-3">
+                            <label>Khmer Phone</label>
+                            <input name="kphone" type="text" class="form-control">
+                            <span class="text-danger error-text kphone_error"></span>
+                        </div>
+
+                        <div class="form-group mb-md-3">
+                            <label>Country Code</label>
+                            <input name="country_code" type="text" class="form-control">
+                            <span class="text-danger error-text country_code_error"></span>
+                        </div>
+
+                        <div class="form-group mb-md-3">
+                            <label>Passport</label>
+                            <input name="passport" type="text" class="form-control">
+                            <span class="text-danger error-text passport_error"></span>
+                        </div>
+
+                        <div class="form-group mb-md-3">
+                            <label>id_card</label>
+                            <input name="id_card" type="text" class="form-control">
+                            <span class="text-danger error-text id_card_error"></span>
+                        </div>
+
+                        <div class="form-group mb-md-3">
+                            <label>height</label>
+                            <input name="height" type="text" class="form-control">
+                            <span class="text-danger error-text height_error"></span>
+                        </div>
+
+                        <div class="form-group mb-md-3">
+                            <label>weight</label>
+                            <input name="weight" type="text" class="form-control">
+                            <span class="text-danger error-text weight_error"></span>
+                        </div>
+                        <div class="form-group mb-md-3">
+                            <label>nationality</label>
+                            <input name="nationality" type="text" class="form-control">
+                            <span class="text-danger error-text nationality_error"></span>
+                        </div>
+                        <div class="form-group mb-md-3">
+                            <label>marital_status</label>
+                            <input name="marital_status" type="text" class="form-control">
+                            <span class="text-danger error-text marital_status_error"></span>
+                        </div>
+
+
+
+                        {{-- <div class="form-group mb-md-3">
+                            <label>Nick Name</label>
+                            <textarea name="nname" class="textarea_autosize form-control summernote"></textarea>
+                            <span class="text-danger error-text nname_error"></span>
+                        </div> --}}
 
                         <div class="h5 text-info text-center text-uppercase">Contact Information</div>
 
@@ -111,7 +231,7 @@
         </div>
     </div> <!-- end add modal -->
 
-    <div class="container-fluid">
+    {{-- <div class="container-fluid">
         @if (session('userdelete'))
             <div class="alert alert-success">{{session('userdelete')}}</div>
         @endif
@@ -158,7 +278,7 @@
             </tfoot>
         </table>
 
-    </div>
+    </div> --}}
 
 @endsection
 

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Job;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+// use Illuminate\Support\Carbon;
 
 class JobController extends Controller
 {
@@ -23,13 +24,21 @@ class JobController extends Controller
             ->select('jobs.*', 'jobs.id as job_id', 'company_infos.*', 'company_infos.id as com_id', 'job_locations.*', 'job_salaries.*')
             ->where('approved', true)
             ->paginate(10);
-        
+
         $job_count = Job::all()->where('approved', true)->count(); //Use for prevent error while search and no job
+        $job_urgent = DB::table('jobs')
+            ->join('company_infos', 'company_infos.id', '=', 'jobs.company_id')
+            ->join('job_locations', 'job_locations.location_en', '=', 'jobs.location')
+            ->join('job_salaries', 'job_salaries.salary_en', '=', 'jobs.salary')
+            ->select('jobs.*', 'jobs.id as job_id', 'company_infos.*', 'company_infos.id as com_id', 'job_locations.*', 'job_salaries.*')
+            ->where('approved', true)
+            ->where('expired_job', '<' , now()->addDays(7))
+            ->paginate(10);
 
         return view('page.job.index', [
             'jobscoms' => $jobscoms,
             'job_count' => $job_count,
-
+            'job_urgent' => $job_urgent,
         ]);
     }
 
@@ -72,7 +81,7 @@ class JobController extends Controller
             ->join('job_genders', 'job_genders.gender_en', '=', 'jobs.sex')
             ->join('job_terms', 'job_terms.term_en', '=', 'jobs.term')
             ->join('job_experiences', 'job_experiences.experience_en', '=', 'jobs.year_of_exp')
-            ->select('jobs.*', 'company_infos.*', 'company_infos.id as ciid','job_functions.*','job_industries.*', 'job_locations.*', 'job_salaries.*', 'job_qualifications.*', 'job_terms.*','job_genders.*', 'job_experiences.*')
+            ->select('jobs.*', 'company_infos.*', 'company_infos.id as ciid', 'job_functions.*', 'job_industries.*', 'job_locations.*', 'job_salaries.*', 'job_qualifications.*', 'job_terms.*', 'job_genders.*', 'job_experiences.*')
             ->where('jobs.id', $id)
             ->where('approved', true)
             ->get();
@@ -153,8 +162,18 @@ class JobController extends Controller
             ->orWhere('job_salaries.salary_th', $jobsort)
             ->paginate(10);
 
+        $job_urgent = DB::table('jobs')
+            ->join('company_infos', 'company_infos.id', '=', 'jobs.company_id')
+            ->join('job_locations', 'job_locations.location_en', '=', 'jobs.location')
+            ->join('job_salaries', 'job_salaries.salary_en', '=', 'jobs.salary')
+            ->select('jobs.*', 'jobs.id as job_id', 'company_infos.*', 'company_infos.id as com_id', 'job_locations.*', 'job_salaries.*')
+            ->where('approved', true)
+            ->where('expired_job', '<' , now()->addDays(7))
+            ->paginate(10);
+
         return view('page.job.job_sort', [
             'jobscoms' => $jobscoms,
+            'job_urgent' => $job_urgent,
         ]);
     }
 
@@ -172,7 +191,7 @@ class JobController extends Controller
                 ->join('job_qualifications', 'job_qualifications.qualification_en', '=', 'jobs.qualification')
                 ->join('job_genders', 'job_genders.gender_en', '=', 'jobs.sex')
                 ->join('job_terms', 'job_terms.term_en', '=', 'jobs.term')
-                ->select('jobs.*', 'jobs.id as job_id', 'company_infos.*', 'company_infos.id as com_id','job_functions.*','job_industries.*', 'job_locations.*', 'job_salaries.*')
+                ->select('jobs.*', 'jobs.id as job_id', 'company_infos.*', 'company_infos.id as com_id', 'job_functions.*', 'job_industries.*', 'job_locations.*', 'job_salaries.*')
                 //Search by
                 ->where('company', 'LIKE', "%$searchjob%")
 
@@ -180,7 +199,7 @@ class JobController extends Controller
                 ->orWhere('title_en', 'LIKE', "%$searchjob%")
                 ->orWhere('title_kh', 'LIKE', "%$searchjob%")
                 ->orWhere('title_th', 'LIKE', "%$searchjob%")
-                
+
                 ->orWhere('industry_ch', 'LIKE', "%$searchjob%")
                 ->orWhere('industry_en', 'LIKE', "%$searchjob%")
                 ->orWhere('industry_kh', 'LIKE', "%$searchjob%")
@@ -205,7 +224,7 @@ class JobController extends Controller
                 ->orWhere('qualification_en', 'LIKE', "%$searchjob%")
                 ->orWhere('qualification_kh', 'LIKE', "%$searchjob%")
                 ->orWhere('qualification_th', 'LIKE', "%$searchjob%")
-                
+
                 ->orWhere('gender_ch', 'LIKE', "%$searchjob%")
                 ->orWhere('gender_en', 'LIKE', "%$searchjob%")
                 ->orWhere('gender_kh', 'LIKE', "%$searchjob%")

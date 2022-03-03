@@ -303,82 +303,78 @@
             </div>
             @endif
 
-            <div class="row mb-5">
-                <div class="col-md-12">
-                    <h4 class="underline_highlight">{{ __('text.Career_resource') }}</h4>
-                    <div class="row g-3">
-                        <div class="col-md-4">
-                            <div class="bg-white rounded p-3">
-                                <i class="bi bi-person-workspace text-info"></i>
-                                <span>{{ __('text.Cv_coverletter') }}</span>
-                                <div class="border border-bottom my-3"></div>
-                                <ul class="list-unstyled">
-                                    @foreach ($career_howto as $howto)
-                                        <li>
-                                            <a href="career/{{ $howto->id }}" class="text-decoration-none text-dark">
-                                            @if (app()->getLocale() == 'ch')
-                                            {{$howto->title_ch}}
-                                            @elseif(app()->getLocale() == 'en')
-                                            {{$howto->title_en}}
-                                            @elseif(app()->getLocale() == 'kh')
-                                            {{$howto->title_kh}}
-                                            @else
-                                            {{$howto->title_th}}
-                                            @endif
-                                            </a>
-                                        </li>
-                                    @endforeach
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="bg-white rounded p-3">
-                                <i class="bi bi-chat-dots text-success"></i>
-                                <span>{{ __('text.Interview_tips') }}</span>
-                                <div class="border border-bottom my-3"></div>
-                                <ul class="list-unstyled">
-                                    @foreach ($career_tip as $tip)
-                                        <li>
-                                            <a href="career/{{ $tip->id }}" class="text-decoration-none text-dark">
-                                            @if (app()->getLocale() == 'ch')
-                                            {{$tip->title_ch}}
-                                            @elseif(app()->getLocale() == 'en')
-                                            {{$tip->title_en}}
-                                            @elseif(app()->getLocale() == 'kh')
-                                            {{$tip->title_kh}}
-                                            @else
-                                            {{$tip->title_th}}
-                                            @endif
-                                            </a>
-                                        </li>
-                                    @endforeach
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="bg-white rounded p-3">
-                                <i class="bi bi-boxes text-primary"></i>
-                                <span>{{ __('text.Cv_samples') }}</span>
-                                <div class="border border-bottom my-3"></div>
-                                <ul class="list-unstyled">
-                                    @foreach ($career_sample as $sample)
-                                        <li>
-                                            <a href="career/{{ $sample->id }}" class="text-decoration-none text-dark">
-                                            @if (app()->getLocale() == 'ch')
-                                            {{$sample->title_ch}}
-                                            @elseif(app()->getLocale() == 'en')
-                                            {{$sample->title_en}}
-                                            @elseif(app()->getLocale() == 'kh')
-                                            {{$sample->title_kh}}
-                                            @else
-                                            {{$sample->title_th}}
-                                            @endif
-                                            </a>
-                                        </li>
-                                    @endforeach
-                                </ul>
-                            </div>
-                        </div>
+            <div class="row align-items-md-stretch mb-5">
+                <h4 class="underline_highlight">{{ __('text.Career_resource') }}</h4>
+                <div class="col-lg-4 col-12">
+                    <div class="h-100 p-5 text-dark bg-white rounded-3">
+                        <i class="bi bi-person-workspace text-info"></i>
+                        <span>{{ __('text.Cv_coverletter') }}</span>
+                        <div class="border border-bottom my-3"></div>
+                        <ul class="list-unstyled">
+                            @foreach ($career_howto as $howto)
+                                <li>
+                                    <a href="career/{{ $howto->id }}" class="text-decoration-none text-dark">
+                                    @if (app()->getLocale() == 'ch')
+                                    {{$howto->title_ch}}
+                                    @elseif(app()->getLocale() == 'en')
+                                    {{$howto->title_en}}
+                                    @elseif(app()->getLocale() == 'kh')
+                                    {{$howto->title_kh}}
+                                    @else
+                                    {{$howto->title_th}}
+                                    @endif
+                                    </a>
+                                </li>
+                            @endforeach
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-12 my-lg-0 my-3">
+                    <div class="h-100 p-5 text-dark bg-white rounded-3">
+                        <i class="bi bi-chat-dots text-success"></i>
+                        <span>{{ __('text.Interview_tips') }}</span>
+                        <div class="border border-bottom my-3"></div>
+                        <ul class="list-unstyled">
+                            @foreach ($career_tip as $tip)
+                                <li>
+                                    <a href="career/{{ $tip->id }}" class="text-decoration-none text-dark">
+                                    @if (app()->getLocale() == 'ch')
+                                    {{$tip->title_ch}}
+                                    @elseif(app()->getLocale() == 'en')
+                                    {{$tip->title_en}}
+                                    @elseif(app()->getLocale() == 'kh')
+                                    {{$tip->title_kh}}
+                                    @else
+                                    {{$tip->title_th}}
+                                    @endif
+                                    </a>
+                                </li>
+                            @endforeach
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-12">
+                    <div class="h-100 p-5 text-dark bg-white rounded-3">
+                        <i class="bi bi-boxes text-primary"></i>
+                        <span>{{ __('text.Cv_samples') }}</span>
+                        <div class="border border-bottom my-3"></div>
+                        <ul class="list-unstyled">
+                            @foreach ($career_sample as $sample)
+                                <li>
+                                    <a href="career/{{ $sample->id }}" class="text-decoration-none text-dark">
+                                    @if (app()->getLocale() == 'ch')
+                                    {{$sample->title_ch}}
+                                    @elseif(app()->getLocale() == 'en')
+                                    {{$sample->title_en}}
+                                    @elseif(app()->getLocale() == 'kh')
+                                    {{$sample->title_kh}}
+                                    @else
+                                    {{$sample->title_th}}
+                                    @endif
+                                    </a>
+                                </li>
+                            @endforeach
+                        </ul>
                     </div>
                 </div>
             </div>
