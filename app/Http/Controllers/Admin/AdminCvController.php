@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Cv;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Validator;
 
 class AdminCvController extends Controller
@@ -168,6 +169,14 @@ class AdminCvController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $cvs = Cv::find($id);
+
+        $image_path = 'upload/cvprofile/' . $cvs->photo;
+        if (File::exists($image_path)) {
+            File::delete($image_path);
+        }
+
+        $cvs->delete();
+        return back()->with('companyDelete', 'You have delete a company');
     }
 }

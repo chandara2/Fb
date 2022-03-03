@@ -18,10 +18,10 @@
                     </li>
                 @endif
                 <li class="breadcrumb-item">
-                    <a href="#" class="text-decoration-none" data-bs-toggle="modal" data-bs-target="#showFooterSmModal">Add Social Media</a>
+                    <button class="btn btn-sm btn-primary mb-3 rounded-0 w-auto" data-bs-toggle="modal" data-bs-target="#showFooterSmModal"><i class="bi bi-plus-square-dotted"></i> Social Media</button>
                 </li>
                 <li class="breadcrumb-item">
-                    <a href="#" class="text-decoration-none" data-bs-toggle="modal" data-bs-target="#showFooterQrcodeModal">Add Qrcode</a>
+                    <button class="btn btn-sm btn-primary mb-3 rounded-0 w-auto" data-bs-toggle="modal" data-bs-target="#showFooterQrcodeModal"><i class="bi bi-plus-square-dotted"></i> Qrcode</button>
                 </li>
             </ol>
         </nav>

@@ -14,7 +14,7 @@
             <ol class="breadcrumb">
                 <li class="breadcrumb-item active" aria-current="page">Job</li>
                 <li class="breadcrumb-item">
-                    <a href="#" class="text-decoration-none" data-bs-toggle="modal" data-bs-target="#showJobModal">New Job</a>
+                    <button class="btn btn-sm btn-primary mb-3 rounded-0 w-auto" data-bs-toggle="modal" data-bs-target="#showJobModal"><i class="bi bi-plus-square-dotted"></i> Job</button>
                 </li>
             </ol>
         </nav>

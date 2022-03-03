@@ -13,7 +13,7 @@
             <ol class="breadcrumb">
                 <li class="breadcrumb-item active" aria-current="page">Company</li>
                 <li class="breadcrumb-item">
-                    <a href="#" class="text-decoration-none" data-bs-toggle="modal" data-bs-target="#showCompanyModal">New Company</a>
+                    <button class="btn btn-sm btn-primary mb-3 rounded-0 w-auto" data-bs-toggle="modal" data-bs-target="#showCompanyModal"><i class="bi bi-plus-square-dotted"></i> Company</button>
                 </li>
             </ol>
         </nav>

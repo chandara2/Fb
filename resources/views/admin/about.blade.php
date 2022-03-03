@@ -13,7 +13,9 @@
             <ol class="breadcrumb">
                 <li class="breadcrumb-item active" aria-current="page">About</li>
                 @if ($abouts->isEmpty())
-                    <li class="breadcrumb-item text-primary" id="add_about_info" style="cursor: pointer;" data-bs-toggle="modal" data-bs-target="#showAboutModal">Add Information</li>
+                    <li class="breadcrumb-item" id="add_about_info">
+                        <button class="btn btn-sm btn-primary mb-3 rounded-0 w-auto" data-bs-toggle="modal" data-bs-target="#showAboutModal"><i class="bi bi-plus-square-dotted"></i> Information</button>
+                    </li>
                 @endif
             </ol>
         </nav>

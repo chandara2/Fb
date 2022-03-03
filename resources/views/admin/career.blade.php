@@ -14,7 +14,7 @@
             <ol class="breadcrumb">
                 <li class="breadcrumb-item active" aria-current="page">Career Resource</li>
                 <li class="breadcrumb-item">
-                    <a href="#" class="text-decoration-none" data-bs-toggle="modal" data-bs-target="#showCareerModal">New Post</a>
+                    <button class="btn btn-sm btn-primary mb-3 rounded-0 w-auto" data-bs-toggle="modal" data-bs-target="#showCareerModal"><i class="bi bi-plus-square-dotted"></i> Post</button>
                 </li>
             </ol>
         </nav>

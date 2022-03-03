@@ -13,7 +13,7 @@
             <ol class="breadcrumb">
                 <li class="breadcrumb-item active" aria-current="page">CV</li>
                 <li class="breadcrumb-item">
-                    <a href="#" class="text-decoration-none" data-bs-toggle="modal" data-bs-target="#showCvModal">New CV</a>
+                    <button class="btn btn-sm btn-primary mb-3 rounded-0 w-auto" data-bs-toggle="modal" data-bs-target="#showCvModal"><i class="bi bi-plus-square-dotted"></i> CV</button>
                 </li>
             </ol>
         </nav>

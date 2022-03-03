@@ -12,8 +12,8 @@
         <nav aria-label="breadcrumb" style="--bs-breadcrumb-divider: '|';" class="mt-3">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item active" aria-current="page">User</li>
-                <li class="breadcrumb-item" data-bs-toggle="modal" data-bs-target="#showUserModal">
-                    <a href="#" class="text-decoration-none">New User</a>
+                <li class="breadcrumb-item">
+                    <button class="btn btn-sm btn-primary mb-3 rounded-0 w-auto" data-bs-toggle="modal" data-bs-target="#showUserModal"><i class="bi bi-plus-square-dotted"></i> User</button>
                 </li>
             </ol>
         </nav>
