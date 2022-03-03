@@ -240,7 +240,7 @@
                         @endif
 
                         <ul class="list-group mt-3">
-                            <li class="list-group-item active bg-danger border-danger" aria-current="true">Hot Jobs</li>
+                            <li class="list-group-item active bg-danger border-danger" aria-current="true">{{ __('text.Hot_jobs') }}</li>
                             @foreach ($hotjobs as $hotjob)
                                 <li class="list-group-item ps-0 py-0">
                                     <span class="position-relative"><a href="/job/{{$hotjob->job_id}}" class="text-dark ps-3 text-decoration-none">

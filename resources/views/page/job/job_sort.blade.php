@@ -25,8 +25,8 @@
 <div class="container my-3">
 
     <nav class="nav nav-pills" id="pills-tab" role="tablist">
-        <a class="nav-link active" id="pills-relatedjobs-tab" data-bs-toggle="pill" href="#pills-relatedjobs" role="tab" aria-controls="pills-relatedjobs" aria-selected="true">Related Jobs</a>
-        <a class="nav-link" id="pills-urgentjobs-tab" data-bs-toggle="pill" href="#pills-urgentjobs" role="tab" aria-controls="pills-urgentjobs" aria-selected="false">Urgent Jobs</a>
+        <a class="nav-link active" id="pills-relatedjobs-tab" data-bs-toggle="pill" href="#pills-relatedjobs" role="tab" aria-controls="pills-relatedjobs" aria-selected="true">{{ __('text.Related_jobs') }}</a>
+        <a class="nav-link" id="pills-urgentjobs-tab" data-bs-toggle="pill" href="#pills-urgentjobs" role="tab" aria-controls="pills-urgentjobs" aria-selected="false">{{ __('text.Urgent_jobs') }}</a>
     </nav>
     <div class="tab-content" id="pills-tabContent">
         <div class="tab-pane fade show active" id="pills-relatedjobs" role="tabpanel" aria-labelledby="pills-relatedjobs-tab">

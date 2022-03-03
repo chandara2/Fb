@@ -242,10 +242,20 @@ class JobController extends Controller
                 ->select('jobs.*', 'jobs.id as job_id', 'company_infos.*', 'company_infos.id as com_id')
                 ->paginate(10);
         }
+
+        $job_urgent = DB::table('jobs')
+            ->join('company_infos', 'company_infos.id', '=', 'jobs.company_id')
+            ->join('job_locations', 'job_locations.location_en', '=', 'jobs.location')
+            ->join('job_salaries', 'job_salaries.salary_en', '=', 'jobs.salary')
+            ->select('jobs.*', 'jobs.id as job_id', 'company_infos.*', 'company_infos.id as com_id', 'job_locations.*', 'job_salaries.*')
+            ->where('approved', true)
+            ->where('expired_job', '<' , now()->addDays(7))
+            ->paginate(10);
         return view('page.job.index', [
             'job_count' => $job_count,
             'jobscoms' => $jobscoms,
             'searchjob' => $searchjob,
+            'job_urgent' => $job_urgent,
         ]);
     }
 }
