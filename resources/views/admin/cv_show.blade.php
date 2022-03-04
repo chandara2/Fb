@@ -11,7 +11,7 @@
             <div class="row justify-content-start">
                 <img src="{{asset('upload/cvprofile/')}}/{{$cv->photo}}" alt="CV Profile" style="width: 100px; height: 100px; object-fit: cover;">
             </div>
-            <div class="row">
+            <div class="row position-relative">
                 <div class="col-md-6">
                     <span>តំណែងស្នើសុំ</span><br>
                     <div class="d-flex">
@@ -299,8 +299,8 @@
                     </div>
                 </div>
                 
-                <div class="text-end">
-                    <a href="{{ route('admin.cv.edit', $cv->id) }}" class="btn"><i class="bi bi-pencil-square text-muted pe-0" style="font-size:24px;"></i></a>
+                <div class="text-end position-absolute end-0" style="top: -25px;">
+                    <a href="{{ route('admin.cv.edit', $cv->id) }}" class="btn"><i class="bi bi-pencil-square text-muted pe-0" style="font-size:24px;"></i> Edit</a>
                 </div>
             </div> <!-- End row -->
 
