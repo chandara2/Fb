@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Cv;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Validator;
 
@@ -135,7 +136,14 @@ class AdminCvController extends Controller
      */
     public function show($id)
     {
-        //
+        $cvs = DB::table('cvs')
+            ->where('cvs.id', $id)
+            ->select('cvs.*')
+            ->get();
+
+        return view('admin.cv_show', [
+            'cvs' => $cvs,
+        ]);
     }
 
     /**

@@ -8,4 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class CvEducation extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'uid',
+        'institution',
+        'course',
+        'start',
+        'end',
+        'certificate',
+        
+    ];
 }

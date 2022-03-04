@@ -199,6 +199,45 @@
                             </div>
                             {{-- <div class="col-md-6"></div> --}}
 
+                        </div> <!-- End row -->
+
+                        <div class="row edu_add_script">
+                            <div class="col-md-2">
+                                <div class="form-group mb-md-3">
+                                    <label>Institution</label>
+                                    <input name="institution[]" type="text" class="form-control">
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="form-group mb-md-3">
+                                    <label>Course</label>
+                                    <input name="course[]" type="text" class="form-control">
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="form-group mb-md-3">
+                                    <label>Start</label>
+                                    <input name="start[]" type="text" class="form-control">
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="form-group mb-md-3">
+                                    <label>End</label>
+                                    <input name="end[]" type="text" class="form-control">
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="form-group mb-md-3">
+                                    <label>Certificate</label>
+                                    <input name="certificate[]" type="text" class="form-control">
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="form-group mb-md-3">
+                                    <label>Add</label>
+                                    <button class="add_edu_btn btn btn-primary">+</button>
+                                </div>
+                            </div>
                         </div>
                         
                         <div class="modal-footer">
@@ -234,7 +273,7 @@
                         <img src="{{asset('upload/cvprofile/')}}/{{$cv->photo}}" alt="CV Profile" class="me-3" style="width: 50px; height: 50px; object-fit: contain;">
                     </td>
                     <td>
-                        <a href="/admin/cv/{{ $cv->id }}/edit"><i class="bi bi-pencil-square btn text-muted pe-0" style="font-size:24px;"></i></a>
+                        <a href="/admin/cv/{{ $cv->id }}"><i class="bi bi-eye btn text-muted pe-0" style="font-size:24px;"></i></a>
                         
                         <form action="/admin/cv/{{ $cv->id }}" method="POST" class="d-inline" onsubmit="return confirm('Are you sure? You won\'t be able to revert this!')">
                             @csrf
@@ -296,6 +335,71 @@
                     }
                 });
             });
+
+
+             // allowed maximum input fields
+            var max_input = 5;
+
+            // initialize the counter for textbox
+            var x = 1;
+
+            // handle click event on Add More button
+            $('.add_edu_btn').click(function (e) {
+                e.preventDefault();
+                if (x < max_input) { // validate the condition
+                    x++; // increment the counter
+                    $('.edu_add_script').append(`
+                        <div class="edu_input_box my-3">
+                            <div class="row">
+
+                                <div class="col-md-2">
+                                    <div class="form-group mb-md-3">
+                                        <label>Institution</label>
+                                        <input name="institution[]" type="text" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="form-group mb-md-3">
+                                        <label>Course</label>
+                                        <input name="course[]" type="text" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="form-group mb-md-3">
+                                        <label>Start</label>
+                                        <input name="start[]" type="text" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="form-group mb-md-3">
+                                        <label>End</label>
+                                        <input name="end[]" type="text" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="form-group mb-md-3">
+                                        <label>Certificate</label>
+                                        <input name="certificate[]" type="text" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <button class="remove-lnk btn btn-outline-danger">Remove</button>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    `); // add input field
+            }
+            });
+
+            // handle click event of the remove link
+            $('.edu_add_script').on("click", ".remove-lnk", function (e) {
+                e.preventDefault();
+                $(this).parent('.edu_input_box').remove();  // remove input field
+                x--; // decrement the counter
+            })
+
         }); 
     </script>
 @endsection
