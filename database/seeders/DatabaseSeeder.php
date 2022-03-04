@@ -25,6 +25,7 @@ class DatabaseSeeder extends Seeder
             JobQualificationSeeder::class,
             JobSalarySeeder::class,
             JobTermSeeder::class,
+            MaritalStatusSeeder::class,
         ]);
     }
 }

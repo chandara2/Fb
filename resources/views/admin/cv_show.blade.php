@@ -8,7 +8,7 @@
             <div class="row">
                 <span class="text-center h4">Curriculum Vitae</span>
             </div>
-            <div class="row justify-content-end">
+            <div class="row justify-content-start">
                 <img src="{{asset('upload/cvprofile/')}}/{{$cv->photo}}" alt="CV Profile" style="width: 100px; height: 100px; object-fit: cover;">
             </div>
             <div class="row">
@@ -150,14 +150,26 @@
                         </div>
                         <div class="col-md">
                             <span>ប្រុស</span><br>
-                            <div class="d-flex">
-                                <div class="w-100"><i class="bi bi-check-square"></i><i class="bi bi-square"></i>Male</div>
+                            <div class="d-flex position-relative">
+                                <div class="w-100 position-absolute" style="left: -15px;">
+                                    @if($cv->sex == "Male")
+                                    <i class="bi bi-check-square"></i>{{ $cv->sex }}
+                                    @else
+                                    <i class="bi bi-square"></i>Male
+                                    @endif
+                                </div>
                             </div>
                         </div>
                         <div class="col-md">
                             <span>ស្រី</span><br>
-                            <div class="d-flex">
-                                <div class="w-100"><i class="bi bi-check-square"></i><i class="bi bi-square"></i>Female</div>
+                            <div class="d-flex position-relative">
+                                <div class="w-100 position-absolute" style="left: -15px;">
+                                    @if($cv->sex != "Male")
+                                    <i class="bi bi-check-square"></i>
+                                    @else
+                                    <i class="bi bi-square"></i>Female
+                                    @endif
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -250,23 +262,45 @@
                         </div>
                         <div class="col-md">
                             <span>លីវ</span><br>
-                            <div class="d-flex">
-                                <div class="w-100"><i class="bi bi-check-square"></i><i class="bi bi-square"></i>Single</div>
+                            <div class="d-flex position-relative">
+                                <div class="w-100 position-absolute" style="left: -15px;">
+                                    @if($cv->marital_status == "Single")
+                                    <i class="bi bi-check-square"></i>{{ $cv->marital_status }}
+                                    @else
+                                    <i class="bi bi-square"></i>Single
+                                    @endif
+                                </div>
                             </div>
                         </div>
                         <div class="col-md">
                             <span>រៀបការ</span><br>
-                            <div class="d-flex">
-                                <div class="w-100"><i class="bi bi-check-square"></i><i class="bi bi-square"></i>Married</div>
+                            <div class="d-flex position-relative">
+                                <div class="w-100 position-absolute" style="left: -15px;">
+                                    @if($cv->marital_status == "Married")
+                                    <i class="bi bi-check-square"></i>{{ $cv->marital_status }}
+                                    @else
+                                    <i class="bi bi-square"></i>Married
+                                    @endif
+                                </div>
                             </div>
                         </div>
                         <div class="col-md">
                             <span>លែងលះ</span><br>
-                            <div class="d-flex">
-                                <div class="w-100"><i class="bi bi-check-square"></i><i class="bi bi-square"></i>Divorced</div>
+                            <div class="d-flex position-relative">
+                                <div class="w-100 position-absolute" style="left: -15px;">
+                                    @if($cv->marital_status == "Divorced")
+                                    <i class="bi bi-check-square"></i>{{ $cv->marital_status }}
+                                    @else
+                                    <i class="bi bi-square"></i>Divorced
+                                    @endif
+                                </div>
                             </div>
                         </div>
                     </div>
+                </div>
+                
+                <div class="text-end">
+                    <a href="{{ route('admin.cv.edit', $cv->id) }}" class="btn"><i class="bi bi-pencil-square text-muted pe-0" style="font-size:24px;"></i></a>
                 </div>
             </div> <!-- End row -->
 

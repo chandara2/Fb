@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Cv;
+use App\Models\JobGender;
+use App\Models\MaritalStatus;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -20,8 +22,12 @@ class AdminCvController extends Controller
     public function index()
     {
         $cvs = Cv::all();
+        $sexs = JobGender::all()->where('gender_en', '<>', 'Male/Female');
+        $statuses = MaritalStatus::all();
         return view('admin.cv',[
             'cvs'=>$cvs,
+            'sexs'=>$sexs,
+            'statuses'=>$statuses,
         ]);
     }
 
@@ -154,7 +160,12 @@ class AdminCvController extends Controller
      */
     public function edit($id)
     {
-        //
+        $cvid = Cv::find($id);
+        $sexs = JobGender::all()->where('gender_en', '<>', 'Male/Female');
+        return view('admin.cv_edit', [
+            'cvid' => $cvid,
+            'sexs' => $sexs,
+        ]);
     }
 
     /**
@@ -166,7 +177,38 @@ class AdminCvController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'photo' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'position_apply' => 'required',
+            'sex' => 'required',
+    
+        ], [
+            'photo.required' => 'Please upload your company photo',
+            'position_apply.required' => 'Please fill in position apply',
+            'sex.required' => 'Please fill in gender',
+        ]);
+
+        $cvs = Cv::find($id);
+
+        if ($request->hasFile('photo')) {
+            $path = 'upload/cvprofile/' . $cvs->photo;
+            if (File::exists($path)) {
+                File::delete($path);
+            }
+            $file = $request->file('photo');
+            $extension = $file->getClientOriginalExtension();
+            $filename = time() . '.' . $extension;
+            $file->move('upload/cvprofile/', $filename);
+            $cvs->photo = $filename;
+        }
+
+        $cvs->position_apply = $request->position_apply;
+        
+        $cvs->sex = $request->sex;
+
+        $cvs->update();
+
+        return redirect(route('admin.cv.index'));
     }
 
     /**

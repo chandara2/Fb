@@ -113,32 +113,37 @@
                                     <span class="text-danger error-text district_error"></span>
                                 </div>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                                 <div class="form-group mb-md-3">
                                     <label>province</label>
                                     <input name="province" type="text" class="form-control">
                                     <span class="text-danger error-text province_error"></span>
                                 </div>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                                 <div class="form-group mb-md-3">
                                     <label>country</label>
                                     <input name="country" type="text" class="form-control">
                                     <span class="text-danger error-text country_error"></span>
                                 </div>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-2">
                                 <div class="form-group mb-md-3">
                                     <label>dob</label>
                                     <input name="dob" type="date" class="form-control">
                                     <span class="text-danger error-text dob_error"></span>
                                 </div>
                             </div>
-                            <div class="col-md-4">
+                            <div class=col-md-2">
                                 <div class="form-group mb-md-3">
                                     <label>sex</label>
-                                    <input name="sex" type="text" class="form-control">
-                                    <span class="text-danger error-text sex_error"></span>
+                                    <select name="sex" value="{{ old('sex') }}" class="form-select">
+                                        <option selected disabled>Select Sex</option>
+                                        @foreach ($sexs as $sex)
+                                            <option>{{ $sex->gender_en }}</option>
+                                        @endforeach
+                                    </select>
+                                    <span class="text-danger error-text sex_error"></span>                         
                                 </div>
                             </div>
                             <div class="col-md-4">
@@ -190,11 +195,16 @@
                                     <input name="nationality" type="text" class="form-control">
                                 </div>
                             </div>
-                            <div class="col-md-3">
+                            <div class=col-md-2">
                                 <div class="form-group mb-md-3">
-                                    <label>marital_status</label>
-                                    <input name="marital_status" type="text" class="form-control">
-                                    <span class="text-danger error-text marital_status_error"></span>
+                                    <label>Marital Status</label>
+                                    <select name="marital_status" value="{{ old('marital_status') }}" class="form-select">
+                                        <option selected disabled>Select Status</option>
+                                        @foreach ($statuses as $status)
+                                            <option>{{ $status->status }}</option>
+                                        @endforeach
+                                    </select>
+                                    <span class="text-danger error-text marital_status_error"></span>                         
                                 </div>
                             </div>
                             {{-- <div class="col-md-6"></div> --}}
