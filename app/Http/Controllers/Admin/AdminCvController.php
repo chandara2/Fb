@@ -66,7 +66,7 @@ class AdminCvController extends Controller
             'marital_status' => 'required',
     
         ], [
-            'photo.required' => 'Please upload your company photo',
+            'photo.required' => 'Please upload your profile',
             'position_apply.required' => 'Please fill in position apply',
             'expected_salary.required' => 'Please fill in expected salary',
             'kname.required' => 'Please fill in Khmer name',
@@ -76,7 +76,7 @@ class AdminCvController extends Controller
             'district.required' => 'Please fill in district',
             'province.required' => 'Please fill in province',
             'country.required' => 'Please fill in country',
-            'dob.required' => 'Please fill in date of birht',
+            'dob.required' => 'Please fill in date of birth',
             'sex.required' => 'Please fill in gender',
             'kphone.required' => 'Please fill in phone',
             'marital_status.required' => 'Please fill in status',

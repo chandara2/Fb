@@ -19,22 +19,22 @@
         </nav>
     </div>
 
-    <!-- Modal Add company info -->
+    <!-- Modal Add CV -->
     <div class="modal fade" id="showCvModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-xl">
             <div class="modal-content">
                 <div class="modal-header bg-info bg-opacity-50">
-                <h5 class="modal-title" id="exampleModalLabel">Create Company</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Create CV</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <form method="POST" action="{{ route('admin.cv.store') }}" id="addCvFormId">
                         @csrf
-                        
-                        <div class="row">
-                            <div class="col-md-12">
+
+                        <div class="row"> <!--Row Input -->
+                            <div class="col-md-3">
                                 <div class="form-group mb-md-3">
-                                    <label>CV Profil</label>
+                                    <label>CV Profile</label>
                                     <input name="photo" type="file" class="form-control" value="{{ old('photo') }}" onchange="document.getElementById('cvprofile').src = window.URL.createObjectURL(this.files[0])">
                                     <span class="text-danger error-text photo_error"></span>
                                     <img id="cvprofile" width="110px">
@@ -47,13 +47,14 @@
                                     <span class="text-danger error-text position_apply_error"></span>
                                 </div>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-3">
                                 <div class="form-group mb-md-3">
                                     <label>Expected Salary</label>
                                     <input name="expected_salary" type="text" class="form-control">
                                     <span class="text-danger error-text expected_salary_error"></span>
                                 </div>
                             </div>
+
                             <div class="col-md-4">
                                 <div class="form-group mb-md-3">
                                     <label>Khmer Name</label>
@@ -72,184 +73,167 @@
                                 <div class="form-group mb-md-3">
                                     <label>Nick Name</label>
                                     <input name="nname" type="text" class="form-control">
+                                    <span class="text-danger error-text nname_error"></span>
                                 </div>
                             </div>
-                            <div class="col-md-4">
+
+                            <div class="col-md-2">
                                 <div class="form-group mb-md-3">
                                     <label>House No.</label>
                                     <input name="house_no" type="text" class="form-control">
+                                    <span class="text-danger error-text house_no_error"></span>
                                 </div>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-2">
                                 <div class="form-group mb-md-3">
                                     <label>Streat No.</label>
                                     <input name="streat_no" type="text" class="form-control">
+                                    <span class="text-danger error-text streat_no_error"></span>
                                 </div>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-2">
                                 <div class="form-group mb-md-3">
                                     <label>Group No.</label>
                                     <input name="group_no" type="text" class="form-control">
+                                    <span class="text-danger error-text group_no_error"></span>
                                 </div>
                             </div>
-                            <div class="col-md-4">
+
+                            <div class="col-md-3">
                                 <div class="form-group mb-md-3">
                                     <label>Village</label>
                                     <input name="village" type="text" class="form-control">
                                     <span class="text-danger error-text village_error"></span>
                                 </div>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-3">
                                 <div class="form-group mb-md-3">
                                     <label>Commune</label>
                                     <input name="commune" type="text" class="form-control">
                                     <span class="text-danger error-text commune_error"></span>
                                 </div>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-3">
                                 <div class="form-group mb-md-3">
                                     <label>District</label>
                                     <input name="district" type="text" class="form-control">
                                     <span class="text-danger error-text district_error"></span>
                                 </div>
                             </div>
-                            <div class="col-md-4">
+
+                            <div class="col-md-3">
                                 <div class="form-group mb-md-3">
-                                    <label>province</label>
+                                    <label>Province</label>
                                     <input name="province" type="text" class="form-control">
                                     <span class="text-danger error-text province_error"></span>
                                 </div>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-3">
                                 <div class="form-group mb-md-3">
-                                    <label>country</label>
+                                    <label>Country</label>
                                     <input name="country" type="text" class="form-control">
                                     <span class="text-danger error-text country_error"></span>
                                 </div>
                             </div>
-                            <div class="col-md-2">
+                            <div class="col-md-3">
                                 <div class="form-group mb-md-3">
-                                    <label>dob</label>
+                                    <label>Date of birth</label>
                                     <input name="dob" type="date" class="form-control">
                                     <span class="text-danger error-text dob_error"></span>
                                 </div>
                             </div>
-                            <div class=col-md-2">
+                            <div class="col-md-2">
                                 <div class="form-group mb-md-3">
-                                    <label>sex</label>
+                                    <label>Sex</label>
                                     <select name="sex" value="{{ old('sex') }}" class="form-select">
                                         <option selected disabled>Select Sex</option>
                                         @foreach ($sexs as $sex)
                                             <option>{{ $sex->gender_en }}</option>
                                         @endforeach
                                     </select>
-                                    <span class="text-danger error-text sex_error"></span>                         
+                                    <span class="text-danger error-text sex_error"></span>
                                 </div>
                             </div>
+                            
                             <div class="col-md-4">
                                 <div class="form-group mb-md-3">
-                                    <label>email</label>
-                                    <input name="email" type="email" class="form-control">
+                                    <label>Email</label>
+                                    <input name="email" type="text" class="form-control">
+                                    <span class="text-danger error-text email_error"></span>
                                 </div>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-3">
                                 <div class="form-group mb-md-3">
-                                    <label>Khmer Phone</label>
+                                    <label>Khmer phone</label>
                                     <input name="kphone" type="text" class="form-control">
                                     <span class="text-danger error-text kphone_error"></span>
                                 </div>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-3">
+                                <div class="form-group mb-md-3">
+                                    <label>Thai phone</label>
+                                    <input name="tphone" type="text" class="form-control">
+                                    <span class="text-danger error-text tphone_error"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
                                 <div class="form-group mb-md-3">
                                     <label>Country Code</label>
                                     <input name="country_code" type="text" class="form-control">
+                                    <span class="text-danger error-text country_code_error"></span>
                                 </div>
                             </div>
                             <div class="col-md-3">
                                 <div class="form-group mb-md-3">
-                                    <label>Passport</label>
+                                    <label>Passport No</label>
                                     <input name="passport" type="text" class="form-control">
+                                    <span class="text-danger error-text passport_error"></span>
                                 </div>
                             </div>
                             <div class="col-md-3">
                                 <div class="form-group mb-md-3">
-                                    <label>id_card</label>
+                                    <label>Identity Card No</label>
                                     <input name="id_card" type="text" class="form-control">
+                                    <span class="text-danger error-text id_card_error"></span>
                                 </div>
                             </div>
-                            <div class="col-md-3">
+                            <div class="col-md-2">
                                 <div class="form-group mb-md-3">
-                                    <label>height</label>
+                                    <label>Height</label>
                                     <input name="height" type="number" class="form-control">
+                                    <span class="text-danger error-text height_error"></span>
                                 </div>
                             </div>
-                            <div class="col-md-3">
+                            <div class="col-md-2">
                                 <div class="form-group mb-md-3">
-                                    <label>weight</label>
+                                    <label>Weight</label>
                                     <input name="weight" type="number" class="form-control">
+                                    <span class="text-danger error-text weight_error"></span>
                                 </div>
                             </div>
-                            <div class="col-md-3">
+                            <div class="col-md-6">
                                 <div class="form-group mb-md-3">
-                                    <label>nationality</label>
+                                    <label>Nationality</label>
                                     <input name="nationality" type="text" class="form-control">
+                                    <span class="text-danger error-text nationality_error"></span>
                                 </div>
                             </div>
-                            <div class=col-md-2">
+                            <div class="col-md-6">
                                 <div class="form-group mb-md-3">
                                     <label>Marital Status</label>
                                     <select name="marital_status" value="{{ old('marital_status') }}" class="form-select">
                                         <option selected disabled>Select Status</option>
                                         @foreach ($statuses as $status)
-                                            <option>{{ $status->status }}</option>
+                                            <option value="{{ $status->status }}">{{ $status->status }}</option>
                                         @endforeach
                                     </select>
-                                    <span class="text-danger error-text marital_status_error"></span>                         
+                                    <span class="text-danger error-text marital_status_error"></span>
                                 </div>
                             </div>
-                            {{-- <div class="col-md-6"></div> --}}
+                            
 
                         </div> <!-- End row -->
-
-                        <div class="row edu_add_script">
-                            <div class="col-md-2">
-                                <div class="form-group mb-md-3">
-                                    <label>Institution</label>
-                                    <input name="institution[]" type="text" class="form-control">
-                                </div>
-                            </div>
-                            <div class="col-md-2">
-                                <div class="form-group mb-md-3">
-                                    <label>Course</label>
-                                    <input name="course[]" type="text" class="form-control">
-                                </div>
-                            </div>
-                            <div class="col-md-2">
-                                <div class="form-group mb-md-3">
-                                    <label>Start</label>
-                                    <input name="start[]" type="text" class="form-control">
-                                </div>
-                            </div>
-                            <div class="col-md-2">
-                                <div class="form-group mb-md-3">
-                                    <label>End</label>
-                                    <input name="end[]" type="text" class="form-control">
-                                </div>
-                            </div>
-                            <div class="col-md-2">
-                                <div class="form-group mb-md-3">
-                                    <label>Certificate</label>
-                                    <input name="certificate[]" type="text" class="form-control">
-                                </div>
-                            </div>
-                            <div class="col-md-2">
-                                <div class="form-group mb-md-3">
-                                    <label>Add</label>
-                                    <button class="add_edu_btn btn btn-primary">+</button>
-                                </div>
-                            </div>
-                        </div>
-                        
+                
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                             <button type="submit" class="btn btn-info">Create</button>
@@ -345,70 +329,6 @@
                     }
                 });
             });
-
-
-             // allowed maximum input fields
-            var max_input = 5;
-
-            // initialize the counter for textbox
-            var x = 1;
-
-            // handle click event on Add More button
-            $('.add_edu_btn').click(function (e) {
-                e.preventDefault();
-                if (x < max_input) { // validate the condition
-                    x++; // increment the counter
-                    $('.edu_add_script').append(`
-                        <div class="edu_input_box my-3">
-                            <div class="row">
-
-                                <div class="col-md-2">
-                                    <div class="form-group mb-md-3">
-                                        <label>Institution</label>
-                                        <input name="institution[]" type="text" class="form-control">
-                                    </div>
-                                </div>
-                                <div class="col-md-2">
-                                    <div class="form-group mb-md-3">
-                                        <label>Course</label>
-                                        <input name="course[]" type="text" class="form-control">
-                                    </div>
-                                </div>
-                                <div class="col-md-2">
-                                    <div class="form-group mb-md-3">
-                                        <label>Start</label>
-                                        <input name="start[]" type="text" class="form-control">
-                                    </div>
-                                </div>
-                                <div class="col-md-2">
-                                    <div class="form-group mb-md-3">
-                                        <label>End</label>
-                                        <input name="end[]" type="text" class="form-control">
-                                    </div>
-                                </div>
-                                <div class="col-md-2">
-                                    <div class="form-group mb-md-3">
-                                        <label>Certificate</label>
-                                        <input name="certificate[]" type="text" class="form-control">
-                                    </div>
-                                </div>
-                                <div class="col-md-2">
-                                    <button class="remove-lnk btn btn-outline-danger">Remove</button>
-                                </div>
-                            </div>
-
-
-                        </div>
-                    `); // add input field
-            }
-            });
-
-            // handle click event of the remove link
-            $('.edu_add_script').on("click", ".remove-lnk", function (e) {
-                e.preventDefault();
-                $(this).parent('.edu_input_box').remove();  // remove input field
-                x--; // decrement the counter
-            })
 
         }); 
     </script>

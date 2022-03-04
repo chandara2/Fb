@@ -165,7 +165,7 @@
                             <div class="d-flex position-relative">
                                 <div class="w-100 position-absolute" style="left: -15px;">
                                     @if($cv->sex != "Male")
-                                    <i class="bi bi-check-square"></i>
+                                    <i class="bi bi-check-square"></i>{{ $cv->sex }}
                                     @else
                                     <i class="bi bi-square"></i>Female
                                     @endif
