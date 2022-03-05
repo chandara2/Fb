@@ -1,6 +1,14 @@
 @extends('layout.layout_admin')
 @section('title', 'ADMIN CV SHOW')
 
+@section('style')
+    <style>
+        .tbl_edus td{
+            height: 30px;
+        }
+    </style>
+@endsection
+
 @section('content')
     
     <div class="container my-5">
@@ -8,10 +16,11 @@
             <div class="row">
                 <span class="text-center h4">Curriculum Vitae</span>
             </div>
-            <div class="row justify-content-start">
+            <div class="row justify-content-start"> <!-- Profile -->
                 <img src="{{asset('upload/cvprofile/')}}/{{$cv->photo}}" alt="CV Profile" style="width: 100px; height: 100px; object-fit: cover;">
             </div>
-            <div class="row position-relative">
+
+            <div class="row position-relative"> <!-- Main CV -->
                 <div class="col-md-6">
                     <span>តំណែងស្នើសុំ</span><br>
                     <div class="d-flex">
@@ -201,7 +210,7 @@
                             <span>(ថៃ)</span><br>
                             <div class="d-flex">
                                 <div class="w-25">Thai</div>
-                                <div class="w-100 border-bottom">{{ $cv->kphone }}</div>
+                                <div class="w-100 border-bottom">{{ $cv->tphone }}</div>
                             </div>
                         </div>
                     </div>
@@ -303,6 +312,40 @@
                     <a href="{{ route('admin.cv.edit', $cv->id) }}" class="btn"><i class="bi bi-pencil-square text-muted pe-0" style="font-size:24px;"></i> Edit</a>
                 </div>
             </div> <!-- End row -->
+
+            <div class="row my-3"> <!-- Edu -->
+                <table class="table table-bordered">
+                    <tr class="text-center">
+                        <td>Institution</td>
+                        <td>Course</td>
+                        <td>Start</td>
+                        <td>End</td>
+                        <td>Certificate</td>
+                    </tr>
+                    
+                    <tr class="tbl_edus">
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr class="tbl_edus">
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr class="tbl_edus">
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </table>
+            </div>
 
         @endforeach
 

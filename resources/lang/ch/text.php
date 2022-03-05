@@ -28,6 +28,7 @@ return [
     'Language'=>'语言',
     'Location' => '地点',
     'n1jic' => '柬埔寨第一工地',
+    'No_results_found_for'=>'没有找到结果',
     'Popular_article' => '热门文章',
     'Qualification'=>'资质',
     'Recruitment_agencies' => '招聘机构',

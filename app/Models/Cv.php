@@ -29,6 +29,7 @@ class Cv extends Model
         'sex',
         'email',
         'kphone',
+        'tphone',
         'country_code',
         'passport',
         'id_card',

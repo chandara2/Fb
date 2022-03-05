@@ -99,9 +99,10 @@
             <div class="col-lg-4 col-12">
                 <div class="h-100 p-1 text-dark rounded-3">
                     <h3 class="text-decoration-underline">Camjob38 {{ __('text.Know_your_worth') }}</h3>
-                    <div class="row">
+                    <div class="row justify-content-around">
                         @forelse ($footerqrcode as $qrcode)
                             <div class="col-xl-4 col-lg-6">
+                            {{-- <div class="col"> --}}
                                 <div class="text-center">
                                     <p class="mb-lg-1 mb-1">{{ $qrcode->app_title }}</p>
                                     <a href="{{ $qrcode->qrcode_link }}" target="_blank"><img src="{{asset('upload/qrcode/')}}/{{$qrcode->qrcode}}" alt="Qrcode Logo" class="mb-md-3 mb-3" width="65"></a>

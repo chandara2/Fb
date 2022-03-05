@@ -9,22 +9,11 @@
         </div>
     </div>
 
-    <div class="container-fluid">
-        <nav aria-label="breadcrumb" style="--bs-breadcrumb-divider: '|';" class="mt-3">
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item active" aria-current="page">Career Resource</li>
-                <li class="breadcrumb-item">
-                    <button class="btn btn-sm btn-primary mb-3 rounded-0 w-auto" data-bs-toggle="modal" data-bs-target="#showCareerModal"><i class="bi bi-plus-square-dotted"></i> Post</button>
-                </li>
-            </ol>
-        </nav>
-    </div>
-
     <!-- Modal Add Post -->
     <div class="modal fade" id="showCareerModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-xl">
             <div class="modal-content">
-                <div class="modal-header bg-info bg-opacity-50">
+                <div class="modal-header bg-primary text-white">
                 <h5 class="modal-title" id="exampleModalLabel">Create Career Resource</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
@@ -103,7 +92,7 @@
                 
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-info">Create Post</button>
+                            <button type="submit" class="btn btn-primary">Create Post</button>
                         </div>
                     </form>
                 </div>
@@ -111,48 +100,50 @@
         </div>
     </div> <!-- end add modal -->
 
-    <div class="container-fluid">
-        @if (session('userdelete'))
-            <div class="alert alert-success">{{session('userdelete')}}</div>
-        @endif
-        
-        <table id="update_status_switch" class="customdatatable table table-hover table-bordered" style="width:100%">
-            <thead class="table-primary">
-                <tr>
-                    <th>No</th>
-                    <th>Post</th>
-                    <th>Type</th>
-                    <th>Action</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach ($careers as $i => $career)
-                <tr>
-                    <td>{{$i+1}}</td>
-                    <td>{{$career->title_en}}</td>
-                    <td>{{$career->type}}</td>
-                    <td>
-                        <a href="/admin/career/{{ $career->id }}/edit" title="Edit"><i class="bi bi-pencil-square text-primary"></i></a>
-                        <form action="/admin/career/{{ $career->id }}" method="POST" class="d-inline" onsubmit="return confirm('Are you sure? You won\'t be able to revert this!')">
-                            @csrf
-                            @method('delete')
-                            <button type="submit" class="btn btn-sm text-danger" title="Delete"><i class="bi bi-trash"></i></button>
-                        </form>
-                    </td>
-                </tr>
-                @endforeach
-            </tbody>
-            <tfoot class="table-primary">
-                <tr>
-                    <th>No</th>
-                    <th>Post</th>
-                    <th>Type</th>
-                    <th>Action</th>
-                </tr>
-            </tfoot>
-        </table>
+    
 
-    </div> <!-- end container-fluid -->
+    <div class="card container px-0 shadow">
+        <div class="card-header position-relative bg-primary">
+            <h2 class="mb-0 text-white">Post list</h2>
+            <button type="button" data-bs-toggle="modal" data-bs-target="#showCareerModal" class="btn btn-light position-absolute end-0 top-50 translate-middle-y me-3"><i class="bi bi-plus-circle"></i> Add New Post</button>
+        </div>
+        <div class="card-body">
+            <div class="container-fluid">
+                @if (session('userdelete'))
+                    <div class="alert alert-success">{{session('userdelete')}}</div>
+                @endif
+                
+                <table id="update_status_switch" class="customdatatable table table-hover table-bordered" style="width:100%">
+                    <thead class="table-primary">
+                        <tr>
+                            <th>No</th>
+                            <th>Post</th>
+                            <th>Type</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($careers as $i => $career)
+                        <tr>
+                            <td>{{$i+1}}</td>
+                            <td>{{$career->title_en}}</td>
+                            <td>{{$career->type}}</td>
+                            <td>
+                                <a href="/admin/career/{{ $career->id }}/edit" title="Edit"><i class="bi bi-pencil-square text-primary"></i></a>
+                                <form action="/admin/career/{{ $career->id }}" method="POST" class="d-inline" onsubmit="return confirm('Are you sure? You won\'t be able to revert this!')">
+                                    @csrf
+                                    @method('delete')
+                                    <button type="submit" class="btn btn-sm text-danger" title="Delete"><i class="bi bi-trash"></i></button>
+                                </form>
+                            </td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+        
+            </div>
+        </div>
+    </div>
 
 @endsection
 

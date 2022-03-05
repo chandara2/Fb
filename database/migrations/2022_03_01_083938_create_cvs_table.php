@@ -37,6 +37,7 @@ class CreateCvsTable extends Migration
             $table->string('sex')->nullable();
             $table->string('email')->nullable();
             $table->string('kphone')->nullable();
+            $table->string('tphone')->nullable();
             $table->string('country_code')->nullable();
             $table->string('passport')->nullable();
             $table->string('id_card')->nullable();

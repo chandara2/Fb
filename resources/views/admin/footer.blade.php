@@ -18,10 +18,10 @@
                     </li>
                 @endif
                 <li class="breadcrumb-item">
-                    <button class="btn btn-sm btn-primary mb-3 rounded-0 w-auto" data-bs-toggle="modal" data-bs-target="#showFooterSmModal"><i class="bi bi-plus-square-dotted"></i> Social Media</button>
+                    <button class="btn btn-sm btn-primary mb-3 w-auto" data-bs-toggle="modal" data-bs-target="#showFooterSmModal"><i class="bi bi-plus-circle"></i> Add New Social Media</button>
                 </li>
                 <li class="breadcrumb-item">
-                    <button class="btn btn-sm btn-primary mb-3 rounded-0 w-auto" data-bs-toggle="modal" data-bs-target="#showFooterQrcodeModal"><i class="bi bi-plus-square-dotted"></i> Qrcode</button>
+                    <button class="btn btn-sm btn-primary mb-3 w-auto" data-bs-toggle="modal" data-bs-target="#showFooterQrcodeModal"><i class="bi bi-plus-circle"></i> Add New Qrcode</button>
                 </li>
             </ol>
         </nav>
@@ -31,7 +31,7 @@
     <div class="modal fade" id="showFooterContactModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
-                <div class="modal-header bg-info bg-opacity-50">
+                <div class="modal-header bg-primary text-white">
                     <h5 class="modal-title" id="exampleModalLabel">Create Footer Contact</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
@@ -62,7 +62,7 @@
 
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-info">Create</button>
+                            <button type="submit" class="btn btn-primary">Create</button>
                         </div>
                     </form>
                 </div>
@@ -74,7 +74,7 @@
     <div class="modal fade" id="showFooterSmModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-md">
             <div class="modal-content">
-                <div class="modal-header bg-info bg-opacity-50">
+                <div class="modal-header bg-primary text-white">
                     <h5 class="modal-title" id="exampleModalLabel">Create Footer social media</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
@@ -96,7 +96,7 @@
             
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-info">Add Social Media</button>
+                            <button type="submit" class="btn btn-primary">Add Social Media</button>
                         </div>
                     </form>
                 </div>
@@ -108,7 +108,7 @@
     <div class="modal fade" id="showFooterQrcodeModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-md">
             <div class="modal-content">
-                <div class="modal-header bg-info bg-opacity-50">
+                <div class="modal-header bg-primary text-white">
                     <h5 class="modal-title" id="exampleModalLabel">Create Footer Qrcode</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
@@ -135,7 +135,7 @@
             
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-info">Add Qrcode</button>
+                            <button type="submit" class="btn btn-primary">Add Qrcode</button>
                         </div>
                     </form>
                 </div>
@@ -195,8 +195,9 @@
 
         </ul>
     </div>
-
+    
     <div class="container my-3 py-3"> <!-- Footer Social Media -->
+        <hr>
         <h4>Social Media</h4>
         <ul class="ps-0">
             @forelse ($footersocialmedia as $sm)
@@ -221,6 +222,7 @@
     </div>
 
     <div class="container"> <!-- Footer Qrcode -->
+        <hr>
         <h4>Qrcode</h4>
         <ul class="ps-0">
             @forelse ($footerqrcode as $qrcode)

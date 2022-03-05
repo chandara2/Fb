@@ -28,6 +28,7 @@ return [
     'Language' => 'ภาษา',
     'Location' => 'ที่ตั้ง',
     'n1jic' => 'ตำแหน่งงานอันดับ 1 ในกัมพูชา',
+    'No_results_found_for'=>'ไม่พบผลลัพธ์สำหรับ',
     'Popular_article' => 'บทความยอดนิยม',
     'Qualification' => 'คุณสมบัติ',
     'Recruitment_agencies' => 'บริษัทจัดหางาน',

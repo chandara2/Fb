@@ -20,7 +20,7 @@
 @section('content')
 
     @if($job_count==0)
-        <p class="text-center">No job to show</p>
+        <p class="text-center">No​​​ result to show</p>
     @else
         <div class="container my-3">
 
@@ -109,7 +109,7 @@
                             </div>
                         </li>
                         @empty
-                            <p class="text-center">No results found for <strong class="border-bottom border-warning"> {{ $searchjob }} </strong></p>
+                            <p class="text-center">{{ __('text.No_results_found_for') }} <strong class="border-bottom border-warning"> {{ $searchjob }} </strong></p>
                         @endforelse
                     </ul>
         
@@ -166,7 +166,7 @@
                             </div>
                         </li>
                         @empty
-                            <p class="text-center">No results found for <strong class="border-bottom border-warning"> {{ $searchjob }} </strong></p>
+                            <p class="text-center">No​​​ result to show</p>
                         @endforelse
                     </ul>
         

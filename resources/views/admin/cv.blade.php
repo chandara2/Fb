@@ -8,19 +8,8 @@
         </div>
     </div>
 
-    <div class="container-fluid">
-        <nav aria-label="breadcrumb" style="--bs-breadcrumb-divider: '|';" class="mt-3">
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item active" aria-current="page">CV</li>
-                <li class="breadcrumb-item">
-                    <button class="btn btn-sm btn-primary mb-3 rounded-0 w-auto" data-bs-toggle="modal" data-bs-target="#showCvModal"><i class="bi bi-plus-square-dotted"></i> CV</button>
-                </li>
-            </ol>
-        </nav>
-    </div>
-
     <!-- Modal Add CV -->
-    <div class="modal fade" id="showCvModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="addCvModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-xl">
             <div class="modal-content">
                 <div class="modal-header bg-info bg-opacity-50">
@@ -244,52 +233,54 @@
         </div>
     </div> <!-- end add modal -->
 
-    <div class="container-fluid">
-        @if (session('userdelete'))
-            <div class="alert alert-success">{{session('userdelete')}}</div>
-        @endif
-        
-        <table class="customdatatable table table-hover table-bordered" style="width:100%">
-            <thead class="table-primary">
-                <tr>
-                    <th>No</th>
-                    <th>Uid</th>
-                    <th>Profile</th>
-                    <th>Action</th>
-                </tr>
-            </thead>
-            <tbody>
-                @forelse ($cvs as $i => $cv)
-                <tr>
-                    <td>{{$i+1}}</td>
-                    <td>{{$cv->uid}}</td>
-                    <td>
-                        <img src="{{asset('upload/cvprofile/')}}/{{$cv->photo}}" alt="CV Profile" class="me-3" style="width: 50px; height: 50px; object-fit: contain;">
-                    </td>
-                    <td>
-                        <a href="/admin/cv/{{ $cv->id }}"><i class="bi bi-eye btn text-muted pe-0" style="font-size:24px;"></i></a>
-                        
-                        <form action="/admin/cv/{{ $cv->id }}" method="POST" class="d-inline" onsubmit="return confirm('Are you sure? You won\'t be able to revert this!')">
-                            @csrf
-                            @method('delete')
-                            <button type="submit" class="btn btn-sm text-danger" title="Delete"><i class="bi bi-trash" style="font-size:24px;"></i></button>
-                        </form>
-                    </td>
-                </tr>
-                @empty
-                <p class="text-center text-info">No Company Info.</p>
-                @endforelse
-            </tbody>
-            <tfoot class="table-primary">
-                <tr>
-                    <th>No</th>
-                    <th>Uid</th>
-                    <th>Profile</th>
-                    <th>Action</th>
-                </tr>
-            </tfoot>
-        </table>
+    
 
+    <div class="card container px-0 shadow">
+        <div class="card-header position-relative bg-primary">
+            <h2 class="mb-0 text-white">CV List</h2>
+            <button type="button" data-bs-toggle="modal" data-bs-target="#addCvModal" class="btn btn-light position-absolute end-0 top-50 translate-middle-y me-3"><i class="bi bi-plus-circle"></i> Add New CV</button>
+        </div>
+        <div class="card-body">
+            <div class="container-fluid">
+                @if (session('userdelete'))
+                    <div class="alert alert-success">{{session('userdelete')}}</div>
+                @endif
+                
+                <table class="customdatatable table table-hover table-bordered" style="width:100%">
+                    <thead class="table-primary">
+                        <tr>
+                            <th>No</th>
+                            <th>Uid</th>
+                            <th>Profile</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @forelse ($cvs as $i => $cv)
+                        <tr>
+                            <td>{{$i+1}}</td>
+                            <td>{{$cv->uid}}</td>
+                            <td>
+                                <img src="{{asset('upload/cvprofile/')}}/{{$cv->photo}}" alt="CV Profile" class="me-3" style="width: 50px; height: 50px; object-fit: contain;">
+                            </td>
+                            <td>
+                                <a href="/admin/cv/{{ $cv->id }}"><i class="bi bi-eye btn text-muted pe-0" style="font-size:24px;"></i></a>
+                                
+                                <form action="/admin/cv/{{ $cv->id }}" method="POST" class="d-inline" onsubmit="return confirm('Are you sure? You won\'t be able to revert this!')">
+                                    @csrf
+                                    @method('delete')
+                                    <button type="submit" class="btn btn-sm text-danger" title="Delete"><i class="bi bi-trash" style="font-size:24px;"></i></button>
+                                </form>
+                            </td>
+                        </tr>
+                        @empty
+                        <p class="text-center text-info">No Company Info.</p>
+                        @endforelse
+                    </tbody>
+                </table>
+        
+            </div>
+        </div>
     </div>
 
 @endsection
@@ -303,7 +294,7 @@
                 }
             });
 
-            // Save Company Form
+            // Save CV Form
             $('#addCvFormId').on('submit', function (e) {
                 e.preventDefault();
                 $.ajax({
@@ -323,7 +314,7 @@
                             })
                         }else{
                             $('#addCvFormId')[0].reset()
-                            $('#showCvModal').modal('hide')
+                            $('#addCvModal').modal('hide')
                             document.location.href = "{{ route('admin.cv.index') }}"
                         }
                     }

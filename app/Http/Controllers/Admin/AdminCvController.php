@@ -24,10 +24,10 @@ class AdminCvController extends Controller
         $cvs = Cv::all();
         $sexs = JobGender::all()->where('gender_en', '<>', 'Male/Female');
         $statuses = MaritalStatus::all();
-        return view('admin.cv',[
-            'cvs'=>$cvs,
-            'sexs'=>$sexs,
-            'statuses'=>$statuses,
+        return view('admin.cv', [
+            'cvs' => $cvs,
+            'sexs' => $sexs,
+            'statuses' => $statuses,
         ]);
     }
 
@@ -64,7 +64,7 @@ class AdminCvController extends Controller
             'sex' => 'required',
             'kphone' => 'required',
             'marital_status' => 'required',
-    
+
         ], [
             'photo.required' => 'Please upload your profile',
             'position_apply.required' => 'Please fill in position apply',
@@ -115,6 +115,7 @@ class AdminCvController extends Controller
             $cvs->sex = $request->sex;
             $cvs->email = $request->email;
             $cvs->kphone = $request->kphone;
+            $cvs->tphone = $request->tphone;
             $cvs->country_code = $request->country_code;
             $cvs->passport = $request->passport;
             $cvs->id_card = $request->id_card;
@@ -162,9 +163,11 @@ class AdminCvController extends Controller
     {
         $cvid = Cv::find($id);
         $sexs = JobGender::all()->where('gender_en', '<>', 'Male/Female');
+        $statuses = MaritalStatus::all();
         return view('admin.cv_edit', [
             'cvid' => $cvid,
             'sexs' => $sexs,
+            'statuses' => $statuses,
         ]);
     }
 
@@ -178,14 +181,34 @@ class AdminCvController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'photo' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'position_apply' => 'required',
+            'expected_salary' => 'required',
+            'kname' => 'required',
+            'ename' => 'required',
+            'village' => 'required',
+            'commune' => 'required',
+            'district' => 'required',
+            'province' => 'required',
+            'country' => 'required',
+            'dob' => 'required',
             'sex' => 'required',
-    
+            'kphone' => 'required',
+            'marital_status' => 'required',
+
         ], [
-            'photo.required' => 'Please upload your company photo',
             'position_apply.required' => 'Please fill in position apply',
+            'expected_salary.required' => 'Please fill in expected salary',
+            'kname.required' => 'Please fill in Khmer name',
+            'ename.required' => 'Please fill in English name',
+            'village.required' => 'Please fill in village',
+            'commune.required' => 'Please fill in commune',
+            'district.required' => 'Please fill in district',
+            'province.required' => 'Please fill in province',
+            'country.required' => 'Please fill in country',
+            'dob.required' => 'Please fill in date of birth',
             'sex.required' => 'Please fill in gender',
+            'kphone.required' => 'Please fill in phone',
+            'marital_status.required' => 'Please fill in status',
         ]);
 
         $cvs = Cv::find($id);
@@ -203,8 +226,37 @@ class AdminCvController extends Controller
         }
 
         $cvs->position_apply = $request->position_apply;
-        
+        $cvs->expected_salary = $request->expected_salary;
+        $cvs->kname = $request->kname;
+        $cvs->ename = $request->ename;
+        $cvs->nname = $request->nname;
+        $cvs->house_no = $request->house_no;
+        $cvs->streat_no = $request->streat_no;
+        $cvs->group_no = $request->group_no;
+        $cvs->village = $request->village;
+        $cvs->commune = $request->commune;
+        $cvs->district = $request->district;
+        $cvs->province = $request->province;
+        $cvs->country = $request->country;
+        $cvs->dob = $request->dob;
         $cvs->sex = $request->sex;
+        $cvs->email = $request->email;
+        $cvs->kphone = $request->kphone;
+        $cvs->tphone = $request->tphone;
+        $cvs->country_code = $request->country_code;
+        $cvs->passport = $request->passport;
+        $cvs->id_card = $request->id_card;
+        $cvs->height = $request->height;
+        $cvs->weight = $request->weight;
+        $cvs->nationality = $request->nationality;
+        $cvs->marital_status = $request->marital_status;
+        $cvs->education_background = $request->education_background;
+        $cvs->employment_history = $request->employment_history;
+        $cvs->language = $request->language;
+        $cvs->family = $request->family;
+        $cvs->computer = $request->computer;
+        $cvs->emergency = $request->emergency;
+        $cvs->relationship = $request->relationship;
 
         $cvs->update();
 

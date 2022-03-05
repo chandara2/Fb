@@ -12,7 +12,7 @@
     <div class="modal fade" id="showSlideModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-md">
             <div class="modal-content">
-                <div class="modal-header bg-info bg-opacity-50">
+                <div class="modal-header bg-primary text-white">
                 <h5 class="modal-title" id="exampleModalLabel">Add banner slide</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
@@ -29,7 +29,7 @@
             
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-info">Add Slide</button>
+                            <button type="submit" class="btn btn-primary">Add Slide</button>
                         </div>
                     </form>
                 </div>
@@ -41,7 +41,7 @@
     <div class="modal fade" id="showPartnerModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-md">
             <div class="modal-content">
-                <div class="modal-header bg-info bg-opacity-50">
+                <div class="modal-header bg-primary text-white">
                 <h5 class="modal-title" id="exampleModalLabel">Add Partner</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
@@ -63,7 +63,7 @@
             
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-info">Add Partner</button>
+                            <button type="submit" class="btn btn-primary">Add Partner</button>
                         </div>
                     </form>
                 </div>
@@ -73,7 +73,7 @@
 
     <div class="container"> <!-- Banner Slide -->
         <div class="row">
-            <button type="submit" data-bs-toggle="modal" data-bs-target="#showSlideModal" class="btn btn-sm btn-primary mb-3 rounded-0 w-auto"><i class="bi bi-plus-square-dotted"></i> Slide</button>
+            <button type="submit" data-bs-toggle="modal" data-bs-target="#showSlideModal" class="btn btn-sm btn-primary mb-3 w-auto"><i class="bi bi-plus-circle"></i> Add New Slide</button>
         </div>
 
         <div class="row">
@@ -97,7 +97,7 @@
 
     <div class="container"> <!-- Partner -->
         <div class="row">
-            <button type="submit" data-bs-toggle="modal" data-bs-target="#showPartnerModal" class="btn btn-sm btn-primary mb-3 rounded-0 w-auto"><i class="bi bi-plus-square-dotted"></i> Partner</button>
+            <button type="submit" data-bs-toggle="modal" data-bs-target="#showPartnerModal" class="btn btn-sm btn-primary mb-3 w-auto"><i class="bi bi-plus-circle"></i> Add New Partner</button>
         </div>
 
         <div class="row">

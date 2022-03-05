@@ -28,6 +28,7 @@ return [
     'Language'=>'ភាសា',
     'Location' => 'ទីតាំង',
     'n1jic' => 'គេហទំព័រការងារលេខ១នៅកម្ពុជា',
+    'No_results_found_for'=>'រកមិនឃើញលទ្ធផលសម្រាប់',
     'Popular_article' => 'អត្ថបទពេញនិយម',
     'Qualification'=>'គុណវុឌ្ឍិ',
     'Recruitment_agencies' => 'ភ្នាក់ងារជ្រើសរើសបុគ្គលិក',

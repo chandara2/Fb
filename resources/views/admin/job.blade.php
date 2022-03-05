@@ -9,22 +9,11 @@
         </div>
     </div>
 
-    <div class="container-fluid">
-        <nav aria-label="breadcrumb" style="--bs-breadcrumb-divider: '|';" class="mt-3">
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item active" aria-current="page">Job</li>
-                <li class="breadcrumb-item">
-                    <button class="btn btn-sm btn-primary mb-3 rounded-0 w-auto" data-bs-toggle="modal" data-bs-target="#showJobModal"><i class="bi bi-plus-square-dotted"></i> Job</button>
-                </li>
-            </ol>
-        </nav>
-    </div>
-
     <!-- Modal Add Job -->
     <div class="modal fade" id="showJobModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-xl">
             <div class="modal-content">
-                <div class="modal-header bg-info bg-opacity-50">
+                <div class="modal-header bg-primary text-white">
                 <h5 class="modal-title" id="exampleModalLabel">Create Job Announcement</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
@@ -235,7 +224,7 @@
                 
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-info">Create</button>
+                            <button type="submit" class="btn btn-primary">Create</button>
                         </div>
                     </form>
                 </div>
@@ -243,63 +232,61 @@
         </div>
     </div> <!-- end add modal -->
 
-    <div class="container-fluid">
-        @if (session('userdelete'))
-            <div class="alert alert-success">{{session('userdelete')}}</div>
-        @endif
+    <div class="card container px-0 shadow">
+        <div class="card-header position-relative bg-primary">
+            <h2 class="mb-0 text-white">List of jobs</h2>
+            <button type="button" data-bs-toggle="modal" data-bs-target="#showJobModal" class="btn btn-light position-absolute end-0 top-50 translate-middle-y me-3"><i class="bi bi-plus-circle"></i> Add New Job</button>
+        </div>
+        <div class="card-body">
+            <div class="container-fluid">
+                @if (session('userdelete'))
+                    <div class="alert alert-success">{{session('userdelete')}}</div>
+                @endif
+                
+                <table id="update_status_switch" class="customdatatable table table-hover table-bordered" style="width:100%">
+                    <thead class="table-primary">
+                        <tr>
+                            <th>No</th>
+                            <th>Job Title</th>
+                            <th>Company</th>
+                            <th>Expired Post</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($jobs as $i => $job)
+                        <tr>
+                            <td>{{$i+1}}</td>
+                            <td>{{$job->title_en}}</td>
+                            <td>{{$job->company}}</td>
+                            <td>
+                                @if ($job->expired_post<now())
+                                    <span class="text-danger" title="Will be deleted the next day">{{  date('d \\ M Y', strtotime($job->expired_post)) }}</span>
+                                @else
+                                    {{  date('d \\ M Y', strtotime($job->expired_post)) }}
+                                @endif
+                            </td>
+                            <td>
+                                <input type="checkbox" class="toggle-class" data-id="{{ $job->id }}" data-toggle="toggle"  data-offstyle="danger" data-on="Approved" data-off="Pending" {{ $job->approved == true ? 'checked' : ''}}>
+                                
+                            </td>
+                            <td>
+                                <a href="/admin/job/{{ $job->id }}/edit" title="Edit"><i class="bi bi-pencil-square text-primary"></i></a>
+                                <form action="/admin/job/{{ $job->id }}" method="POST" class="d-inline" onsubmit="return confirm('Are you sure? You won\'t be able to revert this!')">
+                                    @csrf
+                                    @method('delete')
+                                    <button type="submit" class="btn btn-sm text-danger" title="Delete"><i class="bi bi-trash"></i></button>
+                                </form>
+                            </td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
         
-        <table id="update_status_switch" class="customdatatable table table-hover table-bordered" style="width:100%">
-            <thead class="table-primary">
-                <tr>
-                    <th>No</th>
-                    <th>Job Title</th>
-                    <th>Company</th>
-                    <th>Expired Post</th>
-                    <th>Status</th>
-                    <th>Action</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach ($jobs as $i => $job)
-                <tr>
-                    <td>{{$i+1}}</td>
-                    <td>{{$job->title_en}}</td>
-                    <td>{{$job->company}}</td>
-                    <td>
-                        @if ($job->expired_post<now())
-                            <span class="text-danger" title="Will be deleted the next day">{{  date('d \\ M Y', strtotime($job->expired_post)) }}</span>
-                        @else
-                            {{  date('d \\ M Y', strtotime($job->expired_post)) }}
-                        @endif
-                    </td>
-                    <td>
-                        <input type="checkbox" class="toggle-class" data-id="{{ $job->id }}" data-toggle="toggle"  data-offstyle="danger" data-on="Approved" data-off="Pending" {{ $job->approved == true ? 'checked' : ''}}>
-                        
-                    </td>
-                    <td>
-                        <a href="/admin/job/{{ $job->id }}/edit" title="Edit"><i class="bi bi-pencil-square text-primary"></i></a>
-                        <form action="/admin/job/{{ $job->id }}" method="POST" class="d-inline" onsubmit="return confirm('Are you sure? You won\'t be able to revert this!')">
-                            @csrf
-                            @method('delete')
-                            <button type="submit" class="btn btn-sm text-danger" title="Delete"><i class="bi bi-trash"></i></button>
-                        </form>
-                    </td>
-                </tr>
-                @endforeach
-            </tbody>
-            <tfoot class="table-primary">
-                <tr>
-                    <th>No</th>
-                    <th>Job Title</th>
-                    <th>Company</th>
-                    <th>Expired Post</th>
-                    <th>Status</th>
-                    <th>Action</th>
-                </tr>
-            </tfoot>
-        </table>
-
-    </div> <!-- end container-fluid -->
+            </div>
+        </div>
+    </div>
 
 @endsection
 

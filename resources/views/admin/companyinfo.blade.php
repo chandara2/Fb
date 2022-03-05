@@ -8,22 +8,11 @@
         </div>
     </div>
 
-    <div class="container-fluid">
-        <nav aria-label="breadcrumb" style="--bs-breadcrumb-divider: '|';" class="mt-3">
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item active" aria-current="page">Company</li>
-                <li class="breadcrumb-item">
-                    <button class="btn btn-sm btn-primary mb-3 rounded-0 w-auto" data-bs-toggle="modal" data-bs-target="#showCompanyModal"><i class="bi bi-plus-square-dotted"></i> Company</button>
-                </li>
-            </ol>
-        </nav>
-    </div>
-
     <!-- Modal Add company info -->
     <div class="modal fade" id="showCompanyModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
-                <div class="modal-header bg-info bg-opacity-50">
+                <div class="modal-header bg-primary text-white">
                 <h5 class="modal-title" id="exampleModalLabel">Create Company</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
@@ -126,61 +115,61 @@
             
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-info">Create</button>
+                            <button type="submit" class="btn btn-primary">Create</button>
                         </div>
                     </form>
                 </div>
             </div>
         </div>
     </div> <!-- end add modal -->
-
-    <div class="container-fluid">
-        @if (session('userdelete'))
-            <div class="alert alert-success">{{session('userdelete')}}</div>
-        @endif
+    
+    <div class="card container px-0 shadow">
+        <div class="card-header position-relative bg-primary">
+            <h2 class="mb-0 text-white">Company List</h2>
+            <button type="button" data-bs-toggle="modal" data-bs-target="#showCompanyModal" class="btn btn-light position-absolute end-0 top-50 translate-middle-y me-3"><i class="bi bi-plus-circle"></i> Add New Company</button>
+        </div>
+        <div class="card-body">
+            <div class="container-fluid">
+                @if (session('userdelete'))
+                    <div class="alert alert-success">{{session('userdelete')}}</div>
+                @endif
+                
+                <table class="customdatatable table table-striped table-bordered" style="width:100%">
+                    <thead class="table-primary">
+                        <tr>
+                            <th>No</th>
+                            <th>Company</th>
+                            <th>Logo</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @forelse ($companyinfos as $i => $companyinfo)
+                        <tr>
+                            <td>{{$i+1}}</td>
+                            <td>{{$companyinfo->company}}</td>
+                            <td>
+                                <img src="{{asset('upload/companylogo/')}}/{{$companyinfo->logo}}" alt="logo here" class="me-3" style="width: 50px; height: 50px; object-fit: contain;">
+                                @if($companyinfo->recruitment == true)<i class="bi bi-person-check"></i>@endif
+                            </td>
+                            <td>
+                                <a href="/admin/companyinfo/{{ $companyinfo->id }}/edit"><i class="bi bi-pencil-square btn text-muted pe-0" style="font-size:24px;"></i></a>
+                                
+                                <form action="/admin/companyinfo/{{ $companyinfo->id }}" method="POST" class="d-inline" onsubmit="return confirm('Are you sure? You won\'t be able to revert this!')">
+                                    @csrf
+                                    @method('delete')
+                                    <button type="submit" class="btn btn-sm text-danger" title="Delete"><i class="bi bi-trash" style="font-size:24px;"></i></button>
+                                </form>
+                            </td>
+                        </tr>
+                        @empty
+                        <p class="text-center text-info">No Company Info.</p>
+                        @endforelse
+                    </tbody>
+                </table>
         
-        <table class="customdatatable table table-hover table-bordered" style="width:100%">
-            <thead class="table-primary">
-                <tr>
-                    <th>No</th>
-                    <th>Company</th>
-                    <th>Logo</th>
-                    <th>Action</th>
-                </tr>
-            </thead>
-            <tbody>
-                @forelse ($companyinfos as $i => $companyinfo)
-                <tr>
-                    <td>{{$i+1}}</td>
-                    <td>{{$companyinfo->company}}</td>
-                    <td>
-                        <img src="{{asset('upload/companylogo/')}}/{{$companyinfo->logo}}" alt="logo here" class="me-3" style="width: 50px; height: 50px; object-fit: contain;">
-                        @if($companyinfo->recruitment == true)<i class="bi bi-person-check"></i>@endif
-                    </td>
-                    <td>
-                        <a href="/admin/companyinfo/{{ $companyinfo->id }}/edit"><i class="bi bi-pencil-square btn text-muted pe-0" style="font-size:24px;"></i></a>
-                        
-                        <form action="/admin/companyinfo/{{ $companyinfo->id }}" method="POST" class="d-inline" onsubmit="return confirm('Are you sure? You won\'t be able to revert this!')">
-                            @csrf
-                            @method('delete')
-                            <button type="submit" class="btn btn-sm text-danger" title="Delete"><i class="bi bi-trash" style="font-size:24px;"></i></button>
-                        </form>
-                    </td>
-                </tr>
-                @empty
-                <p class="text-center text-info">No Company Info.</p>
-                @endforelse
-            </tbody>
-            <tfoot class="table-primary">
-                <tr>
-                    <th>No</th>
-                    <th>Company</th>
-                    <th>Logo</th>
-                    <th>Action</th>
-                </tr>
-            </tfoot>
-        </table>
-
+            </div>
+        </div>
     </div>
 
 @endsection
