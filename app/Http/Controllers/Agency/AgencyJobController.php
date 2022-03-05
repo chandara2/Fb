@@ -65,10 +65,7 @@ class AgencyJobController extends Controller
             'salary' => 'required',
             'sex' => 'required',
             'term' => 'required',
-            'title_ch' => 'required',
             'title_en' => 'required',
-            'title_kh' => 'required',
-            'title_th' => 'required',
             'year_of_exp' => 'required',
         ], [
             'age.required' => 'Age is required',
@@ -91,10 +88,7 @@ class AgencyJobController extends Controller
             'salary.required' => 'Job Salary is required',
             'sex.required' => 'Sex is required',
             'term.required' => 'Term is required',
-            'title_ch.required' => 'Job Chinese Title is required',
             'title_en.required' => 'Job English Title is required',
-            'title_kh.required' => 'Job Khmer Title is required',
-            'title_th.required' => 'Job Thai Title is required',
             'year_of_exp.required' => 'Year of experience is required',
         ]);
 
@@ -198,10 +192,7 @@ class AgencyJobController extends Controller
             'salary' => 'required',
             'sex' => 'required',
             'term' => 'required',
-            'title_ch' => 'required',
             'title_en' => 'required',
-            'title_kh' => 'required',
-            'title_th' => 'required',
             'year_of_exp' => 'required',
         ], [
             'age.required' => 'Age is required',
@@ -223,10 +214,7 @@ class AgencyJobController extends Controller
             'salary.required' => 'Job Salary is required',
             'sex.required' => 'Sex is required',
             'term.required' => 'Term is required',
-            'title_ch.required' => 'Job Chinese Title is required',
             'title_en.required' => 'Job English Title is required',
-            'title_kh.required' => 'Job Khmer Title is required',
-            'title_th.required' => 'Job Thai Title is required',
             'year_of_exp.required' => 'Year of experience is required',
         ]);
 

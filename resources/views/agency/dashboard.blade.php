@@ -105,8 +105,8 @@
                         <div class="form-group mb-md-3">
                             <label>Company Logo</label>
                             <input name="logo" type="file" class="form-control" value="{{ old('logo') }}" onchange="document.getElementById('companyinfologo').src = window.URL.createObjectURL(this.files[0])">
-                            <img id="companyinfologo" width="110px">
                             <span class="text-danger error-text company_profile_error"></span>
+                            <img id="companyinfologo" width="110px">
                         </div>
 
                         <div class="h5 text-info text-center text-uppercase">Contact Information</div>
@@ -384,9 +384,9 @@
     <div class="container"> <!-- Company Index -->
         <div id="wrap_agency_profile" class="position-relative">
             @foreach ($company_infos as $company_info)
-            <div class="row py-5 brand-bg5">
+            <div class="row py-5 shadow">
                 <div class="col-md-2">
-                    <img src="{{asset('upload/companylogo/')}}/{{$company_info->logo}}" alt="logo here" class="me-3" width="100%" height="auto" style="max-width: 150px;">
+                    <img src="{{asset('upload/companylogo/')}}/{{$company_info->logo}}" alt="logo here" class="mb-md-0 mb-3 me-3 w-100" style="max-width: 150px;">
                 </div>
                 <div class="col-md-10">
                     <div class="h2">{{$company_info->company}}</div>
@@ -424,55 +424,56 @@
         </div>
     </div>
 
-    <div class="container mb-3" id="job_list_id"> <!-- Job Index -->
-        @if (auth()->user()!=null && $jobs->isNotEmpty())
-            
-            <table class="customdatatable table table-hover table-bordered" style="width:100%">
-                <thead class="table-primary">
-                    <tr>
-                        <th>No</th>
-                        <th>Job Title</th>
-                        <th>Location</th>
-                        <th>Expired Post</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach ($jobs as $i => $job)
-                    <tr>
-                        <td>{{$i+1}}</td>
-                        <td>{{$job->title_en}}</td>
-                        <td>{{$job->location}}</td>
-                        <td>
-                            @if ($job->expired_post<now())
-                                <span class="text-danger" title="Will be deleted the next day">{{$job->expired_post}}</span>
-                            @else
-                                {{$job->expired_post}}
-                            @endif
-                        </td>
-                        <td>
-                            <a href="/agency/job/{{ $job->id }}/edit" class="btn btn-sm"><i class="bi bi-pencil-square text-primary"></i>Edit</a>
-                            <form action="/agency/job/{{ $job->id }}" method="POST" class="d-inline" onsubmit="return confirm('Are you sure? You won\'t be able to revert this!')">
-                                @csrf
-                                @method('delete')
-                                <button type="submit" class="btn btn-sm"><i class="bi bi-trash text-danger"></i>Delete</button>
-                            </form>
-                        </td>
-                    </tr>
-                    @endforeach
-                </tbody>
-                <tfoot class="table-primary">
-                    <tr>
-                        <th>No</th>
-                        <th>Job Title</th>
-                        <th>Location</th>
-                        <th>Expired Post</th>
-                        <th>Action</th>
-                    </tr>
-                </tfoot>
-            </table>
+    
 
-        @endif
+    <div class="card container px-0 shadow mb-5">
+        <div class="card-header position-relative bg-primary bg-opacity-25">
+            <h2 class="mb-0 text-white">List of jobs</h2>
+            <button type="button" data-bs-toggle="modal" data-bs-target="#showJobModal" class="btn btn-light position-absolute end-0 top-50 translate-middle-y me-3"><i class="bi bi-plus-circle"></i> Add New Job</button>
+        </div>
+        <div class="card-body">
+            <div class="container" id="job_list_id"> <!-- Job Index -->
+                @if (auth()->user()!=null && $jobs->isNotEmpty())
+                    
+                    <table class="customdatatable table table-striped table-bordered" style="width:100%">
+                        <thead class="table-primary">
+                            <tr>
+                                <th>No</th>
+                                <th>Job Title</th>
+                                <th>Location</th>
+                                <th>Expired Post</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($jobs as $i => $job)
+                            <tr>
+                                <td>{{$i+1}}</td>
+                                <td>{{$job->title_en}}</td>
+                                <td>{{$job->location}}</td>
+                                <td>
+                                    @if ($job->expired_post<now())
+                                        <span class="text-danger" title="Will be deleted the next day">{{$job->expired_post}}</span>
+                                    @else
+                                        {{$job->expired_post}}
+                                    @endif
+                                </td>
+                                <td>
+                                    <a href="/agency/job/{{ $job->id }}/edit" class="btn btn-sm"><i class="bi bi-pencil-square text-primary"></i></a>
+                                    <form action="/agency/job/{{ $job->id }}" method="POST" class="d-inline" onsubmit="return confirm('Are you sure? You won\'t be able to revert this!')">
+                                        @csrf
+                                        @method('delete')
+                                        <button type="submit" class="btn btn-sm"><i class="bi bi-trash text-danger"></i></button>
+                                    </form>
+                                </td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+        
+                @endif
+            </div>
+        </div>
     </div>
 
 @endsection
