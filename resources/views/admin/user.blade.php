@@ -88,9 +88,9 @@
                             <th>Action</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody id="userappend">
                         @foreach ($users as $i => $user)
-                        <tr>
+                        <tr id="sid">
                             <td>{{$i+1}}</td>
                             <td>{{$user->fname}}</td>
                             <td>{{$user->gname}}</td>
@@ -118,17 +118,6 @@
                         </tr>
                         @endforeach
                     </tbody>
-                    {{-- <tfoot class="table-primary">
-                        <tr>
-                            <th>No</th>
-                            <th>Family Name</th>
-                            <th>Given Name</th>
-                            <th>Userame</th>
-                            <th>Phone Number</th>
-                            <th>Member</th>
-                            <th>Action</th>
-                        </tr>
-                    </tfoot> --}}
                 </table>
         
             </div>
@@ -159,14 +148,14 @@
                     beforeSend: function(){
                         $(document).find('span.error-text').text('')
                     },
-                    success: function (data) {
-                        if(data.status==0){
-                            $.each(data.error, function(prefix, val){
+                    success: function (response) {
+                        if(response.status==0){
+                            $.each(response.error, function(prefix, val){
                                 $('span.'+prefix+'_error').text(val[0])
                             })
                         }else{
-                            $('#addUserFormId')[0].reset()
                             $('#showUserModal').modal('hide')
+                            $('#addUserFormId')[0].reset();
                             document.location.href = "{{ route('admin.user.index') }}"
                         }
                     }

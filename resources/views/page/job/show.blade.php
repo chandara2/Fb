@@ -32,13 +32,23 @@
                 <div class="col-md-6">
                     <h2>
                         @if (app()->getLocale() == 'ch')
-                        {{$jobcompany->title_ch}}
-                        @elseif(app()->getLocale() == 'en')
-                        {{$jobcompany->title_en}}
-                        @elseif(app()->getLocale() == 'kh')
-                        {{$jobcompany->title_kh}}
+                            {{ $jobcompany->title_ch }}
+                            @if($jobcompany->title_ch == null)
+                                {{ $jobcompany->title_en }}
+                            @endif
+                        @elseif (app()->getLocale() == 'en')
+                            {{ $jobcompany->title_en }}
+                        @elseif (app()->getLocale() == 'kh')
+                            {{ $jobcompany->title_kh }}
+                            @if($jobcompany->title_kh == null)
+                                {{ $jobcompany->title_en }}
+                            @endif
+                        @elseif(app()->getLocale() == 'th')
+                            {{ $jobcompany->title_th }}
+                            @if($jobcompany->title_th == null)
+                                {{ $jobcompany->title_en }}
+                            @endif
                         @else
-                        {{$jobcompany->title_th}}
                         @endif
                     </h2>
                     <p><a href="/company/{{$jobcompany->ciid}}" class="text-decoration-none text-dark"><i class="bi bi-building"></i> {{$jobcompany->company}}</a></p>
@@ -62,14 +72,24 @@
                         <tr>
                             <th class="table-primary">{{ __('text.Job_title') }}</th>
                             <td>
-                                @if(app()->getLocale() == 'ch')
-                                {{$jobcompany->title_ch}}
-                                @elseif(app()->getLocale() == 'en')
-                                {{$jobcompany->title_en}}
-                                @elseif(app()->getLocale() == 'kh')
-                                {{$jobcompany->title_kh}}
+                                @if (app()->getLocale() == 'ch')
+                                    {{ $jobcompany->title_ch }}
+                                    @if($jobcompany->title_ch == null)
+                                        {{ $jobcompany->title_en }}
+                                    @endif
+                                @elseif (app()->getLocale() == 'en')
+                                    {{ $jobcompany->title_en }}
+                                @elseif (app()->getLocale() == 'kh')
+                                    {{ $jobcompany->title_kh }}
+                                    @if($jobcompany->title_kh == null)
+                                        {{ $jobcompany->title_en }}
+                                    @endif
+                                @elseif(app()->getLocale() == 'th')
+                                    {{ $jobcompany->title_th }}
+                                    @if($jobcompany->title_th == null)
+                                        {{ $jobcompany->title_en }}
+                                    @endif
                                 @else
-                                {{$jobcompany->title_th}}
                                 @endif
                             </td>
                             <th class="table-primary">{{ __('text.Term') }}</th>
@@ -199,7 +219,6 @@
                             echo $jobcompany->company_profile
                         @endphp
                     <!-- Summernote -->
-                    {{-- <textarea disabled class="textarea_autosize form-control border-0 bg-light">{{$jobcompany->company_profile}}</textarea> --}}
 
                     <h5 class="underline_highlight">{{ __('text.Contact_information') }}</h5>
                     <img src="{{asset('asset/image/user2.png')}}" alt="" width="65" class="mb-2">
@@ -244,7 +263,7 @@
                             @foreach ($hotjobs as $hotjob)
                                 <li class="list-group-item ps-0 py-0">
                                     <span class="position-relative"><a href="/job/{{$hotjob->job_id}}" class="text-dark ps-3 text-decoration-none">
-                                        @if(app()->getLocale() == 'ch')
+                                        {{-- @if(app()->getLocale() == 'ch')
                                         {{Str::limit($hotjob->title_ch , 30)}}
                                         @elseif(app()->getLocale() == 'en')
                                         {{Str::limit($hotjob->title_en , 30)}}
@@ -252,6 +271,26 @@
                                         {{Str::limit($hotjob->title_kh , 30)}}
                                         @else
                                         {{Str::limit($hotjob->title_th , 30)}}
+                                        @endif --}}
+
+                                        @if (app()->getLocale() == 'ch')
+                                            {{Str::limit($hotjob->title_ch, 30) }}
+                                            @if($hotjob->title_ch == null)
+                                                {{Str::limit($hotjob->title_en, 30) }}
+                                            @endif
+                                        @elseif (app()->getLocale() == 'en')
+                                            {{Str::limit($hotjob->title_en, 30) }}
+                                        @elseif (app()->getLocale() == 'kh')
+                                            {{Str::limit($hotjob->title_kh, 30) }}
+                                            @if($hotjob->title_kh == null)
+                                                {{Str::limit($hotjob->title_en, 30) }}
+                                            @endif
+                                        @elseif(app()->getLocale() == 'th')
+                                            {{Str::limit($hotjob->title_th, 30) }}
+                                            @if($hotjob->title_th == null)
+                                                {{Str::limit($hotjob->title_en, 30) }}
+                                            @endif
+                                        @else
                                         @endif
                                     </a></span>
                                     <span class="position-absolute end-0 pe-2 text-danger">

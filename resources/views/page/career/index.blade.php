@@ -27,32 +27,44 @@
                             <a href="career/{{ $career->id }}" class="text-decoration-none h4 text_hover">
                                 @if (app()->getLocale() == 'ch')
                                     {{ $career->title_ch }}
+                                    @if($career->title_ch == null)
+                                        {{ $career->title_en }}
+                                    @endif
                                 @elseif (app()->getLocale() == 'en')
                                     {{ $career->title_en }}
                                 @elseif (app()->getLocale() == 'kh')
                                     {{ $career->title_kh }}
-                                @else
+                                    @if($career->title_kh == null)
+                                        {{ $career->title_en }}
+                                    @endif
+                                @elseif(app()->getLocale() == 'th')
                                     {{ $career->title_th }}
+                                    @if($career->title_th == null)
+                                        {{ $career->title_en }}
+                                    @endif
+                                @else
                                 @endif
                             </a>
                             <div class="mt-3">
                                 <div style="overflow: hidden;">
                                     @if (app()->getLocale() == 'ch')
-                                        @php
-                                            echo substr($career->post_ch, 0, 500).'...'
-                                        @endphp
+                                        @php echo substr($career->post_ch, 0, 500) @endphp
+                                        @if($career->post_ch == null)
+                                            @php echo substr($career->post_en, 0, 500) @endphp
+                                        @endif
                                     @elseif (app()->getLocale() == 'en')
-                                        @php
-                                            echo substr($career->post_en, 0, 500).'...'
-                                        @endphp
+                                        @php echo substr($career->post_en, 0, 500) @endphp
                                     @elseif (app()->getLocale() == 'kh')
-                                        @php
-                                            echo substr($career->post_kh, 0, 500).'...'
-                                        @endphp
+                                        @php echo substr($career->post_kh, 0, 500) @endphp
+                                        @if($career->post_kh == null)
+                                            @php echo substr($career->post_en, 0, 500) @endphp
+                                        @endif
+                                    @elseif(app()->getLocale() == 'th')
+                                        @php echo substr($career->post_th, 0, 500) @endphp
+                                        @if($career->post_th == null)
+                                            @php echo substr($career->post_en, 0, 500) @endphp
+                                        @endif
                                     @else
-                                        @php
-                                            echo substr($career->post_th, 0, 500).'...'
-                                        @endphp
                                     @endif
                                 </div>
                             </div>

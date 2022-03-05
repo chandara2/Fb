@@ -46,48 +46,56 @@
                                 <a class="nav-link" id="nav-kh-tab" data-bs-toggle="tab" href="#nav-kh" role="tab" aria-controls="nav-kh" aria-selected="false">Khmer</a>
                                 <a class="nav-link" id="nav-th-tab" data-bs-toggle="tab" href="#nav-th" role="tab" aria-controls="nav-th" aria-selected="false">Thai</a>
                             </nav>
+
+                            <ul class="list-unstyled">
+                                <li><span class="text-danger error-text title_en_error"></span></li>
+                                <li><span class="text-danger error-text title_ch_error"></span></li>
+                                <li><span class="text-danger error-text title_kh_error"></span></li>
+                                <li><span class="text-danger error-text title_th_error"></span></li>
+                            </ul>
+
                             <div class="tab-content" id="nav-tabContent">
                                 <div class="tab-pane fade show active" id="nav-en" role="tabpanel" aria-labelledby="nav-en-tab">
                                     <label class="mt-3">Title</label>
                                     <input name="title_en" type="text" class="form-control">
-                                    <span class="text-danger error-text title_en_error"></span>
                                     <div class="form-group mb-md-3 mt-3">
                                         <label>Article</label>
                                         <textarea name="post_en" class="textarea_autosize form-control summernote"></textarea>
-                                        <span class="text-danger error-text post_en_error"></span>
                                     </div>
                                 </div>
                                 <div class="tab-pane fade" id="nav-ch" role="tabpanel" aria-labelledby="nav-ch-tab">
                                     <label class="mt-3">Title</label>
                                     <input name="title_ch" type="text" class="form-control">
-                                    <span class="text-danger error-text title_ch_error"></span>
                                     <div class="form-group mb-md-3 mt-3">
                                         <label>Article</label>
                                         <textarea name="post_ch" class="textarea_autosize form-control summernote"></textarea>
-                                        <span class="text-danger error-text post_ch_error"></span>
                                     </div>
                                 </div>
                                 <div class="tab-pane fade" id="nav-kh" role="tabpanel" aria-labelledby="nav-kh-tab">
                                     <label class="mt-3">Title</label>
                                     <input name="title_kh" type="text" class="form-control">
-                                    <span class="text-danger error-text title_kh_error"></span>
                                     <div class="form-group mb-md-3 mt-3">
                                         <label>Article</label>
                                         <textarea name="post_kh" class="textarea_autosize form-control summernote"></textarea>
-                                        <span class="text-danger error-text post_kh_error"></span>
                                     </div>
                                 </div>
                                 <div class="tab-pane fade" id="nav-th" role="tabpanel" aria-labelledby="nav-th-tab">
                                     <label class="mt-3">Title</label>
                                     <input name="title_th" type="text" class="form-control">
-                                    <span class="text-danger error-text title_th_error"></span>
                                     <div class="form-group mb-md-3 mt-3">
                                         <label>Article</label>
                                         <textarea name="post_th" class="textarea_autosize form-control summernote"></textarea>
-                                        <span class="text-danger error-text post_th_error"></span>
+                                        
                                     </div>
                                 </div>
                             </div>
+   
+                            <ul class="list-unstyled">
+                                <li><span class="text-danger error-text post_en_error"></span></li>
+                                <li><span class="text-danger error-text post_ch_error"></span></li>
+                                <li><span class="text-danger error-text post_kh_error"></span></li>
+                                <li><span class="text-danger error-text post_th_error"></span></li>
+                            </ul>
                         </div>
                 
                         <div class="modal-footer">

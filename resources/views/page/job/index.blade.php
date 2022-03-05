@@ -48,9 +48,6 @@
                     <form action="{{ route('searchjob') }}">
                         <select name="salary" value="{{ old('salary') }}" class="form-select" id="salarysid" type="input" onchange="this.form.submit()"> 
                             <option selected disabled>Salary</option>
-                            {{-- @foreach ($salarys as $salary)
-                                <option>{{ $salary->salary_en }}</option>
-                            @endforeach --}}
                         </select>
                     </form>
                 </div>
@@ -71,12 +68,22 @@
                                     <a href="/job/{{$jobscom->job_id}}" class="fw-bold job_title">
                                         @if (app()->getLocale() == 'ch')
                                             {{ $jobscom->title_ch }}
-                                        @elseif(app()->getLocale() == 'en')
+                                            @if($jobscom->title_ch == null)
+                                                {{ $jobscom->title_en }}
+                                            @endif
+                                        @elseif (app()->getLocale() == 'en')
                                             {{ $jobscom->title_en }}
-                                        @elseif(app()->getLocale() == 'kh')
+                                        @elseif (app()->getLocale() == 'kh')
                                             {{ $jobscom->title_kh }}
-                                        @else
+                                            @if($jobscom->title_kh == null)
+                                                {{ $jobscom->title_en }}
+                                            @endif
+                                        @elseif(app()->getLocale() == 'th')
                                             {{ $jobscom->title_th }}
+                                            @if($jobscom->title_th == null)
+                                                {{ $jobscom->title_en }}
+                                            @endif
+                                        @else
                                         @endif
                                     </a>
                                     @if($jobscom->expired_job>now()->addDays(7)) <span class="bg-warning badge">New</span>
@@ -180,24 +187,5 @@
         </div> <!-- end container -->
     @endif
 
-@endsection
-
-@section('script')
-    <script>
-        // $(document).ready(function () {
-        //     $(document).on('change', '#salarysid', function () {
-        //         $sv = $(this).val()
-        //         $.ajax({
-        //             type: "POST",
-        //             url: "url",
-        //             data: "data",
-        //             dataType: "dataType",
-        //             success: function (response) {
-                        
-        //             }
-        //         });
-        //     });
-        // });
-    </script>
 @endsection
 

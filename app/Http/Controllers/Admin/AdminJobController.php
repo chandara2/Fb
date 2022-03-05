@@ -34,7 +34,8 @@ class AdminJobController extends Controller
         $jobs = DB::table('jobs')
             ->join('company_infos', 'company_infos.id', 'jobs.company_id')
             ->select('jobs.*', 'company_infos.company')
-            ->orderBy('approved', 'asc')->get();
+            ->orderBy('approved', 'asc')
+            ->orderBy('created_at', 'desc')->get();
         $company_infos = CompanyInfo::orderBy('company', 'asc')->get();
         $job_functions = JobFunction::all();
         $job_industries = JobIndustry::all();
@@ -95,10 +96,7 @@ class AdminJobController extends Controller
             'salary' => 'required',
             'sex' => 'required',
             'term' => 'required',
-            'title_ch' => 'required',
             'title_en' => 'required',
-            'title_kh' => 'required',
-            'title_th' => 'required',
             'year_of_exp' => 'required',
         ], [
             'age.required' => 'Age is required',
@@ -121,10 +119,7 @@ class AdminJobController extends Controller
             'salary.required' => 'Job Salary is required',
             'sex.required' => 'Sex is required',
             'term.required' => 'Term is required',
-            'title_ch.required' => 'Job Chinese Title is required',
             'title_en.required' => 'Job English Title is required',
-            'title_kh.required' => 'Job Khmer Title is required',
-            'title_th.required' => 'Job Thai Title is required',
             'year_of_exp.required' => 'Year of experience is required',
         ]);
 
@@ -237,10 +232,7 @@ class AdminJobController extends Controller
             'salary' => 'required',
             'sex' => 'required',
             'term' => 'required',
-            'title_ch' => 'required',
             'title_en' => 'required',
-            'title_kh' => 'required',
-            'title_th' => 'required',
             'year_of_exp' => 'required',
         ], [
             'age.required' => 'Age is required',
@@ -263,10 +255,7 @@ class AdminJobController extends Controller
             'salary.required' => 'Job Salary is required',
             'sex.required' => 'Sex is required',
             'term.required' => 'Term is required',
-            'title_ch.required' => 'Job Chinese Title is required',
-            'title_en.required' => 'Job English Title is required',
-            'title_kh.required' => 'Job Khmer Title is required',
-            'title_th.required' => 'Job Thai Title is required',
+            'title_en.required' => 'Job Thai Title is required',
             'year_of_exp.required' => 'Year of experience is required',
         ]);
 

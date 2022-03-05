@@ -247,13 +247,23 @@
                             <li class="list-group-item limit_str_jobcompany ps-0 py-1">
                                 <span class="position-relative"><a href="job/{{ $jobcompany->jobid }}" class="text_hover ps-3 text-decoration-none">
                                     @if (app()->getLocale() == 'ch')
-                                    {{$jobcompany->title_ch}}
-                                    @elseif(app()->getLocale() == 'en')
-                                    {{$jobcompany->title_en}}
-                                    @elseif(app()->getLocale() == 'kh')
-                                    {{$jobcompany->title_kh}}
+                                        {{ $jobcompany->title_ch }}
+                                        @if($jobcompany->title_ch == null)
+                                            {{ $jobcompany->title_en }}
+                                        @endif
+                                    @elseif (app()->getLocale() == 'en')
+                                        {{ $jobcompany->title_en }}
+                                    @elseif (app()->getLocale() == 'kh')
+                                        {{ $jobcompany->title_kh }}
+                                        @if($jobcompany->title_kh == null)
+                                            {{ $jobcompany->title_en }}
+                                        @endif
+                                    @elseif(app()->getLocale() == 'th')
+                                        {{ $jobcompany->title_th }}
+                                        @if($jobcompany->title_th == null)
+                                            {{ $jobcompany->title_en }}
+                                        @endif
                                     @else
-                                    {{$jobcompany->title_th}}
                                     @endif
                                 </a></span> -
                                 <span><a href="company/{{$jobcompany->com_id}}" class="text-danger ps-0 text-decoration-none">{{$jobcompany->cic}}</a></span>
@@ -314,15 +324,25 @@
                             @foreach ($career_howto as $howto)
                                 <li>
                                     <a href="career/{{ $howto->id }}" class="text-decoration-none text-dark">
-                                    @if (app()->getLocale() == 'ch')
-                                    {{$howto->title_ch}}
-                                    @elseif(app()->getLocale() == 'en')
-                                    {{$howto->title_en}}
-                                    @elseif(app()->getLocale() == 'kh')
-                                    {{$howto->title_kh}}
-                                    @else
-                                    {{$howto->title_th}}
-                                    @endif
+                                        @if (app()->getLocale() == 'ch')
+                                            {{ $howto->title_ch }}
+                                            @if($howto->title_ch == null)
+                                                {{ $howto->title_en }}
+                                            @endif
+                                        @elseif (app()->getLocale() == 'en')
+                                            {{ $howto->title_en }}
+                                        @elseif (app()->getLocale() == 'kh')
+                                            {{ $howto->title_kh }}
+                                            @if($howto->title_kh == null)
+                                                {{ $howto->title_en }}
+                                            @endif
+                                        @elseif(app()->getLocale() == 'th')
+                                            {{ $howto->title_th }}
+                                            @if($howto->title_th == null)
+                                                {{ $howto->title_en }}
+                                            @endif
+                                        @else
+                                        @endif
                                     </a>
                                 </li>
                             @endforeach
@@ -338,15 +358,25 @@
                             @foreach ($career_tip as $tip)
                                 <li>
                                     <a href="career/{{ $tip->id }}" class="text-decoration-none text-dark">
-                                    @if (app()->getLocale() == 'ch')
-                                    {{$tip->title_ch}}
-                                    @elseif(app()->getLocale() == 'en')
-                                    {{$tip->title_en}}
-                                    @elseif(app()->getLocale() == 'kh')
-                                    {{$tip->title_kh}}
-                                    @else
-                                    {{$tip->title_th}}
-                                    @endif
+                                        @if (app()->getLocale() == 'ch')
+                                            {{ $tip->title_ch }}
+                                            @if($tip->title_ch == null)
+                                                {{ $tip->title_en }}
+                                            @endif
+                                        @elseif (app()->getLocale() == 'en')
+                                            {{ $tip->title_en }}
+                                        @elseif (app()->getLocale() == 'kh')
+                                            {{ $tip->title_kh }}
+                                            @if($tip->title_kh == null)
+                                                {{ $tip->title_en }}
+                                            @endif
+                                        @elseif(app()->getLocale() == 'th')
+                                            {{ $tip->title_th }}
+                                            @if($tip->title_th == null)
+                                                {{ $tip->title_en }}
+                                            @endif
+                                        @else
+                                        @endif
                                     </a>
                                 </li>
                             @endforeach
@@ -362,15 +392,25 @@
                             @foreach ($career_sample as $sample)
                                 <li>
                                     <a href="career/{{ $sample->id }}" class="text-decoration-none text-dark">
-                                    @if (app()->getLocale() == 'ch')
-                                    {{$sample->title_ch}}
-                                    @elseif(app()->getLocale() == 'en')
-                                    {{$sample->title_en}}
-                                    @elseif(app()->getLocale() == 'kh')
-                                    {{$sample->title_kh}}
-                                    @else
-                                    {{$sample->title_th}}
-                                    @endif
+                                        @if (app()->getLocale() == 'ch')
+                                            {{ $sample->title_ch }}
+                                            @if($sample->title_ch == null)
+                                                {{ $sample->title_en }}
+                                            @endif
+                                        @elseif (app()->getLocale() == 'en')
+                                            {{ $sample->title_en }}
+                                        @elseif (app()->getLocale() == 'kh')
+                                            {{ $sample->title_kh }}
+                                            @if($sample->title_kh == null)
+                                                {{ $sample->title_en }}
+                                            @endif
+                                        @elseif(app()->getLocale() == 'th')
+                                            {{ $sample->title_th }}
+                                            @if($sample->title_th == null)
+                                                {{ $sample->title_en }}
+                                            @endif
+                                        @else
+                                        @endif
                                     </a>
                                 </li>
                             @endforeach

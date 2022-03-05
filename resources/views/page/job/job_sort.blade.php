@@ -39,12 +39,22 @@
                             <a href="/job/{{$jobscom->job_id}}" class="fw-bold job_title">
                                 @if (app()->getLocale() == 'ch')
                                     {{ $jobscom->title_ch }}
-                                @elseif(app()->getLocale() == 'en')
+                                    @if($jobscom->title_ch == null)
+                                        {{ $jobscom->title_en }}
+                                    @endif
+                                @elseif (app()->getLocale() == 'en')
                                     {{ $jobscom->title_en }}
-                                @elseif(app()->getLocale() == 'kh')
+                                @elseif (app()->getLocale() == 'kh')
                                     {{ $jobscom->title_kh }}
-                                @else
+                                    @if($jobscom->title_kh == null)
+                                        {{ $jobscom->title_en }}
+                                    @endif
+                                @elseif(app()->getLocale() == 'th')
                                     {{ $jobscom->title_th }}
+                                    @if($jobscom->title_th == null)
+                                        {{ $jobscom->title_en }}
+                                    @endif
+                                @else
                                 @endif
                             </a>
                             @if($jobscom->expired_job>now()->addDays(7)) <span class="bg-warning badge">New</span>

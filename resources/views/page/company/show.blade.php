@@ -110,13 +110,23 @@
                         <div class="col-md-8">
                             <a href="/job/{{$company_job->job_id}}" class="fw-bold job_title">
                                 @if (app()->getLocale() == 'ch')
-                                {{$company_job->title_ch}}
-                                @elseif(app()->getLocale() == 'en')
-                                {{$company_job->title_en}}
-                                @elseif(app()->getLocale() == 'kh')
-                                {{$company_job->title_kh}}
+                                    {{ $company_job->title_ch }}
+                                    @if($company_job->title_ch == null)
+                                        {{ $company_job->title_en }}
+                                    @endif
+                                @elseif (app()->getLocale() == 'en')
+                                    {{ $company_job->title_en }}
+                                @elseif (app()->getLocale() == 'kh')
+                                    {{ $company_job->title_kh }}
+                                    @if($company_job->title_kh == null)
+                                        {{ $company_job->title_en }}
+                                    @endif
+                                @elseif(app()->getLocale() == 'th')
+                                    {{ $company_job->title_th }}
+                                    @if($company_job->title_th == null)
+                                        {{ $company_job->title_en }}
+                                    @endif
                                 @else
-                                {{$company_job->title_th}}
                                 @endif
                             </a>
                             @if($company_job->expired_job>now()->addDays(7)) <span class="bg-warning badge">New</span>

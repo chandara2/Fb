@@ -21,7 +21,7 @@ class AdminUserController extends Controller
      */
     public function index()
     {
-        $users = User::all();
+        $users = User::orderBy('created_at', 'desc')->get();
         $usergroups = Usergroup::orderBy('name', 'desc')->get();
         return view('admin.user',[
             'users'=>$users,    
@@ -74,7 +74,7 @@ class AdminUserController extends Controller
             $users->gid = $request->gid;
             
             $users->save();
-            return response()->json(['status' => 1, 'msg' => 'Job announcement create successfully']);
+            return response()->json(['status' => 1, 'msg' => 'User create successfully']);
         }
     }
 

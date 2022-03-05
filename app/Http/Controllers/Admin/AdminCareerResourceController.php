@@ -18,7 +18,7 @@ class AdminCareerResourceController extends Controller
      */
     public function index()
     {
-        $careers = CareerResource::all();
+        $careers = CareerResource::orderBy('created_at', 'desc')->get();
         $postgroups = Postgroup::all();
         return view('admin.career',[
             'careers'=>$careers,
@@ -45,24 +45,12 @@ class AdminCareerResourceController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'title_ch' => 'required',
             'title_en' => 'required',
-            'title_kh' => 'required',
-            'title_th' => 'required',
-            'post_ch' => 'required',
             'post_en' => 'required',
-            'post_kh' => 'required',
-            'post_th' => 'required',
             'type' => 'required',
         ], [
-            'title_ch.required' => 'Please input your title in Chinese',
             'title_en.required' => 'Please input your title in English',
-            'title_kh.required' => 'Please input your title in Khmer',
-            'title_th.required' => 'Please input your title in Thai',
-            'post_ch.required' => 'Please input your post in Chinese',
             'post_en.required' => 'Please input your post in English',
-            'post_kh.required' => 'Please input your post in Khmer',
-            'post_th.required' => 'Please input your post in Thai',
             'type.required' => 'Please choose post type',
         ]);
 
@@ -132,24 +120,12 @@ class AdminCareerResourceController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'title_ch' => 'required',
             'title_en' => 'required',
-            'title_kh' => 'required',
-            'title_th' => 'required',
-            'post_ch' => 'required',
             'post_en' => 'required',
-            'post_kh' => 'required',
-            'post_th' => 'required',
             'type' => 'required',
         ], [
-            'title_ch.required' => 'Please input your title in Chinese',
             'title_en.required' => 'Please input your title in English',
-            'title_kh.required' => 'Please input your title in Khmer',
-            'title_th.required' => 'Please input your title in Thai',
-            'post_ch.required' => 'Please input your post in Chinese',
             'post_en.required' => 'Please input your post in English',
-            'post_kh.required' => 'Please input your post in Khmer',
-            'post_th.required' => 'Please input your post in Thai',
             'type.required' => 'Please choose post type',
         ]);
 
