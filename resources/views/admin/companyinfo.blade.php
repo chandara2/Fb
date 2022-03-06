@@ -153,12 +153,12 @@
                                 @if($companyinfo->recruitment == true)<i class="bi bi-person-check"></i>@endif
                             </td>
                             <td>
-                                <a href="/admin/companyinfo/{{ $companyinfo->id }}/edit"><i class="bi bi-pencil-square btn text-muted pe-0" style="font-size:24px;"></i></a>
+                                <a href="/admin/companyinfo/{{ $companyinfo->id }}/edit"><i class="bi bi-pencil-square btn text-muted pe-0" style="font-size:20px;"></i></a>
                                 
                                 <form action="/admin/companyinfo/{{ $companyinfo->id }}" method="POST" class="d-inline" onsubmit="return confirm('Are you sure? You won\'t be able to revert this!')">
                                     @csrf
                                     @method('delete')
-                                    <button type="submit" class="btn btn-sm text-danger" title="Delete"><i class="bi bi-trash" style="font-size:24px;"></i></button>
+                                    <button type="submit" class="btn btn-sm text-danger" title="Delete"><i class="bi bi-trash" style="font-size:20px;"></i></button>
                                 </form>
                             </td>
                         </tr>

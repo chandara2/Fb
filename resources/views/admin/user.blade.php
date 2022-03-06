@@ -104,15 +104,15 @@
                             <td>User</td>
                             @endif
                             <td>
-                                <a href="/admin/user/{{ $user->id }}/edit" title="Edit"><i class="bi bi-pencil-square text-primary"></i></a>
+                                <a href="/admin/user/{{ $user->id }}/edit" title="Edit"><i class="bi bi-pencil-square text-primary" style="font-size: 20px;"></i></a>
                                 @if($user->gid!=1)
                                 <form action="/admin/user/{{ $user->id }}" method="POST" class="d-inline" onsubmit="return confirm('Are you sure? You won\'t be able to revert this!')">
                                     @csrf
                                     @method('delete')
-                                    <button type="submit" title="Delete" class="btn btn-sm"><i class="bi bi-trash text-danger"></i></button>
+                                    <button type="submit" title="Delete" class="btn btn-sm"><i class="bi bi-trash text-danger" style="font-size: 20px;"></i></button>
                                 </form>
                                 @else
-                                <i class="bi bi-trash text-danger btn btn-sm" style="cursor: not-allowed;" title="Impossible to delete Admin!"></i>
+                                <i class="bi bi-trash text-danger btn btn-sm" style="cursor: not-allowed; font-size: 20px;" title="Impossible to delete Admin!"></i>
                                 @endif
                             </td>
                         </tr>

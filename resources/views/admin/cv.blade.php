@@ -264,12 +264,12 @@
                                 <img src="{{asset('upload/cvprofile/')}}/{{$cv->photo}}" alt="CV Profile" class="me-3" style="width: 50px; height: 50px; object-fit: contain;">
                             </td>
                             <td>
-                                <a href="/admin/cv/{{ $cv->id }}"><i class="bi bi-eye btn text-muted pe-0" style="font-size:24px;"></i></a>
+                                <a href="/admin/cv/{{ $cv->id }}"><i class="bi bi-eye btn text-muted pe-0" style="font-size: 20px;"></i></a>
                                 
                                 <form action="/admin/cv/{{ $cv->id }}" method="POST" class="d-inline" onsubmit="return confirm('Are you sure? You won\'t be able to revert this!')">
                                     @csrf
                                     @method('delete')
-                                    <button type="submit" class="btn btn-sm text-danger" title="Delete"><i class="bi bi-trash" style="font-size:24px;"></i></button>
+                                    <button type="submit" class="btn btn-sm text-danger" title="Delete"><i class="bi bi-trash" style="font-size: 20px;"></i></button>
                                 </form>
                             </td>
                         </tr>
