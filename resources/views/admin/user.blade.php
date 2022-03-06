@@ -88,7 +88,7 @@
                             <th>Action</th>
                         </tr>
                     </thead>
-                    <tbody id="userappend">
+                    <tbody>
                         @foreach ($users as $i => $user)
                         <tr id="sid">
                             <td>{{$i+1}}</td>
@@ -156,7 +156,7 @@
                         }else{
                             $('#showUserModal').modal('hide')
                             $('#addUserFormId')[0].reset();
-                            document.location.href = "{{ route('admin.user.index') }}"
+                            // document.location.href = "{{ route('admin.user.index') }}"
                         }
                     }
                 });

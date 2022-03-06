@@ -3,7 +3,7 @@
 
 @section('style')
     <style>
-        .tbl_edus td{
+        .tbl_h td{
             height: 30px;
         }
     </style>
@@ -13,6 +13,7 @@
     
     <div class="container my-5">
         @foreach ($cvs as $cv)
+
             <div class="row">
                 <span class="text-center h4">Curriculum Vitae</span>
             </div>
@@ -313,7 +314,8 @@
                 </div>
             </div> <!-- End row -->
 
-            <div class="row my-3"> <!-- Edu -->
+            <div class="row my-3 px-3"> <!-- Edu -->
+                <b class="px-0">ប្រវត្តិការសិក្សា (Education Background)</b>
                 <table class="table table-bordered">
                     <tr class="text-center">
                         <td>Institution</td>
@@ -322,22 +324,100 @@
                         <td>End</td>
                         <td>Certificate</td>
                     </tr>
+                    <tr class="tbl_h">
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr class="tbl_h">
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr class="tbl_h">
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </table>
+            </div>
+        
+
+            <div class="row my-3 px-3"> <!-- Emp -->
+                <b class="px-0">ប្រវត្តិការងារ (Employment History)</b>
+                <table class="table table-bordered">
+                    <tr class="text-center">
+                        <td>Company Name</td>
+                        <td>Position</td>
+                        <td>Start</td>
+                        <td>End</td>
+                        <td>Last Salary</td>
+                        <td>Leaving Reason</td>
+                    </tr>
                     
-                    <tr class="tbl_edus">
+                    <tr class="tbl_h">
                         <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr class="tbl_edus">
                         <td></td>
                         <td></td>
                         <td></td>
                         <td></td>
                         <td></td>
                     </tr>
-                    <tr class="tbl_edus">
+                    <tr class="tbl_h">
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr class="tbl_h">
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="row my-3 px-3"> <!-- Language -->
+                <b class="px-0">ចំណេះដឹងភាសា / Language Knowledge (Remarks: G="Good", M="Medium", P="Poor")</b>
+                <table class="table table-bordered">
+                    <tr class="text-center">
+                        <td>Company Name</td>
+                        <td>Position</td>
+                        <td>Start</td>
+                        <td>End</td>
+                        <td>Last Salary</td>
+                        <td>Leaving Reason</td>
+                    </tr>
+                    
+                    <tr class="tbl_h">
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr class="tbl_h">
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr class="tbl_h">
+                        <td></td>
                         <td></td>
                         <td></td>
                         <td></td>
@@ -348,7 +428,6 @@
             </div>
 
         @endforeach
-
     </div>
 
 @endsection
