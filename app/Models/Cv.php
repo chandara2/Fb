@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Cv extends Model
 {
     use HasFactory;
-    
+
     protected $fillable = [
         'uid',
         'photo',
@@ -45,4 +45,9 @@ class Cv extends Model
         'emergency',
         'relationship',
     ];
+
+    public function educations()
+    {
+        return $this->hasMany(CvEducation::class);
+    }
 }
