@@ -39,23 +39,23 @@
                                 @endif
                             </a>
                             <div class="mt-3">
-                                <div style="overflow: hidden;">
+                                <div style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
                                     @if (app()->getLocale() == 'ch')
-                                        @php echo substr($career->post_ch, 0, 500) @endphp
+                                        @php echo ($career->post_ch) @endphp
                                         @if($career->post_ch == null)
-                                            @php echo substr($career->post_en, 0, 500) @endphp
+                                            @php echo ($career->post_en) @endphp
                                         @endif
                                     @elseif (app()->getLocale() == 'en')
-                                        @php echo substr($career->post_en, 0, 500) @endphp
+                                        @php echo ($career->post_en) @endphp
                                     @elseif (app()->getLocale() == 'kh')
-                                        @php echo substr($career->post_kh, 0, 500) @endphp
+                                        @php echo ($career->post_kh) @endphp
                                         @if($career->post_kh == null)
-                                            @php echo substr($career->post_en, 0, 500) @endphp
+                                            @php echo ($career->post_en) @endphp
                                         @endif
                                     @elseif(app()->getLocale() == 'th')
-                                        @php echo substr($career->post_th, 0, 500) @endphp
+                                        @php echo ($career->post_th) @endphp
                                         @if($career->post_th == null)
-                                            @php echo substr($career->post_en, 0, 500) @endphp
+                                            @php echo ($career->post_en) @endphp
                                         @endif
                                     @else
                                     @endif
