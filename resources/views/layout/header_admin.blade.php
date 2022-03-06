@@ -6,34 +6,34 @@
                 <img src="{{ asset('asset/image/logo.png') }}" alt="logo" height="50">
             </a>
 
-            <ul class="nav col-12 col-lg-auto my-2 justify-content-center my-md-0 text-small">
+            <ul class="nav col-12 col-lg-auto my-2 justify-content-center my-md-0 text-small" id="current_menus_hover2">
                 <li>
-                    <a href="{{ route('admin.dashboard') }}" class="nav-link text-white">
+                    <a href="{{ route('admin.dashboard') }}" class="nav-link link-light {{ Request::path() === 'admin/dashboard' ? 'current_menus2' : '' }}">
                         <i class="bi bi-speedometer2 d-block mx-auto mb-1 text-center" style="font-size:24px;"></i>Dashboard
                     </a>
                 </li>
                 <li>
-                    <a href="{{ route('admin.user.index') }}" class="nav-link text-white">
+                    <a href="{{ route('admin.user.index') }}" class="nav-link link-light {{ Request::path() === 'admin/user' ? 'current_menus2' : '' }}">
                         <i class="bi bi-people d-block mx-auto mb-1 text-center" style="font-size:24px;"></i>User
                     </a>
                 </li>
                 <li>
-                    <a href="{{ route('admin.job.index') }}" class="nav-link text-white">
+                    <a href="{{ route('admin.job.index') }}" class="nav-link link-light {{ Request::path() === 'admin/job' ? 'current_menus2' : '' }}">
                         <i class="bi bi-briefcase d-block mx-auto mb-1 text-center" style="font-size:24px;"></i>Job
                     </a>
                 </li>
                 <li>
-                    <a href="{{ route('admin.about.index') }}" class="nav-link text-white">
+                    <a href="{{ route('admin.about.index') }}" class="nav-link link-light {{ Request::path() === 'admin/about' ? 'current_menus2' : '' }}">
                         <i class="bi bi-box-seam d-block mx-auto mb-1 text-center" style="font-size:24px;"></i>About us
                     </a>
                 </li>
                 <li>
-                    <a href="{{ route('admin.career.index') }}" class="nav-link text-white">
+                    <a href="{{ route('admin.career.index') }}" class="nav-link link-light {{ Request::path() === 'admin/career' ? 'current_menus2' : '' }}">
                         <i class="bi bi-collection d-block mx-auto mb-1 text-center" style="font-size:24px;"></i>Post
                     </a>
                 </li>
                 <li>
-                    <a href="{{ route('admin.cv.index') }}" class="nav-link text-white">
+                    <a href="{{ route('admin.cv.index') }}" class="nav-link link-light {{ Request::path() === 'admin/cv' ? 'current_menus2' : '' }}">
                         <i class="bi bi-filter-square d-block mx-auto mb-1 text-center" style="font-size:24px;"></i>CV
                     </a>
                 </li>

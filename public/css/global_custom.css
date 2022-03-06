@@ -54,3 +54,11 @@
 #current_menus_hover li a:hover {
     color: blue;
 }
+
+.current_menus2 {
+    color: rgba(0, 255, 255);
+}
+
+#current_menus_hover2 li a:hover {
+    color: rgba(0, 255, 255, 0.8);
+}
