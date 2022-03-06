@@ -1,13 +1,5 @@
 @extends('layout.layout_app')
 @section('title', 'CAREER')
-@section('style')
-    <style>
-        /* Use for color menu */
-        .class_career{
-            color: #1EA4D9;
-        }
-    </style>
-@endsection
 @section('content')
 
     <div class="container mt-5">

@@ -34,10 +34,6 @@
     -ms-filter: "alpha(opacity=100)";
 }
 
-#menu_hovers li a:hover {
-    color: blue;
-}
-
 .underline_highlight {
     /* text-decoration: underline 3px solid pink; */
     text-decoration: underline 3px solid #80d9ff;
@@ -49,4 +45,12 @@
 
 .text_hover:hover {
     color: #1ea4d9;
+}
+
+.current_menus {
+    color: #0d6efd;
+}
+
+#current_menus_hover li a:hover {
+    color: blue;
 }

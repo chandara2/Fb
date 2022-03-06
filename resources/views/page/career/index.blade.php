@@ -1,12 +1,5 @@
 @extends('layout.layout_app')
 @section('title', 'CAREER')
-@section('style')
-    <style>
-        .class_career{
-            color: #1EA4D9;
-        }
-    </style>
-@endsection
 @section('content')
 
     <div class="position-relative">

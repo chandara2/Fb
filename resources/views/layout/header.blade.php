@@ -4,11 +4,11 @@
             <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-dark text-decoration-none">
                 <img src="{{ asset('asset/image/logo.png') }}" alt="logo" height="50">
             </a>
-            <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0" id="menu_hovers">
-                <li><a href="/" class="nav-link px-2 link-secondary class_homepage">{{__('text.Home_page')}}</a></li>
-                <li><a href="{{ route('job.index') }}" class="nav-link px-2 link-dark class_jobs">{{__('text.Job_page')}}</a></li>
-                <li><a href="{{ route('career.index') }}" class="nav-link px-2 link-dark class_career">{{__('text.Resources')}}</a></li>
-                <li><a href="{{ route('about.index') }}" class="nav-link px-2 link-dark class_aboutus">{{__('text.About_us')}}</a></li>
+            <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0" id="current_menus_hover">
+                <li><a href="/" class="nav-link px-2 link-secondary {{ Request::is('/') ? 'current_menus' : '' }}">{{__('text.Home_page')}}</a></li>
+                <li><a href="{{ route('job.index') }}" class="nav-link px-2 link-dark {{ Request::is('job*') ? 'current_menus' : '' }}">{{__('text.Job_page')}}</a></li>
+                <li><a href="{{ route('career.index') }}" class="nav-link px-2 link-dark {{ Request::is('career*') ? 'current_menus' : '' }}">{{__('text.Resources')}}</a></li>
+                <li><a href="{{ route('about.index') }}" class="nav-link px-2 link-dark {{ Request::is('about') ? 'current_menus' : '' }}">{{__('text.About_us')}}</a></li>
             </ul>
 
             <form id="form_searchjob_id" class="d-flex col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" action="{{ route('searchjob') }}" method="get">
