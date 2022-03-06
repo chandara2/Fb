@@ -6,47 +6,40 @@
                 <img src="{{ asset('asset/image/logo.png') }}" alt="logo" height="50">
             </a>
 
-            <ul class="nav col-12 col-lg-auto my-2 justify-content-center my-md-0 text-small amhover">
+            <ul class="nav col-12 col-lg-auto my-2 justify-content-center my-md-0 text-small">
                 <li>
                     <a href="{{ route('admin.dashboard') }}" class="nav-link text-white">
-                        <i class="bi bi-speedometer2 d-block mx-auto mb-1 text-center" style="font-size:24px;"></i>
-                        Dashboard
+                        <i class="bi bi-speedometer2 d-block mx-auto mb-1 text-center" style="font-size:24px;"></i>Dashboard
                     </a>
                 </li>
                 <li>
                     <a href="{{ route('admin.user.index') }}" class="nav-link text-white">
-                        <i class="bi bi-people d-block mx-auto mb-1 text-center" style="font-size:24px;"></i>
-                        User
+                        <i class="bi bi-people d-block mx-auto mb-1 text-center" style="font-size:24px;"></i>User
                     </a>
                 </li>
                 <li>
                     <a href="{{ route('admin.job.index') }}" class="nav-link text-white">
-                        <i class="bi bi-briefcase d-block mx-auto mb-1 text-center" style="font-size:24px;"></i>
-                        Job
+                        <i class="bi bi-briefcase d-block mx-auto mb-1 text-center" style="font-size:24px;"></i>Job
                     </a>
                 </li>
                 <li>
                     <a href="{{ route('admin.about.index') }}" class="nav-link text-white">
-                        <i class="bi bi-box-seam d-block mx-auto mb-1 text-center" style="font-size:24px;"></i>
-                        About us
+                        <i class="bi bi-box-seam d-block mx-auto mb-1 text-center" style="font-size:24px;"></i>About us
                     </a>
                 </li>
                 <li>
                     <a href="{{ route('admin.career.index') }}" class="nav-link text-white">
-                        <i class="bi bi-collection d-block mx-auto mb-1 text-center" style="font-size:24px;"></i>
-                        Post
+                        <i class="bi bi-collection d-block mx-auto mb-1 text-center" style="font-size:24px;"></i>Post
                     </a>
                 </li>
                 <li>
                     <a href="{{ route('admin.cv.index') }}" class="nav-link text-white">
-                        <i class="bi bi-filter-square d-block mx-auto mb-1 text-center" style="font-size:24px;"></i>
-                        CV
+                        <i class="bi bi-filter-square d-block mx-auto mb-1 text-center" style="font-size:24px;"></i>CV
                     </a>
                 </li>
                 <li class="dropdown">
                     <a href="#" class="nav-link text-white dropdown-toggle" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
-                        <i class="bi bi-gear d-block mx-auto mb-1 text-center" style="font-size:24px;"></i>
-                        Setting
+                        <i class="bi bi-gear d-block mx-auto mb-1 text-center" style="font-size:24px;"></i>Setting
                     </a>
 
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuLink">
