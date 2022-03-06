@@ -9,8 +9,8 @@
             <form action="{{ route('admin.user.update', $userid->id) }}" method="POST">
                 @csrf
                 @method('PUT')
-                <div class="modal-header brand-bg4">
-                    <h4 class="modal-title text-white" id="myCenterModalLabel">Edit User</h4>
+                <div class="modal-header bg-primary text-white">
+                    <h4 class="modal-title" id="myCenterModalLabel">Edit User</h4>
                     <a href="{{ route('admin.user.index') }}">
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </a>
@@ -43,7 +43,7 @@
                         <button type="button" class="btn btn-light"
                             data-bs-dismiss="modal">Close</button>
                     </a>
-                    <button type="submit" class="btn brand_btn4">Update</button>
+                    <button type="submit" class="btn btn-primary">Update</button>
                 </div>
             </form>
         </div><!-- /.modal-content -->

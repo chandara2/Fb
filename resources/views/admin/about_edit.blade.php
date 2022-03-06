@@ -6,7 +6,7 @@
 <div class="container-fluid">
     <div class="modal-dialog modal-xl">
         <div class="modal-content">
-            <div class="modal-header bg-info bg-opacity-50">
+            <div class="modal-header bg-primary text-white">
             <h5 class="modal-title" id="exampleModalLabel">Edit About us Information</h5>
             <a href="{{ route('admin.about.index') }}"><button type="button" class="btn-close"></button></a>
             </div>
@@ -60,7 +60,7 @@
             
                     <div class="modal-footer">
                         <a href="{{ route('admin.about.index') }}"><button type="button" class="btn btn-secondary">Close</button></a>
-                        <button type="submit" class="btn btn-info">Update</button>
+                        <button type="submit" class="btn btn-primary">Update</button>
                     </div>
                 </form>
             </div>
