@@ -16,7 +16,7 @@ $(document).ready(function() {
 // Datatable
 $(document).ready(function() {
     $('.customdatatable').DataTable({
-        // "pageLength": 5,
+        "pageLength": 5,
     });
 });
 

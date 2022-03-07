@@ -57,6 +57,7 @@ Route::prefix('admin')->name('admin.')->middleware('isadmin')->group(function ()
     Route::get('/dashboard', [AdmindbController::class, 'dashboard'])->name('dashboard');
     Route::resource('/job', AdminJobController::class);
     Route::resource('/user', AdminUserController::class);
+    Route::get('/fetchuser', [AdminUserController::class, 'fetchuser'])->name('fetchuser');
     Route::resource('/companyinfo', AdminCompanyInfoController::class);
     Route::resource('/about', AdminAboutController::class);
     Route::get('/changejobstatus', [AdminJobController::class, 'changejobstatus'])->name('changejobstatus');

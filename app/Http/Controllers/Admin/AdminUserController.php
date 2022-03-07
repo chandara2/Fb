@@ -23,9 +23,17 @@ class AdminUserController extends Controller
     {
         $users = User::orderBy('created_at', 'desc')->get();
         $usergroups = Usergroup::orderBy('name', 'desc')->get();
-        return view('admin.user',[
-            'users'=>$users,    
-            'usergroups'=>$usergroups,
+        return view('admin.user', [
+            'users' => $users,
+            'usergroups' => $usergroups,
+        ]);
+    }
+
+    public function fetchuser()
+    {
+        $fetchusers = User::join('usergroups', 'usergroups.id', '=', 'users.gid')->select('users.*', 'usergroups.name as group')->get();
+        return response()->json([
+            'fetchusers' => $fetchusers,
         ]);
     }
 
@@ -72,7 +80,7 @@ class AdminUserController extends Controller
             $users->phone = $request->phone;
             $users->password = Hash::make($request->password);
             $users->gid = $request->gid;
-            
+
             $users->save();
             return response()->json(['status' => 1, 'msg' => 'User create successfully']);
         }

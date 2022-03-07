@@ -89,34 +89,9 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($users as $i => $user)
-                        <tr id="sid">
-                            <td>{{$i+1}}</td>
-                            <td>{{$user->fname}}</td>
-                            <td>{{$user->gname}}</td>
-                            <td>{{$user->username}}</td>
-                            <td>{{$user->phone}}</td>
-                            @if($user->gid==1)
-                            <td class="text-danger">Admin</td>
-                            @elseif($user->gid==2)
-                            <td>Agency</td>
-                            @else
-                            <td>User</td>
-                            @endif
-                            <td>
-                                <a href="/admin/user/{{ $user->id }}/edit" title="Edit"><i class="bi bi-pencil-square text-primary" style="font-size: 20px;"></i></a>
-                                @if($user->gid!=1)
-                                <form action="/admin/user/{{ $user->id }}" method="POST" class="d-inline" onsubmit="return confirm('Are you sure? You won\'t be able to revert this!')">
-                                    @csrf
-                                    @method('delete')
-                                    <button type="submit" title="Delete" class="btn btn-sm"><i class="bi bi-trash text-danger" style="font-size: 20px;"></i></button>
-                                </form>
-                                @else
-                                <i class="bi bi-trash text-danger btn btn-sm" style="cursor: not-allowed; font-size: 20px;" title="Impossible to delete Admin!"></i>
-                                @endif
-                            </td>
-                        </tr>
-                        @endforeach
+                        {{-- @foreach ($users as $i => $user) --}}
+                        
+                        {{-- @endforeach --}}
                     </tbody>
                 </table>
         
@@ -135,7 +110,35 @@
                 }
             });
 
-            // Save Job Form
+            // Fetch User
+            fetchuser();
+            function fetchuser()
+            {
+                $.ajax({
+                    type: "GET",
+                    url: "{{ route('admin.fetchuser') }}",
+                    dataType: "json",
+                    success: function (response) {
+                        $('tbody').html("");
+                        $.each(response.fetchusers, function (key, value) { 
+                            $('tbody').append(`<tr>
+                            <td>`+value.id+`</td>
+                            <td>`+value.fname+`</td>
+                            <td>`+value.gname+`</td>
+                            <td>`+value.username+`</td>
+                            <td>`+value.phone+`</td>
+                            <td>`+value.group+`</td>
+                            <td><a href="/admin/user/`+value.id+`/edit" title="Edit"><i class="bi bi-pencil-square text-primary" style="font-size: 20px;"></i></a>
+                                @if(`+value.gid+`.`!=1`) <form action="/admin/user/`+value.id+`" method="POST" class="d-inline" onsubmit="return confirm()"> @csrf @method('delete')<button type="submit" class="btn btn-sm text-danger" title="Delete"><i class="bi bi-trash" style="font-size: 20px;"></i></button></form>
+                                @else <button type="button" class="btn btn-sm text-danger" title="Delete" style="cursor: not-allowed;"><i class="bi bi-trash" style="font-size: 20px;"></i></button>
+                                @endif </td>
+                        </tr>`);
+                        });
+                    }
+                });
+            }
+
+            // Save User Form
             $('#addUserFormId').on('submit', function (e) {
                 e.preventDefault();
                 $.ajax({
@@ -154,6 +157,7 @@
                                 $('span.'+prefix+'_error').text(val[0])
                             })
                         }else{
+                            fetchuser();
                             $('#showUserModal').modal('hide')
                             $('#addUserFormId')[0].reset();
                             // document.location.href = "{{ route('admin.user.index') }}"
