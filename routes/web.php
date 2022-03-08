@@ -56,11 +56,15 @@ Route::get('logout', [AuthController::class, 'logout'])->name('logout')->middlew
 Route::prefix('admin')->name('admin.')->middleware('isadmin')->group(function () {
     Route::get('/dashboard', [AdmindbController::class, 'dashboard'])->name('dashboard');
     Route::resource('/job', AdminJobController::class);
+    Route::get('/jobfetch', [AdminJobController::class, 'jobfetch'])->name('jobfetch');
+    Route::get('/jobedit', [AdminJobController::class, 'jobedit'])->name('jobedit');
+    Route::post('/jobupdate', [AdminJobController::class, 'jobupdate'])->name('jobupdate');
+    Route::delete('/jobdelete', [AdminJobController::class, 'jobdelete'])->name('jobdelete');
     Route::resource('/user', AdminUserController::class)->only(['index', 'store']);
     Route::get('/userfetch', [AdminUserController::class, 'userfetch'])->name('userfetch');
-    Route::get('/edituser', [AdminUserController::class, 'edituser'])->name('edituser');
-    Route::post('/updateuser', [AdminUserController::class, 'updateuser'])->name('updateuser');
-    Route::delete('/deleteuser', [AdminUserController::class, 'deleteuser'])->name('deleteuser');
+    Route::get('/useredit', [AdminUserController::class, 'useredit'])->name('useredit');
+    Route::post('/userupdate', [AdminUserController::class, 'userupdate'])->name('userupdate');
+    Route::delete('/userdelete', [AdminUserController::class, 'userdelete'])->name('userdelete');
     Route::resource('/companyinfo', AdminCompanyInfoController::class);
     Route::resource('/about', AdminAboutController::class);
     Route::get('/changejobstatus', [AdminJobController::class, 'changejobstatus'])->name('changejobstatus');

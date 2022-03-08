@@ -77,6 +77,7 @@
                             <label>Company Logo</label>
                             <input name="logo" type="file" class="form-control" value="{{ old('logo') }}" onchange="document.getElementById('companyinfologo').src = window.URL.createObjectURL(this.files[0])">
                             <span class="text-danger error-text logo_error"></span>
+                            <br>
                             <img id="companyinfologo" width="110px">
                         </div>
 

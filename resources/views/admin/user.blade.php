@@ -174,9 +174,8 @@
             $(document).on('click', '.editIcon', function(e) {
                 e.preventDefault();
                 let id = $(this).attr('id');
-                console.log(id)
                 $.ajax({
-                    url: "{{ route('admin.edituser') }}",
+                    url: "{{ route('admin.useredit') }}",
                     method: 'get',
                     data: {
                         id: id,
@@ -200,7 +199,7 @@
                     const fd = new FormData(this);
                     $("#edit_employee_btn").text('Updating...');
                     $.ajax({
-                    url: "{{ route('admin.updateuser') }}",
+                    url: "{{ route('admin.userupdate') }}",
                     method: 'post',
                     data: fd,
                     cache: false,
@@ -232,34 +231,42 @@
             $(document).on('click', '.deleteIcon', function(e) {
                 e.preventDefault();
                 let id = $(this).attr('id');
+                let gid = $(this).val();
                 let csrf = '{{ csrf_token() }}';
                 Swal.fire({
-                title: 'Are you sure?',
-                text: "You won't be able to revert this!",
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'Yes, delete it!'
+                    title: 'Are you sure?',
+                    text: "You won't be able to revert this!",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes, delete it!'
                 }).then((result) => {
-                    if (result.isConfirmed) {
-                        $.ajax({
-                        url: "{{ route('admin.deleteuser') }}",
-                        method: 'delete',
-                        data: {
-                            id: id,
-                            _token: csrf
-                        },
-                        success: function(response) {
-                            console.log(response);
-                            Swal.fire(
-                            'Deleted!',
-                            'Your file has been deleted.',
-                            'success'
-                            )
-                            userfetch();
+                    if(gid!=1){
+                        if (result.isConfirmed) {
+                            $.ajax({
+                            url: "{{ route('admin.userdelete') }}",
+                            method: 'delete',
+                            data: {
+                                id: id,
+                                _token: csrf
+                            },
+                            success: function(response) {
+                                console.log(response);
+                                Swal.fire(
+                                'Deleted!',
+                                'Your file has been deleted.',
+                                'success'
+                                )
+                                userfetch();
+                            }
+                            });
                         }
-                        });
+                    }else{
+                        Swal.fire(
+                            'Admin!',
+                            'You can not delete admin account.',
+                        )
                     }
                 })
             });

@@ -56,7 +56,7 @@ class AdminUserController extends Controller
                     <td>
                         <a href="#" id="' . $user->id . '" class="text-success mx-1 editIcon" data-bs-toggle="modal" data-bs-target="#editUserModal"><i class="bi-pencil-square h4"></i></a>
 
-                        <a href="#" id="' . $user->id . '" class="text-danger mx-1 deleteIcon"><i class="bi-trash h4"></i></a>
+                        <button value="' . $user->gid . '" id="' . $user->id . '" class="btn px-0 shadow-none text-danger mx-1 deleteIcon"><i class="bi-trash h4"></i></button>
                     </td>
                 </tr>';
             }
@@ -98,14 +98,14 @@ class AdminUserController extends Controller
         }
     }
 
-    public function edituser(Request $request)
+    public function useredit(Request $request)
     {
         $id = $request->id;
         $user = User::find($id);
         return response()->json($user);
     }
 
-    public function updateuser(Request $request)
+    public function userupdate(Request $request)
     {
         $user = User::find($request->user_id);
         $validator = Validator::make($request->all(), [
@@ -140,7 +140,7 @@ class AdminUserController extends Controller
         }
     }
 
-    public function deleteuser(Request $request)
+    public function userdelete(Request $request)
     {
         $id = $request->id;
         $user = User::find($id);

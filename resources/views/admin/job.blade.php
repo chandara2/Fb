@@ -346,6 +346,152 @@
             });
 
 
+            // Save User Form
+            $('#addUserFormId').on('submit', function (e) {
+                e.preventDefault();
+                $.ajax({
+                    method:$(this).attr('method'),
+                    url:$(this).attr('action'),
+                    data:new FormData(this),
+                    dataType: "json",
+                    processData:false,
+                    contentType:false,
+                    beforeSend: function(){
+                        $(document).find('span.error-text').text('')
+                    },
+                    success: function (response) {
+                        if(response.status==0){
+                            $.each(response.error, function(prefix, val){
+                                $('span.'+prefix+'_error').text(val[0])
+                            })
+                        }else{
+                            userfetch();
+                            $('#showUserModal').modal('hide')
+                            $('#addUserFormId')[0].reset();
+                        }
+                    }
+                });
+            });
+
+            // Edit User ajax request
+            $(document).on('click', '.editIcon', function(e) {
+                e.preventDefault();
+                let id = $(this).attr('id');
+                $.ajax({
+                    url: "{{ route('admin.useredit') }}",
+                    method: 'get',
+                    data: {
+                        id: id,
+                        _token: '{{ csrf_token() }}'
+                    },
+                    success: function(response) {
+                        $("#fname").val(response.fname);
+                        $("#gname").val(response.gname);
+                        $("#username").val(response.username);
+                        $("#phone").val(response.phone);
+                        $("#password").val('********');
+                        $("#user_id").val(response.id);
+                        $("#gid").val(response.gid);
+                    }
+                });
+            });
+
+            // Update User ajax request
+            $("#edit_employee_form").submit(function(e) {
+                    e.preventDefault();
+                    const fd = new FormData(this);
+                    $("#edit_employee_btn").text('Updating...');
+                    $.ajax({
+                    url: "{{ route('admin.userupdate') }}",
+                    method: 'post',
+                    data: fd,
+                    cache: false,
+                    contentType: false,
+                    processData: false,
+                    dataType: 'json',
+                    success: function(response) {
+                        if (response.status == 200) {
+                        Swal.fire(
+                            'Updated!',
+                            'Employee Updated Successfully!',
+                            'success'
+                        )
+                        userfetch();
+                        $("#edit_employee_btn").text('Update User');
+                        $("#edit_employee_form")[0].reset();
+                        $("#editUserModal").modal('hide');
+                        }else{
+                            $.each(response.error, function(prefix, val){
+                                $('span.'+prefix+'_error').text(val[0])
+                            })
+                        }
+                        
+                    }
+                });
+            });
+
+            // Delete User ajax request
+            $(document).on('click', '.deleteIcon', function(e) {
+                e.preventDefault();
+                let id = $(this).attr('id');
+                let gid = $(this).val();
+                let csrf = '{{ csrf_token() }}';
+                Swal.fire({
+                    title: 'Are you sure?',
+                    text: "You won't be able to revert this!",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes, delete it!'
+                }).then((result) => {
+                    if(gid!=1){
+                        if (result.isConfirmed) {
+                            $.ajax({
+                            url: "{{ route('admin.userdelete') }}",
+                            method: 'delete',
+                            data: {
+                                id: id,
+                                _token: csrf
+                            },
+                            success: function(response) {
+                                console.log(response);
+                                Swal.fire(
+                                'Deleted!',
+                                'Your file has been deleted.',
+                                'success'
+                                )
+                                userfetch();
+                            }
+                            });
+                        }
+                    }else{
+                        Swal.fire(
+                            'Admin!',
+                            'You can not delete admin account.',
+                        )
+                    }
+                })
+            });
+
+            // Fetch all User ajax request
+            userfetch();
+
+            function userfetch() {
+                $.ajax({
+                    url: "{{ route('admin.userfetch') }}",
+                    method: 'get',
+                    success: function(response) {
+                    $("#show_all_users").html(response);
+                    $("table").DataTable({
+                        order: [0, 'asc'],
+                        pageLength: 25,
+                    });
+                    }
+                });
+            }
+
+
             
         });
     </script>
