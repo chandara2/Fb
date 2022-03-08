@@ -144,6 +144,6 @@ class AdminUserController extends Controller
     {
         $id = $request->id;
         $user = User::find($id);
-        User::destroy($id);
+        $user->destroy($id);
     }
 }

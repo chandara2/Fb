@@ -46,6 +46,7 @@ class AdminJobController extends Controller
         $job_terms = JobTerm::all();
         $job_experiences = JobExperience::all();
         $job_qualifications = JobQualification::all();
+
         return view('admin.job', [
             'jobs' => $jobs,
             'company_infos' => $company_infos,
@@ -63,7 +64,8 @@ class AdminJobController extends Controller
 
     public function jobfetch()
     {
-        $jobs = DB::table('company_infos')->join('jobs', 'jobs.company_id', 'company_infos.id')->select('jobs.*', 'company_infos.company')->orderBy('approved', 'asc')->orderBy('created_at', 'desc')->get();
+        $jobs = DB::table('company_infos')->join('jobs', 'jobs.company_id', 'company_infos.id')->select('jobs.*', 'company_infos.company')->orderBy('approved', 'asc')->get();
+
         $output = '';
         if ($jobs->count() > 0) {
             $output .= '<table class="table table-striped table-sm align-middle">
@@ -84,13 +86,11 @@ class AdminJobController extends Controller
                     <td>' . $job->title_en . '</td>
                     <td>' . $job->company . '</td>
                     <td>' . $job->expired_post . '</td>
+                    <td>' . $job->approved . '</td>
                     <td>
-                        <input type="checkbox" class="toggle-class" data-id="{{ ' . $job->id . ' }}" data-toggle="toggle" data-offstyle="danger" data-on="Approved" data-off="Pending" {{ ' . $job->approved . ' == true ? "checked" : "" }}>
-                    </td>
-                    <td>
-                        <a href="#" id="' . $job->id . '" class="text-success mx-1 editIcon" data-bs-toggle="modal" data-bs-target="#editUserModal"><i class="bi-pencil-square h4"></i></a>
+                        <a href="#" id="' . $job->id . '" class="text-success mx-1 editIcon" data-bs-toggle="modal" data-bs-target="#editJobModal"><i class="bi-pencil-square h4"></i></a>
 
-                        <button value="' . $job->id . '" id="' . $job->id . '" class="btn px-0 shadow-none text-danger mx-1 deleteIcon"><i class="bi-trash h4"></i></button>
+                        <a href="#" id="' . $job->id . '" class="text-danger mx-1 deleteIcon"><i class="bi-trash h4"></i></a>
                     </td>
                 </tr>';
             }
@@ -185,15 +185,11 @@ class AdminJobController extends Controller
         }
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
+    public function useredit(Request $request)
     {
-        //
+        $id = $request->id;
+        $job = Job::find($id);
+        return response()->json($job);
     }
 
     /**
@@ -316,23 +312,18 @@ class AdminJobController extends Controller
         return redirect(route('admin.job.index'));
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        $job = Job::find($id);
-        $job->delete();
-        return back()->with('jobdelete', 'You have delete a job');
-    }
     public function changejobstatus(Request $request)
     {
         $jobs = Job::find($request->id);
         $jobs->approved = $request->approved;
         $jobs->save();
         return response()->json(['successStatusMsg' => 'Status has changed successfully']);
+    }
+
+    public function jobdelete(Request $request)
+    {
+        $id = $request->id;
+        $job = Job::find($id);
+        $job->destroy($id);
     }
 }

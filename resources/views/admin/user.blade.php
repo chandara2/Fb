@@ -74,7 +74,7 @@
                     <h5 class="modal-title" id="exampleModalLabel">Edit User</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form action="#" method="POST" id="edit_employee_form" enctype="multipart/form-data">
+                <form action="#" method="POST" id="edit_user_form" enctype="multipart/form-data">
                     @csrf
                     <input type="hidden" name="user_id" id="user_id">
                     <div class="modal-body p-4 bg-light">
@@ -182,19 +182,19 @@
                         _token: '{{ csrf_token() }}'
                     },
                     success: function(response) {
+                        $("#user_id").val(response.id);
                         $("#fname").val(response.fname);
                         $("#gname").val(response.gname);
                         $("#username").val(response.username);
                         $("#phone").val(response.phone);
                         $("#password").val('********');
-                        $("#user_id").val(response.id);
                         $("#gid").val(response.gid);
                     }
                 });
             });
 
             // Update User ajax request
-            $("#edit_employee_form").submit(function(e) {
+            $("#edit_user_form").submit(function(e) {
                     e.preventDefault();
                     const fd = new FormData(this);
                     $("#edit_employee_btn").text('Updating...');
@@ -215,7 +215,7 @@
                         )
                         userfetch();
                         $("#edit_employee_btn").text('Update User');
-                        $("#edit_employee_form")[0].reset();
+                        $("#edit_user_form")[0].reset();
                         $("#editUserModal").modal('hide');
                         }else{
                             $.each(response.error, function(prefix, val){

@@ -234,43 +234,201 @@
     <!-- Add job modal end -->
 
     <!-- Edit job modal start -->
-    <div class="modal fade" id="editUserModal" tabindex="-1" aria-labelledby="exampleModalLabel" data-bs-backdrop="static" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
+    <div class="modal fade" id="editJobModal" tabindex="-1" aria-labelledby="exampleModalLabel" data-bs-backdrop="static" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Edit User</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Edit Job</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form action="#" method="POST" id="edit_employee_form" enctype="multipart/form-data">
+                <form action="#" method="POST" id="edit_job_form" enctype="multipart/form-data">
                     @csrf
-                    <input type="hidden" name="user_id" id="user_id">
+                    <input type="hidden" name="job_id" id="job_id">
                     <div class="modal-body p-4 bg-light">
-                        <div class="row">
-                            <div class="col-lg">
-                                <label for="fname">Family Name</label>
-                                <input type="text" name="fname" id="fname" class="form-control">
-                                <span class="text-danger error-text fname_error"></span>
+                        
+                        <div class="form-group mb-md-3">
+                            <label>Job Title</label>
+                            <nav class="nav nav-tabs" id="nav-tab" role="tablist">
+                                <a class="nav-link active" id="nav-en-tab" data-bs-toggle="tab" href="#nav-en" role="tab" aria-controls="nav-en" aria-selected="true">English</a>
+                                <a class="nav-link" id="nav-ch-tab" data-bs-toggle="tab" href="#nav-ch" role="tab" aria-controls="nav-ch" aria-selected="false">Chinese</a>
+                                <a class="nav-link" id="nav-kh-tab" data-bs-toggle="tab" href="#nav-kh" role="tab" aria-controls="nav-kh" aria-selected="false">Khmer</a>
+                                <a class="nav-link" id="nav-th-tab" data-bs-toggle="tab" href="#nav-th" role="tab" aria-controls="nav-th" aria-selected="false">Thai</a>
+                            </nav>
+                            <div class="tab-content" id="nav-tabContent">
+                                <div class="tab-pane fade show active" id="nav-en" role="tabpanel" aria-labelledby="nav-en-tab">
+                                    <input name="title_en" id="title_en" type="text" class="form-control">
+                                </div>
+                                <div class="tab-pane fade" id="nav-ch" role="tabpanel" aria-labelledby="nav-ch-tab">
+                                    <input name="title_ch" id="title_ch" type="text" class="form-control">
+                                </div>
+                                <div class="tab-pane fade" id="nav-kh" role="tabpanel" aria-labelledby="nav-kh-tab">
+                                    <input name="title_kh" id="title_kh" type="text" class="form-control">
+                                </div>
+                                <div class="tab-pane fade" id="nav-th" role="tabpanel" aria-labelledby="nav-th-tab">
+                                    <input name="title_th" id="title_th" type="text" class="form-control">
+                                </div>
                             </div>
-                            <div class="col-lg">
-                                <label for="gname">Given Name</label>
-                                <input type="text" name="gname" id="gname" class="form-control">
-                                <span class="text-danger error-text gname_error"></span>
+                            <ul class="ps-0" style="list-style: none;">
+                                <li><span class="text-danger error-text title_ch_error"></span></li>
+                                <li><span class="text-danger error-text title_en_error"></span></li>
+                                <li><span class="text-danger error-text title_kh_error"></span></li>
+                                <li><span class="text-danger error-text title_th_error"></span></li>
+                            </ul>
+                        </div>
+
+                        <div class="row"> <!--Row Input -->
+                            <div class="col-md-6">
+                                <div class="form-group mb-md-3">
+                                    <label>Company</label>
+                                    <select name="company_id" id="company_id" class="form-select">
+                                        @foreach ($jobs as $company)
+                                            <option value="{{ $company->id }}">{{ $company->company }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
                             </div>
-                        </div>
-                        <div class="my-2">
-                            <label for="username">Username</label>
-                            <input type="text" name="username" id="username" class="form-control">
-                            <span class="text-danger error-text username_error"></span>
-                        </div>
-                        <div class="my-2">
-                            <label for="phone">Phone</label>
-                            <input type="tel" name="phone" id="phone" class="form-control">
-                            <span class="text-danger error-text fname_error"></span>
-                        </div>
-                        <div class="my-2">
-                            <label for="password">password</label>
-                            <input type="password" name="password" id="password" class="form-control" placeholder="password">
-                            <span class="text-danger error-text password_error"></span>
+                            <div class="col-md-6">
+                                <div class="form-group mb-md-3">
+                                    <label>Function</label>
+                                    <select name="function" id="function" class="form-select">
+                                        @foreach ($job_functions as $job_function)
+                                            <option value="{{ $job_function->function_en }}">{{ $job_function->function_en }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group mb-md-3">
+                                    <label>Industry</label>
+                                    <select name="industry" id="industry" class="form-select">
+                                        @foreach ($job_industries as $job_industry)
+                                            <option value="{{ $job_industry->industry_en }}">{{ $job_industry->industry_en }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group mb-md-3">
+                                    <label>Location</label>
+                                    <select name="location" id="location" class="form-select">
+                                        @foreach ($job_locations as $job_location)
+                                            <option value="{{ $job_location->location_en }}">{{ $job_location->location_en }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group mb-md-3">
+                                    <label>Salary</label>
+                                    <select name="salary" id="salary" class="form-select">
+                                        @foreach ($job_salaries as $job_salary)
+                                            <option value="{{ $job_salary->salary_en }}">{{ $job_salary->salary_en }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group mb-md-3">
+                                    <label>Sex</label>
+                                    <select name="sex" id="sex" class="form-select">
+                                        @foreach ($job_genders as $job_gender)
+                                            <option value="{{ $job_gender->gender_en }}">{{ $job_gender->gender_en }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group mb-md-3">
+                                    <label>Age</label>
+                                    <input name="age" id="age" type="text" class="form-control">
+                                    <span class="text-danger error-text age_error"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group mb-md-3">
+                                    <label>Term</label>
+                                    <select name="term" id="term" class="form-select">
+                                        @foreach ($job_terms as $job_term)
+                                            <option value="{{ $job_term->term_en }}">{{ $job_term->term_en }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group mb-md-3">
+                                    <label>Level</label>
+                                    <select name="level" id="level" class="form-select">
+                                        @foreach ($job_levels as $job_level)
+                                            <option value="{{ $job_level->level_en }}">{{ $job_level->level_en }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group mb-md-3">
+                                    <label>Qualification</label>
+                                    <select name="qualification" id="qualification" class="form-select">
+                                        @foreach ($job_qualifications as $job_qualification)
+                                            <option value="{{ $job_qualification->qualification_en }}">{{ $job_qualification->qualification_en }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group mb-md-3">
+                                    <label>Language</label>
+                                    <input name="language" id="language" type="text" class="form-control">
+                                    <span class="text-danger error-text language_error"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group mb-md-3">
+                                    <label>Years of experience</label>
+                                    <select name="year_of_exp" id="year_of_exp" class="form-select">
+                                        @foreach ($job_experiences as $job_experience)
+                                            <option value="{{ $job_experience->experience_en }}">{{ $job_experience->experience_en }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group mb-md-3">
+                                    <label>Hiring</label>
+                                    <input name="hiring" id="hiring" type="number" class="form-control">
+                                    <span class="text-danger error-text hiring_error"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group mb-md-3">
+                                    <label>Contact</label>
+                                    <input name="contact" id="contact" type="text" class="form-control">
+                                    <span class="text-danger error-text contact_error"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group mb-md-3">
+                                    <label>Expired Job</label>
+                                    <input name="expired_job" id="expired_job" type="date" class="form-control">
+                                    <span class="text-danger error-text expired_job_error"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group mb-md-3">
+                                    <label>Expired Post</label>
+                                    <input name="expired_post" id="expired_post" type="date" class="form-control">
+                                    <span class="text-danger error-text expired_post_error"></span>
+                                </div>
+                            </div>
+                        </div> <!-- End row -->
+
+                        <div class="form-group mb-md-3">
+                            <label>Detail</label>
+                            <textarea name="detail" id="detail" class="textarea_autosize form-control summernote">
+                                @php
+                                    // echo $jobs->detail
+                                @endphp
+                            </textarea>
+                            <span class="text-danger error-text detail_error"></span>
                         </div>
                         
                     </div>
@@ -292,62 +450,6 @@
         <div class="card-body" id="show_all_jobs"></div>
     </div>
 
-    {{-- <div class="card container px-0 shadow">
-        <div class="card-header position-relative bg-primary">
-            <h2 class="mb-0 text-white">List of jobs</h2>
-            <button type="button" data-bs-toggle="modal" data-bs-target="#showJobModal" class="btn btn-light position-absolute end-0 top-50 translate-middle-y me-3"><i class="bi bi-plus-circle"></i> Add New Job</button>
-        </div>
-        <div class="card-body">
-            <div class="container-fluid">
-                @if (session('userdelete'))
-                    <div class="alert alert-success">{{session('userdelete')}}</div>
-                @endif
-                
-                <table id="update_status_switch" class="customdatatable table table-hover table-bordered" style="width:100%">
-                    <thead class="table-primary">
-                        <tr>
-                            <th>No</th>
-                            <th>Job Title</th>
-                            <th>Company</th>
-                            <th>Expired Post</th>
-                            <th>Status</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach ($jobs as $i => $job)
-                        <tr>
-                            <td>{{$i+1}}</td>
-                            <td>{{$job->title_en}}</td>
-                            <td>{{$job->company}}</td>
-                            <td>
-                                @if ($job->expired_post<now())
-                                    <span class="text-danger" title="Will be deleted the next day">{{  date('d \\ M Y', strtotime($job->expired_post)) }}</span>
-                                @else
-                                    {{  date('d \\ M Y', strtotime($job->expired_post)) }}
-                                @endif
-                            </td>
-                            <td>
-                                <input type="checkbox" class="toggle-class" data-id="{{ $job->id }}" data-toggle="toggle"  data-offstyle="danger" data-on="Approved" data-off="Pending" {{ $job->approved == true ? 'checked' : ''}}>
-                                
-                            </td>
-                            <td>
-                                <a href="/admin/job/{{ $job->id }}/edit" title="Edit"><i class="bi bi-pencil-square text-primary" style="font-size: 20px;"></i></a>
-                                <form action="/admin/job/{{ $job->id }}" method="POST" class="d-inline" onsubmit="return confirm('Are you sure? You won\'t be able to revert this!')">
-                                    @csrf
-                                    @method('delete')
-                                    <button type="submit" class="btn btn-sm text-danger" title="Delete"><i class="bi bi-trash" style="font-size: 20px;"></i></button>
-                                </form>
-                            </td>
-                        </tr>
-                        @endforeach
-                    </tbody>
-                </table>
-        
-            </div>
-        </div>
-    </div> --}}
-
 @endsection
 
 @section('script')
@@ -360,25 +462,25 @@
             });
 
             // Pending & Approved
-            $('.toggle-class').on('change', function() {
-                var approved = $(this).prop('checked') == true ? 1 : 0;
-                var id = $(this).data('id');
-                $.ajax({
-                    type: 'GET',
-                    dataType: 'JSON',
-                    url: '/admin/changejobstatus',
-                    data: {
-                        'approved': approved,
-                        'id': id
-                    },
-                    success:function(data) {
-                        console.log(data.successStatusMsg)
-                    }
-                });
-            });
+            // $('.toggle-class').on('change', function() {
+            //     var approved = $(this).prop('checked') == true ? 1 : 0;
+            //     var id = $(this).data('id');
+            //     $.ajax({
+            //         type: 'GET',
+            //         dataType: 'JSON',
+            //         url: '/admin/changejobstatus',
+            //         data: {
+            //             'approved': approved,
+            //             'id': id
+            //         },  
+            //         success:function(response) {
+            //             console.log(response.successStatusMsg)
+            //         }
+            //     });
+            // });
 
             // Save User Form
-            $('#addUserFormId').on('submit', function (e) {
+            $('#addJobFormId').on('submit', function (e) {
                 e.preventDefault();
                 $.ajax({
                     method:$(this).attr('method'),
@@ -397,38 +499,52 @@
                             })
                         }else{
                             jobfetch();
-                            $('#showUserModal').modal('hide')
-                            $('#addUserFormId')[0].reset();
+                            $('#showJobModal').modal('hide')
+                            $('#addJobFormId')[0].reset();
                         }
                     }
                 });
             });
 
             // Edit User ajax request
-            // $(document).on('click', '.editIcon', function(e) {
-            //     e.preventDefault();
-            //     let id = $(this).attr('id');
-            //     $.ajax({
-            //         url: "{{ route('admin.useredit') }}",
-            //         method: 'get',
-            //         data: {
-            //             id: id,
-            //             _token: '{{ csrf_token() }}'
-            //         },
-            //         success: function(response) {
-            //             $("#fname").val(response.fname);
-            //             $("#gname").val(response.gname);
-            //             $("#username").val(response.username);
-            //             $("#phone").val(response.phone);
-            //             $("#password").val('********');
-            //             $("#user_id").val(response.id);
-            //             $("#gid").val(response.gid);
-            //         }
-            //     });
-            // });
+            $(document).on('click', '.editIcon', function(e) {
+                e.preventDefault();
+                let id = $(this).attr('id');
+                $.ajax({
+                    url: "{{ route('admin.jobedit') }}",
+                    method: 'get',
+                    data: {
+                        id: id,
+                        _token: '{{ csrf_token() }}'
+                    },
+                    success: function(response) {
+                        $("#job_id").val(response.id);
+                        $("#title_ch").val(response.title_ch);
+                        $("#title_en").val(response.title_en);
+                        $("#title_kh").val(response.title_kh);
+                        $("#title_th").val(response.title_th);
+                        $("#company_id").val(response.company);
+                        $("#function").val(response.function);
+                        $("#industry").val(response.industry);
+                        $("#location").val(response.location);
+                        $("#salary").val(response.salary);
+                        $("#sex").val(response.sex);
+                        $("#age").val(response.age);
+                        $("#term").val(response.term);
+                        $("#level").val(response.level);
+                        $("#qualification").val(response.qualification);
+                        $("#language").val(response.language);
+                        $("#year_of_exp").val(response.year_of_exp);
+                        $("#hiring").val(response.hiring);
+                        $("#contact").val(response.contact);
+                        $("#expired_job").val(response.expired_job);
+                        $("#expired_post").val(response.expired_post);
+                    }
+                });
+            });
 
             // Update User ajax request
-            // $("#edit_employee_form").submit(function(e) {
+            // $("#edit_job_form").submit(function(e) {
             //         e.preventDefault();
             //         const fd = new FormData(this);
             //         $("#edit_employee_btn").text('Updating...');
@@ -449,8 +565,8 @@
             //             )
             //             jobfetch();
             //             $("#edit_employee_btn").text('Update User');
-            //             $("#edit_employee_form")[0].reset();
-            //             $("#editUserModal").modal('hide');
+            //             $("#edit_job_form")[0].reset();
+            //             $("#editJobModal").modal('hide');
             //             }else{
             //                 $.each(response.error, function(prefix, val){
             //                     $('span.'+prefix+'_error').text(val[0])
@@ -462,48 +578,40 @@
             // });
 
             // Delete User ajax request
-            // $(document).on('click', '.deleteIcon', function(e) {
-            //     e.preventDefault();
-            //     let id = $(this).attr('id');
-            //     let gid = $(this).val();
-            //     let csrf = '{{ csrf_token() }}';
-            //     Swal.fire({
-            //         title: 'Are you sure?',
-            //         text: "You won't be able to revert this!",
-            //         icon: 'warning',
-            //         showCancelButton: true,
-            //         confirmButtonColor: '#3085d6',
-            //         cancelButtonColor: '#d33',
-            //         confirmButtonText: 'Yes, delete it!'
-            //     }).then((result) => {
-            //         if(gid!=1){
-            //             if (result.isConfirmed) {
-            //                 $.ajax({
-            //                 url: "{{ route('admin.userdelete') }}",
-            //                 method: 'delete',
-            //                 data: {
-            //                     id: id,
-            //                     _token: csrf
-            //                 },
-            //                 success: function(response) {
-            //                     console.log(response);
-            //                     Swal.fire(
-            //                     'Deleted!',
-            //                     'Your file has been deleted.',
-            //                     'success'
-            //                     )
-            //                     jobfetch();
-            //                 }
-            //                 });
-            //             }
-            //         }else{
-            //             Swal.fire(
-            //                 'Admin!',
-            //                 'You can not delete admin account.',
-            //             )
-            //         }
-            //     })
-            // });
+            $(document).on('click', '.deleteIcon', function(e) {
+                e.preventDefault();
+                let id = $(this).attr('id');
+                let csrf = '{{ csrf_token() }}';
+                Swal.fire({
+                    title: 'Are you sure?',
+                    text: "You won't be able to revert this!",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes, delete it!'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        $.ajax({
+                            url: "{{ route('admin.jobdelete') }}",
+                            method: 'delete',
+                            data: {
+                                id: id,
+                                _token: csrf
+                            },
+                            success: function(response) {
+                                console.log(response);
+                                Swal.fire(
+                                'Deleted!',
+                                'Your file has been deleted.',
+                                'success'
+                                )
+                                jobfetch();
+                            }
+                        });
+                    }
+                })
+            });
 
             // Fetch all User ajax request
             jobfetch();
