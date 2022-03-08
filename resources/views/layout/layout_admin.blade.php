@@ -55,6 +55,8 @@
         <script src="{{ asset('asset/autosize.min.js') }}"></script>
         <!-- Global Custom JS -->
         <script src="{{ asset('js/global_custom.js') }}"></script>
+        <!-- SweetAlert -->
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <!-- Individual Custom CSS -->
         @yield('script')
     </body>

@@ -56,8 +56,11 @@ Route::get('logout', [AuthController::class, 'logout'])->name('logout')->middlew
 Route::prefix('admin')->name('admin.')->middleware('isadmin')->group(function () {
     Route::get('/dashboard', [AdmindbController::class, 'dashboard'])->name('dashboard');
     Route::resource('/job', AdminJobController::class);
-    Route::resource('/user', AdminUserController::class);
-    Route::get('/fetchuser', [AdminUserController::class, 'fetchuser'])->name('fetchuser');
+    Route::resource('/user', AdminUserController::class)->only(['index', 'store']);
+    Route::get('/userfetch', [AdminUserController::class, 'userfetch'])->name('userfetch');
+    Route::get('/edituser', [AdminUserController::class, 'edituser'])->name('edituser');
+    Route::post('/updateuser', [AdminUserController::class, 'updateuser'])->name('updateuser');
+    Route::delete('/deleteuser', [AdminUserController::class, 'deleteuser'])->name('deleteuser');
     Route::resource('/companyinfo', AdminCompanyInfoController::class);
     Route::resource('/about', AdminAboutController::class);
     Route::get('/changejobstatus', [AdminJobController::class, 'changejobstatus'])->name('changejobstatus');

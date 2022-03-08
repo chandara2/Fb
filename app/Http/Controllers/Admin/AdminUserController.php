@@ -29,32 +29,45 @@ class AdminUserController extends Controller
         ]);
     }
 
-    public function fetchuser()
+    public function userfetch()
     {
-        $fetchusers = User::join('usergroups', 'usergroups.id', '=', 'users.gid')->select('users.*', 'usergroups.name as group')->get();
-        return response()->json([
-            'fetchusers' => $fetchusers,
-        ]);
+        $users = DB::table('users')->join('usergroups', 'usergroups.id', 'users.gid')->select('users.*', 'usergroups.name as usergroup')->get();
+        $output = '';
+        if ($users->count() > 0) {
+            $output .= '<table class="table table-striped table-sm align-middle">
+            <thead>
+                <tr>
+                    <th>No</th>
+                    <th>Name</th>
+                    <th>Username</th>
+                    <th>Phone</th>
+                    <th>Member</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>';
+            foreach ($users as $i => $user) {
+                $output .= '<tr>
+                    <td>' . $i + 1 . '</td>
+                    <td>' . $user->fname . ' ' . $user->gname . '</td>
+                    <td>' . $user->username . '</td>
+                    <td>' . $user->phone . '</td>
+                    <td>' . $user->usergroup . '</td>
+                    <td>
+                        <a href="#" id="' . $user->id . '" class="text-success mx-1 editIcon" data-bs-toggle="modal" data-bs-target="#editUserModal"><i class="bi-pencil-square h4"></i></a>
+                        <!--<a href="/admin/user/' . $user->id . '/edit" id="" class="text-success mx-1"><i class="bi-pencil-square h4"></i></a>-->
+
+                        <a href="#" id="' . $user->id . '" class="text-danger mx-1 deleteIcon"><i class="bi-trash h4"></i></a>
+                    </td>
+                </tr>';
+            }
+            $output .= '</tbody></table>';
+            echo $output;
+        } else {
+            echo '<h1 class="text-center text-secondary my-5">No record present in the database!</h1>';
+        }
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        // Get group member to show in select option in admin user_create brade
-        $usergroups = Usergroup::orderBy('name', 'desc')->get();
-        return view('admin.user_create', compact('usergroups'));
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
@@ -86,81 +99,52 @@ class AdminUserController extends Controller
         }
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
+    public function edituser(Request $request)
     {
-        //
+        $id = $request->id;
+        $user = User::find($id);
+        return response()->json($user);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
+    public function updateuser(Request $request)
     {
-        $usergroups = Usergroup::all();
-        $userid = User::find($id);
-        return view('admin.user_edit', [
-            'userid' => $userid,
-            'usergroups' => $usergroups,
-        ]);
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //validation rules
-        $request->validate([
-            'username' => ['required', Rule::unique('users')->ignore($id)],
+        $user = User::find($request->user_id);
+        $validator = Validator::make($request->all(), [
+            'username' => ['required', Rule::unique('users')->ignore($user)],
             'password' => ['required', 'string', 'min:6'],
-            'password_confirmation' => 'required|same:password',
         ], [
             'username.required' => 'Please fill in username',
             'username.unique' => 'This username already exists',
             'password.required' => 'Please fill in password',
             'password.min' => 'Passwords must be at least 6 characters',
-            'password_confirmation.required' => 'Please fill in confirm password',
-            'password_confirmation.same' => 'Password and confirm password does not match',
         ]);
 
-        $user = User::find($id);
-        $user->fname = $request->fname;
-        $user->gname = $request->gname;
-        $user->username = $request->username;
-        $user->phone = $request->phone;
-        if ($request->password != "********") {
-            $user->password = Hash::make($request->password);
+        if ($validator->fails()) {
+            return response()->json(['status' => 0, 'error' => $validator->errors()->toArray()]);
+        } else {
+            if ($request->password != "********") {
+                $user->password = Hash::make($request->password);
+            }
+            $password = $user->password;
+            $userData = [
+                'fname' => $request->fname,
+                'gname' => $request->gname,
+                'username' => $request->username,
+                'phone' => $request->phone,
+                'password' => $password,
+                'gid' => $request->gid,
+            ];
+            $user->update($userData);
+            return response()->json([
+                'status' => 200,
+            ]);
         }
-        $user->gid = $request->gid;
-        $user->visible = $request->boolean('visible');
-        $user->update();
-
-        return redirect(route('admin.user.index'));
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
+    public function deleteuser(Request $request)
     {
+        $id = $request->id;
         $user = User::find($id);
-        $user->delete();
-        return back()->with('userdelete', 'You have delete a user');
+        User::destroy($id);
     }
 }
