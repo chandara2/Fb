@@ -61,14 +61,44 @@ class AdminJobController extends Controller
         ]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function jobfetch()
     {
-        //
+        $jobs = DB::table('company_infos')->join('jobs', 'jobs.company_id', 'company_infos.id')->select('jobs.*', 'company_infos.company')->orderBy('approved', 'asc')->orderBy('created_at', 'desc')->get();
+        $output = '';
+        if ($jobs->count() > 0) {
+            $output .= '<table class="table table-striped table-sm align-middle">
+            <thead>
+                <tr>
+                    <th>No</th>
+                    <th>Title</th>
+                    <th>Company</th>
+                    <th>Expired Post</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>';
+            foreach ($jobs as $i => $job) {
+                $output .= '<tr>
+                    <td>' . $i + 1 . '</td>
+                    <td>' . $job->title_en . '</td>
+                    <td>' . $job->company . '</td>
+                    <td>' . $job->expired_post . '</td>
+                    <td>
+                        <input type="checkbox" class="toggle-class" data-id="{{ ' . $job->id . ' }}" data-toggle="toggle" data-offstyle="danger" data-on="Approved" data-off="Pending" {{ ' . $job->approved . ' == true ? "checked" : "" }}>
+                    </td>
+                    <td>
+                        <a href="#" id="' . $job->id . '" class="text-success mx-1 editIcon" data-bs-toggle="modal" data-bs-target="#editUserModal"><i class="bi-pencil-square h4"></i></a>
+
+                        <button value="' . $job->id . '" id="' . $job->id . '" class="btn px-0 shadow-none text-danger mx-1 deleteIcon"><i class="bi-trash h4"></i></button>
+                    </td>
+                </tr>';
+            }
+            $output .= '</tbody></table>';
+            echo $output;
+        } else {
+            echo '<h1 class="text-center text-secondary my-5">No record present in the database!</h1>';
+        }
     }
 
     /**

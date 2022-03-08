@@ -9,7 +9,7 @@
         </div>
     </div>
 
-    <!-- Modal Add Job -->
+    <!-- Add job modal start -->
     <div class="modal fade" id="showJobModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-xl">
             <div class="modal-content">
@@ -230,9 +230,69 @@
                 </div>
             </div>
         </div>
-    </div> <!-- end add modal -->
+    </div>
+    <!-- Add job modal end -->
+
+    <!-- Edit job modal start -->
+    <div class="modal fade" id="editUserModal" tabindex="-1" aria-labelledby="exampleModalLabel" data-bs-backdrop="static" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Edit User</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form action="#" method="POST" id="edit_employee_form" enctype="multipart/form-data">
+                    @csrf
+                    <input type="hidden" name="user_id" id="user_id">
+                    <div class="modal-body p-4 bg-light">
+                        <div class="row">
+                            <div class="col-lg">
+                                <label for="fname">Family Name</label>
+                                <input type="text" name="fname" id="fname" class="form-control">
+                                <span class="text-danger error-text fname_error"></span>
+                            </div>
+                            <div class="col-lg">
+                                <label for="gname">Given Name</label>
+                                <input type="text" name="gname" id="gname" class="form-control">
+                                <span class="text-danger error-text gname_error"></span>
+                            </div>
+                        </div>
+                        <div class="my-2">
+                            <label for="username">Username</label>
+                            <input type="text" name="username" id="username" class="form-control">
+                            <span class="text-danger error-text username_error"></span>
+                        </div>
+                        <div class="my-2">
+                            <label for="phone">Phone</label>
+                            <input type="tel" name="phone" id="phone" class="form-control">
+                            <span class="text-danger error-text fname_error"></span>
+                        </div>
+                        <div class="my-2">
+                            <label for="password">password</label>
+                            <input type="password" name="password" id="password" class="form-control" placeholder="password">
+                            <span class="text-danger error-text password_error"></span>
+                        </div>
+                        
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" id="edit_employee_btn" class="btn btn-success">Update User</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- Edit job modal end -->
 
     <div class="card container px-0 shadow">
+        <div class="card-header position-relative bg-primary">
+            <h2 class="mb-0 text-white">List of users</h2>
+            <button type="button" data-bs-toggle="modal" data-bs-target="#showJobModal" class="btn btn-light position-absolute end-0 top-50 translate-middle-y me-3"><i class="bi bi-plus-circle"></i> Add New User</button>
+        </div>
+        <div class="card-body" id="show_all_jobs"></div>
+    </div>
+
+    {{-- <div class="card container px-0 shadow">
         <div class="card-header position-relative bg-primary">
             <h2 class="mb-0 text-white">List of jobs</h2>
             <button type="button" data-bs-toggle="modal" data-bs-target="#showJobModal" class="btn btn-light position-absolute end-0 top-50 translate-middle-y me-3"><i class="bi bi-plus-circle"></i> Add New Job</button>
@@ -286,7 +346,7 @@
         
             </div>
         </div>
-    </div>
+    </div> --}}
 
 @endsection
 
@@ -299,34 +359,6 @@
                 }
             });
 
-            // Save Job Form
-            $('#addJobFormId').on('submit', function (e) {
-                e.preventDefault();
-                $.ajax({
-                    method:$(this).attr('method'),
-                    url:$(this).attr('action'),
-                    data:new FormData(this),
-                    dataType: "json",
-                    processData:false,
-                    contentType:false,
-                    beforeSend: function(){
-                        $(document).find('span.error-text').text('')
-                    },
-                    success: function (data) {
-                        if(data.status==0){
-                            $.each(data.error, function(prefix, val){
-                                $('span.'+prefix+'_error').text(val[0])
-                            })
-                        }else{
-                            $('#addJobFormId')[0].reset()
-                            $('#showJobModal').modal('hide')
-                            document.location.href = "{{ route('admin.job.index') }}"
-                        }
-                    }
-                });
-            });
-
-            
             // Pending & Approved
             $('.toggle-class').on('change', function() {
                 var approved = $(this).prop('checked') == true ? 1 : 0;
@@ -344,7 +376,6 @@
                     }
                 });
             });
-
 
             // Save User Form
             $('#addUserFormId').on('submit', function (e) {
@@ -365,7 +396,7 @@
                                 $('span.'+prefix+'_error').text(val[0])
                             })
                         }else{
-                            userfetch();
+                            jobfetch();
                             $('#showUserModal').modal('hide')
                             $('#addUserFormId')[0].reset();
                         }
@@ -374,115 +405,115 @@
             });
 
             // Edit User ajax request
-            $(document).on('click', '.editIcon', function(e) {
-                e.preventDefault();
-                let id = $(this).attr('id');
-                $.ajax({
-                    url: "{{ route('admin.useredit') }}",
-                    method: 'get',
-                    data: {
-                        id: id,
-                        _token: '{{ csrf_token() }}'
-                    },
-                    success: function(response) {
-                        $("#fname").val(response.fname);
-                        $("#gname").val(response.gname);
-                        $("#username").val(response.username);
-                        $("#phone").val(response.phone);
-                        $("#password").val('********');
-                        $("#user_id").val(response.id);
-                        $("#gid").val(response.gid);
-                    }
-                });
-            });
+            // $(document).on('click', '.editIcon', function(e) {
+            //     e.preventDefault();
+            //     let id = $(this).attr('id');
+            //     $.ajax({
+            //         url: "{{ route('admin.useredit') }}",
+            //         method: 'get',
+            //         data: {
+            //             id: id,
+            //             _token: '{{ csrf_token() }}'
+            //         },
+            //         success: function(response) {
+            //             $("#fname").val(response.fname);
+            //             $("#gname").val(response.gname);
+            //             $("#username").val(response.username);
+            //             $("#phone").val(response.phone);
+            //             $("#password").val('********');
+            //             $("#user_id").val(response.id);
+            //             $("#gid").val(response.gid);
+            //         }
+            //     });
+            // });
 
             // Update User ajax request
-            $("#edit_employee_form").submit(function(e) {
-                    e.preventDefault();
-                    const fd = new FormData(this);
-                    $("#edit_employee_btn").text('Updating...');
-                    $.ajax({
-                    url: "{{ route('admin.userupdate') }}",
-                    method: 'post',
-                    data: fd,
-                    cache: false,
-                    contentType: false,
-                    processData: false,
-                    dataType: 'json',
-                    success: function(response) {
-                        if (response.status == 200) {
-                        Swal.fire(
-                            'Updated!',
-                            'Employee Updated Successfully!',
-                            'success'
-                        )
-                        userfetch();
-                        $("#edit_employee_btn").text('Update User');
-                        $("#edit_employee_form")[0].reset();
-                        $("#editUserModal").modal('hide');
-                        }else{
-                            $.each(response.error, function(prefix, val){
-                                $('span.'+prefix+'_error').text(val[0])
-                            })
-                        }
+            // $("#edit_employee_form").submit(function(e) {
+            //         e.preventDefault();
+            //         const fd = new FormData(this);
+            //         $("#edit_employee_btn").text('Updating...');
+            //         $.ajax({
+            //         url: "{{ route('admin.userupdate') }}",
+            //         method: 'post',
+            //         data: fd,
+            //         cache: false,
+            //         contentType: false,
+            //         processData: false,
+            //         dataType: 'json',
+            //         success: function(response) {
+            //             if (response.status == 200) {
+            //             Swal.fire(
+            //                 'Updated!',
+            //                 'Employee Updated Successfully!',
+            //                 'success'
+            //             )
+            //             jobfetch();
+            //             $("#edit_employee_btn").text('Update User');
+            //             $("#edit_employee_form")[0].reset();
+            //             $("#editUserModal").modal('hide');
+            //             }else{
+            //                 $.each(response.error, function(prefix, val){
+            //                     $('span.'+prefix+'_error').text(val[0])
+            //                 })
+            //             }
                         
-                    }
-                });
-            });
+            //         }
+            //     });
+            // });
 
             // Delete User ajax request
-            $(document).on('click', '.deleteIcon', function(e) {
-                e.preventDefault();
-                let id = $(this).attr('id');
-                let gid = $(this).val();
-                let csrf = '{{ csrf_token() }}';
-                Swal.fire({
-                    title: 'Are you sure?',
-                    text: "You won't be able to revert this!",
-                    icon: 'warning',
-                    showCancelButton: true,
-                    confirmButtonColor: '#3085d6',
-                    cancelButtonColor: '#d33',
-                    confirmButtonText: 'Yes, delete it!'
-                }).then((result) => {
-                    if(gid!=1){
-                        if (result.isConfirmed) {
-                            $.ajax({
-                            url: "{{ route('admin.userdelete') }}",
-                            method: 'delete',
-                            data: {
-                                id: id,
-                                _token: csrf
-                            },
-                            success: function(response) {
-                                console.log(response);
-                                Swal.fire(
-                                'Deleted!',
-                                'Your file has been deleted.',
-                                'success'
-                                )
-                                userfetch();
-                            }
-                            });
-                        }
-                    }else{
-                        Swal.fire(
-                            'Admin!',
-                            'You can not delete admin account.',
-                        )
-                    }
-                })
-            });
+            // $(document).on('click', '.deleteIcon', function(e) {
+            //     e.preventDefault();
+            //     let id = $(this).attr('id');
+            //     let gid = $(this).val();
+            //     let csrf = '{{ csrf_token() }}';
+            //     Swal.fire({
+            //         title: 'Are you sure?',
+            //         text: "You won't be able to revert this!",
+            //         icon: 'warning',
+            //         showCancelButton: true,
+            //         confirmButtonColor: '#3085d6',
+            //         cancelButtonColor: '#d33',
+            //         confirmButtonText: 'Yes, delete it!'
+            //     }).then((result) => {
+            //         if(gid!=1){
+            //             if (result.isConfirmed) {
+            //                 $.ajax({
+            //                 url: "{{ route('admin.userdelete') }}",
+            //                 method: 'delete',
+            //                 data: {
+            //                     id: id,
+            //                     _token: csrf
+            //                 },
+            //                 success: function(response) {
+            //                     console.log(response);
+            //                     Swal.fire(
+            //                     'Deleted!',
+            //                     'Your file has been deleted.',
+            //                     'success'
+            //                     )
+            //                     jobfetch();
+            //                 }
+            //                 });
+            //             }
+            //         }else{
+            //             Swal.fire(
+            //                 'Admin!',
+            //                 'You can not delete admin account.',
+            //             )
+            //         }
+            //     })
+            // });
 
             // Fetch all User ajax request
-            userfetch();
+            jobfetch();
 
-            function userfetch() {
+            function jobfetch() {
                 $.ajax({
-                    url: "{{ route('admin.userfetch') }}",
+                    url: "{{ route('admin.jobfetch') }}",
                     method: 'get',
                     success: function(response) {
-                    $("#show_all_users").html(response);
+                    $("#show_all_jobs").html(response);
                     $("table").DataTable({
                         order: [0, 'asc'],
                         pageLength: 25,
