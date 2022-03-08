@@ -55,7 +55,6 @@ class AdminUserController extends Controller
                     <td>' . $user->usergroup . '</td>
                     <td>
                         <a href="#" id="' . $user->id . '" class="text-success mx-1 editIcon" data-bs-toggle="modal" data-bs-target="#editUserModal"><i class="bi-pencil-square h4"></i></a>
-                        <!--<a href="/admin/user/' . $user->id . '/edit" id="" class="text-success mx-1"><i class="bi-pencil-square h4"></i></a>-->
 
                         <a href="#" id="' . $user->id . '" class="text-danger mx-1 deleteIcon"><i class="bi-trash h4"></i></a>
                     </td>
