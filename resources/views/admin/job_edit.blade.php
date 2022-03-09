@@ -7,7 +7,14 @@
         <form action="{{ route('admin.job.update', $jobid->id) }}" method="POST">
             @csrf
             @method('PUT')
-            <h1 class="text-center text-uppercase mb-5" style="text-decoration: underline 3px solid pink">Edit Job</h1>
+            <h2 class="text-success text-center text-uppercase mb-2">Edit Job</h2>
+
+            <div class="my-2">
+                <label>Status</label>
+                <div class="col-lg">
+                    <input class="form-check-input" type="checkbox" name="approved" @if($jobid->approved == 1) checked @endif> Approved to show 
+                </div>
+            </div>
 
             <div class="my-2">
                 <label>Job Title</label>
@@ -204,7 +211,7 @@
     
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary"><a href="{{ route('admin.job.index') }}" class="text-decoration-none text-white">Close</a></button>
-                <button type="submit" class="btn btn-info">Update</button>
+                <button type="submit" class="btn btn-success">Update Job</button>
             </div>
         </form>
     </div>

@@ -185,12 +185,6 @@ class AdminJobController extends Controller
         }
     }
 
-    public function jobedit(Request $request)
-    {
-        $id = $request->id;
-        $job = Job::find($id);
-        return response()->json($job);
-    }
 
     /**
      * Show the form for editing the specified resource.
@@ -307,18 +301,19 @@ class AdminJobController extends Controller
         $jobs->title_kh = $request->title_kh;
         $jobs->title_th = $request->title_th;
         $jobs->year_of_exp = $request->year_of_exp;
+        $jobs->approved = $request->boolean('approved');
         $jobs->update();
 
         return redirect(route('admin.job.index'));
     }
 
-    public function changejobstatus(Request $request)
-    {
-        $jobs = Job::find($request->id);
-        $jobs->approved = $request->approved;
-        $jobs->save();
-        return response()->json(['successStatusMsg' => 'Status has changed successfully']);
-    }
+    // public function changejobstatus(Request $request)
+    // {
+    //     $jobs = Job::find($request->id);
+    //     $jobs->approved = $request->approved;
+    //     $jobs->save();
+    //     return response()->json(['successAPM' => 'Status has changed successfully']);
+    // }
 
     public function jobdelete(Request $request)
     {

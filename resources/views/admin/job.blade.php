@@ -3,18 +3,12 @@
 
 @section('content')
 
-    <div class="container">
-        <div class="row mt-3">
-            <h1 class="text-center text-uppercase" style="text-decoration: underline 3px solid pink">Jobs</h1>
-        </div>
-    </div>
-
     <!-- Add job modal start -->
     <div class="modal fade" id="showJobModal" tabindex="-1" aria-labelledby="exampleModalLabel" data-bs-backdrop="static" aria-hidden="true">
         <div class="modal-dialog modal-xl modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Create Job Announcement</h5>
+                <h5 class="modal-title text-primary" id="exampleModalLabel">Create Job Announcement</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <form method="POST" action="{{ route('admin.job.store') }}" id="addJobFormId">
@@ -211,10 +205,10 @@
     </div>
     <!-- Add job modal end -->
 
-    <div class="card container px-0 shadow">
-        <div class="card-header position-relative bg-primary">
-            <h2 class="mb-0 text-white">List of jobs</h2>
-            <button type="button" data-bs-toggle="modal" data-bs-target="#showJobModal" class="btn btn-light position-absolute end-0 top-50 translate-middle-y me-3"><i class="bi bi-plus-circle"></i> Add New Job</button>
+    <div class="card container mt-5 px-0 shadow">
+        <div class="card-header position-relative bg-light">
+            <h2 class="mb-0 text-primary">List of jobs</h2>
+            <button type="button" data-bs-toggle="modal" data-bs-target="#showJobModal" class="btn btn-primary position-absolute end-0 top-50 translate-middle-y me-3"><i class="bi bi-plus-circle"></i> Add New Job</button>
         </div>
         <div class="card-body" id="show_all_jobs"></div>
     </div>
@@ -248,7 +242,9 @@
             //     });
             // });
 
-            // Save User Form
+
+
+            // Save Job Form
             $('#addJobFormId').on('submit', function (e) {
                 e.preventDefault();
                 $.ajax({
@@ -276,7 +272,7 @@
             });
 
 
-            // Delete User ajax request
+            // Delete Job ajax request
             $(document).on('click', '.deleteIcon', function(e) {
                 e.preventDefault();
                 let id = $(this).attr('id');
@@ -312,7 +308,7 @@
                 })
             });
 
-            // Fetch all User ajax request
+            // Fetch all Job ajax request
             jobfetch();
 
             function jobfetch() {

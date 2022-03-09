@@ -3,18 +3,12 @@
 
 @section('content')
 
-    <div class="container">
-        <div class="row mt-3">
-            <h1 class="text-center text-uppercase" style="text-decoration: underline 3px solid pink">Users</h1>
-        </div>
-    </div>
-
     <!-- Add user modal start -->
     <div class="modal fade" id="showUserModal" tabindex="-1" aria-labelledby="exampleModalLabel" data-bs-backdrop="static" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Create User</h5>
+                    <h5 class="modal-title text-primary" id="exampleModalLabel">Create User</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <form method="POST" action="{{ route('admin.user.store') }}" id="addUserFormId">
@@ -77,7 +71,7 @@
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Edit User</h5>
+                    <h5 class="modal-title text-success" id="exampleModalLabel">Edit User</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <form action="#" method="POST" id="edit_user_form" enctype="multipart/form-data">
@@ -130,10 +124,10 @@
     </div>
     <!-- Edit user modal end -->
 
-    <div class="card container px-0 shadow">
-        <div class="card-header position-relative bg-primary">
-            <h2 class="mb-0 text-white">List of users</h2>
-            <button type="button" data-bs-toggle="modal" data-bs-target="#showUserModal" class="btn btn-light position-absolute end-0 top-50 translate-middle-y me-3"><i class="bi bi-plus-circle"></i> Add New User</button>
+    <div class="card container mt-5 px-0 shadow">
+        <div class="card-header position-relative bg-light">
+            <h2 class="mb-0 text-primary">List of users</h2>
+            <button type="button" data-bs-toggle="modal" data-bs-target="#showUserModal" class="btn btn-primary position-absolute end-0 top-50 translate-middle-y me-3"><i class="bi bi-plus-circle"></i> Add New User</button>
         </div>
         <div class="card-body" id="show_all_users"></div>
     </div>
