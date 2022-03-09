@@ -30,16 +30,40 @@ class AdminCompanyInfoController extends Controller
         ]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function companyinfofetch()
     {
-        //
-    }
+        $companyinfos = CompanyInfo::all();
 
+        $output = '';
+        if ($companyinfos->count() > 0) {
+            $output .= '<table class="table table-striped table-sm align-middle">
+            <thead>
+                <tr>
+                    <th>No</th>
+                    <th>Company</th>
+                    <th>Logo</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>';
+            foreach ($companyinfos as $i => $companyinfo) {
+                $output .= '<tr>
+                    <td>' . $i + 1 . '</td>
+                    <td>' . $companyinfo->company . '</td>
+                    <td><img src="/upload/companylogo/' . $companyinfo->logo . '" style="width: 50px; height: 50px; object-fit: contain;">' . $companyinfo->recruitment . '</td>
+                    <td>
+                        <a href="/admin/companyinfo/' . $companyinfo->id . '/edit" id="" class="text-success mx-1"><i class="bi-pencil-square h4"></i></a>
+
+                        <a href="#" id="' . $companyinfo->id . '" class="text-danger mx-1 deleteIcon"><i class="bi-trash h4"></i></a>
+                    </td>
+                </tr>';
+            }
+            $output .= '</tbody></table>';
+            echo $output;
+        } else {
+            echo '<h1 class="text-center text-secondary my-5">No record present in the database!</h1>';
+        }
+    }
     /**
      * Store a newly created resource in storage.
      *

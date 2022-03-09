@@ -243,7 +243,6 @@
             // });
 
 
-
             // Save Job Form
             $('#addJobFormId').on('submit', function (e) {
                 e.preventDefault();
@@ -270,7 +269,6 @@
                     }
                 });
             });
-
 
             // Delete Job ajax request
             $(document).on('click', '.deleteIcon', function(e) {

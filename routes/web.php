@@ -63,7 +63,9 @@ Route::prefix('admin')->name('admin.')->middleware('isadmin')->group(function ()
     Route::get('/useredit', [AdminUserController::class, 'useredit'])->name('useredit');
     Route::post('/userupdate', [AdminUserController::class, 'userupdate'])->name('userupdate');
     Route::delete('/userdelete', [AdminUserController::class, 'userdelete'])->name('userdelete');
-    Route::resource('/companyinfo', AdminCompanyInfoController::class);
+    Route::resource('/companyinfo', AdminCompanyInfoController::class)->only(['index', 'edit', 'update', 'store']);
+    Route::get('/companyinfofetch', [AdminCompanyInfoController::class, 'companyinfofetch'])->name('companyinfofetch');
+    Route::delete('/companyinfodelete', [AdminCompanyInfoController::class, 'companyinfodelete'])->name('companyinfodelete');
     Route::resource('/about', AdminAboutController::class);
     Route::get('/changejobstatus', [AdminJobController::class, 'changejobstatus'])->name('changejobstatus');
     Route::resource('/homepage', AdminHomepageController::class)->only(['index', 'store', 'destroy']);

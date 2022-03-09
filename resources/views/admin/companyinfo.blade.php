@@ -4,16 +4,16 @@
 @section('content')
 
     <!-- Modal Add company info -->
-    <div class="modal fade" id="showCompanyModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="showCompanyModal" tabindex="-1" aria-labelledby="exampleModalLabel" data-bs-backdrop="static" aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
-                <div class="modal-header bg-primary text-white">
-                <h5 class="modal-title" id="exampleModalLabel">Create Company</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <div class="modal-header bg-light">
+                    <h5 class="modal-title text-primary" id="exampleModalLabel">Create Company</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body">
-                    <form method="POST" action="{{ route('admin.companyinfo.store') }}" id="addCompanyFormId">
-                        @csrf
+                <form method="POST" action="{{ route('admin.companyinfo.store') }}" id="addCompanyFormId">
+                    @csrf
+                    <div class="modal-body">
 
                         <div class="form-group mb-md-3">
                             <label>Company name</label>
@@ -108,21 +108,20 @@
                                 </div>
                             </div>
                         </div> <!-- End row -->
-            
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-primary">Create</button>
-                        </div>
-                    </form>
-                </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Create</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div> <!-- end add modal -->
     
-    <div class="card container px-0 shadow">
-        <div class="card-header position-relative bg-primary">
-            <h2 class="mb-0 text-white">Company List</h2>
-            <button type="button" data-bs-toggle="modal" data-bs-target="#showCompanyModal" class="btn btn-light position-absolute end-0 top-50 translate-middle-y me-3"><i class="bi bi-plus-circle"></i> Add New Company</button>
+    {{-- <div class="card container mt-5 px-0 shadow">
+        <div class="card-header position-relative bg-light">
+            <h2 class="mb-0 text-primary">Company List</h2>
+            <button type="button" data-bs-toggle="modal" data-bs-target="#showCompanyModal" class="btn btn-primary position-absolute end-0 top-50 translate-middle-y me-3"><i class="bi bi-plus-circle"></i> Add New Company</button>
         </div>
         <div class="card-body">
             <div class="container-fluid">
@@ -166,6 +165,14 @@
         
             </div>
         </div>
+    </div> --}}
+
+    <div class="card container mt-5 px-0 shadow">
+        <div class="card-header position-relative bg-light">
+            <h2 class="mb-0 text-primary">Company List</h2>
+            <button type="button" data-bs-toggle="modal" data-bs-target="#showUserModal" class="btn btn-primary position-absolute end-0 top-50 translate-middle-y me-3"><i class="bi bi-plus-circle"></i> Add New Company</button>
+        </div>
+        <div class="card-body" id="show_all_companys"></div>
     </div>
 
 @endsection
@@ -192,19 +199,49 @@
                     beforeSend: function(){
                         $(document).find('span.error-text').text('')
                     },
-                    success: function (data) {
-                        if(data.status==0){
-                            $.each(data.error, function(prefix, val){
+                    success: function (response) {
+                        if(response.status==0){
+                            $.each(response.error, function(prefix, val){
                                 $('span.'+prefix+'_error').text(val[0])
                             })
                         }else{
-                            $('#addCompanyFormId')[0].reset()
+                            companyinfofetch();
                             $('#showCompanyModal').modal('hide')
-                            document.location.href = "{{ route('admin.companyinfo.index') }}"
+                            $('#addCompanyFormId')[0].reset();
                         }
                     }
                 });
             });
+
+
+
+
+            // Fetch all User ajax request
+            companyinfofetch();
+
+            function companyinfofetch() {
+                $.ajax({
+                    url: "{{ route('admin.companyinfofetch') }}",
+                    method: 'get',
+                    success: function(response) {
+                    $("#show_all_companys").html(response);
+                    $("table").DataTable({
+                        order: [0, 'asc'],
+                        pageLength: 25,
+                    });
+                    }
+                });
+            }
+
+
+
+
+
+
+
+
+
+
         }); 
     </script>
 @endsection
