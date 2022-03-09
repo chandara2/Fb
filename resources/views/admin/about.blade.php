@@ -4,7 +4,7 @@
 @section('content')
     <div class="container-fluid">
         <div class="row mt-3">
-            <h1 class="text-center text-uppercase" style="text-decoration: underline 3px solid pink">About Us</h1>
+            <h2 class="text-center text-uppercase">About Us</h2>
         </div>
     </div>
 
@@ -119,7 +119,7 @@
             </div>
 
             <div class="position-absolute top-0 end-0">
-                <a href="{{ route('admin.about.edit', $about->id) }}" class="btn"><i class="bi bi-pencil-square text-muted pe-0" style="font-size:24px;"></i></a>
+                <a href="{{ route('admin.about.edit', $about->id) }}" class="btn"><i class="bi bi-pencil-square text-success pe-0" style="font-size:24px;"></i></a>
             </div>
     
             @empty
@@ -161,7 +161,6 @@
                             })
                         }else{
                             $('#addAboutFormId')[0].reset();
-                            // this refresh use for About form only because it have only one record
                             document.location.href = "{{ route('admin.about.index') }}"
                         }
                     }

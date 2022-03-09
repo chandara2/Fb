@@ -6,8 +6,8 @@
 <div class="container-fluid">
     <div class="modal-dialog modal-xl">
         <div class="modal-content">
-            <div class="modal-header bg-primary text-white">
-            <h5 class="modal-title" id="exampleModalLabel">Edit About us Information</h5>
+            <div class="modal-header bg-light">
+            <h5 class="modal-title text-primary" id="exampleModalLabel">Edit About us Information</h5>
             <a href="{{ route('admin.about.index') }}"><button type="button" class="btn-close"></button></a>
             </div>
             <div class="modal-body">

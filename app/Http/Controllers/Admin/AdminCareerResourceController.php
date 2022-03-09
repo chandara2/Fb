@@ -20,20 +20,44 @@ class AdminCareerResourceController extends Controller
     {
         $careers = CareerResource::orderBy('created_at', 'desc')->get();
         $postgroups = Postgroup::all();
-        return view('admin.career',[
-            'careers'=>$careers,
-            'postgroups'=>$postgroups,
+        return view('admin.career', [
+            'careers' => $careers,
+            'postgroups' => $postgroups,
         ]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function careerfetch()
     {
-        //
+        $careers = CareerResource::all();
+        $output = '';
+        if ($careers->count() > 0) {
+            $output .= '<table class="table table-striped table-sm align-middle">
+            <thead>
+                <tr>
+                    <th>No</th>
+                    <th>Title</th>
+                    <th>Type</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>';
+            foreach ($careers as $i => $career) {
+                $output .= '<tr>
+                    <td>' . $i + 1 . '</td>
+                    <td>' . $career->title_en . '</td>
+                    <td>' . $career->type . '</td>
+                    <td>
+                        <a href="/admin/career/' . $career->id . '/edit" id="" class="text-success mx-1"><i class="bi-pencil-square h4"></i></a>
+
+                        <a href="#" " id="' . $career->id . '" class="text-danger mx-1 deleteIcon"><i class="bi-trash h4"></i></a>
+                    </td>
+                </tr>';
+            }
+            $output .= '</tbody></table>';
+            echo $output;
+        } else {
+            echo '<h1 class="text-center text-secondary my-5">No record present in the database!</h1>';
+        }
     }
 
     /**
@@ -48,10 +72,12 @@ class AdminCareerResourceController extends Controller
             'title_en' => 'required',
             'post_en' => 'required',
             'type' => 'required',
+            'post_img' => 'required',
         ], [
             'title_en.required' => 'Please input your title in English',
             'post_en.required' => 'Please input your post in English',
             'type.required' => 'Please choose post type',
+            'post_img.required' => 'Please inpute post image',
         ]);
 
         if ($validator->fails()) {
@@ -81,17 +107,6 @@ class AdminCareerResourceController extends Controller
             $career->save();
             return response()->json(['status' => 1, 'msg' => 'Career resource create successfully']);
         }
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
     }
 
     /**
@@ -157,16 +172,10 @@ class AdminCareerResourceController extends Controller
         return redirect(route('admin.career.index'));
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
+    public function careerdelete(Request $request)
     {
-        $careers = CareerResource::find($id);
-        $careers->delete();
-        return back()->with('careerDelete', 'You have delete a careers resource');
+        $id = $request->id;
+        $career = CareerResource::find($id);
+        $career->destroy($id);
     }
 }

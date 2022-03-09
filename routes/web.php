@@ -74,7 +74,9 @@ Route::prefix('admin')->name('admin.')->middleware('isadmin')->group(function ()
     Route::delete('/footersm/{footersm}', [AdminFooterController::class, 'footersm_destroy'])->name('footersm.destroy');
     Route::post('/footerqrcode', [AdminFooterController::class, 'footerqrcode_store'])->name('footerqrcode.store');
     Route::delete('/footerqrcode/{footerqrcode}', [AdminFooterController::class, 'footerqrcode_destroy'])->name('footerqrcode.destroy');
-    Route::resource('/career', AdminCareerResourceController::class);
+    Route::resource('/career', AdminCareerResourceController::class)->only(['index', 'edit', 'update', 'store']);
+    Route::get('/careerfetch', [AdminCareerResourceController::class, 'careerfetch'])->name('careerfetch');
+    Route::delete('/careerdelete', [AdminCareerResourceController::class, 'careerdelete'])->name('careerdelete');
     Route::resource('/cv', AdminCvController::class);
 });
 

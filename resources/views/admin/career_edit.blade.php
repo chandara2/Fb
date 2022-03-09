@@ -6,16 +6,15 @@
 <div class="container-fluid">
     <div class="modal-dialog modal-xl">
         <div class="modal-content">
-            <div class="modal-header bg-primary text-white">
-            <h5 class="modal-title" id="exampleModalLabel">Edit Career Resourece</h5>
+            <div class="modal-header bg-light">
+            <h5 class="modal-title text-success" id="exampleModalLabel">Edit Career Resourece</h5>
             <a href="{{ route('admin.career.index') }}"><button type="button" class="btn-close"></button></a>
             </div>
             <div class="modal-body">
                 <form method="POST" enctype="multipart/form-data" action="{{ route('admin.career.update', $career_id->id) }}">
                     @csrf
                     @method('PUT')
-
-                    <div class="form-group mb-md-3">
+                    <div class="my-2">
                         <label>Type</label>
                         <select name="type" class="form-select">
                             <option>{{ $career_id->type }}</option>
@@ -25,15 +24,13 @@
                         </select>
                         <span class="text-danger">@error('type'){{$message}}@enderror</span>
                     </div>
-
-                    <div class="form-group mb-md-3">
+                    <div class="my-2">
                         <label>Blog Post Image</label>
                         <input type="file" name="post_img" class="form-control" value="{{ $career_id->post_img }}" onchange="document.getElementById('blogpost').src = window.URL.createObjectURL(this.files[0])">
                         <img id="blogpost" width="110px" src="{{ asset('upload/blogpost/'.$career_id->post_img) }}">
                         <span class="text-danger">@error('post_img'){{$message}}@enderror</span>
                     </div>
-
-                    <div class="form-group mb-md-3">
+                    <div class="my-2">
                         <nav class="nav nav-tabs" id="nav-tab" role="tablist">
                             <a class="nav-link active" id="nav-en-tab" data-bs-toggle="tab" href="#nav-en" role="tab" aria-controls="nav-en" aria-selected="true">English</a>
                             <a class="nav-link" id="nav-ch-tab" data-bs-toggle="tab" href="#nav-ch" role="tab" aria-controls="nav-ch" aria-selected="false">Chinese</a>
@@ -99,10 +96,9 @@
                             </div>
                         </div>
                     </div>
-            
                     <div class="modal-footer">
                         <a href="{{ route('admin.career.index') }}"><button type="button" class="btn btn-secondary">Close</button></a>
-                        <button type="submit" class="btn btn-primary">Update</button>
+                        <button type="submit" class="btn btn-success">Update Post</button>
                     </div>
                 </form>
             </div>

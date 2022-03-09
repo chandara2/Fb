@@ -2,11 +2,6 @@
 @section('title', 'ADMIN INFO')
 
 @section('content')
-    <div class="container-fluid">
-        <div class="row mt-3">
-            <h1 class="text-center text-uppercase" style="text-decoration: underline 3px solid pink">Company Information</h1>
-        </div>
-    </div>
 
     <!-- Modal Add company info -->
     <div class="modal fade" id="showCompanyModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

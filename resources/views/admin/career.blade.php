@@ -3,25 +3,18 @@
 
 @section('content')
 
-    <div class="container">
-        <div class="row mt-3">
-            <h1 class="text-center text-uppercase" style="text-decoration: underline 3px solid pink">Career Resource</h1>
-        </div>
-    </div>
-
     <!-- Modal Add Post -->
-    <div class="modal fade" id="showCareerModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-xl">
+    <div class="modal fade" id="showCareerModal" tabindex="-1" aria-labelledby="exampleModalLabel" data-bs-backdrop="static" aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-centered">
             <div class="modal-content">
-                <div class="modal-header bg-primary text-white">
-                <h5 class="modal-title" id="exampleModalLabel">Create Career Resource</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <div class="modal-header bg-light">
+                    <h5 class="modal-title text-primary" id="exampleModalLabel">Create Career Resource</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body">
-                    <form method="POST" action="{{ route('admin.career.store') }}" id="addCareerFormId">
-                        @csrf
-
-                        <div class="form-group mb-md-3">
+                <form method="POST" action="{{ route('admin.career.store') }}" id="addCareerFormId">
+                    @csrf
+                    <div class="modal-body">
+                        <div class="my-2">
                             <label>Type</label>
                             <select name="type" value="{{ old('type') }}" class="form-select">
                                 <option selected disabled>Select Post Type</option>
@@ -31,15 +24,13 @@
                             </select>
                             <span class="text-danger error-text type_error"></span>
                         </div>
-
-                        <div class="form-group mb-md-3">
+                        <div class="my-2">
                             <label>Blog Post Image</label>
                             <input name="post_img" type="file" class="form-control" value="{{ old('post_img') }}" onchange="document.getElementById('blogpost').src = window.URL.createObjectURL(this.files[0])">
-                            <img id="blogpost" width="110px">
                             <span class="text-danger error-text post_img_error"></span>
+                            <img id="blogpost" width="110px">
                         </div>
-
-                        <div class="form-group mb-md-3">
+                        <div class="my-2">
                             <nav class="nav nav-tabs" id="nav-tab" role="tablist">
                                 <a class="nav-link active" id="nav-en-tab" data-bs-toggle="tab" href="#nav-en" role="tab" aria-controls="nav-en" aria-selected="true">English</a>
                                 <a class="nav-link" id="nav-ch-tab" data-bs-toggle="tab" href="#nav-ch" role="tab" aria-controls="nav-ch" aria-selected="false">Chinese</a>
@@ -85,11 +76,10 @@
                                     <div class="form-group mb-md-3 mt-3">
                                         <label>Article</label>
                                         <textarea name="post_th" class="textarea_autosize form-control summernote"></textarea>
-                                        
                                     </div>
                                 </div>
                             </div>
-   
+
                             <ul class="list-unstyled">
                                 <li><span class="text-danger error-text post_en_error"></span></li>
                                 <li><span class="text-danger error-text post_ch_error"></span></li>
@@ -97,60 +87,22 @@
                                 <li><span class="text-danger error-text post_th_error"></span></li>
                             </ul>
                         </div>
-                
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-primary">Create Post</button>
-                        </div>
-                    </form>
-                </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Create Post</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div> <!-- end add modal -->
 
-    
-
-    <div class="card container px-0 shadow">
-        <div class="card-header position-relative bg-primary">
-            <h2 class="mb-0 text-white">Post list</h2>
-            <button type="button" data-bs-toggle="modal" data-bs-target="#showCareerModal" class="btn btn-light position-absolute end-0 top-50 translate-middle-y me-3"><i class="bi bi-plus-circle"></i> Add New Post</button>
+    <div class="card container mt-5 px-0 shadow">
+        <div class="card-header position-relative bg-light">
+            <h2 class="mb-0 text-primary">Post Career List</h2>
+            <button type="button" data-bs-toggle="modal" data-bs-target="#showCareerModal" class="btn btn-primary position-absolute end-0 top-50 translate-middle-y me-3"><i class="bi bi-plus-circle"></i> Add Post</button>
         </div>
-        <div class="card-body">
-            <div class="container-fluid">
-                @if (session('userdelete'))
-                    <div class="alert alert-success">{{session('userdelete')}}</div>
-                @endif
-                
-                <table id="update_status_switch" class="customdatatable table table-hover table-bordered" style="width:100%">
-                    <thead class="table-primary">
-                        <tr>
-                            <th>No</th>
-                            <th>Post</th>
-                            <th>Type</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach ($careers as $i => $career)
-                        <tr>
-                            <td>{{$i+1}}</td>
-                            <td>{{$career->title_en}}</td>
-                            <td>{{$career->type}}</td>
-                            <td>
-                                <a href="/admin/career/{{ $career->id }}/edit" title="Edit"><i class="bi bi-pencil-square text-primary" style="font-size: 20px;"></i></a>
-                                <form action="/admin/career/{{ $career->id }}" method="POST" class="d-inline" onsubmit="return confirm('Are you sure? You won\'t be able to revert this!')">
-                                    @csrf
-                                    @method('delete')
-                                    <button type="submit" class="btn btn-sm text-danger" title="Delete"><i class="bi bi-trash" style="font-size: 20px;"></i></button>
-                                </form>
-                            </td>
-                        </tr>
-                        @endforeach
-                    </tbody>
-                </table>
-        
-            </div>
-        </div>
+        <div class="card-body" id="show_all_career"></div>
     </div>
 
 @endsection
@@ -164,7 +116,7 @@
                 }
             });
 
-            // Save Job Form
+            // Save User Form
             $('#addCareerFormId').on('submit', function (e) {
                 e.preventDefault();
                 $.ajax({
@@ -177,19 +129,80 @@
                     beforeSend: function(){
                         $(document).find('span.error-text').text('')
                     },
-                    success: function (data) {
-                        if(data.status==0){
-                            $.each(data.error, function(prefix, val){
+                    success: function (response) {
+                        if(response.status==0){
+                            $.each(response.error, function(prefix, val){
                                 $('span.'+prefix+'_error').text(val[0])
                             })
                         }else{
-                            $('#addCareerFormId')[0].reset()
+                            careerfetch();
                             $('#showCareerModal').modal('hide')
-                            document.location.href = "{{ route('admin.career.index') }}"
+                            $('#addCareerFormId')[0].reset();
                         }
                     }
                 });
             });
+
+
+            // Delete Job ajax request
+            $(document).on('click', '.deleteIcon', function(e) {
+                e.preventDefault();
+                let id = $(this).attr('id');
+                let csrf = '{{ csrf_token() }}';
+                Swal.fire({
+                    title: 'Are you sure?',
+                    text: "You won't be able to revert this!",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes, delete it!'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        $.ajax({
+                            url: "{{ route('admin.careerdelete') }}",
+                            method: 'delete',
+                            data: {
+                                id: id,
+                                _token: csrf
+                            },
+                            success: function(response) {
+                                console.log(response);
+                                Swal.fire(
+                                'Deleted!',
+                                'Your file has been deleted.',
+                                'success'
+                                )
+                                careerfetch();
+                            }
+                        });
+                    }
+                })
+            });
+
+
+            // Fetch all User ajax request
+            careerfetch();
+
+            function careerfetch() {
+                $.ajax({
+                    url: "{{ route('admin.careerfetch') }}",
+                    method: 'get',
+                    success: function(response) {
+                    $("#show_all_career").html(response);
+                    $("table").DataTable({
+                        order: [0, 'asc'],
+                        pageLength: 25,
+                    });
+                    }
+                });
+            }
+
+
+
+
+
+
             
         });
     </script>
