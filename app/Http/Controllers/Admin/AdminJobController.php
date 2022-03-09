@@ -88,7 +88,7 @@ class AdminJobController extends Controller
                     <td>' . $job->expired_post . '</td>
                     <td>' . $job->approved . '</td>
                     <td>
-                        <a href="#" id="' . $job->id . '" class="text-success mx-1 editIcon" data-bs-toggle="modal" data-bs-target="#editJobModal"><i class="bi-pencil-square h4"></i></a>
+                        <a href="/admin/job/' . $job->id . '/edit" id="" class="text-success mx-1"><i class="bi-pencil-square h4"></i></a>
 
                         <a href="#" id="' . $job->id . '" class="text-danger mx-1 deleteIcon"><i class="bi-trash h4"></i></a>
                     </td>
@@ -185,7 +185,7 @@ class AdminJobController extends Controller
         }
     }
 
-    public function useredit(Request $request)
+    public function jobedit(Request $request)
     {
         $id = $request->id;
         $job = Job::find($id);

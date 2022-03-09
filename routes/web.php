@@ -55,10 +55,8 @@ Route::get('logout', [AuthController::class, 'logout'])->name('logout')->middlew
 // Admin Dashboard
 Route::prefix('admin')->name('admin.')->middleware('isadmin')->group(function () {
     Route::get('/dashboard', [AdmindbController::class, 'dashboard'])->name('dashboard');
-    Route::resource('/job', AdminJobController::class)->only(['index', 'store']);
+    Route::resource('/job', AdminJobController::class)->only(['index', 'edit', 'update', 'store']);
     Route::get('/jobfetch', [AdminJobController::class, 'jobfetch'])->name('jobfetch');
-    Route::get('/jobedit', [AdminJobController::class, 'jobedit'])->name('jobedit');
-    Route::post('/jobupdate', [AdminJobController::class, 'jobupdate'])->name('jobupdate');
     Route::delete('/jobdelete', [AdminJobController::class, 'jobdelete'])->name('jobdelete');
     Route::resource('/user', AdminUserController::class)->only(['index', 'store']);
     Route::get('/userfetch', [AdminUserController::class, 'userfetch'])->name('userfetch');

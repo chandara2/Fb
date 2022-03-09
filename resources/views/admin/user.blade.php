@@ -10,43 +10,50 @@
     </div>
 
     <!-- Add user modal start -->
-    <div class="modal fade" id="showUserModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-md">
+    <div class="modal fade" id="showUserModal" tabindex="-1" aria-labelledby="exampleModalLabel" data-bs-backdrop="static" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
-                <div class="modal-header bg-primary text-white">
+                <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">Create User</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body">
-                    <form method="POST" action="{{ route('admin.user.store') }}" id="addUserFormId">
-                        @csrf
-
-                        <div class="form-group mb-md-3">
-                            <input name="fname" type="text" class="form-control" placeholder="Family Name">
-                            <span class="text-danger error-text fname_error"></span>
+                <form method="POST" action="{{ route('admin.user.store') }}" id="addUserFormId">
+                    @csrf
+                    <div class="modal-body p-4 bg-light">
+                        <div class="row">
+                            <div class="col-lg">
+                                <label for="fname">Family Name</label>
+                                <input type="text" name="fname" class="form-control">
+                                <span class="text-danger error-text fname_error"></span>
+                            </div>
+                            <div class="col-lg">
+                                <label for="gname">Given Name</label>
+                                <input type="text" name="gname" class="form-control">
+                                <span class="text-danger error-text gname_error"></span>
+                            </div>
                         </div>
-                        <div class="form-group mb-md-3">
-                            <input name="gname" type="text" class="form-control" placeholder="Given Name">
-                            <span class="text-danger error-text gname_error"></span>
-                        </div>
-                        <div class="form-group mb-md-3">
-                            <input name="username" type="text" class="form-control" placeholder="Username">
+                        <div class="my-2">
+                            <label for="username">Username</label>
+                            <input type="text" name="username" class="form-control">
                             <span class="text-danger error-text username_error"></span>
                         </div>
-                        <div class="form-group mb-md-3">
-                            <input name="phone" type="text" class="form-control" placeholder="Phone Number">
-                            <span class="text-danger error-text phone_error"></span>
+                        <div class="my-2">
+                            <label for="phone">Phone</label>
+                            <input type="tel" name="phone" class="form-control">
+                            <span class="text-danger error-text fname_error"></span>
                         </div>
-                        <div class="form-group mb-md-3">
-                            <input name="password" type="password" class="form-control" placeholder="Password">
+                        <div class="my-2">
+                            <label for="password">Password</label>
+                            <input type="password" name="password" class="form-control">
                             <span class="text-danger error-text password_error"></span>
                         </div>
-                        <div class="form-group mb-md-3">
-                            <input name="password_confirmation" type="password" class="form-control" placeholder="Confirm Password">
+                        <div class="my-2">
+                            <label for="password_confirmation">Confirm password</label>
+                            <input type="password" name="password_confirmation" class="form-control">
                             <span class="text-danger error-text password_confirmation_error"></span>
                         </div>
-                        <div class="form-group mb-md-3">
-                            <label>Group member</label>
+                        <div class="my-2">
+                            <label>Group Member</label>
                             <select name="gid" class="form-select">
                                 @foreach ($usergroups as $usergroup)
                                     <option value="{{ $usergroup->id }}">{{ $usergroup->name }}</option>
@@ -54,13 +61,12 @@
                             </select>
                             <span class="text-danger error-text gid_error"></span>
                         </div>
-
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-primary">Create</button>
-                        </div>
-                    </form>
-                </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Create</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
