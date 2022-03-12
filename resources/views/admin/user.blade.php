@@ -113,6 +113,11 @@
                                 @endforeach
                             </select>
                         </div>
+                        <div class="my-2">
+                            <div class="col-lg">
+                                <input class="form-check-input" type="checkbox" name="visible" id="visible"> Visible
+                            </div>
+                        </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -189,6 +194,9 @@
                         $("#phone").val(response.phone);
                         $("#password").val('********');
                         $("#gid").val(response.gid);
+                        if(response.visible == 1){
+                            $("#visible").prop('checked', true);
+                        }
                     }
                 });
             });

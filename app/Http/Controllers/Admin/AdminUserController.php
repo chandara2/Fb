@@ -38,21 +38,26 @@ class AdminUserController extends Controller
             <thead>
                 <tr>
                     <th>No</th>
-                    <th>Name</th>
                     <th>Username</th>
                     <th>Phone</th>
                     <th>Member</th>
+                    <th>Status</th>
                     <th>Action</th>
                 </tr>
             </thead>
             <tbody>';
             foreach ($users as $i => $user) {
+                if ($user->visible == true) {
+                    $visible = "Visible";
+                } else {
+                    $visible = '<span class="text-danger">Disable</span>';
+                }
                 $output .= '<tr>
                     <td>' . $i + 1 . '</td>
-                    <td>' . $user->fname . ' ' . $user->gname . '</td>
                     <td>' . $user->username . '</td>
                     <td>' . $user->phone . '</td>
                     <td>' . $user->usergroup . '</td>
+                    <td>' . $visible . '</td>
                     <td>
                         <a href="#" id="' . $user->id . '" class="text-success mx-1 editIcon" data-bs-toggle="modal" data-bs-target="#editUserModal"><i class="bi-pencil-square h4"></i></a>
 
@@ -132,6 +137,7 @@ class AdminUserController extends Controller
                 'phone' => $request->phone,
                 'password' => $password,
                 'gid' => $request->gid,
+                'visible' => $request->boolean('visible'),
             ];
             $user->update($userData);
             return response()->json([
