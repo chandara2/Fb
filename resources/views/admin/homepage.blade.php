@@ -119,8 +119,7 @@
                 });
             });
 
-
-             // Delete Job ajax request
+             // Delete Slide ajax request
             $(document).on('click', '.deleteIcon', function(e) {
                 e.preventDefault();
                 let id = $(this).attr('id');
@@ -156,7 +155,7 @@
                 })
             });
 
-            // Fetch all User ajax request
+            // Fetch all Slide ajax request
             slidefetch();
 
             function slidefetch() {
@@ -201,8 +200,7 @@
                 });
             });
 
-
-             // Delete Job ajax request
+             // Delete Partner ajax request
             $(document).on('click', '.deleteIcon1', function(e) {
                 e.preventDefault();
                 let id = $(this).attr('id');
@@ -238,7 +236,7 @@
                 })
             });
 
-            // Fetch all User ajax request
+            // Fetch all Partner ajax request
             partnerfetch();
 
             function partnerfetch() {
@@ -250,14 +248,7 @@
                     }
                 });
             }
-
-
-
-
-
-
-
             
-        }); 
+        });
     </script>
 @endsection
