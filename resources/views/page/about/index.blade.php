@@ -11,25 +11,27 @@
 </section>
 
 <div class="container my-5">
+
     @if (app()->getLocale() == 'ch')
-        <!-- Summernote -->
-        @php
-            echo $about->aboutus_ch
-        @endphp
-        <!-- Summernote -->
-    @elseif(app()->getLocale() == 'en')
-        @php
-            echo $about->aboutus_en
-        @endphp
-    @elseif(app()->getLocale() == 'kh')
-        @php
-            echo $about->aboutus_kh
-        @endphp
+        @php echo ($about->aboutus_ch) @endphp
+        @if($about->aboutus_ch == null)
+            @php echo ($about->aboutus_en) @endphp
+        @endif
+    @elseif (app()->getLocale() == 'en')
+        @php echo ($about->aboutus_en) @endphp
+    @elseif (app()->getLocale() == 'kh')
+        @php echo ($about->aboutus_kh) @endphp
+        @if($about->aboutus_kh == null)
+            @php echo ($about->aboutus_en) @endphp
+        @endif
+    @elseif(app()->getLocale() == 'th')
+        @php echo ($about->aboutus_th) @endphp
+        @if($about->aboutus_th == null)
+            @php echo ($about->aboutus_en) @endphp
+        @endif
     @else
-        @php
-            echo $about->aboutus_th
-        @endphp             
     @endif
+
 </div>
 
 @empty

@@ -28,6 +28,7 @@
                             <label>Blog Post Image</label>
                             <input name="post_img" type="file" class="form-control" value="{{ old('post_img') }}" onchange="document.getElementById('blogpost').src = window.URL.createObjectURL(this.files[0])">
                             <span class="text-danger error-text post_img_error"></span>
+                            <br>
                             <img id="blogpost" width="110px">
                         </div>
                         <div class="my-2">

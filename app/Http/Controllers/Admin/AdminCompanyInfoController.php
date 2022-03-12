@@ -41,16 +41,23 @@ class AdminCompanyInfoController extends Controller
                 <tr>
                     <th>No</th>
                     <th>Company</th>
-                    <th>Logo</th>
+                    <th>Recruitment Agencies</th>
                     <th>Action</th>
                 </tr>
             </thead>
             <tbody>';
             foreach ($companyinfos as $i => $companyinfo) {
+
+                if ($companyinfo->recruitment == true) {
+                    $recruitment = '<i class="bi bi-person-check"></i>';
+                } else {
+                    $recruitment = '';
+                }
+
                 $output .= '<tr>
                     <td>' . $i + 1 . '</td>
                     <td>' . $companyinfo->company . '</td>
-                    <td><img src="/upload/companylogo/' . $companyinfo->logo . '" style="width: 50px; height: 50px; object-fit: contain;">' . $companyinfo->recruitment . '</td>
+                    <td>' . $recruitment . '</td>
                     <td>
                         <a href="/admin/companyinfo/' . $companyinfo->id . '/edit" id="" class="text-success mx-1"><i class="bi-pencil-square h4"></i></a>
 

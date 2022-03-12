@@ -34,7 +34,7 @@ class AdminUserController extends Controller
         $users = DB::table('users')->join('usergroups', 'usergroups.id', 'users.gid')->select('users.*', 'usergroups.name as usergroup')->get();
         $output = '';
         if ($users->count() > 0) {
-            $output .= '<table class="table table-striped table-sm align-middle">
+            $output .= '<table class="table table-striped table-sm table-hover align-middle">
             <thead>
                 <tr>
                     <th>No</th>
@@ -47,11 +47,13 @@ class AdminUserController extends Controller
             </thead>
             <tbody>';
             foreach ($users as $i => $user) {
+                
                 if ($user->visible == true) {
                     $visible = "Visible";
                 } else {
                     $visible = '<span class="text-danger">Disable</span>';
                 }
+                
                 $output .= '<tr>
                     <td>' . $i + 1 . '</td>
                     <td>' . $user->username . '</td>
@@ -61,7 +63,7 @@ class AdminUserController extends Controller
                     <td>
                         <a href="#" id="' . $user->id . '" class="text-success mx-1 editIcon" data-bs-toggle="modal" data-bs-target="#editUserModal"><i class="bi-pencil-square h4"></i></a>
 
-                        <button value="' . $user->gid . '" id="' . $user->id . '" class="btn px-0 shadow-none text-danger mx-1 deleteIcon"><i class="bi-trash h4"></i></button>
+                        <button value="' . $user->gid . '" id="' . $user->id . '" class="btn p-0 shadow-none text-danger mx-1 deleteIcon"><i class="bi-trash h4"></i></button>
                     </td>
                 </tr>';
             }

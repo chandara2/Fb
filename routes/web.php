@@ -68,9 +68,14 @@ Route::prefix('admin')->name('admin.')->middleware('isadmin')->group(function ()
     Route::delete('/companyinfodelete', [AdminCompanyInfoController::class, 'companyinfodelete'])->name('companyinfodelete');
     Route::resource('/about', AdminAboutController::class);
     Route::get('/changejobstatus', [AdminJobController::class, 'changejobstatus'])->name('changejobstatus');
-    Route::resource('/homepage', AdminHomepageController::class)->only(['index', 'store', 'destroy']);
-    Route::post('/partner', [AdminHomepageController::class, 'partnerstore'])->name('partner.store');
-    Route::delete('/partner/{partner}', [AdminHomepageController::class, 'partnerdestroy'])->name('partner.destroy');
+    Route::resource('/homepage', AdminHomepageController::class)->only(['index', 'store']);
+    Route::get('/slidefetch', [AdminHomepageController::class, 'slidefetch'])->name('slidefetch');
+    Route::delete('/slidedelete', [AdminHomepageController::class, 'slidedelete'])->name('slidedelete');
+    Route::post('/partnerstore', [AdminHomepageController::class, 'partnerstore'])->name('partnerstore');
+    Route::get('/partnerfetch', [AdminHomepageController::class, 'partnerfetch'])->name('partnerfetch');
+    Route::delete('/partnerdelete', [AdminHomepageController::class, 'partnerdelete'])->name('partnerdelete');
+    // Route::post('/partner', [AdminHomepageController::class, 'partnerstore'])->name('partner.store');
+    // Route::delete('/partner/{partner}', [AdminHomepageController::class, 'partnerdestroy'])->name('partner.destroy');
     Route::resource('/footer', AdminFooterController::class);
     Route::post('/footersm', [AdminFooterController::class, 'footersm_store'])->name('footersm.store');
     Route::delete('/footersm/{footersm}', [AdminFooterController::class, 'footersm_destroy'])->name('footersm.destroy');

@@ -68,7 +68,7 @@ class AdminJobController extends Controller
 
         $output = '';
         if ($jobs->count() > 0) {
-            $output .= '<table class="table table-striped table-sm align-middle">
+            $output .= '<table class="table table-striped table-sm table-hover align-middle">
             <thead>
                 <tr>
                     <th>No</th>
@@ -81,12 +81,19 @@ class AdminJobController extends Controller
             </thead>
             <tbody>';
             foreach ($jobs as $i => $job) {
+
+                if ($job->approved == true) {
+                    $approved = "Approved";
+                } else {
+                    $approved = '<span class="text-danger">Pending</span>';
+                }
+
                 $output .= '<tr>
                     <td>' . $i + 1 . '</td>
                     <td>' . $job->title_en . '</td>
                     <td>' . $job->company . '</td>
                     <td>' . $job->expired_post . '</td>
-                    <td>' . $job->approved . '</td>
+                    <td>' . $approved . '</td>
                     <td>
                         <a href="/admin/job/' . $job->id . '/edit" id="" class="text-success mx-1"><i class="bi-pencil-square h4"></i></a>
 

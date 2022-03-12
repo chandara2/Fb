@@ -37,19 +37,20 @@
                             <label>About Us Banner</label>
                             <input name="banner" type="file" class="form-control" onchange="document.getElementById('output_banner').src = window.URL.createObjectURL(this.files[0])">
                             <span class="text-danger error-text banner_error"></span>
+                            <br>
                             <img id="output_banner" width="110px">
                         </div>
-                
-                        <div class="form-group mb-md-3">
-                            <label>About info. Chinese</label>
-                            <textarea name="aboutus_ch" class="textarea_autosize form-control summernote"></textarea>
-                            <span class="text-danger error-text aboutus_ch_error"></span>
-                        </div>
-
+                        
                         <div class="form-group mb-md-3">
                             <label>About info. English</label>
                             <textarea name="aboutus_en" class="textarea_autosize form-control summernote"></textarea>
                             <span class="text-danger error-text aboutus_en_error"></span>
+                        </div>
+
+                        <div class="form-group mb-md-3">
+                            <label>About info. Chinese</label>
+                            <textarea name="aboutus_ch" class="textarea_autosize form-control summernote"></textarea>
+                            <span class="text-danger error-text aboutus_ch_error"></span>
                         </div>
 
                         <div class="form-group mb-md-3">

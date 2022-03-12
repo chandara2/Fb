@@ -224,25 +224,6 @@
                 }
             });
 
-            // Pending & Approved
-            // $('.toggle-class').on('change', function() {
-            //     var approved = $(this).prop('checked') == true ? 1 : 0;
-            //     var id = $(this).data('id');
-            //     $.ajax({
-            //         type: 'GET',
-            //         dataType: 'JSON',
-            //         url: '/admin/changejobstatus',
-            //         data: {
-            //             'approved': approved,
-            //             'id': id
-            //         },  
-            //         success:function(response) {
-            //             console.log(response.successStatusMsg)
-            //         }
-            //     });
-            // });
-
-
             // Save Job Form
             $('#addJobFormId').on('submit', function (e) {
                 e.preventDefault();

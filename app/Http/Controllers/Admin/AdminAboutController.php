@@ -44,17 +44,10 @@ class AdminAboutController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'banner' => 'required|image|mimes:jpeg,png,jpg|max:2084',
-            'aboutus_ch' => 'required_without:aboutus_en',
             'aboutus_en' => 'required',
-            'aboutus_kh' => 'required_without:aboutus_en',
-            'aboutus_th' => 'required_without:aboutus_en',
-
         ], [
             'banner.required' => 'Please upload a banner',
-            'aboutus_ch.required_without' => 'Please input about us page infomation in Chinese',
             'aboutus_en.required' => 'Please input about us page infomation in English',
-            'aboutus_kh.required_without' => 'Please input about us page infomation in Khmer',
-            'aboutus_th.required_without' => 'Please input about us page infomation in Thai',
         ]);
 
         if ($validator->fails()) {

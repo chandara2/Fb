@@ -2,121 +2,82 @@
 @section('title', 'ADMIN INFO')
 
 @section('content')
-    <div class="container-fluid">
-        <div class="row mt-3">
-            <h1 class="text-center text-uppercase" style="text-decoration: underline 3px solid pink">Homepage</h1>
-        </div>
-    </div>
 
     <!-- Modal Add Banner Slide -->
-    <div class="modal fade" id="showSlideModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-md">
+    <div class="modal fade" id="showSlideModal" tabindex="-1" aria-labelledby="exampleModalLabel" data-bs-backdrop="static" aria-hidden="true">
+        <div class="modal-dialog modal-md modal-dialog-centered">
             <div class="modal-content">
-                <div class="modal-header bg-primary text-white">
-                <h5 class="modal-title" id="exampleModalLabel">Add banner slide</h5>
+                <div class="modal-header bg-light">
+                <h5 class="modal-title text-primary" id="exampleModalLabel">Add banner slide</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body">
-                    <form method="POST" action="{{ route('admin.homepage.store') }}" id="addSlideFormId">
-                        @csrf
-
+                <form method="POST" action="{{ route('admin.homepage.store') }}" id="addSlideFormId">
+                    @csrf
+                    <div class="modal-body">
                         <div class="form-group mb-md-3">
                             <label>Slide banner</label>
-                            <input name="slide" type="file" class="form-control" value="{{ old('slide') }}" onchange="document.getElementById('companyinfoslide').src = window.URL.createObjectURL(this.files[0])">
-                            <img id="companyinfoslide" width="110px">
+                            <input name="slide" type="file" class="form-control" value="{{ old('slide') }}" onchange="document.getElementById('homeslide').src = window.URL.createObjectURL(this.files[0])">
                             <span class="text-danger error-text slide_error"></span>
+                            <br>
+                            <img id="homeslide" width="110px">
                         </div>
-            
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-primary">Add Slide</button>
-                        </div>
-                    </form>
-                </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Add Slide</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div> <!-- end add modal -->
 
     <!-- Modal Add Partner -->
-    <div class="modal fade" id="showPartnerModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-md">
+    <div class="modal fade" id="showPartnerModal" tabindex="-1" aria-labelledby="exampleModalLabel" data-bs-backdrop="static" aria-hidden="true">
+        <div class="modal-dialog modal-md modal-dialog-centered">
             <div class="modal-content">
-                <div class="modal-header bg-primary text-white">
-                <h5 class="modal-title" id="exampleModalLabel">Add Partner</h5>
+                <div class="modal-header bg-light">
+                <h5 class="modal-title text-primary" id="exampleModalLabel">Add Partner</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body">
-                    <form method="POST" action="{{ route('admin.partner.store') }}" id="addPartnerFormId">
-                        @csrf
-
+                <form method="POST" action="{{ route('admin.partnerstore') }}" id="addPartnerFormId">
+                    @csrf
+                    <div class="modal-body">
                         <div class="form-group mb-md-3">
                             <label>Partner Logo</label>
-                            <input name="logo" type="file" class="form-control" value="{{ old('logo') }}" onchange="document.getElementById('partnerLogo').src = window.URL.createObjectURL(this.files[0])">
-                            <img id="partnerLogo" width="110px">
+                            <input name="logo" type="file" class="form-control" value="{{ old('logo') }}" onchange="document.getElementById('partnerlogo').src = window.URL.createObjectURL(this.files[0])">
                             <span class="text-danger error-text logo_error"></span>
+                            <br>
+                            <img id="partnerlogo" width="110px">
                         </div>
                         <div class="form-group mb-md-3">
                             <label>Partner Link</label>
                             <input type="text" name="link" value="{{ old('link') }}" class="form-control">
                             <span class="text-danger error-text link_error"></span>
                         </div>
-            
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-primary">Add Partner</button>
-                        </div>
-                    </form>
-                </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Add Partner</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div> <!-- end add modal -->
 
-    <div class="container"> <!-- Banner Slide -->
-        <div class="row">
-            <button type="submit" data-bs-toggle="modal" data-bs-target="#showSlideModal" class="btn btn-sm btn-primary mb-3 w-auto"><i class="bi bi-plus-circle"></i> Add New Slide</button>
+    <div class="card container mt-5 px-0 shadow">
+        <div class="card-header position-relative bg-light">
+            <h2 class="mb-0 text-primary">List of slides</h2>
+            <button type="button" data-bs-toggle="modal" data-bs-target="#showSlideModal" class="btn btn-primary position-absolute end-0 top-50 translate-middle-y me-3"><i class="bi bi-plus-circle"></i> Add New Slide</button>
         </div>
-
-        <div class="row">
-            @forelse ($homepageslides as $i => $slide)
-            <div class="col-xl-2 col-lg-3 col-md-4 mb-3">
-                <img src="{{asset('upload/homepageslide/')}}/{{$slide->slide}}" alt="slide" width="100%" height="100" style="object-fit: cover;" class="border border-info p-1">
-                <form action="/admin/homepage/{{ $slide->id }}" method="POST" onsubmit="return confirm('Are you sure? You won\'t be able to revert this!')" class="bg-info bg-opacity-10">
-                    @csrf
-                    @method('delete')
-                    <div class="d-flex justify-content-between">
-                        <span>BANNER SLIDE {{$i+1}}</span>
-                        <button type="submit" class="text-danger btn p-0" title="Delete"><i class="bi bi-x-square"></i></button>
-                    </div>
-                </form>
-            </div>
-            @empty
-            <p class="text-center bg-info">No slide to show</p>
-            @endforelse
-        </div>
+        <div class="card-body" id="show_all_slides"></div>
     </div>
 
-    <div class="container"> <!-- Partner -->
-        <div class="row">
-            <button type="submit" data-bs-toggle="modal" data-bs-target="#showPartnerModal" class="btn btn-sm btn-primary mb-3 w-auto"><i class="bi bi-plus-circle"></i> Add New Partner</button>
+    <div class="card container mt-5 px-0 shadow">
+        <div class="card-header position-relative bg-light">
+            <h2 class="mb-0 text-primary">List of partner</h2>
+            <button type="button" data-bs-toggle="modal" data-bs-target="#showPartnerModal" class="btn btn-primary position-absolute end-0 top-50 translate-middle-y me-3"><i class="bi bi-plus-circle"></i> Add New Partner</button>
         </div>
-
-        <div class="row">
-            @forelse ($partners as $i => $partner)
-            <div class="col-xl-2 col-lg-3 col-md-4 mb-3">
-                <img src="{{asset('upload/partnerlogo/')}}/{{$partner->logo}}" alt="slide" width="100%" height="100" style="object-fit: cover;" class="border border-info p-1">
-                <form action="/admin/partner/{{ $partner->id }}" method="POST" onsubmit="return confirm('Are you sure? You won\'t be able to revert this!')" class="bg-info bg-opacity-10">
-                    @csrf
-                    @method('delete')
-                    <div class="d-flex justify-content-between">
-                        <span title="{{ $partner->link }}">Partner Link {{$i+1}}</span>
-                        <button type="submit" class="text-danger btn p-0" title="Delete"><i class="bi bi-x-square"></i></button>
-                    </div>
-                </form>
-            </div>
-            @empty
-            <p class="text-center bg-info">No partner to show</p>
-            @endforelse
-        </div>
+        <div class="card-body" id="show_all_partners"></div>
     </div>
 
 @endsection
@@ -130,7 +91,7 @@
                 }
             });
 
-            // Save Banner Slide Form
+            // Save Slide Form
             $('#addSlideFormId').on('submit', function (e) {
                 e.preventDefault();
                 $.ajax({
@@ -143,19 +104,74 @@
                     beforeSend: function(){
                         $(document).find('span.error-text').text('')
                     },
-                    success: function (data) {
-                        if(data.status==0){
-                            $.each(data.error, function(prefix, val){
+                    success: function (response) {
+                        if(response.status==0){
+                            $.each(response.error, function(prefix, val){
                                 $('span.'+prefix+'_error').text(val[0])
                             })
                         }else{
-                            $('#addSlideFormId')[0].reset()
+                            slidefetch();
                             $('#showSlideModal').modal('hide')
-                            document.location.href = "{{ route('admin.homepage.index') }}"
+                            $('#addSlideFormId')[0].reset();
+                            $('#homeslide').attr('src', "");
                         }
                     }
                 });
             });
+
+
+             // Delete Job ajax request
+            $(document).on('click', '.deleteIcon', function(e) {
+                e.preventDefault();
+                let id = $(this).attr('id');
+                let csrf = '{{ csrf_token() }}';
+                Swal.fire({
+                    title: 'Are you sure?',
+                    text: "You won't be able to revert this!",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes, delete it!'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        $.ajax({
+                            url: "{{ route('admin.slidedelete') }}",
+                            method: 'delete',
+                            data: {
+                                id: id,
+                                _token: csrf
+                            },
+                            success: function(response) {
+                                console.log(response);
+                                Swal.fire(
+                                'Deleted!',
+                                'Your file has been deleted.',
+                                'success'
+                                )
+                                slidefetch();
+                            }
+                        });
+                    }
+                })
+            });
+
+            // Fetch all User ajax request
+            slidefetch();
+
+            function slidefetch() {
+                $.ajax({
+                    url: "{{ route('admin.slidefetch') }}",
+                    method: 'get',
+                    success: function(response) {
+                        $("#show_all_slides").html(response);
+                    }
+                });
+            }
+
+
+
+
 
             // Save Partner Form
             $('#addPartnerFormId').on('submit', function (e) {
@@ -170,19 +186,78 @@
                     beforeSend: function(){
                         $(document).find('span.error-text').text('')
                     },
-                    success: function (data) {
-                        if(data.status==0){
-                            $.each(data.error, function(prefix, val){
+                    success: function (response) {
+                        if(response.status==0){
+                            $.each(response.error, function(prefix, val){
                                 $('span.'+prefix+'_error').text(val[0])
                             })
                         }else{
-                            $('#addPartnerFormId')[0].reset()
+                            partnerfetch();
                             $('#showPartnerModal').modal('hide')
-                            document.location.href = "{{ route('admin.homepage.index') }}"
+                            $('#addPartnerFormId')[0].reset();
+                            $('#partnerlogo').attr('src', "");
                         }
                     }
                 });
             });
+
+
+             // Delete Job ajax request
+            $(document).on('click', '.deleteIcon1', function(e) {
+                e.preventDefault();
+                let id = $(this).attr('id');
+                let csrf = '{{ csrf_token() }}';
+                Swal.fire({
+                    title: 'Are you sure?',
+                    text: "You won't be able to revert this!",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes, delete it!'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        $.ajax({
+                            url: "{{ route('admin.partnerdelete') }}",
+                            method: 'delete',
+                            data: {
+                                id: id,
+                                _token: csrf
+                            },
+                            success: function(response) {
+                                console.log(response);
+                                Swal.fire(
+                                'Deleted!',
+                                'Your file has been deleted.',
+                                'success'
+                                )
+                                partnerfetch();
+                            }
+                        });
+                    }
+                })
+            });
+
+            // Fetch all User ajax request
+            partnerfetch();
+
+            function partnerfetch() {
+                $.ajax({
+                    url: "{{ route('admin.partnerfetch') }}",
+                    method: 'get',
+                    success: function(response) {
+                        $("#show_all_partners").html(response);
+                    }
+                });
+            }
+
+
+
+
+
+
+
+            
         }); 
     </script>
 @endsection
