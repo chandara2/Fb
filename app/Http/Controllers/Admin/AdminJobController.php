@@ -314,14 +314,6 @@ class AdminJobController extends Controller
         return redirect(route('admin.job.index'));
     }
 
-    // public function changejobstatus(Request $request)
-    // {
-    //     $jobs = Job::find($request->id);
-    //     $jobs->approved = $request->approved;
-    //     $jobs->save();
-    //     return response()->json(['successAPM' => 'Status has changed successfully']);
-    // }
-
     public function jobdelete(Request $request)
     {
         $id = $request->id;

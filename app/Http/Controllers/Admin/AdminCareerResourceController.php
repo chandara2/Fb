@@ -48,6 +48,7 @@ class AdminCareerResourceController extends Controller
                     <td>' . $career->type . '</td>
                     <td>
                         <a href="/admin/career/' . $career->id . '/edit" id="" class="text-success mx-1"><i class="bi-pencil-square h4"></i></a>
+                        <a href="#" id="' . $career->id . '" class="text-success mx-1 editIcon" data-bs-toggle="modal" data-bs-target="#editCareerModal">EditAjax</a>
 
                         <a href="#" " id="' . $career->id . '" class="text-danger mx-1 deleteIcon"><i class="bi-trash h4"></i></a>
                     </td>
@@ -109,21 +110,28 @@ class AdminCareerResourceController extends Controller
         }
     }
 
+    public function careeredit(Request $request)
+    {
+        $id = $request->id;
+        $career = CareerResource::find($id);
+        return response()->json($career);
+    }
+
     /**
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
-    {
-        $career_id = CareerResource::find($id);
-        $postgroups = Postgroup::all();
-        return view('admin.career_edit', [
-            'career_id' => $career_id,
-            'postgroups' => $postgroups,
-        ]);
-    }
+    // public function edit($id)
+    // {
+    //     $career_id = CareerResource::find($id);
+    //     $postgroups = Postgroup::all();
+    //     return view('admin.career_edit', [
+    //         'career_id' => $career_id,
+    //         'postgroups' => $postgroups,
+    //     ]);
+    // }
 
     /**
      * Update the specified resource in storage.

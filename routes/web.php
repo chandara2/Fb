@@ -14,7 +14,6 @@ use App\Http\Controllers\Agency\AgencydbController;
 use App\Http\Controllers\Agency\AgencyJobController;
 use App\Http\Controllers\AppController;
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\LocalizationController;
 use App\Http\Controllers\Page\AboutController;
 use App\Http\Controllers\Page\CareerController;
 use App\Http\Controllers\Page\CompanyController;
@@ -55,35 +54,41 @@ Route::get('logout', [AuthController::class, 'logout'])->name('logout')->middlew
 // Admin Dashboard
 Route::prefix('admin')->name('admin.')->middleware('isadmin')->group(function () {
     Route::get('/dashboard', [AdmindbController::class, 'dashboard'])->name('dashboard');
+
     Route::resource('/job', AdminJobController::class)->only(['index', 'edit', 'update', 'store']);
     Route::get('/jobfetch', [AdminJobController::class, 'jobfetch'])->name('jobfetch');
     Route::delete('/jobdelete', [AdminJobController::class, 'jobdelete'])->name('jobdelete');
+
     Route::resource('/user', AdminUserController::class)->only(['index', 'store']);
     Route::get('/userfetch', [AdminUserController::class, 'userfetch'])->name('userfetch');
     Route::get('/useredit', [AdminUserController::class, 'useredit'])->name('useredit');
     Route::post('/userupdate', [AdminUserController::class, 'userupdate'])->name('userupdate');
     Route::delete('/userdelete', [AdminUserController::class, 'userdelete'])->name('userdelete');
+
     Route::resource('/companyinfo', AdminCompanyInfoController::class)->only(['index', 'edit', 'update', 'store']);
     Route::get('/companyinfofetch', [AdminCompanyInfoController::class, 'companyinfofetch'])->name('companyinfofetch');
     Route::delete('/companyinfodelete', [AdminCompanyInfoController::class, 'companyinfodelete'])->name('companyinfodelete');
+
     Route::resource('/about', AdminAboutController::class);
-    Route::get('/changejobstatus', [AdminJobController::class, 'changejobstatus'])->name('changejobstatus');
+
     Route::resource('/homepage', AdminHomepageController::class)->only(['index', 'store']);
     Route::get('/slidefetch', [AdminHomepageController::class, 'slidefetch'])->name('slidefetch');
     Route::delete('/slidedelete', [AdminHomepageController::class, 'slidedelete'])->name('slidedelete');
     Route::post('/partnerstore', [AdminHomepageController::class, 'partnerstore'])->name('partnerstore');
     Route::get('/partnerfetch', [AdminHomepageController::class, 'partnerfetch'])->name('partnerfetch');
     Route::delete('/partnerdelete', [AdminHomepageController::class, 'partnerdelete'])->name('partnerdelete');
-    // Route::post('/partner', [AdminHomepageController::class, 'partnerstore'])->name('partner.store');
-    // Route::delete('/partner/{partner}', [AdminHomepageController::class, 'partnerdestroy'])->name('partner.destroy');
+
     Route::resource('/footer', AdminFooterController::class);
     Route::post('/footersm', [AdminFooterController::class, 'footersm_store'])->name('footersm.store');
     Route::delete('/footersm/{footersm}', [AdminFooterController::class, 'footersm_destroy'])->name('footersm.destroy');
     Route::post('/footerqrcode', [AdminFooterController::class, 'footerqrcode_store'])->name('footerqrcode.store');
     Route::delete('/footerqrcode/{footerqrcode}', [AdminFooterController::class, 'footerqrcode_destroy'])->name('footerqrcode.destroy');
+
     Route::resource('/career', AdminCareerResourceController::class)->only(['index', 'edit', 'update', 'store']);
     Route::get('/careerfetch', [AdminCareerResourceController::class, 'careerfetch'])->name('careerfetch');
+    Route::get('/careeredit', [AdminCareerResourceController::class, 'careeredit'])->name('careeredit');
     Route::delete('/careerdelete', [AdminCareerResourceController::class, 'careerdelete'])->name('careerdelete');
+
     Route::resource('/cv', AdminCvController::class);
 });
 
