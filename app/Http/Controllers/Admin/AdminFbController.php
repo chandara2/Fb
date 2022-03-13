@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
+use App\Models\User;
+use App\Models\Status;
 use App\Models\Facebook;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
+use WisdomDiala\Countrypkg\Models\Country;
 
 class AdminFbController extends Controller
 {
@@ -18,8 +21,14 @@ class AdminFbController extends Controller
     public function index()
     {
         $fbs = Facebook::all();
+        $users = User::get('username');
+        $statuses = Status::get('status');
+        $countrys = Country::get('name');
         return view('admin.fb', [
             'fbs' => $fbs,
+            'users' => $users,
+            'statuses' => $statuses,
+            'countrys' => $countrys,
         ]);
     }
 

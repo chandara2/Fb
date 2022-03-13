@@ -22,12 +22,22 @@
                             </div>
                             <div class="col-lg">
                                 <label for="create_by">Create By</label>
-                                <input type="text" name="create_by" class="form-control">
+                                <select name="create_by" class="form-select">
+                                    <option selected disabled>Please select creator</option>
+                                    @foreach ($users as $user)
+                                        <option>{{ $user->username }}</option>
+                                    @endforeach
+                                </select>
                                 <span class="text-danger error-text create_by_error"></span>
                             </div>
                             <div class="col-lg">
                                 <label for="status">Status</label>
-                                <input type="text" name="status" class="form-control">
+                                <select name="status" class="form-select">
+                                    <option selected disabled>Please select status</option>
+                                    @foreach ($statuses as $status)
+                                        <option>{{ $status->status }}</option>
+                                    @endforeach
+                                </select>
                                 <span class="text-danger error-text status_error"></span>
                             </div>
                         </div>
@@ -76,7 +86,12 @@
                             </div>
                             <div class="col-lg">
                                 <label for="country">Country</label>
-                                <input type="text" name="country" class="form-control">
+                                <select name="country" class="form-select">
+                                    <option selected disabled>Please select country</option>
+                                    @foreach ($countrys as $country)
+                                        <option>{{ $country->name }}</option>
+                                    @endforeach
+                                </select>
                                 <span class="text-danger error-text country_error"></span>
                             </div>
                         </div>
@@ -95,7 +110,12 @@
                         <div class="row my-2">
                             <div class="col-lg">
                                 <label for="boost_by">Boost By</label>
-                                <input type="text" name="boost_by" class="form-control">
+                                <select name="boost_by" class="form-select">
+                                    <option selected disabled>Please select booster</option>
+                                    @foreach ($users as $user)
+                                        <option>{{ $user->username }}</option>
+                                    @endforeach
+                                </select>
                                 <span class="text-danger error-text boost_by_error"></span>
                             </div>
                             <div class="col-lg">
@@ -135,12 +155,20 @@
                             </div>
                             <div class="col-lg">
                                 <label for="create_by">Create By</label>
-                                <input type="text" name="create_by" id="create_by" class="form-control">
+                                <select name="create_by" id="create_by" class="form-select">
+                                    @foreach ($users as $user)
+                                        <option>{{ $user->username }}</option>
+                                    @endforeach
+                                </select>
                                 <span class="text-danger error-text create_by_error"></span>
                             </div>
                             <div class="col-lg">
                                 <label for="status">Status</label>
-                                <input type="text" name="status" id="status" class="form-control">
+                                <select name="status" id="status" class="form-select">
+                                    @foreach ($statuses as $status)
+                                        <option>{{ $status->status }}</option>
+                                    @endforeach
+                                </select>
                                 <span class="text-danger error-text status_error"></span>
                             </div>
                         </div>
@@ -189,7 +217,11 @@
                             </div>
                             <div class="col-lg">
                                 <label for="country">Country</label>
-                                <input type="text" name="country" id="country" class="form-control">
+                                <select name="country" id="country" class="form-select">
+                                    @foreach ($countrys as $country)
+                                        <option>{{ $country->name }}</option>
+                                    @endforeach
+                                </select>
                                 <span class="text-danger error-text country_error"></span>
                             </div>
                         </div>
@@ -208,7 +240,11 @@
                         <div class="row my-2">
                             <div class="col-lg">
                                 <label for="boost_by">Boost By</label>
-                                <input type="text" name="boost_by" id="boost_by" class="form-control">
+                                <select name="boost_by" id="boost_by" class="form-select">
+                                    @foreach ($users as $user)
+                                        <option>{{ $user->username }}</option>
+                                    @endforeach
+                                </select>
                                 <span class="text-danger error-text boost_by_error"></span>
                             </div>
                             <div class="col-lg">
@@ -228,7 +264,7 @@
     </div>
     <!-- Edit fb modal end -->
 
-    <div class="card container-fluid mt-5 px-0 shadow">
+    <div class="card container-fluid mt-3 px-0 shadow">
         <div class="card-header position-relative bg-light">
             <h2 class="mb-0 text-primary">List of FB</h2>
             <button type="button" data-bs-toggle="modal" data-bs-target="#showFbModal" class="btn btn-primary position-absolute end-0 top-50 translate-middle-y me-3"><i class="bi bi-plus-circle"></i> Add New FB</button>

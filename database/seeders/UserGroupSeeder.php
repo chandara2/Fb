@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Status;
 use App\Models\User;
 use App\Models\Usergroup;
 use Illuminate\Database\Seeder;
@@ -60,6 +61,16 @@ class UserGroupSeeder extends Seeder
             ],
         ];
         User::insert($user);
+
+        // FB Status
+        DB::table('statuses')->delete();
+
+        $status = [
+            ['status' => 'Normal'],
+            ['status' => 'Checkpoint'],
+            ['status' => 'Block ads'],
+        ];
+        Status::insert($status);
 
     }
 }
