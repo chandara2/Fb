@@ -6,8 +6,14 @@
             <h1 class="text-center mb-3">Register</h1>
             <form action="{{ route('register') }}" method="POST">
                 @csrf
-                <input type="text" name="fname" value="{{ old('fname') }}" placeholder="Family Name" class="form-control mt-3" autofocus>
-                <input type="text" name="gname" value="{{ old('gname') }}" placeholder="Given Name" class="form-control mt-3">
+                <div  class="row mt-3">
+                    <div class="col-lg">
+                        <input type="text" name="fname" value="{{ old('fname') }}" placeholder="Family Name" class="form-control" autofocus>
+                    </div>
+                    <div class="col-lg">
+                        <input type="text" name="gname" value="{{ old('gname') }}" placeholder="Given Name" class="form-control">
+                    </div>
+                </div>
                 <input type="text" name="username" value="{{ old('username') }}" placeholder="Username" class="form-control mt-3">
                 <span class="text-danger">@error('username'){{$message}}@enderror</span>
                 <input type="text" name="phone" value="{{ old('phone') }}" placeholder="Phone Number" class="form-control mt-3">
@@ -21,6 +27,7 @@
                     @endforeach
                 </select>
                 <button type="submit" class="btn brand_btn3 w-100 my-3">Register</button>
+                <div class="text-center">Already a member? <a href="{{ route('showlogin') }}" class="text-decoration-none">Login</a></div>
             </form>
         </div>
     </div>

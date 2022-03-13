@@ -20,7 +20,7 @@ class AuthController extends Controller
      */
     public function index()
     {
-        //
+        return view('auth.login');
     }
 
     /**
@@ -120,7 +120,7 @@ class AuthController extends Controller
         ]));
 
         if ($request->group_member == 2) {
-            return redirect(route('agency.dashboard'));
+            return redirect(route('supervisor.dashboard'));
         } else {
             return redirect(route('user.dashboard'));
         }
@@ -151,7 +151,7 @@ class AuthController extends Controller
             if ($request->gid == 1) {
                 return redirect()->intended('admin/dashboard');
             } elseif ($request->gid == 2) {
-                return redirect()->intended('agency/dashboard');
+                return redirect()->intended('supervisor/dashboard');
             } else {
                 return redirect()->intended('user/dashboard');
             }
@@ -161,7 +161,7 @@ class AuthController extends Controller
         //         'inactivemsg' => 'This user has been inactive',
         //     ]);
         // }
-        else{
+        else {
             return back()->withErrors([
                 'errmsg' => 'Invalid username and password.',
             ]);
@@ -199,34 +199,34 @@ class AuthController extends Controller
         // }
         // return back();
 
-        $validator = \Validator::make($request->all(),[
-            'oldpassword'=>[
-                'required', function($attribute, $value, $fail){
-                    if(!\Hash::check($value, Auth::user()->password)){
+        $validator = \Validator::make($request->all(), [
+            'oldpassword' => [
+                'required', function ($attribute, $value, $fail) {
+                    if (!\Hash::check($value, Auth::user()->password)) {
                         return $fail(__('The current password is incorrect'));
                     }
                 },
                 'min:6',
                 'max:30'
             ],
-            'newpassword'=>'required|min:6|max:30',
-            'cnewpassword'=>'required|same:newpassword'
-        ],[
-            'oldpassword.required'=>'Enter your current password',
-            'newpassword.required'=>'Enter new password',
-            'newpassword.min'=>'New password must be atleast 6 characters',
-            'newpassword.max'=>'New password must not be greater than 30 characters',
-            'cnewpassword.required'=>'ReEnter your new password',
-            'cnewpassword.same'=>'New password and Confirm new password must match',
+            'newpassword' => 'required|min:6|max:30',
+            'cnewpassword' => 'required|same:newpassword'
+        ], [
+            'oldpassword.required' => 'Enter your current password',
+            'newpassword.required' => 'Enter new password',
+            'newpassword.min' => 'New password must be atleast 6 characters',
+            'newpassword.max' => 'New password must not be greater than 30 characters',
+            'cnewpassword.required' => 'ReEnter your new password',
+            'cnewpassword.same' => 'New password and Confirm new password must match',
         ]);
-        if(!$validator->passes()){
-            return response()->json(['status'=>0, 'error'=>$validator->errors()->toArray()]);
-        }else{
-            $update = User::find(Auth::user()->id)->update(['password'=>\Hash::make($request->newpassword)]);
-            if(!$update){
-                return response()->json(['status'=>0, 'msg'=>'Something went wrong, Failed to update password in db']);
-            }else{
-                return response()->json(['status'=>1, 'msg'=>'Your password has change successfully']);
+        if (!$validator->passes()) {
+            return response()->json(['status' => 0, 'error' => $validator->errors()->toArray()]);
+        } else {
+            $update = User::find(Auth::user()->id)->update(['password' => \Hash::make($request->newpassword)]);
+            if (!$update) {
+                return response()->json(['status' => 0, 'msg' => 'Something went wrong, Failed to update password in db']);
+            } else {
+                return response()->json(['status' => 1, 'msg' => 'Your password has change successfully']);
             }
         }
     }

@@ -2,7 +2,6 @@
 
 namespace Database\Seeders;
 
-use App\Models\Postgroup;
 use App\Models\User;
 use App\Models\Usergroup;
 use Illuminate\Database\Seeder;
@@ -23,7 +22,7 @@ class UserGroupSeeder extends Seeder
 
         $usergroup = [
             ['name' => 'Admin'],
-            ['name' => 'Agency'],
+            ['name' => 'Supervisor'],
             ['name' => 'User'],
         ];
         Usergroup::insert($usergroup);
@@ -43,11 +42,11 @@ class UserGroupSeeder extends Seeder
             ],
             [
                 'gid' => '2',
-                'fname'=>'Agency',
+                'fname'=>'Supervisor',
                 'gname'=>'Dara',
-                'username'=>'agencydara',
+                'username'=>'supervisordara',
                 'phone'=>'0885275843',
-                'password'=>Hash::make('agencydaraagencydara'),
+                'password'=>Hash::make('supervisordarasupervisordara'),
                 'visible'=> true,
             ],
             [
@@ -62,14 +61,5 @@ class UserGroupSeeder extends Seeder
         ];
         User::insert($user);
 
-        // Post type
-        DB::table('postgroups')->delete();
-
-        $postgroup = [
-            ['type' => 'How to'],
-            ['type' => 'Sample'],
-            ['type' => 'Tip'],
-        ];
-        Postgroup::insert($postgroup);
     }
 }

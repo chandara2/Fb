@@ -1,15 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Supervisor;
 
 use App\Http\Controllers\Controller;
-use App\Models\Job;
-use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
 
-class AdmindbController extends Controller
+class SupervisorDashboard extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -86,11 +82,9 @@ class AdmindbController extends Controller
     {
         //
     }
+
     public function dashboard()
     {
-        $users = User::count();
-        return view('admin.dashboard', [
-            'users' => $users,
-        ]);
+        return view('supervisor.dashboard');
     }
 }

@@ -29,17 +29,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        Paginator::useBootstrap();
-
-        View::composer('*', function ($view) {
-            $footercontact = FooterContact::all();
-            $footersm = FooterSocialMedia::all();
-            $footerqrcode = FooterQrcode::all();
-            return $view->with([
-                'footercontact'=>$footercontact,
-                'footersm'=>$footersm,
-                'footerqrcode'=>$footerqrcode,
-            ]);
-        });
+        //
     }
 }
