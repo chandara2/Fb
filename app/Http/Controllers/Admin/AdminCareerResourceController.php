@@ -117,12 +117,63 @@ class AdminCareerResourceController extends Controller
         return response()->json($career);
     }
 
+    public function careerupdate(Request $request)
+    {
+        $career = CareerResource::find($request->career_id);
+        $validator = Validator::make($request->all(), [
+            'title_en' => 'required',
+            'post_en' => 'required',
+            'type' => 'required',
+            'post_img' => 'required',
+        ], [
+            'title_en.required' => 'Please input your title in English',
+            'post_en.required' => 'Please input your post in English',
+            'type.required' => 'Please choose post type',
+            'post_img.required' => 'Please inpute post image',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json(['status' => 0, 'error' => $validator->errors()->toArray()]);
+        } else {
+            $career = CareerResource::find($request->post_img);
+            if ($request->hasFile('post_img')) {
+                $path = 'upload/blogpost/' . $career->post_img;
+                if (File::exists($path)) {
+                    File::delete($path);
+                }
+                $file = $request->file('post_img');
+                $extension = $file->getClientOriginalExtension();
+                $filename = time() . '.' . $extension;
+                $file->move('upload/blogpost/', $filename);
+                $career->post_img = $filename;
+            }
+
+            $careerData = [
+                'type' => $request->type,
+                'title_ch' => $request->title_ch,
+                'title_en' => $request->title_en,
+                'title_kh' => $request->title_kh,
+                'title_th' => $request->title_th,
+                'post_ch' => $request->post_ch,
+                'post_en' => $request->post_en,
+                'post_kh' => $request->post_kh,
+                'post_th' => $request->post_th,
+            ];
+
+            $career->update($careerData);
+            return response()->json([
+                'status' => 200,
+            ]);
+        }
+    }
+
     /**
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
     // public function edit($id)
     // {
     //     $career_id = CareerResource::find($id);

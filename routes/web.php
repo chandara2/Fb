@@ -87,6 +87,7 @@ Route::prefix('admin')->name('admin.')->middleware('isadmin')->group(function ()
     Route::resource('/career', AdminCareerResourceController::class)->only(['index', 'edit', 'update', 'store']);
     Route::get('/careerfetch', [AdminCareerResourceController::class, 'careerfetch'])->name('careerfetch');
     Route::get('/careeredit', [AdminCareerResourceController::class, 'careeredit'])->name('careeredit');
+    Route::post('/careerupdate', [AdminCareerResourceController::class, 'careerupdate'])->name('careerupdate');
     Route::delete('/careerdelete', [AdminCareerResourceController::class, 'careerdelete'])->name('careerdelete');
 
     Route::resource('/cv', AdminCvController::class);
