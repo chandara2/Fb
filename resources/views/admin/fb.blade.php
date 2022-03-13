@@ -50,7 +50,7 @@
                         </div>
                         <div class="my-2">
                             <label for="email_pw">Email Password</label>
-                            <input type="password" name="email_pw" class="form-control">
+                            <input type="text" name="email_pw" class="form-control">
                             <span class="text-danger error-text email_pw_error"></span>
                         </div>
                         <div class="my-2">
@@ -60,7 +60,7 @@
                         </div>
                         <div class="my-2">
                             <label for="fb_pw">Facebook Password</label>
-                            <input type="password" name="fb_pw" class="form-control">
+                            <input type="text" name="fb_pw" class="form-control">
                             <span class="text-danger error-text fb_pw_error"></span>
                         </div>
                         <div class="my-2">
@@ -163,7 +163,7 @@
                         </div>
                         <div class="my-2">
                             <label for="email_pw">Email Password</label>
-                            <input type="password" name="email_pw" id="email_pw" class="form-control">
+                            <input type="text" name="email_pw" id="email_pw" class="form-control">
                             <span class="text-danger error-text email_pw_error"></span>
                         </div>
                         <div class="my-2">
@@ -173,7 +173,7 @@
                         </div>
                         <div class="my-2">
                             <label for="fb_pw">Facebook Password</label>
-                            <input type="password" name="fb_pw" id="fb_pw" class="form-control">
+                            <input type="text" name="fb_pw" id="fb_pw" class="form-control">
                             <span class="text-danger error-text fb_pw_error"></span>
                         </div>
                         <div class="my-2">
@@ -307,12 +307,6 @@
                 });
             });
 
-            
-
-
-
-
-
             // Update User ajax request
             $("#edit_fb_form").submit(function(e) {
                     e.preventDefault();
@@ -346,12 +340,6 @@
                     }
                 });
             });
-
-
-
-
-
-
 
             // Delete Fb ajax request
             $(document).on('click', '.deleteIcon', function(e) {

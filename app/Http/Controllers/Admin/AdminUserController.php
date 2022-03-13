@@ -38,6 +38,7 @@ class AdminUserController extends Controller
             <thead>
                 <tr>
                     <th>No</th>
+                    <th>Full Name</th>
                     <th>Username</th>
                     <th>Phone</th>
                     <th>Member</th>
@@ -47,15 +48,16 @@ class AdminUserController extends Controller
             </thead>
             <tbody>';
             foreach ($users as $i => $user) {
-                
+
                 if ($user->visible == true) {
                     $visible = "Visible";
                 } else {
                     $visible = '<span class="text-danger">Disable</span>';
                 }
-                
+
                 $output .= '<tr>
                     <td>' . $i + 1 . '</td>
+                    <td>' . $user->fname . ' ' . $user->gname . '</td>
                     <td>' . $user->username . '</td>
                     <td>' . $user->phone . '</td>
                     <td>' . $user->usergroup . '</td>

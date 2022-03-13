@@ -154,9 +154,9 @@ class AdminFbController extends Controller
         return response()->json($fb);
     }
 
-    // handle update an employee ajax request
     public function fbupdate(Request $request)
     {
+        $fb = Facebook::find($request->facebook_id);
 
         $validator = Validator::make($request->all(), [
             'date' => 'required',
@@ -197,26 +197,25 @@ class AdminFbController extends Controller
         if ($validator->fails()) {
             return response()->json(['status' => 0, 'error' => $validator->errors()->toArray()]);
         } else {
-            $fb = Facebook::find($request->facebook_id);
-            $fbData = [
-                'date' => $request->date,
-                'create_by' => $request->create_by,
-                'status' => $request->status,
-                'fname' => $request->fname,
-                'gname' => $request->gname,
-                'email' => $request->email,
-                'email_pw' => $request->email_pw,
-                'fb_id' => $request->fb_id,
-                'fb_pw' => $request->fb_pw,
-                'twofa' => $request->twofa,
-                'friends' => $request->friends,
-                'country' => $request->country,
-                'visa' => $request->visa,
-                'visa_date' => $request->visa_date,
-                'boost_by' => $request->boost_by,
-                'boost_date' => $request->boost_date,
-            ];
-            $fb->update($fbData);
+
+            $fb->date = $request->date;
+            $fb->create_by = $request->create_by;
+            $fb->status = $request->status;
+            $fb->fname = $request->fname;
+            $fb->gname = $request->gname;
+            $fb->email = $request->email;
+            $fb->email_pw = $request->email_pw;
+            $fb->fb_id = $request->fb_id;
+            $fb->fb_pw = $request->fb_pw;
+            $fb->twofa = $request->twofa;
+            $fb->friends = $request->friends;
+            $fb->country = $request->country;
+            $fb->visa = $request->visa;
+            $fb->visa_date = $request->visa_date;
+            $fb->boost_by = $request->boost_by;
+            $fb->boost_date = $request->boost_date;
+
+            $fb->update();
             return response()->json([
                 'status' => 200,
             ]);
