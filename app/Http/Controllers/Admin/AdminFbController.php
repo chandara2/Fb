@@ -44,10 +44,7 @@ class AdminFbController extends Controller
                     <th>Date</th>
                     <th>Creator</th>
                     <th>Status</th>
-                    <th>Name</th>
                     <th>Email</th>
-                    <th>FB ID</th>
-                    <th>2FA</th>
                     <th>Friends</th>
                     <th>Country</th>
                     <th>Visa</th>
@@ -63,14 +60,11 @@ class AdminFbController extends Controller
                     <td>' . $fb->date . '</td>
                     <td>' . $fb->create_by . '</td>
                     <td>' . $fb->status . '</td>
-                    <td>' . $fb->fname . ' ' . $fb->gname . '</td>
                     <td>' . $fb->email . '</td>
-                    <td>' . $fb->fb_id . '</td>
-                    <td>' . $fb->twofa . '</td>
                     <td>' . $fb->friends . '</td>
                     <td>' . $fb->country . '</td>
                     <td>' . $fb->visa . '</td>
-                    <td>' . $fb->boost_date . ' (' . $fb->boost_by . ')</td>
+                    <td>' . $fb->boost_date . '|' . $fb->boost_by . '</td>
                     <td>
                         <a href="#" id="' . $fb->id . '" class="text-success mx-1 editIcon" data-bs-toggle="modal" data-bs-target="#editFbModal"><i class="bx bxs-edit h4"></i></a>
 

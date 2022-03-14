@@ -6,7 +6,7 @@
     <div class="card container-fluid mt-3 px-0 shadow">
         <div class="card-header position-relative bg-light">
             <h2 class="mb-0 text-primary">List of users</h2>
-            <button type="button" data-bs-toggle="modal" data-bs-target="#showUserModal" class="btn btn-primary position-absolute end-0 top-50 translate-middle-y me-3"><i class="bi bi-plus-circle"></i> Add New User</button>
+            <button type="button" data-bs-toggle="modal" data-bs-target="#showUserModal" class="btn btn-primary position-absolute end-0 top-50 translate-middle-y me-3"><i class='bx bx-message-square-add' ></i> Add New User</button>
         </div>
         <div class="card-body" id="show_all_users"></div>
     </div>
