@@ -3,6 +3,14 @@
 
 @section('contentfb')
 
+    <div class="card container-fluid mt-3 px-0 shadow">
+        <div class="card-header position-relative bg-light">
+            <h2 class="mb-0 text-primary">List of FB</h2>
+            <button type="button" data-bs-toggle="modal" data-bs-target="#showFbModal" class="btn btn-primary position-absolute end-0 top-50 translate-middle-y me-3"><i class="bi bi-plus-circle"></i> Add New FB</button>
+        </div>
+        <div class="card-body" id="show_all_fbs"></div>
+    </div>
+
     <!-- Add fb modal start TEST123 -->
     <div class="modal fade" id="showFbModal" tabindex="-1" aria-labelledby="exampleModalLabel" data-bs-backdrop="static" aria-hidden="true">
         <div class="modal-dialog modal-lg modal-dialog-centered">
@@ -263,14 +271,6 @@
         </div>
     </div>
     <!-- Edit fb modal end -->
-
-    <div class="card container-fluid mt-3 px-0 shadow">
-        <div class="card-header position-relative bg-light">
-            <h2 class="mb-0 text-primary">List of FB</h2>
-            <button type="button" data-bs-toggle="modal" data-bs-target="#showFbModal" class="btn btn-primary position-absolute end-0 top-50 translate-middle-y me-3"><i class="bi bi-plus-circle"></i> Add New FB</button>
-        </div>
-        <div class="card-body" id="show_all_fbs"></div>
-    </div>
 
 @endsection
 

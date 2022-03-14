@@ -13,12 +13,10 @@
     <link rel="stylesheet" href="{{ asset('asset/datatable/dataTables.bootstrap5.min.css') }}">
     <!-- Global Custom CSS -->
     <link rel="stylesheet" href="{{ asset('css/global_custom.css') }}">
-    <!-- Boxicons -->
-    <link rel="stylesheet" href="{{ asset('asset/icons/boxicons.min.css') }}">
     <!-- Individual Custom CSS -->
     @yield('style')
 </head>
-<body cz-shortcut-listen="true" id="body-pd">
+<body id="body-pd">
 
     @include('layout.headerfb')
 
@@ -33,18 +31,17 @@
     
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="{{ asset('asset/jquery/jquery-3.6.0.min.js') }}"></script>
-    <script src="{{ asset('asset/popper/popper.min.js') }}"></script>
     <script src="{{ asset('asset/bootstrap/js/bootstrap.min.js') }}"></script>
     <!-- Datatable -->
     <script src="{{asset('asset/datatable/jquery.dataTables.min.js')}}"></script>
     <script src="{{ asset('asset/datatable/dataTables.bootstrap5.min.js') }}"></script>
-    
-    <!-- Global Custom JS -->
-    <script src="{{ asset('js/global_custom.js') }}"></script>
     <!-- SweetAlert -->
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <!-- Individual Custom CSS -->
     @yield('script')
+    
+    <!-- Global Custom JS -->
+    <script src="{{ asset('js/global_custom.js') }}"></script>
     
 </body>
 </html>

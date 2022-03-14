@@ -72,9 +72,9 @@ class AdminFbController extends Controller
                     <td>' . $fb->visa . '</td>
                     <td>' . $fb->boost_date . ' (' . $fb->boost_by . ')</td>
                     <td>
-                        <a href="#" id="' . $fb->id . '" class="text-success mx-1 editIcon" data-bs-toggle="modal" data-bs-target="#editFbModal"><i class="bi-pencil-square h4"></i></a>
+                        <a href="#" id="' . $fb->id . '" class="text-success mx-1 editIcon" data-bs-toggle="modal" data-bs-target="#editFbModal"><i class="bx bxs-edit h4"></i></a>
 
-                        <a href="#" id="' . $fb->id . '" class="text-danger mx-1 deleteIcon"><i class="bi-trash h4"></i></a>
+                        <a href="#" id="' . $fb->id . '" class="text-danger mx-1 deleteIcon"><i class="bx bx-trash h4"></i></a>
                     </td>
                 </tr>';
             }

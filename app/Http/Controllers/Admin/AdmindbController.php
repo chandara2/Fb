@@ -3,11 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Job;
+use App\Models\Facebook;
 use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
 
 class AdmindbController extends Controller
 {
@@ -89,8 +87,10 @@ class AdmindbController extends Controller
     public function dashboard()
     {
         $users = User::count();
+        $fbs = Facebook::count();
         return view('admin.dashboard', [
             'users' => $users,
+            'fbs' => $fbs,
         ]);
     }
 }
