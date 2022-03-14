@@ -1,7 +1,7 @@
-@extends('layout.layout')
+@extends('layout.layoutfb')
 @section('title', 'ADMIN USER')
 
-@section('content')
+@section('contentfb')
 
     <!-- Add user modal start -->
     <div class="modal fade" id="showUserModal" tabindex="-1" aria-labelledby="exampleModalLabel" data-bs-backdrop="static" aria-hidden="true">

@@ -1,10 +1,6 @@
-@extends('layout.layout')
+@extends('layout.layoutfb')
 @section('title', 'ADMIN DASHBOARD')
 
-@section('content')
-
-    <div class="h2">
-        Admin Dashboard
-    </div>
-
+@section('contentfb')
+    <h4>Admin Dashboard</h4>
 @endsection

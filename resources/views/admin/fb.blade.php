@@ -1,7 +1,7 @@
-@extends('layout.layout')
+@extends('layout.layoutfb')
 @section('title', 'ADMIN FB')
 
-@section('content')
+@section('contentfb')
 
     <!-- Add fb modal start TEST123 -->
     <div class="modal fade" id="showFbModal" tabindex="-1" aria-labelledby="exampleModalLabel" data-bs-backdrop="static" aria-hidden="true">
