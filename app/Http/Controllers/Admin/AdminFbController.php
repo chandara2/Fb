@@ -55,7 +55,7 @@ class AdminFbController extends Controller
             </thead>
             <tbody>';
             foreach ($fbs as $i => $fb) {
-
+                
                 $output .= '<tr>
                     <td>' . $i + 1 . '</td>
                     <td>' . $fb->date . '</td>
@@ -114,10 +114,10 @@ class AdminFbController extends Controller
             'fb_id' => 'required',
             'fb_pw' => 'required',
             'twofa' => 'required',
-            // 'friends' => 'required',
+            'friends' => 'nullable|gte:0|lte:5000',
             'country' => 'required',
-            'visa' => 'required',
-            'visa_date' => 'required',
+            // 'visa' => 'required',
+            // 'visa_date' => 'required',
             // 'boost_by' => 'required',
             // 'boost_date' => 'required',
         ], [
@@ -131,10 +131,11 @@ class AdminFbController extends Controller
             'fb_id.required' => 'Please fill in Facebook id',
             'fb_pw.required' => 'Please fill in Facebook password',
             'twofa.required' => 'Please fill in 2FA',
-            // 'friends.required' => 'Please fill in friends',
+            'friends.gte' => 'Friends should not be negative',
+            'friends.lte' => 'Friends must not exceed 5000',
             'country.required' => 'Please fill in country',
-            'visa.required' => 'Please fill in Visa',
-            'visa_date.required' => 'Please fill in Visa date',
+            // 'visa.required' => 'Please fill in Visa',
+            // 'visa_date.required' => 'Please fill in Visa date',
             // 'boost_by.required' => 'Please fill in boost by',
             // 'boost_date.required' => 'Please fill in boost date',
         ]);
@@ -188,10 +189,10 @@ class AdminFbController extends Controller
             'fb_id' => 'required',
             'fb_pw' => 'required',
             'twofa' => 'required',
-            // 'friends' => 'required',
+            'friends' => 'nullable|gte:0|lte:5000',
             'country' => 'required',
-            'visa' => 'required',
-            'visa_date' => 'required',
+            // 'visa' => 'required',
+            // 'visa_date' => 'required',
             // 'boost_by' => 'required',
             // 'boost_date' => 'required',
         ], [
@@ -205,10 +206,11 @@ class AdminFbController extends Controller
             'fb_id.required' => 'Please fill in Facebook id',
             'fb_pw.required' => 'Please fill in Facebook password',
             'twofa.required' => 'Please fill in 2FA',
-            // 'friends.required' => 'Please fill in friends',
+            'friends.gte' => 'Friends should not be negative',
+            'friends.lte' => 'Friends must not exceed 5000',
             'country.required' => 'Please fill in country',
-            'visa.required' => 'Please fill in Visa',
-            'visa_date.required' => 'Please fill in Visa date',
+            // 'visa.required' => 'Please fill in Visa',
+            // 'visa_date.required' => 'Please fill in Visa date',
             // 'boost_by.required' => 'Please fill in boost by',
             // 'boost_date.required' => 'Please fill in boost date',
         ]);

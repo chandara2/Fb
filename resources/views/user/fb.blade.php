@@ -87,7 +87,7 @@
                         <div class="row my-2">
                             <div class="col-lg">
                                 <label for="friends">Friends</label>
-                                <input type="text" name="friends" class="form-control">
+                                <input type="number" name="friends" class="form-control">
                                 <span class="text-danger error-text friends_error"></span>
                             </div>
                             <div class="col-lg">
@@ -214,7 +214,7 @@
                         <div class="row my-2">
                             <div class="col-lg">
                                 <label for="friends">Friends</label>
-                                <input type="text" name="friends" id="friends" class="form-control">
+                                <input type="number" name="friends" id="friends" class="form-control">
                                 <span class="text-danger error-text friends_error"></span>
                             </div>
                             <div class="col-lg">

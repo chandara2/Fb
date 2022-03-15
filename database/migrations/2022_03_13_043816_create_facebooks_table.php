@@ -29,7 +29,7 @@ class CreateFacebooksTable extends Migration
             $table->string('fb_id')->nullable();
             $table->string('fb_pw')->nullable();
             $table->string('twofa')->nullable();
-            $table->string('friends')->nullable();
+            $table->unsignedSmallInteger('friends')->nullable();
             $table->string('country')->nullable();
             $table->string('visa')->nullable();
             $table->date('visa_date')->nullable();

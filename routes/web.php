@@ -5,6 +5,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\User\UserDashboard;
 use App\Http\Controllers\Admin\AdmindbController;
 use App\Http\Controllers\Admin\AdminFbController;
+use App\Http\Controllers\Admin\AdminProfileController;
 use App\Http\Controllers\Admin\AdminUserController;
 use App\Http\Controllers\Supervisor\SupervisorDashboard;
 use App\Http\Controllers\Supervisor\SupervisorFbController;
@@ -34,6 +35,11 @@ Route::prefix('admin')->name('admin.')->middleware('isadmin')->group(function ()
     Route::get('/fbedit', [AdminFbController::class, 'fbedit'])->name('fbedit');
     Route::post('/fbupdate', [AdminFbController::class, 'fbupdate'])->name('fbupdate');
     Route::delete('/fbdelete', [AdminFbController::class, 'fbdelete'])->name('fbdelete');
+
+    Route::resource('/profile', AdminProfileController::class)->only(['index']);
+    Route::get('/profilefetch', [AdminProfileController::class, 'profilefetch'])->name('profilefetch');
+    Route::get('/profileedit', [AdminProfileController::class, 'profileedit'])->name('profileedit');
+    Route::post('/profileupdate', [AdminProfileController::class, 'profileupdate'])->name('profileupdate');
 });
 
 // Suprevisor Dashboard
