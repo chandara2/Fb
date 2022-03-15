@@ -1,7 +1,7 @@
-@extends('layout.layout')
-@section('title', 'ADMIN FB')
+@extends('layout.layout_user')
+@section('title', 'USER FB')
 
-@section('content')
+@section('content_user')
 
     <div class="card container-fluid mt-3 px-0 shadow">
         <div class="card-header position-relative bg-light">
@@ -19,7 +19,7 @@
                     <h5 class="modal-title text-primary" id="exampleModalLabel">Create FB</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form method="POST" action="{{ route('admin.fb.store') }}" id="addFbFormId">
+                <form method="POST" action="{{ route('user.fb.store') }}" id="addFbFormId">
                     @csrf
                     <div class="modal-body p-4 bg-light">
                         <div class="row">
@@ -32,9 +32,7 @@
                                 <label for="create_by">Create By</label>
                                 <select name="create_by" class="form-select">
                                     <option selected disabled>Please select creator</option>
-                                    @foreach ($users as $user)
-                                        <option>{{ $user->username }}</option>
-                                    @endforeach
+                                    <option>{{ auth()->user()->username }}</option>
                                 </select>
                                 <span class="text-danger error-text create_by_error"></span>
                             </div>
@@ -120,9 +118,7 @@
                                 <label for="boost_by">Boost By</label>
                                 <select name="boost_by" class="form-select">
                                     <option selected disabled>Please select booster</option>
-                                    @foreach ($users as $user)
-                                        <option>{{ $user->username }}</option>
-                                    @endforeach
+                                    <option>{{ auth()->user()->username }}</option>
                                 </select>
                                 <span class="text-danger error-text boost_by_error"></span>
                             </div>
@@ -164,9 +160,7 @@
                             <div class="col-lg">
                                 <label for="create_by">Create By</label>
                                 <select name="create_by" id="create_by" class="form-select">
-                                    @foreach ($users as $user)
-                                        <option>{{ $user->username }}</option>
-                                    @endforeach
+                                    <option>{{ auth()->user()->username }}</option>
                                 </select>
                                 <span class="text-danger error-text create_by_error"></span>
                             </div>
@@ -249,9 +243,7 @@
                             <div class="col-lg">
                                 <label for="boost_by">Boost By</label>
                                 <select name="boost_by" id="boost_by" class="form-select">
-                                    @foreach ($users as $user)
-                                        <option>{{ $user->username }}</option>
-                                    @endforeach
+                                    <option>{{ auth()->user()->username }}</option>
                                 </select>
                                 <span class="text-danger error-text boost_by_error"></span>
                             </div>
@@ -315,7 +307,7 @@
                 e.preventDefault();
                 let id = $(this).attr('id');
                 $.ajax({
-                    url: "{{ route('admin.fbedit') }}",
+                    url: "{{ route('user.fbedit') }}",
                     method: 'get',
                     data: {
                         id: id,
@@ -349,7 +341,7 @@
                     const fd = new FormData(this);
                     $("#edit_fb_btn").text('Updating...');
                     $.ajax({
-                    url: "{{ route('admin.fbupdate') }}",
+                    url: "{{ route('user.fbupdate') }}",
                     method: 'post',
                     data: fd,
                     cache: false,
@@ -394,7 +386,7 @@
                 }).then((result) => {
                     if (result.isConfirmed) {
                         $.ajax({
-                            url: "{{ route('admin.fbdelete') }}",
+                            url: "{{ route('user.fbdelete') }}",
                             method: 'delete',
                             data: {
                                 id: id,
@@ -419,7 +411,7 @@
 
             function fbfetch() {
                 $.ajax({
-                    url: "{{ route('admin.fbfetch') }}",
+                    url: "{{ route('user.fbfetch') }}",
                     method: 'get',
                     success: function(response) {
                     $("#show_all_fbs").html(response);

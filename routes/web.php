@@ -7,14 +7,14 @@ use App\Http\Controllers\Admin\AdmindbController;
 use App\Http\Controllers\Admin\AdminFbController;
 use App\Http\Controllers\Admin\AdminUserController;
 use App\Http\Controllers\Supervisor\SupervisorDashboard;
-
+use App\Http\Controllers\Supervisor\SupervisorFbController;
+use App\Http\Controllers\User\UserFbController;
 
 // Guest Register & Login
 Route::get('showregister', [AuthController::class, 'showregister'])->name('showregister')->middleware('guest');
 Route::post('register', [AuthController::class, 'register'])->name('register');
 Route::get('/', [AuthController::class, 'showlogin'])->name('showlogin')->middleware('guest');
 Route::post('login', [AuthController::class, 'login'])->name('login');
-// Route::put('changepassword', [AuthController::class, 'changepassword'])->name('changepassword')->middleware('auth');
 
 // Auth Logout
 Route::get('logout', [AuthController::class, 'logout'])->name('logout')->middleware('auth');
@@ -39,12 +39,21 @@ Route::prefix('admin')->name('admin.')->middleware('isadmin')->group(function ()
 // Suprevisor Dashboard
 Route::prefix('supervisor')->name('supervisor.')->middleware('issupervisor')->group(function () {
     Route::get('/dashboard', [SupervisorDashboard::class, 'dashboard'])->name('dashboard');
+
+    Route::resource('/fb', SupervisorFbController::class)->only(['index', 'store']);
+    Route::get('/fbfetch', [SupervisorFbController::class, 'fbfetch'])->name('fbfetch');
+    Route::get('/fbedit', [SupervisorFbController::class, 'fbedit'])->name('fbedit');
+    Route::post('/fbupdate', [SupervisorFbController::class, 'fbupdate'])->name('fbupdate');
+    Route::delete('/fbdelete', [SupervisorFbController::class, 'fbdelete'])->name('fbdelete');
 });
 
 // User Dashboard
 Route::prefix('user')->name('user.')->group(function () {
     Route::get('/dashboard', [UserDashboard::class, 'dashboard'])->name('dashboard')->middleware('auth');
-});
 
-// Switch multi language
-Route::get('lang/{lang}', ['as' => 'lang.switch', 'uses' => 'App\Http\Controllers\LanguageController@switchLang']);
+    Route::resource('/fb', UserFbController::class)->only(['index', 'store']);
+    Route::get('/fbfetch', [UserFbController::class, 'fbfetch'])->name('fbfetch');
+    Route::get('/fbedit', [UserFbController::class, 'fbedit'])->name('fbedit');
+    Route::post('/fbupdate', [UserFbController::class, 'fbupdate'])->name('fbupdate');
+    Route::delete('/fbdelete', [UserFbController::class, 'fbdelete'])->name('fbdelete');
+});

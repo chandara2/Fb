@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers\Supervisor;
 
-use App\Http\Controllers\Controller;
+use App\Models\Facebook;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class SupervisorDashboard extends Controller
 {
@@ -85,6 +88,15 @@ class SupervisorDashboard extends Controller
 
     public function dashboard()
     {
-        return view('supervisor.dashboard');
+        $fbs = DB::table('users')
+            ->join('facebooks', 'facebooks.uid', 'users.id')
+            ->join('usergroups', 'usergroups.id', 'users.gid')
+            ->select('facebooks.*')
+            ->where('users.gid', '<>', '1')
+            ->count();
+
+        return view('supervisor.dashboard', [
+            'fbs' => $fbs,
+        ]);
     }
 }

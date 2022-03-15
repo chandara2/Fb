@@ -26,7 +26,7 @@
                         <option value="{{ $usergroup->id }}">{{ $usergroup->name }}</option>
                     @endforeach
                 </select>
-                <button type="submit" class="btn brand_btn3 w-100 my-3">Register</button>
+                <button type="submit" class="btn btn-primary w-100 my-3">Register</button>
                 <div class="text-center">Already a member? <a href="{{ route('showlogin') }}" class="text-decoration-none">Login</a></div>
             </form>
         </div>

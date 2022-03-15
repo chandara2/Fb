@@ -155,84 +155,16 @@ class AuthController extends Controller
             } else {
                 return redirect()->intended('user/dashboard');
             }
-        }
-        // elseif(Auth::attempt(['username' => $request->username, 'password' => $request->password, 'gid' => $request->gid, 'visible' => 0])){
-        //     return back()->withErrors([
-        //         'inactivemsg' => 'This user has been inactive',
-        //     ]);
-        // }
-        else {
+        } else {
             return back()->withErrors([
                 'errmsg' => 'Invalid username and password.',
             ]);
         }
     }
+
     public function logout()
     {
         auth()->logout();
         return redirect('/')->with('success', 'logout');
-    }
-    public function changepassword(Request $request)
-    {
-        // $request->validate([
-        //     'username' => 'required',
-        //     'opassword' => 'required',
-        //     'cpassword' => 'required',
-        //     'vpassword' => 'required|same:cpassword'
-        // ], [
-        //     'username' => 'Please fill in username',
-        //     'opassword.required' => 'Please fill in Password',
-        //     'cpassword.required' => 'New password and Verify password is not match.',
-        // ]);
-        // $user = User::where('username', '=', $request->username)->first();
-        // if ($user) {
-        //     if (!Hash::check($request->opassword, $user->password)) {
-        //         $request->validate([
-        //             'opassword' => 'confirmed'
-        //         ], [
-        //             'opassword.confirmed' => 'Current Password is not correct.'
-        //         ]);
-        //     } else {
-        //         $user->password = $request->cpassword;
-        //         $user->save();
-        //     }
-        // }
-        // return back();
-
-        $validator = \Validator::make($request->all(), [
-            'oldpassword' => [
-                'required', function ($attribute, $value, $fail) {
-                    if (!\Hash::check($value, Auth::user()->password)) {
-                        return $fail(__('The current password is incorrect'));
-                    }
-                },
-                'min:6',
-                'max:30'
-            ],
-            'newpassword' => 'required|min:6|max:30',
-            'cnewpassword' => 'required|same:newpassword'
-        ], [
-            'oldpassword.required' => 'Enter your current password',
-            'newpassword.required' => 'Enter new password',
-            'newpassword.min' => 'New password must be atleast 6 characters',
-            'newpassword.max' => 'New password must not be greater than 30 characters',
-            'cnewpassword.required' => 'ReEnter your new password',
-            'cnewpassword.same' => 'New password and Confirm new password must match',
-        ]);
-        if (!$validator->passes()) {
-            return response()->json(['status' => 0, 'error' => $validator->errors()->toArray()]);
-        } else {
-            $update = User::find(Auth::user()->id)->update(['password' => \Hash::make($request->newpassword)]);
-            if (!$update) {
-                return response()->json(['status' => 0, 'msg' => 'Something went wrong, Failed to update password in db']);
-            } else {
-                return response()->json(['status' => 1, 'msg' => 'Your password has change successfully']);
-            }
-        }
-    }
-
-    public function test1234()
-    {
-        $this->middleware('auth');
     }
 }

@@ -1,7 +1,7 @@
-@extends('layout.layout')
-@section('title', 'ADMIN FB')
+@extends('layout.layout_supervisor')
+@section('title', 'SUPERVISOR FB')
 
-@section('content')
+@section('content_supervisor')
 
     <div class="card container-fluid mt-3 px-0 shadow">
         <div class="card-header position-relative bg-light">
@@ -19,7 +19,7 @@
                     <h5 class="modal-title text-primary" id="exampleModalLabel">Create FB</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form method="POST" action="{{ route('admin.fb.store') }}" id="addFbFormId">
+                <form method="POST" action="{{ route('supervisor.fb.store') }}" id="addFbFormId">
                     @csrf
                     <div class="modal-body p-4 bg-light">
                         <div class="row">
@@ -315,7 +315,7 @@
                 e.preventDefault();
                 let id = $(this).attr('id');
                 $.ajax({
-                    url: "{{ route('admin.fbedit') }}",
+                    url: "{{ route('supervisor.fbedit') }}",
                     method: 'get',
                     data: {
                         id: id,
@@ -349,7 +349,7 @@
                     const fd = new FormData(this);
                     $("#edit_fb_btn").text('Updating...');
                     $.ajax({
-                    url: "{{ route('admin.fbupdate') }}",
+                    url: "{{ route('supervisor.fbupdate') }}",
                     method: 'post',
                     data: fd,
                     cache: false,
@@ -394,7 +394,7 @@
                 }).then((result) => {
                     if (result.isConfirmed) {
                         $.ajax({
-                            url: "{{ route('admin.fbdelete') }}",
+                            url: "{{ route('supervisor.fbdelete') }}",
                             method: 'delete',
                             data: {
                                 id: id,
@@ -419,7 +419,7 @@
 
             function fbfetch() {
                 $.ajax({
-                    url: "{{ route('admin.fbfetch') }}",
+                    url: "{{ route('supervisor.fbfetch') }}",
                     method: 'get',
                     success: function(response) {
                     $("#show_all_fbs").html(response);

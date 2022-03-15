@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\User;
 
-use App\Http\Controllers\Controller;
+use App\Models\Facebook;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class UserDashboard extends Controller
 {
@@ -85,6 +87,9 @@ class UserDashboard extends Controller
 
     public function dashboard()
     {
-        return view('user.dashboard');
+        $fbs = Facebook::where('create_by', Auth::user()->username)->count();
+        return view('user.dashboard', [
+            'fbs' => $fbs,
+        ]);
     }
 }

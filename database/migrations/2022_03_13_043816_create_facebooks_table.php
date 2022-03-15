@@ -23,7 +23,7 @@ class CreateFacebooksTable extends Migration
             $table->string('create_by')->nullable();
             $table->string('status')->nullable();
             $table->string('fname')->nullable();
-            $table->string('gname')->nullable();
+            $table->string('sname')->nullable();
             $table->string('email')->nullable();
             $table->string('email_pw')->nullable();
             $table->string('fb_id')->nullable();

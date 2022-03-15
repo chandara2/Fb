@@ -18,13 +18,13 @@
 </head>
 <body id="body-pd">
 
-    @include('layout.headerfb')
+    @include('layout.header')
 
-    @include('layout.sidebarfb')
+    @include('layout.sidebar_user')
 
     <!--Container Main start-->
     <div class="height-100 bg-light">
-        @yield('contentfb')
+        @yield('content_user')
     </div>
     <!--Container Main end-->
     

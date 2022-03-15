@@ -1,7 +1,7 @@
-@extends('layout.layoutfb')
+@extends('layout.layout')
 @section('title', 'ADMIN USER')
 
-@section('contentfb')
+@section('content')
 
     <div class="card container-fluid mt-3 px-0 shadow">
         <div class="card-header position-relative bg-light">

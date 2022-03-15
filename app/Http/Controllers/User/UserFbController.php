@@ -1,8 +1,7 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\User;
 
-use App\Models\User;
 use App\Models\Status;
 use App\Models\Facebook;
 use Illuminate\Http\Request;
@@ -11,7 +10,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use WisdomDiala\Countrypkg\Models\Country;
 
-class AdminFbController extends Controller
+class UserFbController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -20,13 +19,9 @@ class AdminFbController extends Controller
      */
     public function index()
     {
-        $fbs = Facebook::all();
-        $users = User::get('username');
         $statuses = Status::get('status');
         $countrys = Country::get('name');
-        return view('admin.fb', [
-            'fbs' => $fbs,
-            'users' => $users,
+        return view('user.fb', [
             'statuses' => $statuses,
             'countrys' => $countrys,
         ]);
@@ -34,7 +29,7 @@ class AdminFbController extends Controller
 
     public function fbfetch()
     {
-        $fbs = Facebook::all();
+        $fbs = Facebook::all()->where('create_by', Auth::user()->username);
         $output = '';
         if ($fbs->count() > 0) {
 

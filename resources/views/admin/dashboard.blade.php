@@ -1,7 +1,7 @@
-@extends('layout.layoutfb')
+@extends('layout.layout')
 @section('title', 'ADMIN DASHBOARD')
 
-@section('contentfb')
+@section('content')
     <h4 class="text-center">Admin Dashboard</h4>
     <div class="row mt-3 justify-content-center text-center">
         <div class="col-lg-3 my-2">
