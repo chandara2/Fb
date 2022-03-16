@@ -22,8 +22,6 @@
     },
     "dependencies": {
         "bootstrap-icons": "^1.7.2",
-        "boxicons": "^2.1.2",
-        "flag-icon-css": "^4.1.7",
-        "flag-icons": "^6.0.3"
+        "boxicons": "^2.1.2"
     }
 }
