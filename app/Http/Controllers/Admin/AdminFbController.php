@@ -21,7 +21,7 @@ class AdminFbController extends Controller
     public function index()
     {
         $fbs = Facebook::all();
-        $users = User::get('username');
+        $users = User::get(['id', 'username']);
         $statuses = Status::get('status');
         $countrys = Country::get('name');
         return view('admin.fb', [
@@ -55,7 +55,7 @@ class AdminFbController extends Controller
             </thead>
             <tbody>';
             foreach ($fbs as $i => $fb) {
-                
+
                 $output .= '<tr>
                     <td>' . $i + 1 . '</td>
                     <td>' . $fb->date . '</td>

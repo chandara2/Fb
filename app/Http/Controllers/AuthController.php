@@ -89,68 +89,26 @@ class AuthController extends Controller
         //
     }
 
-    public function showregister()
-    {
-        // Get group member to show in select option in register brade
-        $usergroups = Usergroup::orderBy('name', 'desc')->where('name', '<>', 'Admin')->get();
-        return view('auth.register', compact('usergroups'));
-    }
-    public function register(Request $request)
-    {
-        $request->validate([
-            'username' => 'required|unique:users',
-            'password' => ['required', 'string', 'min:6'],
-            'password_confirmation' => 'required|same:password',
-        ], [
-            'username.required' => 'Please fill in username',
-            'username.unique' => 'This username already exists',
-            'password.required' => 'Please fill in password',
-            'password.min' => 'Passwords must be at least 6 characters',
-            'password_confirmation.required' => 'Please fill in confirm password',
-            'password_confirmation.same' => 'Password and confirm password does not match',
-        ]);
-
-        Auth::login($user = User::create([
-            'fname' => $request->fname,
-            'gname' => $request->gname,
-            'username' => $request->username,
-            'phone' => $request->phone,
-            'password' => Hash::make($request->password),
-            'gid' => $request->group_member,
-        ]));
-
-        if ($request->group_member == 2) {
-            return redirect(route('supervisor.dashboard'));
-        } else {
-            return redirect(route('user.dashboard'));
-        }
-    }
     public function showlogin()
     {
-        // Get group member to show in select option in login brade
-        $usergroups = Usergroup::orderBy('name', 'desc')->get();
-        return view('auth.login', [
-            'usergroups' => $usergroups,
-        ]);
+        return view('auth.login');
     }
     public function login(Request $request)
     {
         $credentials = $request->validate([
             'username' => 'required',
             'password' => 'required',
-            'gid' => 'required',
         ], [
             'username.required' => 'Please fill in username',
             'password.required' => 'Please fill in password',
-            'gid.required' => 'Please choose the right member',
         ]);
 
-        if (Auth::attempt(['username' => $request->username, 'password' => $request->password, 'gid' => $request->gid, 'visible' => 1])) {
+        if (Auth::attempt(['username' => $request->username, 'password' => $request->password, 'visible' => 1])) {
             $request->session()->regenerate();
 
-            if ($request->gid == 1) {
+            if (auth()->user()->gid == 1) {
                 return redirect()->intended('admin/dashboard');
-            } elseif ($request->gid == 2) {
+            } elseif (auth()->user()->gid == 2) {
                 return redirect()->intended('supervisor/dashboard');
             } else {
                 return redirect()->intended('user/dashboard');

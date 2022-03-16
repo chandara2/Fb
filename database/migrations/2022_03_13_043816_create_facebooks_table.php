@@ -15,7 +15,7 @@ class CreateFacebooksTable extends Migration
     {
         Schema::create('facebooks', function (Blueprint $table) {
             $table->id();
-            
+
             $table->unsignedBigInteger('uid');
             $table->foreign('uid')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
 

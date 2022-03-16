@@ -33,7 +33,7 @@
                                 <select name="create_by" class="form-select">
                                     <option selected disabled>Please select creator</option>
                                     @foreach ($users as $user)
-                                        <option>{{ $user->username }}</option>
+                                        <option value="{{ $user->id }}">{{ $user->username }}</option>
                                     @endforeach
                                 </select>
                                 <span class="text-danger error-text create_by_error"></span>

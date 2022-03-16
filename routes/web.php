@@ -13,8 +13,6 @@ use App\Http\Controllers\User\UserFbController;
 use App\Http\Controllers\User\UserUserController;
 
 // Guest Register & Login
-Route::get('showregister', [AuthController::class, 'showregister'])->name('showregister')->middleware('guest');
-Route::post('register', [AuthController::class, 'register'])->name('register');
 Route::get('/', [AuthController::class, 'showlogin'])->name('showlogin')->middleware('guest');
 Route::post('login', [AuthController::class, 'login'])->name('login');
 
