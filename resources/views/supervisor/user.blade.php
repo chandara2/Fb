@@ -1,14 +1,11 @@
-@extends('layout.layout')
-@section('title', 'ADMIN USER')
+@extends('layout.layout_supervisor')
+@section('title', 'SUPERVISOR USER')
 
-@section('content')
+@section('content_supervisor')
 
-    <div class="container-fluid mt-3 px-0">
-        <div id="show_profile"></div>
-    </div>
+    <div id="show_user_profile"></div>
 
-
-    <!-- Edit user modal start -->
+    <!-- Edit profile modal start -->
     <div class="modal fade" id="editProfileModal" tabindex="-1" aria-labelledby="exampleModalLabel" data-bs-backdrop="static" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
@@ -18,7 +15,7 @@
                 </div>
                 <form action="#" method="POST" id="edit_profile_form" enctype="multipart/form-data">
                     @csrf
-                    <input type="hidden" name="profile_id" id="profile_id">
+                    <input type="hidden" name="user_id" id="user_id">
                     <div class="modal-body p-4 bg-light">
                         <div class="row">
                             <div class="col-lg">
@@ -50,13 +47,13 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="submit" id="edit_profile_btn" class="btn btn-success">Update User</button>
+                        <button type="submit" id="edit_profile_btn" class="btn btn-success">Update Profile</button>
                     </div>
                 </form>
             </div>
         </div>
     </div>
-    <!-- Edit user modal end -->
+    <!-- Edit profile modal end -->
 
 @endsection
 
@@ -69,19 +66,19 @@
                 }
             });
 
-            // Edit User ajax request
+            // Edit profile ajax request
             $(document).on('click', '.editIcon', function(e) {
                 e.preventDefault();
                 let id = $(this).attr('id');
                 $.ajax({
-                    url: "{{ route('admin.profileedit') }}",
+                    url: "{{ route('supervisor.useredit') }}",
                     method: 'get',
                     data: {
                         id: id,
                         _token: '{{ csrf_token() }}'
                     },
                     success: function(response) {
-                        $("#profile_id").val(response.id);
+                        $("#user_id").val(response.id);
                         $("#fname").val(response.fname);
                         $("#gname").val(response.gname);
                         $("#username").val(response.username);
@@ -91,13 +88,13 @@
                 });
             });
 
-            // Update User ajax request
+            // Update profile ajax request
             $("#edit_profile_form").submit(function(e) {
                     e.preventDefault();
                     const fd = new FormData(this);
                     $("#edit_profile_btn").text('Updating...');
                     $.ajax({
-                    url: "{{ route('admin.profileupdate') }}",
+                    url: "{{ route('supervisor.userupdate') }}",
                     method: 'post',
                     data: fd,
                     cache: false,
@@ -111,10 +108,10 @@
                             'Profile Updated Successfully!',
                             'success'
                         )
-                        profilefetch();
+                        userfetch();
                         $("#edit_profile_btn").text('Update Profile');
                         $("#edit_profile_form")[0].reset();
-                        $("#editUserModal").modal('hide');
+                        $("#editProfileModal").modal('hide');
                         }else{
                             $.each(response.error, function(prefix, val){
                                 $('span.'+prefix+'_error').text(val[0])
@@ -125,15 +122,15 @@
                 });
             });
 
-            // Fetch all User ajax request
-            profilefetch();
+            // Fetch profile ajax request
+            userfetch();
 
-            function profilefetch() {
+            function userfetch() {
                 $.ajax({
-                    url: "{{ route('admin.profilefetch') }}",
+                    url: "{{ route('supervisor.userfetch') }}",
                     method: 'get',
                     success: function(response) {
-                    $("#show_profile").html(response);
+                        $("#show_user_profile").html(response);
                     }
                 });
             }

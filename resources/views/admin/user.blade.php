@@ -218,7 +218,7 @@
                         if (response.status == 200) {
                         Swal.fire(
                             'Updated!',
-                            'Employee Updated Successfully!',
+                            'User Updated Successfully!',
                             'success'
                         )
                         userfetch();

@@ -14,7 +14,11 @@
                 <a href="{{ route('user.dashboard') }}" class="nav_link {{ Request::is('user/dashboard') ? 'active' : '' }}"> 
                     <i class='bx bx-grid-alt nav_icon'></i> 
                     <span class="nav_name">Dashboard</span> 
-                </a> 
+                </a>
+                <a href="{{ route('user.user.index') }}" class="nav_link {{ Request::is('user/user*') ? 'active' : '' }}"> 
+                    <i class='bx bx-user nav_icon'></i> 
+                    <span class="nav_name">Users</span> 
+                </a>
                 <a href="{{ route('user.fb.index') }}" class="nav_link {{ Request::is('user/fb*') ? 'active' : '' }}"> 
                     <i class='bx bx-bar-chart-alt-2 nav_icon'></i> 
                     <span class="nav_name">FB Reports</span> 

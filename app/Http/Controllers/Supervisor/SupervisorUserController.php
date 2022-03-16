@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Supervisor;
 
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -9,43 +9,47 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
-class AdminProfileController extends Controller
+class SupervisorUserController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        return view('admin.profile');
+        return view('supervisor.user');
     }
 
-    public function profilefetch()
+    public function userfetch()
     {
-        $users = User::where('username', auth()->user()->username)->get();
+        $users = User::where('id', auth()->user()->id)->get();
         $output = '';
-        $output .= '<div class="row justify-content-center"><div class="col-lg-4 shadow">';
-        foreach ($users as $user) {
-            $output .= '<i class="bx bx-user-circle h1"></i>
-                    <p>' . $user->fname . '</p>
-                    <p>' . $user->gname . '</p>
-                    <p>' . $user->username . '</p>
-                    <p>' . $user->phone . '</p>
-                    <a href="#" id="' . $user->id . '" class="text-success mx-1 editIcon" data-bs-toggle="modal" data-bs-target="#editProfileModal"><i class="bx bxs-edit h4"></i></a>';
+        if ($users->count() > 0) {
+            $output .= '<div class="row justify-content-center text-center">';
+            foreach ($users as $user) {
+
+                $output .= '<div class="col-lg-4 shadow">
+                    <i class="bx bx-user-circle display-1"></i>
+                    <p>Family name: ' . $user->fname . '</p>
+                    <p>Given name: ' . $user->gname . '</p>
+                    <p>Username: ' . $user->username . '</p>
+                    <p>Phone: ' . $user->phone . '</p>
+                    <p>
+                        <a href="#" id="' . $user->id . '" class="btn btn-success btn-sm mx-1 editIcon" data-bs-toggle="modal" data-bs-target="#editProfileModal">Edit Profile</a>
+                    </p>
+                </div>';
+            }
+            $output .= '</div>';
+            echo $output;
+        } else {
+            echo '<h1 class="text-center text-secondary my-5">No record present in the database!</h1>';
         }
-        $output .= '</div></div>';
-        echo $output;
     }
 
-    public function profileedit(Request $request)
+    public function useredit(Request $request)
     {
         $id = $request->id;
         $user = User::find($id);
         return response()->json($user);
     }
 
-    public function profileupdate(Request $request)
+    public function userupdate(Request $request)
     {
         $user = User::find($request->user_id);
         $validator = Validator::make($request->all(), [

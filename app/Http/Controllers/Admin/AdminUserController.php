@@ -20,10 +20,8 @@ class AdminUserController extends Controller
      */
     public function index()
     {
-        $users = User::orderBy('created_at', 'desc')->get();
         $usergroups = Usergroup::orderBy('name', 'desc')->get();
         return view('admin.user', [
-            'users' => $users,
             'usergroups' => $usergroups,
         ]);
     }

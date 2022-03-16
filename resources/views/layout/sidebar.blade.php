@@ -7,7 +7,7 @@
                 <span class="nav_logo-name">FACEBOOK</span>
             </a>
             <div class="nav_list"> 
-                <a href="{{ route('admin.profile.index') }}" class="nav_link"> 
+                <a href="#" class="nav_link">
                     <i class='bx bx-user-circle nav_icon'></i>
                     <span class="nav_name">{{ Auth::user()->username }}</span> 
                 </a> 
