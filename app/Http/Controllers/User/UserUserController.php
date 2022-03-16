@@ -26,6 +26,7 @@ class UserUserController extends Controller
 
                 $output .= '<div class="col-lg-4 shadow">
                     <i class="bx bx-user-circle display-1"></i>
+                    <p class="fw-bold text-uppercase">Normal User</p>
                     <p>Family name: ' . $user->fname . '</p>
                     <p>Given name: ' . $user->gname . '</p>
                     <p>Username: ' . $user->username . '</p>
