@@ -12,11 +12,9 @@ use App\Http\Controllers\Supervisor\SupervisorUserController;
 use App\Http\Controllers\User\UserFbController;
 use App\Http\Controllers\User\UserUserController;
 
-// Guest Register & Login
+// Guest Login & Auth Logout
 Route::get('/', [AuthController::class, 'showlogin'])->name('showlogin')->middleware('guest');
 Route::post('login', [AuthController::class, 'login'])->name('login');
-
-// Auth Logout
 Route::get('logout', [AuthController::class, 'logout'])->name('logout')->middleware('auth');
 
 // Admin Dashboard

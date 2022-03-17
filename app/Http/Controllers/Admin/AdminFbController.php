@@ -21,7 +21,7 @@ class AdminFbController extends Controller
     public function index()
     {
         $fbs = Facebook::all();
-        $users = User::get(['id', 'username']);
+        $users = User::get('username');
         $statuses = Status::get('status');
         $countrys = Country::get('name');
         return view('admin.fb', [

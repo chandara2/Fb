@@ -33,7 +33,6 @@ class SupervisorFbController extends Controller
 
     public function fbfetch()
     {
-        // $fbs = Facebook::all()->where('create_by', Auth::user()->username);
         $fbs = DB::table('users')
             ->join('facebooks', 'facebooks.uid', 'users.id')
             ->join('usergroups', 'usergroups.id', 'users.gid')
