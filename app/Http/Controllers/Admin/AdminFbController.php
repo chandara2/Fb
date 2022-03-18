@@ -21,7 +21,7 @@ class AdminFbController extends Controller
     public function index()
     {
         $fbs = Facebook::all();
-        $users = User::get('username');
+        $users = User::get('username')->where('username', auth()->user()->username);
         $statuses = Status::get('status');
         $countrys = Country::get('name');
         return view('admin.fb', [
@@ -45,10 +45,9 @@ class AdminFbController extends Controller
                     <th>Date</th>
                     <th>Creator</th>
                     <th>Status</th>
-                    <th>Email</th>
-                    <th>Friends</th>
+                    <th>Facebook ID</th>
+                    <th>Facebook Password</th>
                     <th>Country</th>
-                    <th>Visa</th>
                     <th>Boost</th>
                     <th>Action</th>
                 </tr>
@@ -61,11 +60,10 @@ class AdminFbController extends Controller
                     <td>' . $fb->date . '</td>
                     <td>' . $fb->create_by . '</td>
                     <td>' . $fb->status . '</td>
-                    <td>' . $fb->email . '</td>
-                    <td>' . $fb->friends . '</td>
+                    <td>' . $fb->fb_id . '</td>
+                    <td>' . $fb->fb_pw . '</td>
                     <td>' . $fb->country . '</td>
-                    <td>' . $fb->visa . '</td>
-                    <td>' . $fb->boost_date . '|' . $fb->boost_by . '</td>
+                    <td>' . $fb->boost_date . '</td>
                     <td>
                         <a href="#" id="' . $fb->id . '" class="text-success mx-1 editIcon" data-bs-toggle="modal" data-bs-target="#editFbModal"><i class="bx bxs-edit h4"></i></a>
 
@@ -80,10 +78,9 @@ class AdminFbController extends Controller
                     <th>Date</th>
                     <th>Creator</th>
                     <th>Status</th>
-                    <th>Email</th>
-                    <th>Friends</th>
+                    <th>Facebook ID</th>
+                    <th>Facebook Password</th>
                     <th>Country</th>
-                    <th>Visa</th>
                     <th>Boost</th>
                     <th>Action</th>
                 </tr>
@@ -104,40 +101,11 @@ class AdminFbController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'date' => 'required',
-            'create_by' => 'required',
-            'status' => 'required',
-            'fname' => 'required',
-            'sname' => 'required',
-            'email' => 'required',
-            'email_pw' => 'required',
             'fb_id' => 'required',
             'fb_pw' => 'required',
-            'twofa' => 'required',
-            'friends' => 'nullable|gte:0|lte:5000',
-            'country' => 'required',
-            // 'visa' => 'required',
-            // 'visa_date' => 'required',
-            // 'boost_by' => 'required',
-            // 'boost_date' => 'required',
         ], [
-            'date.required' => 'Please fill in date',
-            'create_by.required' => 'Please fill in creator',
-            'status.required' => 'Please fill in status',
-            'fname.required' => 'Please fill in first name',
-            'sname.required' => 'Please fill in surname',
-            'email.required' => 'Please fill in email',
-            'email_pw.required' => 'Please fill in email password',
             'fb_id.required' => 'Please fill in Facebook id',
             'fb_pw.required' => 'Please fill in Facebook password',
-            'twofa.required' => 'Please fill in 2FA',
-            'friends.gte' => 'Friends should not be negative',
-            'friends.lte' => 'Friends must not exceed 5000',
-            'country.required' => 'Please fill in country',
-            // 'visa.required' => 'Please fill in Visa',
-            // 'visa_date.required' => 'Please fill in Visa date',
-            // 'boost_by.required' => 'Please fill in boost by',
-            // 'boost_date.required' => 'Please fill in boost date',
         ]);
 
         if ($validator->fails()) {
@@ -146,7 +114,7 @@ class AdminFbController extends Controller
             $fbs = new Facebook();
             $fbs->uid = Auth::user()->id;
             $fbs->date = $request->date;
-            $fbs->create_by = $request->create_by;
+            $fbs->create_by = auth()->user()->username;
             $fbs->status = $request->status;
             $fbs->fname = $request->fname;
             $fbs->sname = $request->sname;
@@ -179,40 +147,11 @@ class AdminFbController extends Controller
         $fb = Facebook::find($request->facebook_id);
 
         $validator = Validator::make($request->all(), [
-            'date' => 'required',
-            'create_by' => 'required',
-            'status' => 'required',
-            'fname' => 'required',
-            'sname' => 'required',
-            'email' => 'required',
-            'email_pw' => 'required',
             'fb_id' => 'required',
             'fb_pw' => 'required',
-            'twofa' => 'required',
-            'friends' => 'nullable|gte:0|lte:5000',
-            'country' => 'required',
-            // 'visa' => 'required',
-            // 'visa_date' => 'required',
-            // 'boost_by' => 'required',
-            // 'boost_date' => 'required',
         ], [
-            'date.required' => 'Please fill in date',
-            'create_by.required' => 'Please fill in creator',
-            'status.required' => 'Please fill in status',
-            'fname.required' => 'Please fill in first name',
-            'sname.required' => 'Please fill in surname',
-            'email.required' => 'Please fill in email',
-            'email_pw.required' => 'Please fill in email password',
             'fb_id.required' => 'Please fill in Facebook id',
             'fb_pw.required' => 'Please fill in Facebook password',
-            'twofa.required' => 'Please fill in 2FA',
-            'friends.gte' => 'Friends should not be negative',
-            'friends.lte' => 'Friends must not exceed 5000',
-            'country.required' => 'Please fill in country',
-            // 'visa.required' => 'Please fill in Visa',
-            // 'visa_date.required' => 'Please fill in Visa date',
-            // 'boost_by.required' => 'Please fill in boost by',
-            // 'boost_date.required' => 'Please fill in boost date',
         ]);
 
         if ($validator->fails()) {
@@ -220,7 +159,6 @@ class AdminFbController extends Controller
         } else {
 
             $fb->date = $request->date;
-            $fb->create_by = $request->create_by;
             $fb->status = $request->status;
             $fb->fname = $request->fname;
             $fb->sname = $request->sname;

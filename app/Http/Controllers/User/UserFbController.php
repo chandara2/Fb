@@ -6,7 +6,9 @@ use App\Models\Status;
 use App\Models\Facebook;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 use WisdomDiala\Countrypkg\Models\Country;
 
@@ -21,15 +23,23 @@ class UserFbController extends Controller
     {
         $statuses = Status::get('status');
         $countrys = Country::get('name');
+        $users = User::get('username')->where('username', auth()->user()->username);
         return view('user.fb', [
             'statuses' => $statuses,
             'countrys' => $countrys,
+            'users' => $users,
         ]);
     }
 
     public function fbfetch()
     {
-        $fbs = Facebook::all()->where('create_by', Auth::user()->username);
+        // $fbs = Facebook::all()->where('uid', Auth::user()->id);
+        $fbs = DB::table('users')
+            ->join('facebooks', 'facebooks.uid', 'users.id')
+            ->join('usergroups', 'usergroups.id', 'users.gid')
+            ->select('facebooks.*')
+            ->where('uid', '=', auth()->user()->id)
+            ->get();
         $output = '';
         if ($fbs->count() > 0) {
 
@@ -40,10 +50,9 @@ class UserFbController extends Controller
                     <th>Date</th>
                     <th>Creator</th>
                     <th>Status</th>
-                    <th>Email</th>
-                    <th>Friends</th>
+                    <th>Facebook ID</th>
+                    <th>Facebook Password</th>
                     <th>Country</th>
-                    <th>Visa</th>
                     <th>Boost</th>
                     <th>Action</th>
                 </tr>
@@ -56,11 +65,10 @@ class UserFbController extends Controller
                     <td>' . $fb->date . '</td>
                     <td>' . $fb->create_by . '</td>
                     <td>' . $fb->status . '</td>
-                    <td>' . $fb->email . '</td>
-                    <td>' . $fb->friends . '</td>
+                    <td>' . $fb->fb_id . '</td>
+                    <td>' . $fb->fb_pw . '</td>
                     <td>' . $fb->country . '</td>
-                    <td>' . $fb->visa . '</td>
-                    <td>' . $fb->boost_date . '|' . $fb->boost_by . '</td>
+                    <td>' . $fb->boost_date . '</td>
                     <td>
                         <a href="#" id="' . $fb->id . '" class="text-success mx-1 editIcon" data-bs-toggle="modal" data-bs-target="#editFbModal"><i class="bx bxs-edit h4"></i></a>
 
@@ -75,10 +83,9 @@ class UserFbController extends Controller
                     <th>Date</th>
                     <th>Creator</th>
                     <th>Status</th>
-                    <th>Email</th>
-                    <th>Friends</th>
+                    <th>Facebook ID</th>
+                    <th>Facebook Password</th>
                     <th>Country</th>
-                    <th>Visa</th>
                     <th>Boost</th>
                     <th>Action</th>
                 </tr>
@@ -99,40 +106,11 @@ class UserFbController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'date' => 'required',
-            'create_by' => 'required',
-            'status' => 'required',
-            'fname' => 'required',
-            'sname' => 'required',
-            'email' => 'required',
-            'email_pw' => 'required',
             'fb_id' => 'required',
             'fb_pw' => 'required',
-            'twofa' => 'required',
-            'friends' => 'gte:0|lte:5000',
-            'country' => 'required',
-            'visa' => 'required',
-            'visa_date' => 'required',
-            // 'boost_by' => 'required',
-            // 'boost_date' => 'required',
         ], [
-            'date.required' => 'Please fill in date',
-            'create_by.required' => 'Please fill in creator',
-            'status.required' => 'Please fill in status',
-            'fname.required' => 'Please fill in first name',
-            'sname.required' => 'Please fill in surname',
-            'email.required' => 'Please fill in email',
-            'email_pw.required' => 'Please fill in email password',
             'fb_id.required' => 'Please fill in Facebook id',
             'fb_pw.required' => 'Please fill in Facebook password',
-            'twofa.required' => 'Please fill in 2FA',
-            'fb_id.required' => 'Please fill in Facebook id',
-            'fb_pw.required' => 'Please fill in Facebook password',
-            'country.required' => 'Please fill in country',
-            'visa.required' => 'Please fill in Visa',
-            'visa_date.required' => 'Please fill in Visa date',
-            // 'boost_by.required' => 'Please fill in boost by',
-            // 'boost_date.required' => 'Please fill in boost date',
         ]);
 
         if ($validator->fails()) {
@@ -141,7 +119,7 @@ class UserFbController extends Controller
             $fbs = new Facebook();
             $fbs->uid = Auth::user()->id;
             $fbs->date = $request->date;
-            $fbs->create_by = $request->create_by;
+            $fbs->create_by = auth()->user()->username;
             $fbs->status = $request->status;
             $fbs->fname = $request->fname;
             $fbs->sname = $request->sname;
@@ -174,40 +152,11 @@ class UserFbController extends Controller
         $fb = Facebook::find($request->facebook_id);
 
         $validator = Validator::make($request->all(), [
-            'date' => 'required',
-            'create_by' => 'required',
-            'status' => 'required',
-            'fname' => 'required',
-            'sname' => 'required',
-            'email' => 'required',
-            'email_pw' => 'required',
             'fb_id' => 'required',
             'fb_pw' => 'required',
-            'twofa' => 'required',
-            'friends' => 'gte:0|lte:5000',
-            'country' => 'required',
-            // 'visa' => 'required',
-            // 'visa_date' => 'required',
-            // 'boost_by' => 'required',
-            // 'boost_date' => 'required',
         ], [
-            'date.required' => 'Please fill in date',
-            'create_by.required' => 'Please fill in creator',
-            'status.required' => 'Please fill in status',
-            'fname.required' => 'Please fill in first name',
-            'sname.required' => 'Please fill in surname',
-            'email.required' => 'Please fill in email',
-            'email_pw.required' => 'Please fill in email password',
             'fb_id.required' => 'Please fill in Facebook id',
             'fb_pw.required' => 'Please fill in Facebook password',
-            'twofa.required' => 'Please fill in 2FA',
-            'fb_id.required' => 'Please fill in Facebook id',
-            'fb_pw.required' => 'Please fill in Facebook password',
-            'country.required' => 'Please fill in country',
-            // 'visa.required' => 'Please fill in Visa',
-            // 'visa_date.required' => 'Please fill in Visa date',
-            // 'boost_by.required' => 'Please fill in boost by',
-            // 'boost_date.required' => 'Please fill in boost date',
         ]);
 
         if ($validator->fails()) {
@@ -215,7 +164,6 @@ class UserFbController extends Controller
         } else {
 
             $fb->date = $request->date;
-            $fb->create_by = $request->create_by;
             $fb->status = $request->status;
             $fb->fname = $request->fname;
             $fb->sname = $request->sname;

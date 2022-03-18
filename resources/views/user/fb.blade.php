@@ -6,13 +6,16 @@
     <div class="card container-fluid mt-3 px-0 shadow">
         <div class="card-header position-relative bg-light">
             <h2 class="mb-0 text-primary">List of FB</h2>
-            <button type="button" data-bs-toggle="modal" data-bs-target="#showFbModal" class="btn btn-primary position-absolute end-0 top-50 translate-middle-y me-3"><i class='bx bx-message-square-add' ></i> Add New FB</button>
+            <button type="button" data-bs-toggle="modal" data-bs-target="#showFbModal"
+                class="btn btn-primary position-absolute end-0 top-50 translate-middle-y me-3"><i
+                    class='bx bx-message-square-add'></i> Add New FB</button>
         </div>
         <div class="card-body" id="show_all_fbs"></div>
     </div>
 
     <!-- Add fb modal start TEST123 -->
-    <div class="modal fade" id="showFbModal" tabindex="-1" aria-labelledby="exampleModalLabel" data-bs-backdrop="static" aria-hidden="true">
+    <div class="modal fade" id="showFbModal" tabindex="-1" aria-labelledby="exampleModalLabel" data-bs-backdrop="static"
+        aria-hidden="true">
         <div class="modal-dialog modal-lg modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
@@ -24,108 +27,89 @@
                     <div class="modal-body p-4 bg-light">
                         <div class="row">
                             <div class="col-lg">
-                                <label for="date">Date</label>
-                                <input type="date" name="date" class="form-control">
-                                <span class="text-danger error-text date_error"></span>
+                                <label for="date_lb">Date</label>
+                                <input type="date" name="date" id="date_lb" class="form-control">
                             </div>
                             <div class="col-lg">
-                                <label for="create_by">Create By</label>
-                                <select name="create_by" class="form-select">
-                                    <option selected disabled>Please select creator</option>
-                                    <option>{{ auth()->user()->username }}</option>
-                                </select>
-                                <span class="text-danger error-text create_by_error"></span>
-                            </div>
-                            <div class="col-lg">
-                                <label for="status">Status</label>
+                                <label>Status</label>
                                 <select name="status" class="form-select">
                                     <option selected disabled>Please select status</option>
                                     @foreach ($statuses as $status)
                                         <option>{{ $status->status }}</option>
                                     @endforeach
                                 </select>
-                                <span class="text-danger error-text status_error"></span>
                             </div>
                         </div>
                         <div class="row my-2">
                             <div class="col-lg">
-                                <label for="fname">First Name</label>
-                                <input type="text" name="fname" class="form-control">
-                                <span class="text-danger error-text fname_error"></span>
+                                <label for="fname_lb">First Name</label>
+                                <input type="text" name="fname" id="fname_lb" class="form-control">
                             </div>
                             <div class="col-lg">
-                                <label for="sname">Surname</label>
-                                <input type="text" name="sname" class="form-control">
-                                <span class="text-danger error-text sname_error"></span>
+                                <label for="sname_lb">Surname</label>
+                                <input type="text" name="sname" id="sname_lb" class="form-control">
                             </div>
                         </div>
                         <div class="my-2">
-                            <label for="email">Email</label>
-                            <input type="email" name="email" class="form-control">
-                            <span class="text-danger error-text email_error"></span>
+                            <label for="email_lb">Email</label>
+                            <input type="email" name="email" id="email_lb" class="form-control">
                         </div>
                         <div class="my-2">
-                            <label for="email_pw">Email Password</label>
-                            <input type="text" name="email_pw" class="form-control">
-                            <span class="text-danger error-text email_pw_error"></span>
+                            <label for="email_pw_lb">Email Password</label>
+                            <input type="text" name="email_pw" id="email_pw_lb" class="form-control">
                         </div>
                         <div class="my-2">
-                            <label for="fb_id">Facebook ID</label>
-                            <input type="text" name="fb_id" class="form-control">
+                            <label for="fb_id_lb">Facebook ID <span class="text-danger h4">*</span></label>
+                            <input type="text" name="fb_id" id="fb_id_lb" class="form-control">
                             <span class="text-danger error-text fb_id_error"></span>
                         </div>
                         <div class="my-2">
-                            <label for="fb_pw">Facebook Password</label>
-                            <input type="text" name="fb_pw" class="form-control">
+                            <label for="fb_pw_lb">Facebook Password <span class="text-danger h4">*</span></label>
+                            <input type="text" name="fb_pw" id="fb_pw_lb" class="form-control">
                             <span class="text-danger error-text fb_pw_error"></span>
                         </div>
                         <div class="my-2">
-                            <label for="twofa">2FA</label>
-                            <input type="text" name="twofa" class="form-control">
-                            <span class="text-danger error-text twofa_error"></span>
+                            <label for="twofa_lb">2FA</label>
+                            <input type="text" name="twofa" id="twofa_lb" class="form-control">
                         </div>
                         <div class="row my-2">
                             <div class="col-lg">
-                                <label for="friends">Friends</label>
-                                <input type="number" name="friends" class="form-control">
-                                <span class="text-danger error-text friends_error"></span>
+                                <label for="friends_lb">Friends</label>
+                                <input type="number" name="friends" id="friends_lb" class="form-control">
                             </div>
                             <div class="col-lg">
-                                <label for="country">Country</label>
+                                <label>Country</label>
                                 <select name="country" class="form-select">
                                     <option selected disabled>Please select country</option>
                                     @foreach ($countrys as $country)
                                         <option>{{ $country->name }}</option>
                                     @endforeach
                                 </select>
-                                <span class="text-danger error-text country_error"></span>
                             </div>
                         </div>
                         <div class="row my-2">
                             <div class="col-lg">
-                                <label for="visa">Visa</label>
-                            <input type="text" name="visa" class="form-control">
-                            <span class="text-danger error-text visa_error"></span>
+                                <label for="visa_lb">Visa</label>
+                                <input type="text" name="visa" id="visa_lb" class="form-control">
                             </div>
                             <div class="col-lg">
-                                <label for="visa_date">Visa Date</label>
-                            <input type="date" name="visa_date" class="form-control">
-                            <span class="text-danger error-text visa_date_error"></span>
+                                <label for="visa_date_lb">Visa Date</label>
+                                <input type="date" name="visa_date" id="visa_date_lb" class="form-control">
                             </div>
                         </div>
                         <div class="row my-2">
                             <div class="col-lg">
-                                <label for="boost_by">Boost By</label>
+                                <label>Boost By</label>
                                 <select name="boost_by" class="form-select">
                                     <option selected disabled>Please select booster</option>
-                                    <option>{{ auth()->user()->username }}</option>
+                                    @foreach ($users as $user)
+                                        <option>{{ $user->username }}</option>
+                                    @endforeach
                                 </select>
-                                <span class="text-danger error-text boost_by_error"></span>
                             </div>
                             <div class="col-lg">
-                                <label for="boost_date">Boost Date</label>
-                            <input type="date" name="boost_date" class="form-control">
-                            <span class="text-danger error-text boost_date_error"></span>
+                                <label for="boost_date_lb">Boost Date</label>
+                                <input type="date" name="boost_date" id="boost_date_lb" class="form-control">
                             </div>
                         </div>
                     </div>
@@ -140,7 +124,8 @@
     <!-- Add fb modal end -->
 
     <!-- Edit fb modal start -->
-    <div class="modal fade" id="editFbModal" tabindex="-1" aria-labelledby="exampleModalLabel" data-bs-backdrop="static" aria-hidden="true">
+    <div class="modal fade" id="editFbModal" tabindex="-1" aria-labelledby="exampleModalLabel" data-bs-backdrop="static"
+        aria-hidden="true">
         <div class="modal-dialog modal-lg modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
@@ -153,48 +138,35 @@
                     <div class="modal-body p-4 bg-light">
                         <div class="row">
                             <div class="col-lg">
-                                <label for="date">Date</label>
+                                <label>Date</label>
                                 <input type="date" name="date" id="date" class="form-control">
-                                <span class="text-danger error-text date_error"></span>
                             </div>
                             <div class="col-lg">
-                                <label for="create_by">Create By</label>
-                                <select name="create_by" id="create_by" class="form-select">
-                                    <option>{{ auth()->user()->username }}</option>
-                                </select>
-                                <span class="text-danger error-text create_by_error"></span>
-                            </div>
-                            <div class="col-lg">
-                                <label for="status">Status</label>
+                                <label>Status</label>
                                 <select name="status" id="status" class="form-select">
                                     @foreach ($statuses as $status)
                                         <option>{{ $status->status }}</option>
                                     @endforeach
                                 </select>
-                                <span class="text-danger error-text status_error"></span>
                             </div>
                         </div>
                         <div class="row my-2">
                             <div class="col-lg">
-                                <label for="fname">First Name</label>
+                                <label>First Name</label>
                                 <input type="text" name="fname" id="fname" class="form-control">
-                                <span class="text-danger error-text fname_error"></span>
                             </div>
                             <div class="col-lg">
-                                <label for="sname">Surname</label>
+                                <label>Surname</label>
                                 <input type="text" name="sname" id="sname" class="form-control">
-                                <span class="text-danger error-text sname_error"></span>
                             </div>
                         </div>
                         <div class="my-2">
-                            <label for="email">Email</label>
+                            <label>Email</label>
                             <input type="email" name="email" id="email" class="form-control">
-                            <span class="text-danger error-text email_error"></span>
                         </div>
                         <div class="my-2">
-                            <label for="email_pw">Email Password</label>
+                            <label>Email Password</label>
                             <input type="text" name="email_pw" id="email_pw" class="form-control">
-                            <span class="text-danger error-text email_pw_error"></span>
                         </div>
                         <div class="my-2">
                             <label for="fb_id">Facebook ID</label>
@@ -207,50 +179,45 @@
                             <span class="text-danger error-text fb_pw_error"></span>
                         </div>
                         <div class="my-2">
-                            <label for="twofa">2FA</label>
+                            <label>2FA</label>
                             <input type="text" name="twofa" id="twofa" class="form-control">
-                            <span class="text-danger error-text twofa_error"></span>
                         </div>
                         <div class="row my-2">
                             <div class="col-lg">
-                                <label for="friends">Friends</label>
+                                <label>Friends</label>
                                 <input type="number" name="friends" id="friends" class="form-control">
-                                <span class="text-danger error-text friends_error"></span>
                             </div>
                             <div class="col-lg">
-                                <label for="country">Country</label>
+                                <label>Country</label>
                                 <select name="country" id="country" class="form-select">
                                     @foreach ($countrys as $country)
                                         <option>{{ $country->name }}</option>
                                     @endforeach
                                 </select>
-                                <span class="text-danger error-text country_error"></span>
                             </div>
                         </div>
                         <div class="row my-2">
                             <div class="col-lg">
-                                <label for="visa">Visa</label>
-                            <input type="text" name="visa" id="visa" class="form-control">
-                            <span class="text-danger error-text visa_error"></span>
+                                <label>Visa</label>
+                                <input type="text" name="visa" id="visa" class="form-control">
                             </div>
                             <div class="col-lg">
-                                <label for="visa_date">Visa Date</label>
-                            <input type="date" name="visa_date" id="visa_date" class="form-control">
-                            <span class="text-danger error-text visa_date_error"></span>
+                                <label>Visa Date</label>
+                                <input type="date" name="visa_date" id="visa_date" class="form-control">
                             </div>
                         </div>
                         <div class="row my-2">
                             <div class="col-lg">
-                                <label for="boost_by">Boost By</label>
+                                <label>Boost By</label>
                                 <select name="boost_by" id="boost_by" class="form-select">
-                                    <option>{{ auth()->user()->username }}</option>
+                                    @foreach ($users as $user)
+                                        <option>{{ $user->username }}</option>
+                                    @endforeach
                                 </select>
-                                <span class="text-danger error-text boost_by_error"></span>
                             </div>
                             <div class="col-lg">
-                                <label for="boost_date">Boost Date</label>
-                            <input type="date" name="boost_date" id="boost_date" class="form-control">
-                            <span class="text-danger error-text boost_date_error"></span>
+                                <label>Boost Date</label>
+                                <input type="date" name="boost_date" id="boost_date" class="form-control">
                             </div>
                         </div>
                     </div>
@@ -268,7 +235,7 @@
 
 @section('script')
     <script>
-        $(document).ready(function () {
+        $(document).ready(function() {
             $.ajaxSetup({
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -276,24 +243,24 @@
             });
 
             // Save Fb Form
-            $('#addFbFormId').on('submit', function (e) {
+            $('#addFbFormId').on('submit', function(e) {
                 e.preventDefault();
                 $.ajax({
-                    method:$(this).attr('method'),
-                    url:$(this).attr('action'),
-                    data:new FormData(this),
+                    method: $(this).attr('method'),
+                    url: $(this).attr('action'),
+                    data: new FormData(this),
                     dataType: "json",
-                    processData:false,
-                    contentType:false,
-                    beforeSend: function(){
+                    processData: false,
+                    contentType: false,
+                    beforeSend: function() {
                         $(document).find('span.error-text').text('')
                     },
-                    success: function (response) {
-                        if(response.status==0){
-                            $.each(response.error, function(prefix, val){
-                                $('span.'+prefix+'_error').text(val[0])
+                    success: function(response) {
+                        if (response.status == 0) {
+                            $.each(response.error, function(prefix, val) {
+                                $('span.' + prefix + '_error').text(val[0])
                             })
-                        }else{
+                        } else {
                             fbfetch();
                             $('#showFbModal').modal('hide')
                             $('#addFbFormId')[0].reset();
@@ -316,7 +283,6 @@
                     success: function(response) {
                         $("#facebook_id").val(response.id);
                         $("#date").val(response.date);
-                        $("#create_by").val(response.create_by);
                         $("#status").val(response.status);
                         $("#fname").val(response.fname);
                         $("#sname").val(response.sname);
@@ -337,10 +303,10 @@
 
             // Update User ajax request
             $("#edit_fb_form").submit(function(e) {
-                    e.preventDefault();
-                    const fd = new FormData(this);
-                    $("#edit_fb_btn").text('Updating...');
-                    $.ajax({
+                e.preventDefault();
+                const fd = new FormData(this);
+                $("#edit_fb_btn").text('Updating...');
+                $.ajax({
                     url: "{{ route('user.fbupdate') }}",
                     method: 'post',
                     data: fd,
@@ -350,21 +316,21 @@
                     dataType: 'json',
                     success: function(response) {
                         if (response.status == 200) {
-                        Swal.fire(
-                            'Updated!',
-                            'Fb Updated Successfully!',
-                            'success'
-                        )
-                        fbfetch();
-                        $("#edit_fb_btn").text('Update Post');
-                        $("#edit_fb_form")[0].reset();
-                        $("#editFbModal").modal('hide');
-                        }else{
-                            $.each(response.error, function(prefix, val){
-                                $('span.'+prefix+'_error').text(val[0])
+                            Swal.fire(
+                                'Updated!',
+                                'Fb Updated Successfully!',
+                                'success'
+                            )
+                            fbfetch();
+                            $("#edit_fb_btn").text('Update Post');
+                            $("#edit_fb_form")[0].reset();
+                            $("#editFbModal").modal('hide');
+                        } else {
+                            $.each(response.error, function(prefix, val) {
+                                $('span.' + prefix + '_error').text(val[0])
                             })
                         }
-                        
+
                     }
                 });
             });
@@ -395,9 +361,9 @@
                             success: function(response) {
                                 console.log(response);
                                 Swal.fire(
-                                'Deleted!',
-                                'Your file has been deleted.',
-                                'success'
+                                    'Deleted!',
+                                    'Your file has been deleted.',
+                                    'success'
                                 )
                                 fbfetch();
                             }
@@ -414,11 +380,11 @@
                     url: "{{ route('user.fbfetch') }}",
                     method: 'get',
                     success: function(response) {
-                    $("#show_all_fbs").html(response);
-                    $("table").DataTable({
-                        order: [0, 'asc'],
-                        pageLength: 25,
-                    });
+                        $("#show_all_fbs").html(response);
+                        $("table").DataTable({
+                            order: [0, 'asc'],
+                            pageLength: 25,
+                        });
                     }
                 });
             }

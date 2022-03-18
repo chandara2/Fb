@@ -87,7 +87,7 @@ class UserDashboard extends Controller
 
     public function dashboard()
     {
-        $fbs = Facebook::where('create_by', Auth::user()->username)->count();
+        $fbs = Facebook::where('uid', Auth::user()->id)->count();
         return view('user.dashboard', [
             'fbs' => $fbs,
         ]);
