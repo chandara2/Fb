@@ -6,13 +6,16 @@
     <div class="card container-fluid mt-3 px-0 shadow">
         <div class="card-header position-relative bg-light">
             <h2 class="mb-0 text-primary">List of users</h2>
-            <button type="button" data-bs-toggle="modal" data-bs-target="#showUserModal" class="btn btn-primary position-absolute end-0 top-50 translate-middle-y me-3"><i class='bx bx-message-square-add' ></i> Add New User</button>
+            <button type="button" data-bs-toggle="modal" data-bs-target="#showUserModal"
+                class="btn btn-primary position-absolute end-0 top-50 translate-middle-y me-3"><i
+                    class='bx bx-message-square-add'></i> Add New User</button>
         </div>
         <div class="card-body" id="show_all_users"></div>
     </div>
 
     <!-- Add user modal start -->
-    <div class="modal fade" id="showUserModal" tabindex="-1" aria-labelledby="exampleModalLabel" data-bs-backdrop="static" aria-hidden="true">
+    <div class="modal fade" id="showUserModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+        data-bs-backdrop="static" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
@@ -75,7 +78,8 @@
     <!-- Add user modal end -->
 
     <!-- Edit user modal start -->
-    <div class="modal fade" id="editUserModal" tabindex="-1" aria-labelledby="exampleModalLabel" data-bs-backdrop="static" aria-hidden="true">
+    <div class="modal fade" id="editUserModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+        data-bs-backdrop="static" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
@@ -110,7 +114,8 @@
                         </div>
                         <div class="my-2">
                             <label for="password">password</label>
-                            <input type="password" name="password" id="password" class="form-control" placeholder="password">
+                            <input type="password" name="password" id="password" class="form-control"
+                                placeholder="password">
                             <span class="text-danger error-text password_error"></span>
                         </div>
                         <div class="my-2">
@@ -141,7 +146,7 @@
 
 @section('script')
     <script>
-        $(document).ready(function () {
+        $(document).ready(function() {
             $.ajaxSetup({
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -149,24 +154,24 @@
             });
 
             // Save User Form
-            $('#addUserFormId').on('submit', function (e) {
+            $('#addUserFormId').on('submit', function(e) {
                 e.preventDefault();
                 $.ajax({
-                    method:$(this).attr('method'),
-                    url:$(this).attr('action'),
-                    data:new FormData(this),
+                    method: $(this).attr('method'),
+                    url: $(this).attr('action'),
+                    data: new FormData(this),
                     dataType: "json",
-                    processData:false,
-                    contentType:false,
-                    beforeSend: function(){
+                    processData: false,
+                    contentType: false,
+                    beforeSend: function() {
                         $(document).find('span.error-text').text('')
                     },
-                    success: function (response) {
-                        if(response.status==0){
-                            $.each(response.error, function(prefix, val){
-                                $('span.'+prefix+'_error').text(val[0])
+                    success: function(response) {
+                        if (response.status == 0) {
+                            $.each(response.error, function(prefix, val) {
+                                $('span.' + prefix + '_error').text(val[0])
                             })
-                        }else{
+                        } else {
                             userfetch();
                             $('#showUserModal').modal('hide')
                             $('#addUserFormId')[0].reset();
@@ -194,7 +199,7 @@
                         $("#phone").val(response.phone);
                         $("#password").val('********');
                         $("#gid").val(response.gid);
-                        if(response.visible == 1){
+                        if (response.visible == 1) {
                             $("#visible").prop('checked', true);
                         }
                     }
@@ -203,10 +208,10 @@
 
             // Update User ajax request
             $("#edit_user_form").submit(function(e) {
-                    e.preventDefault();
-                    const fd = new FormData(this);
-                    $("#edit_employee_btn").text('Updating...');
-                    $.ajax({
+                e.preventDefault();
+                const fd = new FormData(this);
+                $("#edit_employee_btn").text('Updating...');
+                $.ajax({
                     url: "{{ route('admin.userupdate') }}",
                     method: 'post',
                     data: fd,
@@ -216,21 +221,21 @@
                     dataType: 'json',
                     success: function(response) {
                         if (response.status == 200) {
-                        Swal.fire(
-                            'Updated!',
-                            'User Updated Successfully!',
-                            'success'
-                        )
-                        userfetch();
-                        $("#edit_employee_btn").text('Update User');
-                        $("#edit_user_form")[0].reset();
-                        $("#editUserModal").modal('hide');
-                        }else{
-                            $.each(response.error, function(prefix, val){
-                                $('span.'+prefix+'_error').text(val[0])
+                            Swal.fire(
+                                'Updated!',
+                                'User Updated Successfully!',
+                                'success'
+                            )
+                            userfetch();
+                            $("#edit_employee_btn").text('Update User');
+                            $("#edit_user_form")[0].reset();
+                            $("#editUserModal").modal('hide');
+                        } else {
+                            $.each(response.error, function(prefix, val) {
+                                $('span.' + prefix + '_error').text(val[0])
                             })
                         }
-                        
+
                     }
                 });
             });
@@ -250,27 +255,27 @@
                     cancelButtonColor: '#d33',
                     confirmButtonText: 'Yes, delete it!'
                 }).then((result) => {
-                    if(gid!=1){
+                    if (gid != 1) {
                         if (result.isConfirmed) {
                             $.ajax({
-                            url: "{{ route('admin.userdelete') }}",
-                            method: 'delete',
-                            data: {
-                                id: id,
-                                _token: csrf
-                            },
-                            success: function(response) {
-                                console.log(response);
-                                Swal.fire(
-                                'Deleted!',
-                                'Your file has been deleted.',
-                                'success'
-                                )
-                                userfetch();
-                            }
+                                url: "{{ route('admin.userdelete') }}",
+                                method: 'delete',
+                                data: {
+                                    id: id,
+                                    _token: csrf
+                                },
+                                success: function(response) {
+                                    console.log(response);
+                                    Swal.fire(
+                                        'Deleted!',
+                                        'Your file has been deleted.',
+                                        'success'
+                                    )
+                                    userfetch();
+                                }
                             });
                         }
-                    }else{
+                    } else {
                         Swal.fire(
                             'Admin!',
                             'You can not delete admin account.',
@@ -287,11 +292,11 @@
                     url: "{{ route('admin.userfetch') }}",
                     method: 'get',
                     success: function(response) {
-                    $("#show_all_users").html(response);
-                    $("table").DataTable({
-                        order: [0, 'asc'],
-                        pageLength: 25,
-                    });
+                        $("#show_all_users").html(response);
+                        $("table").DataTable({
+                            order: [0, 'asc'],
+                            pageLength: 25,
+                        });
                     }
                 });
             }
